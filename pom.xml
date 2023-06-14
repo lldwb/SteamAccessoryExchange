@@ -15,6 +15,7 @@
         <module>authentication</module>
         <module>commodity</module>
         <module>app</module>
+        <module>afterSale</module>
     </modules>
 
     <properties>
