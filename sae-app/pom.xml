@@ -3,10 +3,10 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.example</groupId>
-        <artifactId>SteamAccessoryExchange</artifactId>
+        <artifactId>sae-parrent</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>app</artifactId>
+    <artifactId>sae-app</artifactId>
     <packaging>war</packaging>
     <url>http://maven.apache.org</url>
     <dependencies>
