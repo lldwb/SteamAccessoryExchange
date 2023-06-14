@@ -14,11 +14,8 @@
         <module>deal</module>
         <module>authentication</module>
         <module>commodity</module>
-<<<<<<< Updated upstream
-        <module>app</module>
-=======
         <module>afterSale</module>
->>>>>>> Stashed changes
+        <module>app</module>
     </modules>
 
     <properties>
