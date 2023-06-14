@@ -11,6 +11,9 @@
     <modules>
         <module>user</module>
         <module>pay</module>
+        <module>deal</module>
+        <module>authentication</module>
+        <module>commodity</module>
     </modules>
 
     <properties>
