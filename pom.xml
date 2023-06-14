@@ -5,17 +5,20 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>SteamAccessoryExchange</artifactId>
+    <artifactId>sae-parrent</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>user</module>
-        <module>pay</module>
-        <module>deal</module>
-        <module>authentication</module>
-        <module>commodity</module>
-        <module>afterSale</module>
-        <module>app</module>
+        <module>sae-user</module>
+        <module>sae-pay</module>
+        <module>sae-deal</module>
+        <module>sae-authentication</module>
+        <module>sae-commodity</module>
+        <module>sae-afterSale</module>
+        <module>sae-app</module>
+        <module>sae-afterSale</module>
+        <module>sae-activity</module>
+        <module>sae-admin</module>
     </modules>
 
     <properties>
