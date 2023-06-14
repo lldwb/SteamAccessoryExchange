@@ -16,6 +16,8 @@
         <module>commodity</module>
         <module>afterSale</module>
         <module>app</module>
+        <module>afterSale</module>
+        <module>activity</module>
     </modules>
 
     <properties>
