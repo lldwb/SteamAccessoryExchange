@@ -3,8 +3,6 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/sae-activity/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/sae-activity/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/sae-admin/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/sae-admin/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/sae-afterSale/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/sae-afterSale/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/sae-app/src/main/java" charset="UTF-8" />
@@ -17,6 +15,8 @@
     <file url="file://$PROJECT_DIR$/sae-deal/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/sae-pay/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/sae-pay/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sae-service-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sae-service-api/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/sae-user/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/sae-user/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
