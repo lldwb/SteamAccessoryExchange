@@ -18,6 +18,7 @@
         <module>sae-app</module>
         <module>sae-afterSale</module>
         <module>sae-activity</module>
+        <module>sae-service</module>
         <module>sae-service-api</module>
     </modules>
 
