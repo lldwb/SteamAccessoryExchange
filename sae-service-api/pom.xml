@@ -6,7 +6,7 @@
         <artifactId>sae-parrent</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>sae-admin</artifactId>
+    <artifactId>sae-service-api</artifactId>
     <packaging>pom</packaging>
     <distributionManagement>
         <site>
