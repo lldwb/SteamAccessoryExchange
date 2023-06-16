@@ -9,18 +9,11 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>sae-user</module>
-        <module>sae-pay</module>
-        <module>sae-deal</module>
-        <module>sae-authentication</module>
-        <module>sae-commodity</module>
-        <module>sae-afterSale</module>
-        <module>sae-app-web</module>
-        <module>sae-afterSale</module>
-        <module>sae-activity</module>
-        <module>sae-service-api</module>
-        <module>sae-admin-web</module>
-        <module>sae-utils</module>
+        <module>app-web</module>
+        <module>service-api</module>
+        <module>admin-web</module>
+        <module>service</module>
+        <module>utils</module>
     </modules>
 
     <properties>
