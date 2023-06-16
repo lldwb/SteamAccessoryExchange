@@ -1,4 +1,4 @@
-package top.lldwb.sae.service.user.model;
+package top.lldwb.sae.service.model.user;
 
 import lombok.Data;
 import org.nf.db.util.Column;

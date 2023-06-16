@@ -1,4 +1,4 @@
-package top.lldwb.sae.service.user.service;
+package top.lldwb.sae.service.service.user;
 
 /**
  * @author 安然的尾巴
