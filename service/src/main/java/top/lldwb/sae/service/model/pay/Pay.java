@@ -1,4 +1,4 @@
-package top.lldwb.sae.service.pay.model;
+package top.lldwb.sae.service.model.pay;
 
 import lombok.Data;
 import org.nf.db.util.Column;
