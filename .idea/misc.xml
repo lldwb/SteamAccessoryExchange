@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
-    <file type="web" url="file://$PROJECT_DIR$/sae-admin-web" />
-    <file type="web" url="file://$PROJECT_DIR$/sae-app-web" />
-    <file type="web" url="file://$PROJECT_DIR$/sae-service-api" />
+    <file type="web" url="file://$PROJECT_DIR$/admin-web" />
+    <file type="web" url="file://$PROJECT_DIR$/app-web" />
+    <file type="web" url="file://$PROJECT_DIR$/service-api" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
@@ -15,7 +15,15 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/sae-activity/pom.xml" />
+        <option value="$PROJECT_DIR$/sae-afterSale/pom.xml" />
+        <option value="$PROJECT_DIR$/sae-authentication/pom.xml" />
+        <option value="$PROJECT_DIR$/sae-commodity/pom.xml" />
+        <option value="$PROJECT_DIR$/sae-deal/pom.xml" />
+        <option value="$PROJECT_DIR$/sae-pay/pom.xml" />
         <option value="$PROJECT_DIR$/sae-service/pom.xml" />
+        <option value="$PROJECT_DIR$/sae-user/pom.xml" />
+        <option value="$PROJECT_DIR$/utils/pom.xml" />
       </set>
     </option>
   </component>
