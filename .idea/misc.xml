@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
-    <file type="web" url="file://$PROJECT_DIR$/sae-app" />
+    <file type="web" url="file://$PROJECT_DIR$/sae-admin-web" />
+    <file type="web" url="file://$PROJECT_DIR$/sae-app-web" />
     <file type="web" url="file://$PROJECT_DIR$/sae-service-api" />
   </component>
   <component name="MavenProjectsManager">
@@ -11,6 +12,11 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/afterSale/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/sae-service/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
