@@ -15,11 +15,12 @@
         <module>sae-authentication</module>
         <module>sae-commodity</module>
         <module>sae-afterSale</module>
-        <module>sae-app</module>
+        <module>sae-app-web</module>
         <module>sae-afterSale</module>
         <module>sae-activity</module>
-        <module>sae-service</module>
         <module>sae-service-api</module>
+        <module>sae-admin-web</module>
+        <module>sae-utils</module>
     </modules>
 
     <properties>
@@ -42,6 +43,12 @@
             <version>1.18.26</version>
             <scope>provided</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.nf</groupId>
+            <artifactId>dbutils</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -49,12 +56,6 @@
             <dependency>
                 <groupId>org.nf</groupId>
                 <artifactId>mvc-framework</artifactId>
-                <version>1.0</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.nf</groupId>
-                <artifactId>dbutils</artifactId>
                 <version>1.0</version>
             </dependency>
 
