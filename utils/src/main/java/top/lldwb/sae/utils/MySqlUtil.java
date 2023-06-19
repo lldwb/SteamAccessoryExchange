@@ -24,7 +24,7 @@ public class MySqlUtil {
     }
 
 
-        private static final String URL = "jdbc:mysql://mysql.lldwb.top:33366/SteamAccessoryExchange?serverTimezone=Asia/Shanghai&useSSL=false";
+    private static final String URL = "jdbc:mysql://mysql.lldwb.top:33366/SteamAccessoryExchange?serverTimezone=Asia/Shanghai&useSSL=false";
     //账号
     private static final String USER_NAME = "root";
     //密码
