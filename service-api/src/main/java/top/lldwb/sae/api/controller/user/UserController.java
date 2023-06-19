@@ -1,4 +1,4 @@
-package top.lldwb.sae.api.controller;
+package top.lldwb.sae.api.controller.user;
 
 import org.nf.web.annotation.RequestMapping;
 import org.nf.web.servlet.View;
