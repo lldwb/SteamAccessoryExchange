@@ -9,7 +9,7 @@ import java.util.List;
  * Date: 2023/6/19
  */
 public interface RechargeWithdrawalService {
-    void recharge(int id ,double money );
+    int recharge(int id ,double money );
 
     RechargeWithdrawal getBalance(int id);
 

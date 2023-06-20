@@ -14,16 +14,17 @@ import java.util.List;
  */
 public class RechargeWithdrawalImpl implements RechargeWithdrawalDao {
     @Override
-    public  void recharge(int id, double money) {
+    public  int recharge(int id, double money) {
         try {
             MySqlUtil mySqlUtil = new MySqlUtil();
             String sql="update recharge_withdrawal set rw_balance =? where rw_id =?";
-            mySqlUtil.update(sql,money,id);
+            return mySqlUtil.update(sql, money, id);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
+
 
     @Override
     public RechargeWithdrawal getBalance(int id) {

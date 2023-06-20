@@ -14,7 +14,7 @@ public interface RechargeWithdrawalDao {
      * @param id 用户id
      * @param money 余额
      */
-    void recharge(int id,double money);
+    int recharge(int id,double money);
 
 
     /**

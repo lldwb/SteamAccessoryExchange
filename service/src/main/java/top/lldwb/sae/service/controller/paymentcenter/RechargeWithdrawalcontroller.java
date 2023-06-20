@@ -8,6 +8,8 @@ import top.lldwb.sae.service.model.paymentcenter.RechargeWithdrawal;
 import top.lldwb.sae.service.service.paymentcenter.RechargeWithdrawalService;
 import top.lldwb.sae.service.service.paymentcenter.impl.RechargeWithdrawalServiceImpl;
 
+import java.util.List;
+
 /**
  * Author: tianyuan
  * Date: 2023/6/20
@@ -16,8 +18,8 @@ public class RechargeWithdrawalcontroller {
     private static final  RechargeWithdrawalService service = new RechargeWithdrawalServiceImpl();
 
     @RequestMapping("/Recharge")
-    public void recharge(@RequestParam("rwId")int rwId,@RequestParam("rwBalance") double rwBalance){
-        service.recharge(rwId,rwBalance);
+    public int recharge(@RequestParam("rwId")int rwId,@RequestParam("rwBalance") double rwBalance){
+        return service.recharge(rwId,rwBalance);
     }
 
     @RequestMapping("/getBalance")
@@ -27,7 +29,8 @@ public class RechargeWithdrawalcontroller {
     }
 
     @RequestMapping("/getRechargeWithdrawal")
-    public void getRechargeWithdrawal(){
-        service.getRechargeWithdrawal();
+    public View getRechargeWithdrawal(){
+        List<RechargeWithdrawal> list = service.getRechargeWithdrawal();
+        return new JsonView(list);
     }
 }
