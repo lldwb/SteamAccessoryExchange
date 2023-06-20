@@ -20,15 +20,15 @@ import java.sql.Timestamp;
 @Builder
 public class CodeTable {
 
-    @Column("ctId")
+    @Column("ct_id")
     private int ctId ;//验证码ID
-    @Column("ctCode")
+    @Column("ct_code")
     private String ctCode;//非空	验证码
-    @Column("ctTime")
+    @Column("ct_time")
     private Timestamp ctTime;//默认当前时间，非空	当前时间
-    @Column("ctEffectiveTime")
+    @Column("ct_effective_time")
     private Timestamp ctEffectiveTime;//非空	有效时间
-    @Column("ctValidOrNot")
+    @Column("ct_Valid_or_not")
     private int ctValidOrNot	;//非空	是否有效
     @Column("ct_type")
     private int ctType	;//验证类型

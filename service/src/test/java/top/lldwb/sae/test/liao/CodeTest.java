@@ -16,7 +16,7 @@ public class CodeTest {
     public void query(){
         CodeInterFace face = new CodeDAO() ;
 
-        System.out.println(face.query("333333"));
+        System.out.println(face.query("824725"));
     }
 
     @Test

@@ -14,11 +14,16 @@ public interface UserServiceInterFace {
 
 
     /***
-     * 添加数据
-     * @param user
+     *  添加数据
+     * @param name 用户名
+     * @param email 邮箱号
+     * @param password 密码
+     * @param nickName 昵称
+     * @param phone 手机号
+     * @param idCard 身份证
      * @return
      */
-    public int loginAdd(User user);
+    public int loginAdd(String name,String email,String password,String nickName,String phone,String idCard ,String emailCode);
 
     /***
      * 根据id删除
@@ -30,17 +35,19 @@ public interface UserServiceInterFace {
 
     /***
      * 修改
-     * @param user
      * @return
      */
 
-    public int loginUpdate(User user) ;
-
+    public int loginUpdate(String password,String nickName,String phone,String idcard,int state,int userId) ;
+    public int loginUpdateEmail(String email,int userid,String emailCode) ;
     /***
      * 用户登录
-     * @param name
+     * @param name 用户名
+     * @param password  密码
      * @return
      */
 
-    public User loginList(String name,String password) ;
+    public User login(String name,String password) ;
+    public User loginEmail(String email,String emailCode) ;
+
 }

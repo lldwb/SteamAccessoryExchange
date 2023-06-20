@@ -97,7 +97,7 @@ public class CodeDAO implements CodeInterFace {
     @Override
     public CodeTable query(String name) {
         //获取sql语句
-        String sql = "select ct_id,ct_code,ct_time,ct_effective_time,ct_Valid_or_not,ct_type from code_table where ct_code = ?" ;
+        String sql = "select ct_id,ct_code,ct_time,ct_effective_time,ct_Valid_or_not,ct_type,user_Id from code_table where ct_code = ?" ;
         return mySqlUtil.queryT(CodeTable.class,sql,name);
     }
 }

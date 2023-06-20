@@ -85,8 +85,9 @@ public class MailEmail_Code {
         //转换一下随机数
         String name = String.valueOf(randomNumber);
 
-        //验证码存储实体类
+        //验证码数据访问类
         CodeInterFace face = new CodeDAO() ;
+        //验证码存储实体类
         CodeTable entity = new CodeTable() ;
         entity.setCtCode(name);
         entity.setCtValidOrNot(1);

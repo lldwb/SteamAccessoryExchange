@@ -81,7 +81,6 @@ public class UserDAO implements UserFace {
     public int loginUpdate(User user) {
         //创建Object父类数组存放要添加的数据
         Object[]useObj = {
-                user.getUserEmail(), // 邮箱
                 user.getUserPassword(), // 密码
                 user.getUserNickname(), // 昵称
                 user.getUserPhone(),//手机号
@@ -91,7 +90,7 @@ public class UserDAO implements UserFace {
                 user.getUserId() //根据Id修改
         };
         //获取sql语句
-        String sql = "update user set user_email = ?,user_password = ?,user_nickname = ?,user_phone = ?,user_id_card = ?,user_state = ?,userRenewTime = ? where user_id = ?" ;
+        String sql = "update user set user_password = ?,user_nickname = ?,user_phone = ?,user_id_card = ?,user_state = ?,user_renew_time = ? where user_id = ?" ;
 
         try {
             return mySqlUtil.update(sql,useObj);
@@ -101,12 +100,29 @@ public class UserDAO implements UserFace {
     }
 
     @Override
-    public  User loginList(String name) {
+    public int loginUpdateEmail(String email, int userid) {
+        //获取sql语句
+        String sql = "update user set user_email = ? where user_id = ?" ;
+        try {
+            return mySqlUtil.update(sql,email,userid);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public  User login(String name) {
         //获取查询语句
         String sql = "select user_id,user_name,user_email,user_password,user_nickname,user_phone,user_id_card,user_state,user_time,role_id,user_renew_time from user where user_name = ?";
         return mySqlUtil.queryT(User.class, sql, name);
     }
 
+    @Override
+    public User loginEmail(String email) {
+        //获取查询语句
+        String sql = "select user_id,user_name,user_email,user_password,user_nickname,user_phone,user_id_card,user_state,user_time,role_id,user_renew_time from user where user_email = ?";
+        return mySqlUtil.queryT(User.class, sql, email);
+    }
 
 
 }

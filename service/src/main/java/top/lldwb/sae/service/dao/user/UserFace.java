@@ -33,11 +33,25 @@ import java.util.List;
     public int loginUpdate(User user) ;
 
     /***
+     * 修改邮箱
+     * @param email 根据id修改邮箱地址
+     * @param userid id
+     * @return
+     */
+    public int loginUpdateEmail(String email,int userid) ;
+
+    /***
      * 用户登录
      * @param name
      * @return
      */
+    public User login(String name) ;
 
-    public User loginList(String name) ;
 
+    /***
+     * 邮箱登录
+     * @param email
+     * @return
+     */
+    public User loginEmail(String email) ;
 }
