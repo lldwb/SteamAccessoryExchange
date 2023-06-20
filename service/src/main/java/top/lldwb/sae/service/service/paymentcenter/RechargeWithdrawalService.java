@@ -1,6 +1,6 @@
 package top.lldwb.sae.service.service.paymentcenter;
 
-import top.lldwb.sae.service.model.paymentcenter.RechargeWithdrawal;
+import top.lldwb.sae.service.entity.paymentcenter.RechargeWithdrawal;
 
 /**
  * Author: tianyuan

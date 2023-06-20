@@ -1,5 +1,5 @@
 package top.lldwb.sae.service.dao.paymentcenter;
-import top.lldwb.sae.service.model.paymentcenter.RechargeWithdrawal;
+import top.lldwb.sae.service.entity.paymentcenter.RechargeWithdrawal;
 
 /**
  * 支付中心接口
