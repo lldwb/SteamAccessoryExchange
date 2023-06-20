@@ -9,5 +9,5 @@ import top.lldwb.sae.service.entity.paymentcenter.RechargeWithdrawal;
 public interface RechargeWithdrawalService {
     void recharge(int id ,double money );
 
-    RechargeWithdrawal getgetBalance(int id);
+    RechargeWithdrawal getBalance(int id);
 }
