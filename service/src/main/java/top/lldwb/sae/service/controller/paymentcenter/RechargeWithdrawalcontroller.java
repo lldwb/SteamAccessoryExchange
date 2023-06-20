@@ -25,4 +25,9 @@ public class RechargeWithdrawalcontroller {
         RechargeWithdrawal balance = service.getBalance(rwId);
         return new JsonView(balance);
     }
+
+    @RequestMapping("/getRechargeWithdrawal")
+    public void getRechargeWithdrawal(@RequestParam("rwId")int rwId,@RequestParam("rwBalance") double rwBalance){
+        service.getRechargeWithdrawal();
+    }
 }
