@@ -2,7 +2,7 @@ package top.lldwb.sae.service.dao.paymentcenter.impl;
 
 import org.nf.db.util.SqlExecutor;
 import top.lldwb.sae.service.dao.paymentcenter.RechargeWithdrawalDao;
-import top.lldwb.sae.service.model.paymentcenter.RechargeWithdrawal;
+import top.lldwb.sae.service.entity.paymentcenter.RechargeWithdrawal;
 import top.lldwb.sae.utils.MySqlUtil;
 
 import java.sql.SQLException;
