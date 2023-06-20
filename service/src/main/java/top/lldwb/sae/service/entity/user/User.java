@@ -33,7 +33,7 @@ public class User {
     @Column("user_nickname")
     private String userNickname;//用户昵称
     @Column("user_phone")
-    private int userPhone;//用户手机号
+    private String userPhone;//用户手机号
     @Column("user_id_card")
     private String userIdCard;//用户身份证
     @Column("user_state")

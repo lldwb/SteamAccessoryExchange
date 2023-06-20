@@ -7,6 +7,7 @@ import org.nf.db.util.result.BeanListHandler;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -40,22 +41,35 @@ public class MySqlUtil {
         sqlExecutor = new SqlExecutor(DriverManager.getConnection(URL, USER_NAME, PASSWORD));
     }
 
+    public static  Connection getConnection() {
+        Connection con = null ;
+
+        try {
+            con = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
+            System.out.println("success");
+        } catch (SQLException e) {
+            System.out.println("error");
+            throw new RuntimeException(e);
+        }
+        return con ;
+    }
     /**
      * 从数据库中查询符合条件的记录，并将结果封装为指定类型的List<T>对象
-     *
-     * @param t   用于封装结果的Java对象
+     * @param clazz 实体
      * @param sql SQL语句
      * @param obj SQL语句中的参数列表
      * @param <T> Java类型
      * @return 返回符合条件的记录封装为的List<T>对象
      * @throws SQLException
      */
-    public <T> List<T> queryList(T t, String sql, Object... obj) throws SQLException, NoSuchFieldException, InstantiationException, IllegalAccessException {
-        BeanListHandler<T> handler = new BeanListHandler<T>((Class<T>) t.getClass());
-        List<T> list = sqlExecutor.executeQuery(sql, handler, obj);
-//        DbUtils.close(conn);
-        return list;
-//        return null;
+    public <T> List<T> queryList(Class<T>clazz, String sql, Object... obj) {
+
+        SqlExecutor sqlExecutor = new SqlExecutor(MySqlUtil.getConnection()) ;
+        //调用处理
+        BeanListHandler<T> beanListHandler = new BeanListHandler<>(clazz);
+        //创建list集合存放数据
+        List<T> list = sqlExecutor.executeQuery(sql,beanListHandler,obj) ;
+        return  list ;
     }
 
     /**
@@ -66,14 +80,17 @@ public class MySqlUtil {
      * @param obj SQL语句中的参数列表
      * @param <T> Java类型
      * @return 返回符合条件的记录封装为的T对象
-     * @throws SQLException
      */
-    public <T> T queryT(T t, String sql, Object... obj) throws SQLException, NoSuchFieldException, InstantiationException, IllegalAccessException {
+    public <T> T queryT(T t, String sql, Object... obj) {
         BeanHandler<T> handler = new BeanHandler<T>((Class<T>) t.getClass());
         return sqlExecutor.executeQuery(sql, handler, obj);
     }
 
     public int update(String sql, Object... obj) throws SQLException {
         return sqlExecutor.executeUpdate(sql, obj);
+    }
+
+    public static void main(String[] args) {
+        System.out.println(MySqlUtil.getConnection());
     }
 }
