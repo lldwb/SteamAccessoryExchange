@@ -7,6 +7,7 @@ import org.nf.db.util.result.BeanListHandler;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -39,6 +40,18 @@ public class MySqlUtil {
         sqlExecutor = new SqlExecutor(DriverManager.getConnection(URL, USER_NAME, PASSWORD));
     }
 
+    public static  Connection getConnection() {
+        Connection con = null ;
+
+        try {
+            con = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
+            System.out.println("success");
+        } catch (SQLException e) {
+            System.out.println("error");
+            throw new RuntimeException(e);
+        }
+        return con ;
+    }
     /**
      * 从数据库中查询符合条件的记录，并将结果封装为指定类型的List<T>对象
      *
@@ -66,7 +79,6 @@ public class MySqlUtil {
      * @param obj   SQL语句中的参数列表
      * @param <T>   Java类型
      * @return 返回符合条件的记录封装为的T对象
-     * @throws SQLException
      */
     public <T> T queryT(Class<T> clazz, String sql, Object... obj) {
         BeanHandler<T> handler = new BeanHandler<T>(clazz);
