@@ -75,14 +75,14 @@ public class MySqlUtil {
     /**
      * 从数据库中查询符合条件的记录，并将结果封装为指定类型的T对象
      *
-     * @param t   用于封装结果的Java对象
+     * @param clazz 实体
      * @param sql SQL语句
      * @param obj SQL语句中的参数列表
      * @param <T> Java类型
      * @return 返回符合条件的记录封装为的T对象
      */
-    public <T> T queryT(T t, String sql, Object... obj) {
-        BeanHandler<T> handler = new BeanHandler<T>((Class<T>) t.getClass());
+    public <T> T queryT(Class<T>clazz, String sql, Object... obj) {
+        BeanHandler<T> handler = new BeanHandler<T>(clazz);
         return sqlExecutor.executeQuery(sql, handler, obj);
     }
 

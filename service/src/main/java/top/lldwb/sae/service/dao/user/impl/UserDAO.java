@@ -104,23 +104,9 @@ public class UserDAO implements UserFace {
     public List<User> loginList(String name) {
         //获取查询语句
         String sql = "select user_id,user_name,user_email,user_password,user_nickname,user_phone,user_id_card,user_state,user_time,role_id,user_renew_time from user where user_name = ?";
-
-        SqlExecutor sqlExecutor = new SqlExecutor(MySqlUtil.getConnection()) ;
-
-        List<User> list = new ArrayList<>() ;
-
-        BeanListHandler<User> beanListHandler = new BeanListHandler<>(User.class);
-
-        return sqlExecutor.executeQuery(sql,beanListHandler,name) ;
-
-    }
-
-    @Override
-    public List<User> listName(String name) {
-        //获取查询语句
-        String sql = "select user_id,user_name,user_email,user_password,user_nickname,user_phone,user_id_card,user_state,user_time,role_id,user_renew_time from user where user_name = ?";
-
         return mySqlUtil.queryList(User.class, sql, name);
-
     }
+
+
+
 }

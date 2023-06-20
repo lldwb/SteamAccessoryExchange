@@ -47,7 +47,6 @@ public class UserTest {
     public void queryName () {
         UserFace face = new UserDAO() ;
 
-        face.listName("998").forEach(System.out::println);
 
     }
 
