@@ -26,7 +26,6 @@ public class MySqlUtil {
         }
     }
 
-
     private static final String URL = "jdbc:mysql://mysql.lldwb.top:33366/SteamAccessoryExchange?serverTimezone=Asia/Shanghai&useSSL=false";
     //账号
     private static final String USER_NAME = "root";
@@ -43,33 +42,34 @@ public class MySqlUtil {
     /**
      * 从数据库中查询符合条件的记录，并将结果封装为指定类型的List<T>对象
      *
-     * @param t   用于封装结果的Java对象
-     * @param sql SQL语句
-     * @param obj SQL语句中的参数列表
-     * @param <T> Java类型
+     * @param clazz 实体
+     * @param sql   SQL语句
+     * @param obj   SQL语句中的参数列表
+     * @param <T>   Java类型
      * @return 返回符合条件的记录封装为的List<T>对象
      * @throws SQLException
      */
-    public <T> List<T> queryList(T t, String sql, Object... obj) throws SQLException, NoSuchFieldException, InstantiationException, IllegalAccessException {
-        BeanListHandler<T> handler = new BeanListHandler<T>((Class<T>) t.getClass());
-        List<T> list = sqlExecutor.executeQuery(sql, handler, obj);
-//        DbUtils.close(conn);
+    public <T> List<T> queryList(Class<T> clazz, String sql, Object... obj) {
+//        SqlExecutor sqlExecutor = new SqlExecutor(MySqlUtil.getConnection()) ;
+        //调用处理
+        BeanListHandler<T> beanListHandler = new BeanListHandler<>(clazz);
+        //创建list集合存放数据
+        List<T> list = sqlExecutor.executeQuery(sql, beanListHandler, obj);
         return list;
-//        return null;
     }
 
     /**
      * 从数据库中查询符合条件的记录，并将结果封装为指定类型的T对象
      *
-     * @param t   用于封装结果的Java对象
-     * @param sql SQL语句
-     * @param obj SQL语句中的参数列表
-     * @param <T> Java类型
+     * @param clazz 实体
+     * @param sql   SQL语句
+     * @param obj   SQL语句中的参数列表
+     * @param <T>   Java类型
      * @return 返回符合条件的记录封装为的T对象
      * @throws SQLException
      */
-    public <T> T queryT(T t, String sql, Object... obj) throws SQLException, NoSuchFieldException, InstantiationException, IllegalAccessException {
-        BeanHandler<T> handler = new BeanHandler<T>((Class<T>) t.getClass());
+    public <T> T queryT(Class<T> clazz, String sql, Object... obj) {
+        BeanHandler<T> handler = new BeanHandler<T>(clazz);
         return sqlExecutor.executeQuery(sql, handler, obj);
     }
 
@@ -77,3 +77,4 @@ public class MySqlUtil {
         return sqlExecutor.executeUpdate(sql, obj);
     }
 }
+

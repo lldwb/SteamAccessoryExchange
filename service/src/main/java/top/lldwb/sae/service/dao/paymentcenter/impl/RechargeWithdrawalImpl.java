@@ -30,7 +30,7 @@ public class RechargeWithdrawalImpl implements RechargeWithdrawalDao {
         try {
             MySqlUtil mySqlUtil = new MySqlUtil();
             String sql = "SELECT rw_id,rw_way,rw_time,rw_amount_of_money,rw_balance,rw_type,user_id,third_party_order_number FROM recharge_withdrawal where rw_id =?";
-            return mySqlUtil.queryT(new RechargeWithdrawal(), sql, id);
+            return mySqlUtil.queryT(RechargeWithdrawal.class, sql, id);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -42,7 +42,7 @@ public class RechargeWithdrawalImpl implements RechargeWithdrawalDao {
         try {
             mySqlUtil = new MySqlUtil();
             String sql = "SELECT rw_id,rw_way,rw_time,rw_amount_of_money,rw_balance,rw_type,user_id,third_party_order_number FROM recharge_withdrawal";
-            return mySqlUtil.queryList(new RechargeWithdrawal(), sql);
+            return mySqlUtil.queryList(RechargeWithdrawal.class, sql);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
