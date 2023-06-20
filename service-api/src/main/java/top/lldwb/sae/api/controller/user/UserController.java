@@ -33,7 +33,4 @@ public class UserController {
         return new JsonView(service.loginDelete(id));
     }
 
-
-
-
 }
