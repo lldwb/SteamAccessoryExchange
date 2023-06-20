@@ -6,6 +6,7 @@ import top.lldwb.sae.service.model.paymentcenter.RechargeWithdrawal;
 import top.lldwb.sae.utils.MySqlUtil;
 
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * Author: tianyuan
@@ -33,5 +34,18 @@ public class RechargeWithdrawalImpl implements RechargeWithdrawalDao {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public List<RechargeWithdrawal> getRechargeWithdrawal() {
+        MySqlUtil mySqlUtil = null;
+        try {
+            mySqlUtil = new MySqlUtil();
+            String sql = "SELECT rw_id,rw_way,rw_time,rw_amount_of_money,rw_balance,rw_type,user_id,third_party_order_number FROM recharge_withdrawal";
+            return mySqlUtil.queryList(new RechargeWithdrawal(), sql);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }

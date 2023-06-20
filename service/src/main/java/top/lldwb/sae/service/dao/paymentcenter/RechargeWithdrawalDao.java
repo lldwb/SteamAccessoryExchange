@@ -1,6 +1,8 @@
 package top.lldwb.sae.service.dao.paymentcenter;
 import top.lldwb.sae.service.model.paymentcenter.RechargeWithdrawal;
 
+import java.util.List;
+
 /**
  * 支付中心接口
  * Author: tianyuan
@@ -21,4 +23,10 @@ public interface RechargeWithdrawalDao {
      * @return
      */
     RechargeWithdrawal getBalance(int id);
+
+    /**
+     * 查询所有的数据
+     * @return
+     */
+    List<RechargeWithdrawal> getRechargeWithdrawal();
 }
