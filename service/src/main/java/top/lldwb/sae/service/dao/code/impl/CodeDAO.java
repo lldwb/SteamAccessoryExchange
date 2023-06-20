@@ -51,7 +51,7 @@ public class CodeDAO implements CodeInterFace {
      * @return
      */
     @Override
-    public int insertInto(CodeTable entity) {
+    public int addCode(CodeTable entity) {
 
         //创建Obj数组存放要添加的数据
         Object obj[] = {

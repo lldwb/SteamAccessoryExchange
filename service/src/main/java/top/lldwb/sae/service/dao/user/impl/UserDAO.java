@@ -101,10 +101,10 @@ public class UserDAO implements UserFace {
     }
 
     @Override
-    public List<User> loginList(String name) {
+    public  User loginList(String name) {
         //获取查询语句
         String sql = "select user_id,user_name,user_email,user_password,user_nickname,user_phone,user_id_card,user_state,user_time,role_id,user_renew_time from user where user_name = ?";
-        return mySqlUtil.queryList(User.class, sql, name);
+        return mySqlUtil.queryT(User.class, sql, name);
     }
 
 

@@ -1,13 +1,17 @@
-package top.lldwb.sae.service.dao.user;
+package top.lldwb.sae.service.service.user;
 
 import top.lldwb.sae.service.entity.user.User;
 
-import java.util.List;
+/**
+ * @author 安然的尾巴
+ * @version 1.0
+ *
+ *
+ *
+ * 用户业务逻辑抽象类
+ */
+public interface UserServiceInterFace {
 
-/***
- * @Date(时间)2023-06-20
- * @Author 家辉
- */public interface UserFace {
 
     /***
      * 添加数据
@@ -38,6 +42,5 @@ import java.util.List;
      * @return
      */
 
-    public User loginList(String name) ;
-
+    public User loginList(String name,String password) ;
 }

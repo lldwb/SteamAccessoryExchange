@@ -29,7 +29,7 @@ public interface CodeInterFace {
      * @param entity
      * @return
      */
-    public int insertInto(CodeTable entity) ;
+    public int addCode(CodeTable entity) ;
 
 
     /***
