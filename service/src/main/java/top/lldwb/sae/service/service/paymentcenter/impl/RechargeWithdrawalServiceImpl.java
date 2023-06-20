@@ -17,7 +17,7 @@ public class RechargeWithdrawalServiceImpl implements RechargeWithdrawalService 
     }
 
     @Override
-    public RechargeWithdrawal getgetBalance(int id) {
+    public RechargeWithdrawal getBalance(int id) {
         RechargeWithdrawalDao dao = new RechargeWithdrawalImpl();
         return dao.getBalance(id);
     }
