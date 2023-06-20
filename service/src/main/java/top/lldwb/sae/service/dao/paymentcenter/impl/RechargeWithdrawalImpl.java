@@ -29,7 +29,7 @@ public class RechargeWithdrawalImpl implements RechargeWithdrawalDao {
         try {
             MySqlUtil mySqlUtil = new MySqlUtil();
             String sql = "SELECT rwId,rwWay,rwTime,rwAmountOfMoney,rwBalance,rwType,userId,thirdPartyOrderNumber FROM recharge_withdrawal where rwId =?";
-            return mySqlUtil.queryT(new RechargeWithdrawal(), sql, id);
+            return mySqlUtil.queryT(RechargeWithdrawal.class, sql, id);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
