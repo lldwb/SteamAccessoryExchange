@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.nf.db.util.Column;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -37,13 +38,13 @@ public class RechargeWithdrawal {
      * 金额
      */
     @Column("rw_amount_of_money")
-    private Double rwAmountOfMoney;
+    private BigDecimal rwAmountOfMoney;
 
     /**
      * 余额
      */
     @Column("rw_balance")
-    private Double rwBalance;
+    private BigDecimal rwBalance;
 
     /**
      * 类型（充值/提现）

@@ -16,7 +16,7 @@ public class RechargeWithdrawalImpl implements RechargeWithdrawalDao {
     public  void recharge(int id, double money) {
         try {
             MySqlUtil mySqlUtil = new MySqlUtil();
-            String sql="update recharge_withdrawal set rwBalance =? where rwId =?";
+            String sql="update recharge_withdrawal set rw_balance =? where rw_id =?";
             mySqlUtil.update(sql,money,id);
 
         } catch (SQLException e) {
@@ -28,7 +28,7 @@ public class RechargeWithdrawalImpl implements RechargeWithdrawalDao {
     public RechargeWithdrawal getBalance(int id) {
         try {
             MySqlUtil mySqlUtil = new MySqlUtil();
-            String sql = "SELECT rwId,rwWay,rwTime,rwAmountOfMoney,rwBalance,rwType,userId,thirdPartyOrderNumber FROM recharge_withdrawal where rwId =?";
+            String sql = "SELECT rw_id,rw_way,rw_time,rw_amount_of_money,rw_balance,rw_type,user_id,third_party_order_number FROM recharge_withdrawal where rw_id =?";
             return mySqlUtil.queryT(new RechargeWithdrawal(), sql, id);
         } catch (Exception e) {
             throw new RuntimeException(e);
