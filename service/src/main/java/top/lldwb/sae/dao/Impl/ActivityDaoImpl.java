@@ -58,7 +58,7 @@ public class ActivityDaoImpl implements ActivityDao {
         try {
             MySqlUtil mySqlUtil= new MySqlUtil();
             String sql = "select from activity where zc_id = ?";
-            return mySqlUtil.queryT(new Activity(), sql, ac_id);
+            return mySqlUtil.queryT(Activity.class, sql, ac_id);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -70,7 +70,7 @@ public class ActivityDaoImpl implements ActivityDao {
         try {
             MySqlUtil mySqlUtil = new MySqlUtil();
             String sql= "select ac_id,ac_theme,user_id,ac_time,ac_content from activity";
-            return mySqlUtil.queryList(new Activity(),sql,activity);
+            return mySqlUtil.queryList(Activity.class,sql,activity);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
