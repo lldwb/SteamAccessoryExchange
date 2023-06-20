@@ -27,7 +27,7 @@ public class RechargeWithdrawalcontroller {
     }
 
     @RequestMapping("/getRechargeWithdrawal")
-    public void getRechargeWithdrawal(@RequestParam("rwId")int rwId,@RequestParam("rwBalance") double rwBalance){
+    public void getRechargeWithdrawal(){
         service.getRechargeWithdrawal();
     }
 }
