@@ -1,4 +1,4 @@
-package top.lldwb.sae.service.controller.paymentcenter;
+package top.lldwb.sae.api.controller.paymentcenter;
 
 import org.nf.web.annotation.Model;
 import org.nf.web.annotation.RequestMapping;
@@ -17,7 +17,7 @@ import java.util.List;
  * Date: 2023/6/20
  */
 public class RechargeWithdrawalcontroller {
-    private static final  RechargeWithdrawalService service = new RechargeWithdrawalServiceImpl();
+    private static final RechargeWithdrawalService service = new RechargeWithdrawalServiceImpl();
 
     @RequestMapping("/Recharge")
     public View recharge(@Model RechargeWithdrawal rw){

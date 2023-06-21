@@ -1,11 +1,9 @@
-package top.lldwb.sae.dao.Impl;
+package top.lldwb.sae.service.dao.Impl;
 
-import lombok.val;
-import top.lldwb.sae.dao.ActivityDao;
-import top.lldwb.sae.entity.Activity;
+import top.lldwb.sae.service.dao.ActivityDao;
+import top.lldwb.sae.service.entity.Activity;
 import top.lldwb.sae.utils.MySqlUtil;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public class ActivityDaoImpl implements ActivityDao {

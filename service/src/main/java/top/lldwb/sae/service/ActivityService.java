@@ -1,6 +1,6 @@
 package top.lldwb.sae.service;
 
-import top.lldwb.sae.entity.Activity;
+import top.lldwb.sae.service.entity.Activity;
 
 import java.util.List;
 

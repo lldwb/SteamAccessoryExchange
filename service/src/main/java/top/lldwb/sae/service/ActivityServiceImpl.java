@@ -1,8 +1,8 @@
 package top.lldwb.sae.service;
 
-import top.lldwb.sae.dao.ActivityDao;
-import top.lldwb.sae.dao.Impl.ActivityDaoImpl;
-import top.lldwb.sae.entity.Activity;
+import top.lldwb.sae.service.dao.ActivityDao;
+import top.lldwb.sae.service.dao.Impl.ActivityDaoImpl;
+import top.lldwb.sae.service.entity.Activity;
 
 import java.util.List;
 
