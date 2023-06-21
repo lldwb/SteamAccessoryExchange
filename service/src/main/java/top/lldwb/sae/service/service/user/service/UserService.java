@@ -214,7 +214,7 @@ public class UserService implements UserServiceInterFace {
         }
         //判断输入的邮箱验证码是否是此账号发出
         if(user.getUserId() != codeEntity.getUserId()){
-            throw new AllException(500,"验证码已过期2，请重新发送验证码") ;
+            throw new AllException(500,"验证码已过期，请重新发送验证码") ;
         }
         return user;
     }
