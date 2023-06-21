@@ -17,10 +17,10 @@ import java.util.List;
  * Date: 2023/6/20
  */
 public class RechargeWithdrawalcontroller {
-    private static final RechargeWithdrawalService service = new RechargeWithdrawalServiceImpl();
 
     @RequestMapping("/Recharge")
     public View recharge(@Model RechargeWithdrawal rw){
+        RechargeWithdrawalService service = new RechargeWithdrawalServiceImpl();
         int recharge = service.recharge(rw);
         ResultVO vo = new ResultVO();
         vo.setCode(200);
@@ -31,6 +31,7 @@ public class RechargeWithdrawalcontroller {
 
     @RequestMapping("/getBalance")
     public View getBalance(@RequestParam("rwId") int rwId){
+        RechargeWithdrawalService service = new RechargeWithdrawalServiceImpl();
         RechargeWithdrawal balance = service.getBalance(rwId);
         ResultVO vo = new ResultVO();
         vo.setCode(200);
@@ -41,6 +42,7 @@ public class RechargeWithdrawalcontroller {
 
     @RequestMapping("/getRechargeWithdrawal")
     public View getRechargeWithdrawal(){
+        RechargeWithdrawalService service = new RechargeWithdrawalServiceImpl();
         List<RechargeWithdrawal> list = service.getRechargeWithdrawal();
         ResultVO vo = new ResultVO();
         vo.setCode(200);

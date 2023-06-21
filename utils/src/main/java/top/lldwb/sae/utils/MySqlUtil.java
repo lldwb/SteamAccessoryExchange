@@ -88,4 +88,9 @@ public class MySqlUtil {
     public int update(String sql, Object... obj) throws SQLException {
         return sqlExecutor.executeUpdate(sql, obj);
     }
+
+
+    public static void main(String[] args) {
+        System.out.println(MySqlUtil.getConnection());
+    }
 }

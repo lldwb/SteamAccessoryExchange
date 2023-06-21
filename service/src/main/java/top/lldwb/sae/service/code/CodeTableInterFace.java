@@ -1,6 +1,4 @@
-package top.lldwb.sae.service.service.code;
-
-import top.lldwb.sae.service.entity.code.CodeTable;
+package top.lldwb.sae.service.code;
 
 /***
  * @Date(时间)2023-06-21

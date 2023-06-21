@@ -5,8 +5,8 @@ import org.nf.web.annotation.RequestParam;
 import org.nf.web.servlet.View;
 import org.nf.web.servlet.view.JsonView;
 import top.lldwb.sae.api.vo.ResultVO;
-import top.lldwb.sae.service.service.user.UserServiceInterFace;
-import top.lldwb.sae.service.service.user.service.UserService;
+import top.lldwb.sae.service.user.UserServiceInterFace;
+import top.lldwb.sae.service.user.service.UserService;
 
 /**
  * @author 安然的尾巴
@@ -16,11 +16,6 @@ import top.lldwb.sae.service.service.user.service.UserService;
  * 用户登录
  */
 public class UserController {
-    /***
-     * 调用业务类
-     */
-    private static UserServiceInterFace service = new UserService() ;
-
 
     /***
      * 调用响应类
@@ -53,6 +48,8 @@ public class UserController {
                            @RequestParam("userPhone")String phone,
                            @RequestParam("userIdCard")String idCard,
                            @RequestParam("userEmailCode")String emailCode){
+
+            UserServiceInterFace service = new UserService() ;
             resultVO = new ResultVO<>(200,"成功",service.loginAdd(name, email, password, nickName, phone, idCard,emailCode)) ;
             return new JsonView(resultVO);
     };
@@ -67,6 +64,7 @@ public class UserController {
      */
     @RequestMapping("/user/getDeleteUser.do")
     public View getDeleteUser(@RequestParam("userid")int id) {
+         UserServiceInterFace service = new UserService() ;
          resultVO = new ResultVO<>(200,"成功",service.loginDelete(id));
          return new JsonView(resultVO);
     };
@@ -88,6 +86,7 @@ public class UserController {
                               @RequestParam("userIdcard")String idcard,
                               @RequestParam("userState")int state,
                               @RequestParam("userId")int userId){
+        UserServiceInterFace service = new UserService() ;
         resultVO = new ResultVO<>(200,"成功",service.loginUpdate(password,nickName,phone,idcard,state,userId)) ;
         return new JsonView(resultVO) ;
     }
@@ -103,6 +102,7 @@ public class UserController {
     public View getUpdateEmail(@RequestParam("email")String email,
                                @RequestParam("userid")int userid,
                                @RequestParam("emailCode") String emailCode) {
+        UserServiceInterFace service = new UserService() ;
         resultVO = new ResultVO<>(200,"成功",service.loginUpdateEmail(email,userid,emailCode));
         return new JsonView(resultVO);
     }
@@ -117,7 +117,7 @@ public class UserController {
     @RequestMapping("/user/getLogin.do")
     public View getLogin(@RequestParam("userName")String name,
                          @RequestParam("userPassword")String password){
-
+        UserServiceInterFace service = new UserService() ;
         resultVO = new ResultVO<>(200,"成功",service.login(name,password)) ;
         return new JsonView(resultVO) ;
     }
@@ -131,6 +131,7 @@ public class UserController {
     @RequestMapping("/user/getLoginEmail.do")
     public View getLoginEmail(@RequestParam("userEmail")String email,
                               @RequestParam("userEmailCode")String emailCode){
+        UserServiceInterFace service = new UserService() ;
         resultVO = new ResultVO<>(200,"成功",service.loginEmail(email,emailCode)) ;
         return new JsonView(resultVO) ;
     }

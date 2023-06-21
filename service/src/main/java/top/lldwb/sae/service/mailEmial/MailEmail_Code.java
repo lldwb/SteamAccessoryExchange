@@ -1,10 +1,7 @@
 package top.lldwb.sae.service.mailEmial;
 
-import top.lldwb.sae.service.dao.code.CodeInterFace;
-import top.lldwb.sae.service.dao.code.impl.CodeDAO;
-import top.lldwb.sae.service.entity.code.CodeTable;
-import top.lldwb.sae.service.service.code.CodeTableInterFace;
-import top.lldwb.sae.service.service.code.impl.CodeTableService;
+import top.lldwb.sae.service.code.CodeTableInterFace;
+import top.lldwb.sae.service.code.impl.CodeTableService;
 
 import javax.mail.Session;
 import javax.mail.Transport;

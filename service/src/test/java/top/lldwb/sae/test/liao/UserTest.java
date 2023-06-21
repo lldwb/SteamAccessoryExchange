@@ -1,36 +1,15 @@
 package top.lldwb.sae.test.liao;
 
 import org.junit.jupiter.api.Test;
-import top.lldwb.sae.dao.user.impl.UserDAO;
 import top.lldwb.sae.service.user.UserServiceInterFace;
 import top.lldwb.sae.service.user.service.UserService;
+
+/**
  * @Date(时间)2023-06-18
  * @Author 家辉
  */
 public class UserTest {
-    @Test
-    public void delete(){
 
-        UserInterFace userInterFace = (UserInterFace) new UserDAO();
-        System.out.println(userInterFace.loginDelete(1));
-import UserFace;
-import UserDAO;
-import User;
-import UserServiceInterFace;
-import UserService;
-
-
-import java.sql.Timestamp;
-
-
-/***
- * @Date(时间)2023-06-18
- * @Author 家辉'
- *
- *
- * 数据测试通过
- */
-public class UserTest {
     //获取用户业务类
     private static UserServiceInterFace service = new UserService() ;
 
