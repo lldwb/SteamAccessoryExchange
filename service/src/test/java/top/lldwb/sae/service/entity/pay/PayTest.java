@@ -1,4 +1,4 @@
-package top.lldwb.sae.service.model.user;
+package top.lldwb.sae.service.entity.pay;
 
 import lombok.Data;
 import org.nf.db.util.Column;
@@ -8,7 +8,7 @@ import org.nf.db.util.Column;
  * @version 1.0
  */
 @Data
-public class User {
+public class PayTest {
     @Column("")
     private int id;
 }

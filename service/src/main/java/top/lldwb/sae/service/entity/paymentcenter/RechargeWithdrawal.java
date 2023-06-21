@@ -1,4 +1,5 @@
-package top.lldwb.sae.service.model.paymentcenter;
+package top.lldwb.sae.service.entity.paymentcenter;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
