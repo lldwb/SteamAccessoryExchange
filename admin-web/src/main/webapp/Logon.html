@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>杰杰BUFF</title>
+   <!-- import Vue before Element -->
+  <script src="https://unpkg.com/vue@2/dist/vue.js"></script>
+  <!-- import JavaScript -->
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <!-- import CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<style>
+.login-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-card {
+  width: 350px;
+  height:450px;
+  
+}
+
+.logo {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-top:20px;
+}
+img{
+height:80px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.login-form {
+  margin-top: 35px;
+}
+button{
+width:310px;
+
+}
+</style>
+</head>
+<body>
+  <div id="app">
+ <template>
+  <div class="login-container">
+    <el-card class="login-card">
+	 <div class="logo">
+       <img src="C:\Users\Administrator\Desktop\OIP.jpg"/>
+      </div>
+      <div class="title">
+        账号登录/注册
+      </div>
+      <el-form ref="loginForm" :model="loginForm" class="login-form">
+        <el-form-item prop="username">
+          <el-input v-model="loginForm.username" placeholder="请输入用户名"  prefix-icon="el-icon-user "></el-input>
+        </el-form-item>
+        <el-form-item prop="password">
+          <el-input v-model="loginForm.password" placeholder="请输入密码" prefix-icon="el-icon-lock" show-password></el-input>
+        </el-form-item>
+        <el-form-item>
+		    <el-button type="info">登录/注册</el-button>
+        </el-form-item>
+      </el-form>
+    </el-card>
+  </div>
+</template>
+
+   </div>
+</body>
+ 
+  <script>
+    new Vue({
+      el: '#app',
+      data: function() {
+      return {
+      loginForm: {
+        username: '',
+        password: ''
+      }
+	  }
+	  },
+	   methods: {
+    submitForm() {
+      // 在此处添加处理登录逻辑的代码
+	  
+    }
+  }
+    })
+  </script>
+</html>
+
+
+
+
+
+
+
+

@@ -110,3 +110,4 @@ local.properties
 #.gitignore
 .checkstyle
 test-output
+service/src/test/java/top/lldwb/sae/service/paymentcenter/RechargeWithdrawalTest.java
