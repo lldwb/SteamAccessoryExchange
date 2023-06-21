@@ -57,15 +57,6 @@
                 <artifactId>mysql-connector-java</artifactId>
                 <version>8.0.26</version>
             </dependency>
-
-            <!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-servlet-api -->
-            <!-- tomcat依赖包10版本10.0.22 9版本9.0.65 -->
-            <dependency>
-                <groupId>org.apache.tomcat</groupId>
-                <artifactId>tomcat-servlet-api</artifactId>
-                <version>9.0.65</version>
-                <scope>provided</scope>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 

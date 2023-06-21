@@ -1,12 +1,12 @@
 package top.lldwb.sae.service.user.service;
 
-import top.lldwb.sae.entity.code.CodeTable;
-import top.lldwb.sae.entity.user.User;
-import top.lldwb.sae.service.exception.AllException;
 import top.lldwb.sae.dao.code.CodeInterFace;
 import top.lldwb.sae.dao.code.impl.CodeDAO;
 import top.lldwb.sae.dao.user.UserFace;
 import top.lldwb.sae.dao.user.impl.UserDAO;
+import top.lldwb.sae.entity.code.CodeTable;
+import top.lldwb.sae.entity.user.User;
+import top.lldwb.sae.service.exception.AllException;
 import top.lldwb.sae.service.user.UserServiceInterFace;
 
 import java.sql.Timestamp;
@@ -19,8 +19,7 @@ import java.sql.Timestamp;
  */
 public class UserService implements UserServiceInterFace {
 
-    //调用数据访问类
-   private static UserFace face = new UserDAO() ;
+
 
     /***
      *  添加数据
@@ -34,7 +33,8 @@ public class UserService implements UserServiceInterFace {
      */
     @Override
     public int loginAdd(String name,String email,String password,String nickName,String phone,String idCard,String emailCode) {
-
+        //调用数据访问类
+        UserFace face = new UserDAO() ;
         //调用验证码访问类
         CodeInterFace code = new CodeDAO() ;
         //调用验证码实体类
@@ -85,6 +85,8 @@ public class UserService implements UserServiceInterFace {
      */
     @Override
     public int loginDelete(int id) {
+      //调用数据访问类
+      UserFace face = new UserDAO() ;
       int row = face.loginDelete(id) ;
       if(row<1){
           throw new AllException(500,"删除失败") ;
@@ -99,7 +101,7 @@ public class UserService implements UserServiceInterFace {
      */
     @Override
     public int loginUpdate(String password,String nickName,String phone,String idcard,int state,int userId) {
-
+        UserFace face = new UserDAO() ;
         //获取当前时间
         Timestamp timestamp = new Timestamp(System.currentTimeMillis()) ;
 
@@ -135,7 +137,7 @@ public class UserService implements UserServiceInterFace {
      */
     @Override
     public int loginUpdateEmail(String email, int userid,String emailCode) {
-
+        UserFace face = new UserDAO() ;
 
         int row = face.loginUpdateEmail(email,userid) ;
 
@@ -162,7 +164,7 @@ public class UserService implements UserServiceInterFace {
      */
     @Override
     public User login(String name, String password) {
-
+        UserFace face = new UserDAO() ;
         //调用数据访问类
         face = new UserDAO() ;
 
@@ -190,6 +192,7 @@ public class UserService implements UserServiceInterFace {
      */
     @Override
     public User loginEmail(String email,String emailCode) {
+        UserFace face = new UserDAO() ;
         //调用数据访问类
         face = new UserDAO() ;
 

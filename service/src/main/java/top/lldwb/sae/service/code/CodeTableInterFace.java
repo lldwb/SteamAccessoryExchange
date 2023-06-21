@@ -1,4 +1,4 @@
-package top.lldwb.sae.service.service.code;
+package top.lldwb.sae.service.code;
 
 /***
  * @Date(时间)2023-06-21
