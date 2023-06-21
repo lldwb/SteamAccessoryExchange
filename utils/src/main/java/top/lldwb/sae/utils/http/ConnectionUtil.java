@@ -18,7 +18,11 @@ public class ConnectionUtil {
         this.url = new URL(url);
     }
 
-    public BufferedReader getBufferedWriter(ConnectionMethod method,Map<String, Object> map) throws IOException {
+    public BufferedReader getBufferedWriter(ConnectionMethod method) throws IOException {
+        return getBufferedWriter(method, null);
+    }
+
+    public BufferedReader getBufferedWriter(ConnectionMethod method, Map<String, String> map) throws IOException {
         // 打开和url之间的连接
         // HttpURLConnection实例用于发出一个请求
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -37,16 +41,18 @@ public class ConnectionUtil {
             conn.setDoInput(true);
         }
 
-        // 获取URLConnection对象对应的输出流
-        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream(), "UTF-8"));
-        String data = "";
-        for (String key : map.keySet()) {
-            data += data.length() == 0 ? "?" : "&" + key + ":" + map.get(key);
+        if (map != null) {
+            // 获取URLConnection对象对应的输出流
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream(), "UTF-8"));
+            String data = "";
+            for (String key : map.keySet()) {
+                data += data.length() == 0 ? "?" : "&" + key + "=" + map.get(key);
+            }
+            writer.write(data);
+            writer.flush();
         }
-        writer.write(data);
-        writer.flush();
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream(),"UTF-8"));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
         return reader;
     }
 }
