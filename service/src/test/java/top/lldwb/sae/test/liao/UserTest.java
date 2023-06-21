@@ -1,6 +1,9 @@
 package top.lldwb.sae.test.liao;
 
 import org.junit.jupiter.api.Test;
+import top.lldwb.sae.dao.user.impl.UserDAO;
+import top.lldwb.sae.service.user.UserServiceInterFace;
+import top.lldwb.sae.service.user.service.UserService;
  * @Date(时间)2023-06-18
  * @Author 家辉
  */
@@ -10,11 +13,11 @@ public class UserTest {
 
         UserInterFace userInterFace = (UserInterFace) new UserDAO();
         System.out.println(userInterFace.loginDelete(1));
-import top.lldwb.sae.service.dao.user.UserFace;
-import top.lldwb.sae.service.dao.user.impl.UserDAO;
-import top.lldwb.sae.service.entity.user.User;
-import top.lldwb.sae.service.service.user.UserServiceInterFace;
-import top.lldwb.sae.service.service.user.service.UserService;
+import UserFace;
+import UserDAO;
+import User;
+import UserServiceInterFace;
+import UserService;
 
 
 import java.sql.Timestamp;

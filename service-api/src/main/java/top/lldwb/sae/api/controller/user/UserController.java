@@ -4,8 +4,8 @@ import org.nf.web.annotation.RequestMapping;
 import org.nf.web.annotation.RequestParam;
 import org.nf.web.servlet.View;
 import org.nf.web.servlet.view.JsonView;
-import top.lldwb.sae.service.service.user.UserServiceInterFace;
-import top.lldwb.sae.service.service.user.service.UserService;
+import top.lldwb.sae.service.user.UserServiceInterFace;
+import top.lldwb.sae.service.user.service.UserService;
 
 /**
  * @author 安然的尾巴

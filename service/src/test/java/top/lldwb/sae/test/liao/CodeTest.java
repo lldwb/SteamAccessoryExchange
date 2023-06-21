@@ -1,9 +1,9 @@
 package top.lldwb.sae.test.liao;
 
 import org.junit.jupiter.api.Test;
-import top.lldwb.sae.service.dao.code.CodeInterFace;
-import top.lldwb.sae.service.dao.code.impl.CodeDAO;
-import top.lldwb.sae.service.entity.code.CodeTable;
+import top.lldwb.sae.dao.code.CodeInterFace;
+import top.lldwb.sae.dao.code.impl.CodeDAO;
+import top.lldwb.sae.entity.code.CodeTable;
 import top.lldwb.sae.service.mailEmial.MailEmail_Code;
 
 /***

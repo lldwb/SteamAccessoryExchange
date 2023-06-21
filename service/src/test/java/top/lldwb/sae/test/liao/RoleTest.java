@@ -1,9 +1,9 @@
 package top.lldwb.sae.test.liao;
 
 import org.junit.jupiter.api.Test;
-import top.lldwb.sae.service.dao.role.RoleInterFace;
-import top.lldwb.sae.service.dao.role.impl.RoleDAO;
-import top.lldwb.sae.service.entity.rode.RoleEntity;
+import top.lldwb.sae.dao.role.RoleInterFace;
+import top.lldwb.sae.dao.role.impl.RoleDAO;
+import top.lldwb.sae.entity.rode.RoleEntity;
 
 /***
  * @Date(时间)2023-06-20
