@@ -1,8 +1,7 @@
 package top.lldwb.sae.service.mailEmial;
 
-import top.lldwb.sae.entity.code.CodeTable;
-import top.lldwb.sae.dao.code.CodeInterFace;
-import top.lldwb.sae.dao.code.impl.CodeDAO;
+import top.lldwb.sae.service.service.code.CodeTableInterFace;
+import top.lldwb.sae.service.service.code.impl.CodeTableService;
 
 import javax.mail.Session;
 import javax.mail.Transport;
@@ -49,8 +48,10 @@ public class MailEmail_Code {
      * @param EMAIL 发件人邮箱地址
      * @param AUTHORIZECODE 授权码
      * @param Verify_NAME 发件标题
+     * @param userEmail 邮箱地址
+     *
      */
-    public static void Mail_Code (String EMAIL,String AUTHORIZECODE,String Verify_NAME,int userID){
+    public static void Mail_Code (String EMAIL,String AUTHORIZECODE,String Verify_NAME,String userEmail){
         //发送邮箱验证
 
         /**
@@ -86,14 +87,9 @@ public class MailEmail_Code {
         String name = String.valueOf(randomNumber);
 
         //验证码数据访问类
-        CodeInterFace face = new CodeDAO() ;
-        //验证码存储实体类
-        CodeTable entity = new CodeTable() ;
-        entity.setCtCode(name);
-        entity.setCtValidOrNot(1);
-        entity.setCtType(1);
-        entity.setUserId(userID);
-        face.addCode(entity) ;
+        CodeTableInterFace face = new CodeTableService() ;
+        //调用方法
+        face.loginaddCode(name,userEmail) ;
 
 
 

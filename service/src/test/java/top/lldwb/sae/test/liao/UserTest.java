@@ -52,7 +52,7 @@ public class UserTest {
 
     @Test
     public void queryName () {
-        System.out.println(service.login("998", "123"));
+        System.out.println(service.login("2026319183@qq.com", "1233"));
 
     }
     @Test
@@ -63,7 +63,7 @@ public class UserTest {
     @Test
     public void loginEmail(){
 
-        System.out.println(service.loginEmail("2026319133@qq.com","824725"));
+        System.out.println(service.loginEmail("2026319182@qq.com","333333"));
 
     }
 
