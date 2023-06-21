@@ -21,7 +21,7 @@ import java.sql.Timestamp;
 public class CodeTable {
 
     @Column("ct_id")
-    private int ctId ;//验证码ID
+    private Integer ctId ;//验证码ID
     @Column("ct_code")
     private String ctCode;//非空	验证码
     @Column("ct_time")
@@ -29,10 +29,10 @@ public class CodeTable {
     @Column("ct_effective_time")
     private Timestamp ctEffectiveTime;//非空	有效时间
     @Column("ct_Valid_or_not")
-    private int ctValidOrNot	;//非空	是否有效
+    private Integer ctValidOrNot	;//非空	是否有效
     @Column("ct_type")
-    private int ctType	;//验证类型
+    private Integer ctType	;//验证类型
     @Column("user_id")
-    private int userId	;//	非空，外键	用户id
+    private Integer userId	;//	非空，外键	用户id
 
 }
