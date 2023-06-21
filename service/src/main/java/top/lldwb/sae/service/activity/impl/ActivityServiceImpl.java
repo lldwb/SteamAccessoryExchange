@@ -1,12 +1,13 @@
-package top.lldwb.sae;
+package top.lldwb.sae.service.activity.impl;
 
-import top.lldwb.sae.dao.ActivityDao;
+import top.lldwb.sae.dao.activity.ActivityDao;
 import top.lldwb.sae.dao.Impl.ActivityDaoImpl;
-import top.lldwb.sae.entity.Activity;
+import top.lldwb.sae.entity.activity.Activity;
+import top.lldwb.sae.service.activity.ActivityService;
 
 import java.util.List;
 
-public class ActivityServiceImpl implements ActivityService{
+public class ActivityServiceImpl implements ActivityService {
      ActivityDao  dao = new ActivityDaoImpl();
     @Override
     public void insert(Activity activity) {

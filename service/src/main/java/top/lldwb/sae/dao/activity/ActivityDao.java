@@ -1,25 +1,23 @@
-package top.lldwb.sae;
+package top.lldwb.sae.dao.activity;
 
-import top.lldwb.sae.entity.Activity;
+import top.lldwb.sae.entity.activity.Activity;
 
 import java.util.List;
 
-public interface ActivityService {
-
-
+public interface ActivityDao {
     /**
      * 添加数据
      * @param activity
      * @return
      */
-    void insert(Activity activity);
+    int insert(Activity activity);
 
     /**
      * 删除数据
      * @param ac_id
      * @return
      */
-    void delete(Activity ac_id);
+    int delete(Activity ac_id);
 
 
     /**
@@ -27,14 +25,14 @@ public interface ActivityService {
      * @param activity
      * @return
      */
-    void update(Activity activity);
+    int update(Activity activity);
 
     /**
      * 查询活动
      * @param ac_id
      * @return
      */
-    Activity select(int ac_id);
+    Activity select(int ac_id) ;
 
     /**
      * 查询所有活动
@@ -43,4 +41,6 @@ public interface ActivityService {
      */
 
     List<Activity> selectlist(Activity activity);
+
+
 }

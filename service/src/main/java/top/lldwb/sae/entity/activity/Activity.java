@@ -1,4 +1,4 @@
-package top.lldwb.sae.entity;
+package top.lldwb.sae.entity.activity;
 
 import org.nf.db.util.Column;
 import java.time.LocalDateTime;

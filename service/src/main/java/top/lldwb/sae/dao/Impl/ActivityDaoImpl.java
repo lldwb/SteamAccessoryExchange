@@ -1,7 +1,7 @@
 package top.lldwb.sae.dao.Impl;
 
-import top.lldwb.sae.dao.ActivityDao;
-import top.lldwb.sae.entity.Activity;
+import top.lldwb.sae.dao.activity.ActivityDao;
+import top.lldwb.sae.entity.activity.Activity;
 import top.lldwb.sae.utils.MySqlUtil;
 
 import java.util.List;
