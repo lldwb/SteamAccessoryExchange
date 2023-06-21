@@ -29,5 +29,8 @@ public class ConnectionUtilTest {
         Map<String,String> map = mapper.readValue(reader.readLine(),Map.class);
         System.out.println(map);
         Map<String,String> facets = mapper.readValue(map.get("facets"),Map.class);
+        for (String key:facets.keySet()){
+            System.out.println(facets.get(key));
+        }
     }
 }
