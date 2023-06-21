@@ -1,4 +1,4 @@
-package top.lldwb.sae.dao.Impl;
+package top.lldwb.sae.dao.activity.Impl;
 
 import top.lldwb.sae.dao.activity.ActivityDao;
 import top.lldwb.sae.entity.activity.Activity;
