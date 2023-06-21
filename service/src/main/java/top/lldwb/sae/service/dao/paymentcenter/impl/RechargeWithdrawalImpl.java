@@ -14,11 +14,11 @@ import java.util.List;
  */
 public class RechargeWithdrawalImpl implements RechargeWithdrawalDao {
     @Override
-    public  int recharge(int id, double money) {
+    public  int recharge(RechargeWithdrawal rw) {
         try {
             MySqlUtil mySqlUtil = new MySqlUtil();
-            String sql="update recharge_withdrawal set rw_balance =? where rw_id =?";
-            return mySqlUtil.update(sql, money, id);
+            String sql="INSERT INTO recharge_withdrawal(rw_way,rw_amount_of_money,rw_balance,rw_type,user_id,third_party_order_number) VALUES(?,?,?,?,?,?)";
+            return mySqlUtil.update(sql,rw.getRwWay(),rw.getRwAmountOfMoney(),rw.getRwBalance(),rw.getRwType(),rw.getUserId(),rw.getThirdPartyOrderNumber());
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -30,7 +30,7 @@ public class RechargeWithdrawalImpl implements RechargeWithdrawalDao {
     public RechargeWithdrawal getBalance(int id) {
         try {
             MySqlUtil mySqlUtil = new MySqlUtil();
-            String sql = "SELECT rw_id,rw_way,rw_time,rw_amount_of_money,rw_balance,rw_type,user_id,third_party_order_number FROM recharge_withdrawal where rw_id =?";
+            String sql = "SELECT rw_id,rw_way,rw_time,rw_amount_of_money,rw_balance,rw_type,user_id,third_party_order_number FROM recharge_withdrawal WHERE user_id = ? ORDER BY rw_time DESC LIMIT 1";
             return mySqlUtil.queryT(RechargeWithdrawal.class, sql, id);
         } catch (Exception e) {
             throw new RuntimeException(e);

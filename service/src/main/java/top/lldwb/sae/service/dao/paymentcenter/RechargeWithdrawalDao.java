@@ -11,10 +11,9 @@ import java.util.List;
 public interface RechargeWithdrawalDao {
     /**
      * 充值/提现
-     * @param id 用户id
-     * @param money 余额
+     * @param rw 对象
      */
-    int recharge(int id,double money);
+    int recharge(RechargeWithdrawal rw);
 
 
     /**

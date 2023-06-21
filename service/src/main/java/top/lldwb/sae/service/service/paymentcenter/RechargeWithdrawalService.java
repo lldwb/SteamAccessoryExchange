@@ -11,11 +11,10 @@ import java.util.List;
 public interface RechargeWithdrawalService {
     /**
      * 充值/提现
-     * @param id 用户id
-     * @param money 余额
+     * @param rw 对象
      * @return
      */
-    int recharge(int id ,double money );
+    int recharge(RechargeWithdrawal rw);
 
     /**
      * 根据id查询余额

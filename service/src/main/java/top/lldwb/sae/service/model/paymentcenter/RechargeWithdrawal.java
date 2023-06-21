@@ -61,6 +61,6 @@ public class RechargeWithdrawal {
     /**
      * 第三方订单号
      */
-    @Column("third_party_order")
-    private Integer thirdPartyOrder;
+    @Column("third_party_order_number")
+    private Integer thirdPartyOrderNumber;
 }
