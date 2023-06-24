@@ -2,7 +2,7 @@ package top.lldwb.sae.dao.code.impl;
 
 import top.lldwb.sae.dao.code.CodeInterFace;
 import top.lldwb.sae.entity.code.CodeTable;
-import top.lldwb.sae.utils.MySqlUtil;
+import top.lldwb.sae.utils.mySql.MySqlUtil;
 
 import java.sql.SQLException;
 import java.sql.Timestamp;

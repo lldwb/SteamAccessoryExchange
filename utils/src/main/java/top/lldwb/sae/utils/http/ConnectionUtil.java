@@ -12,10 +12,10 @@ import java.util.Map;
  */
 public class ConnectionUtil {
     // URL表示一个统一的资源定位符，一个指向万维网上“资源”的指针
-    private URL url;
+    private String url;
 
     public ConnectionUtil(String url) throws MalformedURLException {
-        this.url = new URL(url);
+        this.url = url;
     }
 
     public BufferedReader getBufferedWriter(ConnectionMethod method) throws IOException {
@@ -23,9 +23,18 @@ public class ConnectionUtil {
     }
 
     public BufferedReader getBufferedWriter(ConnectionMethod method, Map<String, String> map) throws IOException {
+        if (map != null) {
+            // 判断是否是第一个条件
+            boolean verify = true;
+            for (String key : map.keySet()) {
+                url += verify ? "?" : "&" + key + "=" + map.get(key);
+                verify = false;
+            }
+        }
+
         // 打开和url之间的连接
         // HttpURLConnection实例用于发出一个请求
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
         // 请求方式
         conn.setRequestMethod(method.value);
 
@@ -39,17 +48,6 @@ public class ConnectionUtil {
         if (ConnectionMethod.POST == method) {
             conn.setDoOutput(true);
             conn.setDoInput(true);
-        }
-
-        if (map != null) {
-            // 获取URLConnection对象对应的输出流
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream(), "UTF-8"));
-            String data = "";
-            for (String key : map.keySet()) {
-                data += data.length() == 0 ? "?" : "&" + key + "=" + map.get(key);
-            }
-            writer.write(data);
-            writer.flush();
         }
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));

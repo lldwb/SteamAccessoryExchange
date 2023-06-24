@@ -2,7 +2,7 @@ package top.lldwb.sae.dao.paymentcenter.impl;
 
 import top.lldwb.sae.dao.paymentcenter.RechargeWithdrawalDao;
 import top.lldwb.sae.entity.paymentcenter.RechargeWithdrawal;
-import top.lldwb.sae.utils.MySqlUtil;
+import top.lldwb.sae.utils.mySql.MySqlUtil;
 
 import java.sql.SQLException;
 import java.util.List;

@@ -1,26 +1,21 @@
-package utils.http;
+package top.lldwb.sae.service.commodity.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.Test;
+import top.lldwb.sae.dao.commodity.CommodityInstanceDAO;
+import top.lldwb.sae.dao.commodity.impl.CommodityInstanceDAOImpl;
+import top.lldwb.sae.service.commodity.CommodityInstanceService;
 import top.lldwb.sae.utils.http.ConnectionMethod;
 import top.lldwb.sae.utils.http.ConnectionUtil;
 import top.lldwb.sae.utils.mySql.MySqlUtil;
 
-import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.sql.SQLException;
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * @author 安然的尾巴
- * @version 1.0
- */
-public class ConnectionUtilTest {
-    @Test
-    public void f() throws IOException, SQLException {
+public class CommodityInstanceServiceImpl implements CommodityInstanceService {
+    @Override
+    public void add() throws IOException {
 //        ConnectionUtil connectionUtil = new ConnectionUtil("https://steamcommunity.com/market/appfilters/730");
         ConnectionUtil connectionUtil = new ConnectionUtil("https://csgo-1300694263.cos.ap-guangzhou.myqcloud.com/csgo_class.json");
         Map<String, String> data = new HashMap<>();
@@ -37,7 +32,7 @@ public class ConnectionUtilTest {
 //        System.out.println(map.get("facets"));
 
         MySqlUtil mySqlUtil = new MySqlUtil();
-//        CommodityInstance instance = new
+        CommodityInstanceDAO instance = new CommodityInstanceDAOImpl();
 
         map = (Map<String, Object>) map.get("facets");
         map.forEach((key, value) -> {
@@ -45,7 +40,7 @@ public class ConnectionUtilTest {
             Map<String, Object> tags = (Map<String, Object>) value;
             String parent = (String) tags.get("localized_name");
             System.out.println(parent);
-            if (mySqlUtil.<Long>queryColumn(1, "select count(*) from commodity_instance where instance_name = ?", parent) == 0) {
+            if (instance.queryColumn(parent) == 0) {
                 mySqlUtil.update("insert into commodity_instance(instance_name) VALUES(?);", parent);
             }
             tags = (Map<String, Object>) tags.get("tags");
@@ -55,10 +50,10 @@ public class ConnectionUtilTest {
                 Map<String, Object> vMap = (Map<String, Object>) v;
                 String instance_name = (String) vMap.get("localized_name");
                 System.out.println(instance_name);
-                if (mySqlUtil.<Long>queryColumn(1, "select count(*) from commodity_instance where instance_name = ?", instance_name) == 0) {
+                if (instance.queryColumn(instance_name) == 0) {
                     mySqlUtil.update("insert into commodity_instance(instance_name,parent_id) VALUES(?,?);", instance_name,parent_id);
                 }
             });
         });
-    }
+    };
 }

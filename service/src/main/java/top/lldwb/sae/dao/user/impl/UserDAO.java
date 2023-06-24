@@ -2,7 +2,7 @@ package top.lldwb.sae.dao.user.impl;
 
 import top.lldwb.sae.entity.user.User;
 import top.lldwb.sae.dao.user.UserFace;
-import top.lldwb.sae.utils.MySqlUtil;
+import top.lldwb.sae.utils.mySql.MySqlUtil;
 
 import java.sql.SQLException;
 
@@ -51,9 +51,7 @@ public class UserDAO implements UserFace {
 
 
         //获取sql语句
-        String sql = "insert into user(user_name,user_email," +
-                "user_password,user_nickname,user_phone,user_id_card,user_state,user_time,role_id,user_renew_time)" +
-                "VALUES(?,?,?,?,?,?,?,?,?,?); " ;
+        String sql = "insert into user(user_name,user_email,user_password,user_nickname,user_phone,user_id_card,user_state,user_time,role_id,user_renew_time)VALUES(?,?,?,?,?,?,?,?,?,?);" ;
         try {
             return mySqlUtil.update(sql,useObj);
         } catch (SQLException e) {
