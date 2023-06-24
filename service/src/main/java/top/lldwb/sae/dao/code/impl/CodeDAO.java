@@ -21,11 +21,7 @@ public class CodeDAO implements CodeInterFace {
     MySqlUtil mySqlUtil;
 
     {
-        try {
-            mySqlUtil = new MySqlUtil();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        mySqlUtil = new MySqlUtil();
     }
     /***
      *
@@ -66,11 +62,7 @@ public class CodeDAO implements CodeInterFace {
                 "values(?,?,?,?)" ;
 
         //返回
-        try {
-            return mySqlUtil.update(sql,obj);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        return mySqlUtil.update(sql,obj);
     }
 
     /***
@@ -82,11 +74,7 @@ public class CodeDAO implements CodeInterFace {
     public int deleteCodesID(int id) {
         //获取sql语句
         String sql = "delete from code_table where user_id = ?" ;
-        try {
-            return mySqlUtil.update(sql,id);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        return mySqlUtil.update(sql,id);
     }
 
     /***

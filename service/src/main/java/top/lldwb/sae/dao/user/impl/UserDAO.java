@@ -16,19 +16,6 @@ import java.sql.SQLException;
 public class UserDAO implements UserFace {
 
     /***
-     * 调用工具类
-     */
-    MySqlUtil mySqlUtil;
-
-    {
-        try {
-            mySqlUtil = new MySqlUtil();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    /***
      * 注册用户
      * @param user
      * @return
@@ -52,11 +39,7 @@ public class UserDAO implements UserFace {
 
         //获取sql语句
         String sql = "insert into user(user_name,user_email,user_password,user_nickname,user_phone,user_id_card,user_state,user_time,role_id,user_renew_time)VALUES(?,?,?,?,?,?,?,?,?,?);" ;
-        try {
-            return mySqlUtil.update(sql,useObj);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        return MySqlUtil.update(sql,useObj);
     }
 
     @Override
@@ -64,11 +47,7 @@ public class UserDAO implements UserFace {
         //获取sql查询语句
         String sql = "delete from user where user_id = ?" ;
         //执行
-        try {
-            return mySqlUtil.update(sql,id);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        return MySqlUtil.update(sql,id);
     }
 
     @Override
@@ -86,36 +65,28 @@ public class UserDAO implements UserFace {
         //获取sql语句
         String sql = "update user set user_password = ?,user_nickname = ?,user_phone = ?,user_id_card = ?,user_state = ?,user_renew_time = ? where user_id = ?" ;
 
-        try {
-            return mySqlUtil.update(sql,useObj);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        return MySqlUtil.update(sql,useObj);
     }
 
     @Override
     public int loginUpdateEmail(String email, int userid) {
         //获取sql语句
         String sql = "update user set user_email = ? where user_id = ?" ;
-        try {
-            return mySqlUtil.update(sql,email,userid);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        return MySqlUtil.update(sql,email,userid);
     }
 
     @Override
     public  User login(String name) {
         //获取查询语句
         String sql = "select user_id,user_name,user_email,user_password,user_nickname,user_phone,user_id_card,user_state,user_time,role_id,user_renew_time from user where user_name = ?";
-        return mySqlUtil.queryT(User.class, sql, name);
+        return MySqlUtil.queryT(User.class, sql, name);
     }
 
     @Override
     public User loginEmail(String email) {
         //获取查询语句
         String sql = "select user_id,user_name,user_email,user_password,user_nickname,user_phone,user_id_card,user_state,user_time,role_id,user_renew_time from user where user_email = ?";
-        return mySqlUtil.queryT(User.class, sql, email);
+        return MySqlUtil.queryT(User.class, sql, email);
     }
 
 

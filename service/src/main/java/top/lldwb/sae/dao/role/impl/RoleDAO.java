@@ -21,11 +21,7 @@ public class RoleDAO implements RoleInterFace {
     MySqlUtil mySqlUtil;
 
     {
-        try {
-            mySqlUtil = new MySqlUtil();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        mySqlUtil = new MySqlUtil();
     }
 
     /***
@@ -45,11 +41,7 @@ public class RoleDAO implements RoleInterFace {
         String sql = "insert into role(role_level,role_describe)values(?,?)" ;
 
         //返回
-        try {
-            return mySqlUtil.update(sql,obj);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        return mySqlUtil.update(sql,obj);
     }
 
     /***
@@ -62,12 +54,8 @@ public class RoleDAO implements RoleInterFace {
 
         //获取sql语句
         String sql = " delete from role where role_id = ?" ;
-        try {
-            //放回
-            return mySqlUtil.update(sql,id);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        //放回
+        return mySqlUtil.update(sql,id);
     }
 
     /***
@@ -87,12 +75,8 @@ public class RoleDAO implements RoleInterFace {
         //获取sql语句
         String sql = "update role set role_level = ?,role_describe = ? where role_id = ?" ;
 
-        try {
-            //返回
-            return mySqlUtil.update(sql,obj);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        //返回
+        return mySqlUtil.update(sql,obj);
     }
 
     /***
