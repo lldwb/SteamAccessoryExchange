@@ -50,6 +50,22 @@ public class PurviewDAO implements PurviewInterFace {
     }
 
     /***
+     * 根据id和根据用户id删除
+     * @param purvoewId id
+     * @param userId 用户id
+     * @return
+     */
+    @Override
+    public int purviewDelete(int purvoewId,int userId) {
+
+        //获取sql语句
+        String sql = "delete from purview where purview_id = ? and user_id =  ?" ;
+        //返回结果集
+        return MySqlUtil.update(sql,purvoewId,userId);
+    }
+
+
+    /***
      * 修改数据
      * @param purview
      * @return

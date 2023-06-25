@@ -26,6 +26,13 @@ public interface PurviewInterFace {
      */
     int purviewDelete(int id) ;
 
+    /***
+     * 根据id和根据用户id删除
+     * @param purvoewId id
+     * @param userId 用户id
+     * @return
+     */
+    int purviewDelete(int purvoewId ,int userId) ;
 
     /***
      * 修改数据
