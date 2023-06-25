@@ -5,5 +5,12 @@ package top.lldwb.sae.dao.commodity;
  * @version 1.0
  */
 public interface CommdoityClassInstanceDAO {
-//    void add(String CommdoityClassInstanceDAO,int );
+    /**
+     * 判断是否存在
+     * @param classId
+     * @param instanceId
+     * @return
+     */
+    Boolean judgeExist(String classId,int instanceId);
+    void add(String classId,int instanceId);
 }
