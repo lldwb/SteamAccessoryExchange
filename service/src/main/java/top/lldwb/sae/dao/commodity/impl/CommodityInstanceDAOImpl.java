@@ -6,8 +6,7 @@ import top.lldwb.sae.utils.mySql.MySqlUtil;
 public class CommodityInstanceDAOImpl implements CommodityInstanceDAO {
     @Override
     public Boolean judgeExist(String name) {
-        MySqlUtil mySqlUtil = new MySqlUtil();
-        return mySqlUtil.<Long>queryColumn(1, "SELECT count(*) FROM commodity_instance WHERE instance_name = ?", name) == 0;
+        return MySqlUtil.<Long>queryColumn(1, "SELECT count(*) FROM commodity_instance WHERE instance_name = ?", name) == 0;
     }
 
     @Override

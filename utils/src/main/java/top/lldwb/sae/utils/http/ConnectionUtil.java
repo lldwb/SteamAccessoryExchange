@@ -53,6 +53,8 @@ public class ConnectionUtil {
                 }
             }
 
+            System.out.println(url);
+
             // 打开和url之间的连接
             // HttpURLConnection实例用于发出一个请求
             HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();

@@ -26,30 +26,34 @@ public class CommodityInstanceServiceImpl implements CommodityInstanceService {
             // 获取结果
             BufferedReader reader = connectionUtil.getBufferedWriter(ConnectionMethod.GET, data);
             // 对结果进行解析
-            Map<String, Object> map = null;
-            map = new ObjectMapper().readValue(reader.readLine(), Map.class);
+            Map<String, Object> map = new ObjectMapper().readValue(reader.readLine(), Map.class);
 
             CommodityInstanceDAO dao = new CommodityInstanceDAOImpl();
             map = (Map<String, Object>) map.get("facets");
+            System.out.println(map);
             map.forEach((key, value) -> {
 //            System.out.println(key + ":" + value);
                 Map<String, Object> tags = (Map<String, Object>) value;
                 String parent = (String) tags.get("localized_name");
                 System.out.println(parent);
-                if (dao.judgeExist(parent)) {
-                    dao.add(parent);
-                }
-                tags = (Map<String, Object>) tags.get("tags");
-                // 返回父类的id
-                int parent_id = dao.getIdByName(parent);
-                tags.forEach((k, v) -> {
-                    Map<String, Object> vMap = (Map<String, Object>) v;
-                    String instance_name = (String) vMap.get("localized_name");
-                    System.out.println(instance_name);
-                    if (dao.judgeExist(instance_name)) {
-                        dao.add(instance_name, parent_id);
+                Map<String, Object> finalTags = (Map<String, Object>) tags.get("tags");
+                new Thread(() -> {
+                    if (dao.judgeExist(parent)) {
+                        dao.add(parent);
                     }
-                });
+                    // 返回父类的id
+                    int parent_id = dao.getIdByName(parent);
+                    if (parent_id != 0) {
+                        finalTags.forEach((k, v) -> {
+                            Map<String, Object> vMap = (Map<String, Object>) v;
+                            String instance_name = (String) vMap.get("localized_name");
+                            System.out.println(instance_name);
+                            if (dao.judgeExist(instance_name)) {
+                                dao.add(instance_name, parent_id);
+                            }
+                        });
+                    }
+                }).start();
             });
         } catch (IOException e) {
             throw new RuntimeException(e);
