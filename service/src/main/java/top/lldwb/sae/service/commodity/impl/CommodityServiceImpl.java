@@ -3,7 +3,9 @@ package top.lldwb.sae.service.commodity.impl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import top.lldwb.sae.dao.commodity.CommodityClassDAO;
+import top.lldwb.sae.dao.commodity.CommodityInstanceDAO;
 import top.lldwb.sae.dao.commodity.impl.CommodityClassDAOImpl;
+import top.lldwb.sae.dao.commodity.impl.CommodityInstanceDAOImpl;
 import top.lldwb.sae.dao.user.impl.UserDAO;
 import top.lldwb.sae.entity.commodity.CommodityClass;
 import top.lldwb.sae.service.commodity.CommodityService;
@@ -56,6 +58,11 @@ public class CommodityServiceImpl implements CommodityService {
                     System.out.println(commodityClass);
                     commodityClassDAO.add(commodityClass);
                     System.out.println(descriptionsMap.get("market_name"));
+
+                    ((List<Map<String, Object>>) descriptionsMap.get("tags")).forEach((tags -> {
+                        CommodityInstanceDAO commodityInstanceDAO = new CommodityInstanceDAOImpl();
+//                        commodityInstanceDAO
+                    }));
                 }
             });
 
