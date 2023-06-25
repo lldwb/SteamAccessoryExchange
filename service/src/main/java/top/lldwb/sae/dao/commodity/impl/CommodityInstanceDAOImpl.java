@@ -11,16 +11,16 @@ public class CommodityInstanceDAOImpl implements CommodityInstanceDAO {
 
     @Override
     public Integer getIdByName(String name) {
-        return MySqlUtil.<Integer>queryColumn(1, "select instance_id from CommodityInstance where instance_name = ?", name);
+        return MySqlUtil.<Integer>queryColumn(1, "select instance_id from commodity_instance where instance_name = ?", name);
     }
 
     @Override
     public void add(String name) {
-        MySqlUtil.update("insert into CommodityInstance(instance_name) VALUES(?);", name);
+        MySqlUtil.update("insert into commodity_instance(instance_name) VALUES(?);", name);
     }
 
     @Override
     public void add(String name, Integer parent_id) {
-        MySqlUtil.update("insert into CommodityInstance(instance_name,parent_id) VALUES(?,?);", name, parent_id);
+        MySqlUtil.update("insert into commodity_instance(instance_name,parent_id) VALUES(?,?);", name, parent_id);
     }
 }
