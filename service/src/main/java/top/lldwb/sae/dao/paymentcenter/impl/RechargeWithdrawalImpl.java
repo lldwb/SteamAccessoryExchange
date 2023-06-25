@@ -2,7 +2,7 @@ package top.lldwb.sae.dao.paymentcenter.impl;
 
 import top.lldwb.sae.dao.paymentcenter.RechargeWithdrawalDao;
 import top.lldwb.sae.entity.paymentcenter.RechargeWithdrawal;
-import top.lldwb.sae.utils.MySqlUtil;
+import top.lldwb.sae.utils.mySql.MySqlUtil;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -14,14 +14,10 @@ import java.util.List;
 public class RechargeWithdrawalImpl implements RechargeWithdrawalDao {
     @Override
     public  int recharge(RechargeWithdrawal rw) {
-        try {
-            MySqlUtil mySqlUtil = new MySqlUtil();
-            String sql="INSERT INTO recharge_withdrawal(rw_way,rw_amount_of_money,rw_balance,rw_type,user_id,third_party_order_number) VALUES(?,?,?,?,?,?)";
-            return mySqlUtil.update(sql,rw.getRwWay(),rw.getRwAmountOfMoney(),rw.getRwBalance(),rw.getRwType(),rw.getUserId(),rw.getThirdPartyOrderNumber());
+        MySqlUtil mySqlUtil = new MySqlUtil();
+        String sql="INSERT INTO recharge_withdrawal(rw_way,rw_amount_of_money,rw_balance,rw_type,user_id,third_party_order_number) VALUES(?,?,?,?,?,?)";
+        return mySqlUtil.update(sql,rw.getRwWay(),rw.getRwAmountOfMoney(),rw.getRwBalance(),rw.getRwType(),rw.getUserId(),rw.getThirdPartyOrderNumber());
 
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
     }
 
 
