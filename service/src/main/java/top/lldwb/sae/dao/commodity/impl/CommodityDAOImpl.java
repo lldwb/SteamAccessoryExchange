@@ -10,6 +10,6 @@ import top.lldwb.sae.utils.mySql.MySqlUtil;
 public class CommodityDAOImpl implements CommodityDAO {
     @Override
     public Boolean judgeExist(String assetId) {
-        return MySqlUtil.<Long>queryColumn(1, "SELECT count(*) FROM commodity WHERE asset_id = ?", assetId) == 0;
+        return MySqlUtil.<Long>queryColumn(1, "SELECT count(*) FROM Commodity WHERE asset_id = ?", assetId) == 0;
     }
 }

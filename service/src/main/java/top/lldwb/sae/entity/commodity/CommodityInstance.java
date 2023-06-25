@@ -8,7 +8,7 @@ import org.nf.db.util.Column;
  * @version 1.0
  */
 @Data
-public class commodity_instance {
+public class CommodityInstance {
     @Column("instance_id")
     private Integer instanceId;
     @Column("parent_id")

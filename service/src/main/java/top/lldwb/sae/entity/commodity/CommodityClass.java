@@ -8,9 +8,9 @@ import org.nf.db.util.Column;
  * @version 1.0
  */
 @Data
-public class commodity_class {
+public class CommodityClass {
     @Column("class_id")
-    private Integer classId;
+    private String classId;
     @Column("class_name")
     private String className;
     @Column("class_url")
