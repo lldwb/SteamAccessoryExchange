@@ -34,7 +34,7 @@ public class MySqlUtil {
     //密码
     private static final String PASSWORD = "@dwb123456";
     //数据库连接对象并传入数据库参数
-    Connection conn;
+    private static Connection conn;
 
     private static SqlExecutor getSqlExecutor() {
         try {

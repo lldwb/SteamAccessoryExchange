@@ -89,5 +89,10 @@ public class UserDAO implements UserFace {
         return MySqlUtil.queryT(User.class, sql, email);
     }
 
+    @Override
+    public String getSteamIdById(int userId) {
+        return MySqlUtil.queryColumn(1,"select steam_id from user where user_id = ?",userId);
+    }
+
 
 }
