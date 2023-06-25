@@ -3,6 +3,7 @@ package top.lldwb.sae.utils;
 import org.nf.db.util.SqlExecutor;
 import org.nf.db.util.result.BeanHandler;
 import org.nf.db.util.result.BeanListHandler;
+import org.nf.db.util.result.ColumnHandler;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -87,6 +88,11 @@ public class MySqlUtil {
 
     public int update(String sql, Object... obj) throws SQLException {
         return sqlExecutor.executeUpdate(sql, obj);
+    }
+
+    public static <T> T selectColumn(String sql, Object... objects) {
+        ColumnHandler<T> columnHandler = new ColumnHandler(1);
+        return sqlExecutor.executeQuery(sql, columnHandler, objects);
     }
 
 

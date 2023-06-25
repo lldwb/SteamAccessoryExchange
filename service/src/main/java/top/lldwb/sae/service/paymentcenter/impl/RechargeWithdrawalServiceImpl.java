@@ -22,7 +22,7 @@ public class RechargeWithdrawalServiceImpl implements RechargeWithdrawalService 
     public RechargeWithdrawal getBalance(int id) {
         RechargeWithdrawalDao dao = new RechargeWithdrawalImpl();
         RechargeWithdrawal balance = dao.getBalance(id);
-        System.out.println(balance);
+        //System.out.println(balance);
         return balance;
     }
 
@@ -30,7 +30,7 @@ public class RechargeWithdrawalServiceImpl implements RechargeWithdrawalService 
     public List<RechargeWithdrawal> getRechargeWithdrawal() {
         RechargeWithdrawalDao dao = new RechargeWithdrawalImpl();
         List<RechargeWithdrawal> balance = dao.getRechargeWithdrawal();
-        System.out.println(balance);
+        //System.out.println(balance);
         return balance;
     }
 }
