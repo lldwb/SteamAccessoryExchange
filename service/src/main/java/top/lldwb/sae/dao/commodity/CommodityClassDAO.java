@@ -15,5 +15,15 @@ public interface CommodityClassDAO {
      */
     Boolean judgeExist(String classId);
 
+    /**
+     * 添加数据
+     * @param commodityClass
+     */
     void add(CommodityClass commodityClass);
+
+    /**
+     * 添加数据
+     * @param commodityClass
+     */
+    void addAll(CommodityClass[] commodityClass);
 }

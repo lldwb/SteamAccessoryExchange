@@ -2,7 +2,7 @@ package top.lldwb.sae.dao.sell.impl;
 
 import top.lldwb.sae.dao.sell.SellDao;
 import top.lldwb.sae.entity.sell.Sell;
-import top.lldwb.sae.utils.MySqlUtil;
+import top.lldwb.sae.utils.mySql.MySqlUtil;
 
 import java.util.List;
 
@@ -26,9 +26,8 @@ public class SellImpl implements SellDao {
     @Override
     public Long count() {
         try {
-            MySqlUtil mySqlUtil = new MySqlUtil();
             String sql ="select count(*) from sell";
-            return mySqlUtil.selectColumn(sql);
+            return MySqlUtil.queryColumn(1,sql);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
