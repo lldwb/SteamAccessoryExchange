@@ -26,9 +26,8 @@ public class SellImpl implements SellDao {
     @Override
     public Long count() {
         try {
-            MySqlUtil mySqlUtil = new MySqlUtil();
             String sql ="select count(*) from sell";
-            return mySqlUtil.selectColumn(sql);
+            return MySqlUtil.queryColumn(1,sql);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
