@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 import top.lldwb.sae.dao.purview.PurviewInterFace;
 import top.lldwb.sae.dao.purview.impl.PurviewDAO;
 import top.lldwb.sae.entity.purview.Purview;
+import top.lldwb.sae.service.purview.PurviewServiceInterFace;
+import top.lldwb.sae.service.purview.impl.PurviewService;
 
 import java.util.List;
 
@@ -83,5 +85,10 @@ public class PurviewTest {
        System.out.println(entity);
    }
 
+    @Test
+   public void purviewUserIDQuerys(){
+       PurviewServiceInterFace serviceInterFace = new PurviewService() ;
+       System.out.println(serviceInterFace.purviewUserIDQuery(1));
 
+   }
 }

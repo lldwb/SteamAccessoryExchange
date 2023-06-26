@@ -180,6 +180,9 @@ public class UserService implements UserServiceInterFace {
         if( !user.getUserName().equals(name) || !user.getUserPassword().equals(password) ){
             throw new AllException(500,"账号或密码不存在") ;
         }
+
+
+
         return user;
     }
 
