@@ -4,8 +4,6 @@ import top.lldwb.sae.entity.user.User;
 import top.lldwb.sae.dao.user.UserFace;
 import top.lldwb.sae.utils.mySql.MySqlUtil;
 
-import java.sql.SQLException;
-
 
 /***
  * @Date(时间)2023-06-18
