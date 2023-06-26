@@ -10,13 +10,55 @@
     <script src="js/jquery.min.js"></script>
     <!-- element-ui -->
     <!-- 引入样式 -->
-    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="css/element-ui_index.css">
     <!-- 引入组件库 -->
-    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="js/element-ui_index.js"></script>
 
 </head>
+<style>
+    .bg-purple {
+        background: #9A9B9E;
+        /*filter:opacity(25%);*/
+    }
+    .grid-content {
+        min-height: 36px;
+        margin: 0px;
+        padding: 0px;
+        background: white;
+        filter: opacity(0%);
+    }
+    .styles{
+        width: 100%;
+        height:180px;
+    }
+    .imgs{
+        width: 100%;
+        height:180px;
+        display:block;
+    }
+</style>
 <body>
 <div id="app">
+    <el-row>
+        <el-col :span="4"><div class="grid-content "></div></el-col>
+        <el-col :span="3">
+        <div class="bg-purple">
+            <img class="imgs" src="https://g.fp.ps.netease.com/market/file/5dd3ed5e143cfa13aa3b05c8CC7lCrGs02">
+        </div>
+        </el-col>
+
+        <el-col :span="13">
+        <div class=" bg-purple styles">
+            <div style="padding-top: 15px; color: white">流浪者匕首（★） | 表面淬火 (久经沙场)</div>
+            <div style="padding-top: 15px;color: white">品质 |隐秘 类别 |★ 类型 |匕首</div>
+            <el-divider content-position="left"></el-divider>
+            <div style="padding-top: 15px;color: white">参考价格 | ¥ 4394.96($ 612.12) 查看Steam市场</div>
+        </div>
+        </el-col>
+
+        <el-col :span="4"><div class=" grid-content "></div></el-col>
+    </el-row>
+
     <template>
         <el-table
                 :data="tableData"
