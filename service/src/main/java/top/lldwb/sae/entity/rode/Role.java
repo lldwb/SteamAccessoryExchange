@@ -14,7 +14,7 @@ import org.nf.db.util.Column;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class RoleEntity {
+public class Role {
     @Column("role_id")
     private int roleId ;//	角色ID
     @Column("role_level")

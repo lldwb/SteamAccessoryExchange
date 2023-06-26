@@ -1,21 +1,22 @@
-package top.lldwb.sae.dao.role;
+package top.lldwb.sae.service.role;
 
 import top.lldwb.sae.entity.rode.Role;
 
 import java.util.List;
 
 /***
- * @Date(时间)2023-06-20
+ * @Date(时间)2023-06-26
  * @Author 家辉
+ *
  *
  * 角色接口
  */
-public interface RoleInterFace {
+public interface RoleServiceInterFace {
     /***
      * 添加数据
      * @return
      */
-    int addRole(Role role) ;
+    int addRole(String roleVel ,String roleDescribe) ;
 
     /***
      * 根据id删除
@@ -24,11 +25,13 @@ public interface RoleInterFace {
     int deleteRole(int id) ;
 
     /***
-     * 修改
-     * @param role
+     * 修改信息
+     * @param roleVel 角色级别
+     * @param roleDescribe 角色描述
+     * @param roleId 角色id
      * @return
      */
-    int updateRole(Role role) ;
+    int updateRole(String roleVel ,String roleDescribe,int roleId) ;
     /***
      * 查询所有数据
      * @return
@@ -41,7 +44,4 @@ public interface RoleInterFace {
      * @return
      */
     List<Role> listConditionQuery(String role_level) ;
-
-
-
 }
