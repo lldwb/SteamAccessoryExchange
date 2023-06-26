@@ -42,40 +42,43 @@ public class CommodityServiceImpl implements CommodityService {
             BufferedReader reader = connectionUtil.getBufferedWriter(ConnectionMethod.GET, data);
             // 对结果进行解析
             Map<String, Object> map = new ObjectMapper().readValue(reader.readLine(), Map.class);
-            System.out.println(map);
+//            System.out.println(map);
 
             List<Map<String, Object>> descriptions = (List<Map<String, Object>>) map.get("descriptions");
-            System.out.println(descriptions);
+//            System.out.println(descriptions);
             CommodityClassDAO commodityClassDAO = new CommodityClassDAOImpl();
             new Thread(() -> {
                 descriptions.forEach(descriptionsMap -> {
                     System.out.println(descriptionsMap);
                     // 添加模板
                     if (commodityClassDAO.judgeExist((String) descriptionsMap.get("classid"))) {
-                        CommodityClass commodityClass = new CommodityClass();
-                        commodityClass.setClassId((String) descriptionsMap.get("classid"));
-                        commodityClass.setClassName((String) descriptionsMap.get("market_name"));
-                        commodityClass.setClassUrl((String) descriptionsMap.get("icon_url"));
-                        commodityClass.setClassUrlLarge((String) descriptionsMap.get("icon_url_large"));
-                        commodityClass.setClassActions((String) ((List<Map<String, Object>>) descriptionsMap.get("actions")).get(0).get("link"));
                         try {
+                            System.out.println("添加");
+                            CommodityClass commodityClass = new CommodityClass();
+                            commodityClass.setClassId((String) descriptionsMap.get("classid"));
+                            commodityClass.setClassName((String) descriptionsMap.get("market_name"));
+                            commodityClass.setClassUrl((String) descriptionsMap.get("icon_url"));
+                            commodityClass.setClassUrlLarge((String) descriptionsMap.get("icon_url_large"));
+                            commodityClass.setClassActions(new ObjectMapper().writeValueAsString(descriptionsMap.get("actions")));
                             commodityClass.setClassDescriptions(new ObjectMapper().writeValueAsString(descriptionsMap.get("descriptions")));
+                            System.out.println(commodityClass);
+//                        System.out.println(descriptionsMap.get("market_name"));
+                            commodityClassDAO.add(commodityClass);
                         } catch (JsonProcessingException e) {
                             throw new RuntimeException(e);
                         }
-                        System.out.println(commodityClass);
-                        commodityClassDAO.add(commodityClass);
-                        System.out.println(descriptionsMap.get("market_name"));
                     }
                     // 设置关联
-                    ((List<Map<String, Object>>) descriptionsMap.get("tags")).forEach((tags -> {
-                        CommodityInstanceDAO commodityInstanceDAO = new CommodityInstanceDAOImpl();
-                        int instanceId = commodityInstanceDAO.getIdByName((String) tags.get("localized_tag_name"));
-                        CommdoityClassInstanceDAO commdoityClassInstanceDAO = new CommdoityClassInstanceDAOImpl();
-                        if (commdoityClassInstanceDAO.judgeExist((String) descriptionsMap.get("classid"), instanceId)) {
-                            commdoityClassInstanceDAO.add((String) descriptionsMap.get("classid"), instanceId);
-                        }
-                    }));
+                    new Thread(() -> {
+                        ((List<Map<String, Object>>) descriptionsMap.get("tags")).forEach((tags -> {
+                            CommodityInstanceDAO commodityInstanceDAO = new CommodityInstanceDAOImpl();
+                            int instanceId = commodityInstanceDAO.getIdByName((String) tags.get("localized_tag_name"));
+                            CommdoityClassInstanceDAO commdoityClassInstanceDAO = new CommdoityClassInstanceDAOImpl();
+                            if (commdoityClassInstanceDAO.judgeExist((String) descriptionsMap.get("classid"), instanceId)) {
+                                commdoityClassInstanceDAO.add((String) descriptionsMap.get("classid"), instanceId);
+                            }
+                        }));
+                    }).start();
                 });
             }).start();
 
@@ -84,7 +87,7 @@ public class CommodityServiceImpl implements CommodityService {
                 List<Map<String, Object>> assets = (List<Map<String, Object>>) map.get("assets");
                 CommodityDAO commodityDAO = new CommodityDAOImpl();
                 assets.forEach(tags -> {
-                    if (commodityDAO.judgeExist((String) tags.get("assetid"))){
+                    if (commodityDAO.judgeExist((String) tags.get("assetid"))) {
                         Commodity commodity = new Commodity();
                         commodity.setAssetId((String) tags.get("assetid"));
                         commodity.setClassId((String) tags.get("classid"));
@@ -92,7 +95,7 @@ public class CommodityServiceImpl implements CommodityService {
                         commodityDAO.add(commodity);
                     }
                 });
-                System.out.println(assets);
+//                System.out.println(assets);
             }).start();
         } catch (IOException e) {
             System.out.println(e);
