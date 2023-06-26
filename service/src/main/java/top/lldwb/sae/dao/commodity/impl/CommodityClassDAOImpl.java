@@ -19,4 +19,9 @@ public class CommodityClassDAOImpl implements CommodityClassDAO {
         MySqlUtil.update("insert into commodity_class(class_id, class_name, class_url, class_url_large, class_descriptions, class_actions) value(?,?,?,?,?,?);", commodityClass.getClassId(), commodityClass.getClassName(), commodityClass.getClassUrl(), commodityClass.getClassUrlLarge(), commodityClass.getClassDescriptions(), commodityClass.getClassActions());
 
     }
+
+    @Override
+    public void addAll(CommodityClass[] commodityClass) {
+//        MySqlUtil.executeBath("insert into commodity_class(class_id, class_name, class_url, class_url_large, class_descriptions, class_actions) value(?,?,?,?,?,?);",);
+    }
 }

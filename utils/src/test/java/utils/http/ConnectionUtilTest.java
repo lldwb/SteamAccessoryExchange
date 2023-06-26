@@ -7,9 +7,6 @@ import top.lldwb.sae.utils.http.ConnectionUtil;
 import top.lldwb.sae.utils.mySql.MySqlUtil;
 
 import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;

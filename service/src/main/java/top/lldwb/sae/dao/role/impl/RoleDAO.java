@@ -4,7 +4,6 @@ import top.lldwb.sae.entity.rode.RoleEntity;
 import top.lldwb.sae.dao.role.RoleInterFace;
 import top.lldwb.sae.utils.mySql.MySqlUtil;
 
-import java.sql.SQLException;
 import java.util.List;
 
 /***
