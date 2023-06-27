@@ -4,7 +4,6 @@ import top.lldwb.sae.dao.purview.PurviewInterFace;
 import top.lldwb.sae.entity.purview.Purview;
 import top.lldwb.sae.utils.mySql.MySqlUtil;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /***

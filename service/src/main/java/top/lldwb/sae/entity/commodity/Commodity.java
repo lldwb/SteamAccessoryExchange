@@ -8,7 +8,7 @@ import org.nf.db.util.Column;
  * @version 1.0
  */
 @Data
-public class commodity {
+public class Commodity {
     @Column("co_id")
     private Integer coId;
     @Column("asset_id")

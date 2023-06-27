@@ -8,7 +8,6 @@ import org.nf.db.util.result.ColumnHandler;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,13 +27,11 @@ public class MySqlUtil {
         }
     }
 
-    private static final String URL = "jdbc:mysql://mysql.lldwb.top:33366/SteamAccessoryExchange?serverTimezone=Asia/Shanghai&useSSL=false";
+    private static final String URL = "jdbc:mysql://mysql.lldwb.top:3306/sae?serverTimezone=Asia/Shanghai&useSSL=false";
     //账号
-    private static final String USER_NAME = "root";
+    private static final String USER_NAME = "sae";
     //密码
-    private static final String PASSWORD = "@dwb123456";
-    //数据库连接对象并传入数据库参数
-    private static Connection conn;
+    private static final String PASSWORD = "PBERGLmSDfr2Mzxi";
 
     private static SqlExecutor getSqlExecutor() {
         try {
@@ -100,5 +97,9 @@ public class MySqlUtil {
      */
     public static int update(String sql, Object... obj) {
         return getSqlExecutor().executeUpdate(sql, obj);
+    }
+
+    public static int[] executeBath(String sql,Object[][] params){
+        return getSqlExecutor().executeBath(sql, params);
     }
 }
