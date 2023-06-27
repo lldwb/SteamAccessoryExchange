@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <!-- 引入组件库 -->
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
-
+    <script src="router/sell.js"></script>
     <!-- 引入样式(图标有问题) -->
     <!--<link rel="stylesheet" href="css/element-ui_index.css">-->
     <!-- 引入组件库 -->
@@ -48,7 +48,7 @@
         <el-col :span="4"><div class="grid-content "></div></el-col>
         <el-col :span="3">
         <div class="bg-purple">
-            <img class="imgs" src="https://g.fp.ps.netease.com/market/file/5dd3ed5e143cfa13aa3b05c8CC7lCrGs02">
+            <img class="imgs" :src="src">
         </div>
         </el-col>
 
@@ -89,7 +89,27 @@
         <el-col :span="4"><div class="grid-content "></div></el-col>
     </el-row>
 
-    <el-row style="padding-top: 20px;">
+    <el-row style="padding-top: 20px">
+        <el-col :span="4"><div class="grid-content "></div></el-col>
+        <el-col :span="16">
+            <el-menu
+                    router
+                    :default-active="this.$route.path"
+                    class="el-menu-demo"
+                    mode="horizontal"
+                    @select="handleSelect"
+                    background-color="#282727FF"
+                    text-color="#90969C"
+                    active-text-color="#FFFFFF">
+                <el-menu-item index="/aa" >出售</el-menu-item>
+                <el-menu-item index="2">求购</el-menu-item>
+            </el-menu>
+
+        </el-col>
+        <el-col :span="4"><div class="grid-content "></div></el-col>
+    </el-row>
+
+    <el-row >
         <el-col :span="4"><div class="grid-content "></div></el-col>
         <el-col :span="16" >
             <template>
@@ -155,7 +175,6 @@
 </body>
 </html>
 <script>
-
     const getSell = vueRouter =>{
         $.ajax({
             url:"http://localhost:8080/service_api_war/getSell",
@@ -180,12 +199,13 @@
         data() {
             return {
                 tableData:[],
+                src:"https://g.fp.ps.netease.com/market/file/5dd3ed5e143cfa13aa3b05c8CC7lCrGs02",
                 currentPage: 1,  //默认初始页
                 pagesize: 10,    //每页默认显示的数据
                 pageCount: 0,   //数据的总条数,如果数据是后端接口返回的，则此值需修改
             }
         },
-        methods :{
+        methods : {
             //改变每页容纳的数据量
             handleSizeChange: function (size) {
                 this.pagesize = size;
@@ -196,9 +216,9 @@
                 this.currentPage = currentPage;
                 getSell(this)
             },
-        },
-        mounted(){
-            getSell(this)
+            mounted() {
+                getSell(this)
+            }
         }
     })
 </script>
