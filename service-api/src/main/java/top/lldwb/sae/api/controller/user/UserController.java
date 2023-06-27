@@ -8,6 +8,8 @@ import top.lldwb.sae.api.vo.ResultVO;
 import top.lldwb.sae.service.user.UserServiceInterFace;
 import top.lldwb.sae.service.user.service.UserService;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * @author 安然的尾巴
  * @version 1.0
@@ -116,9 +118,12 @@ public class UserController {
      */
     @RequestMapping("/user/getLogin.do")
     public View getLogin(@RequestParam("userName")String name,
-                         @RequestParam("userPassword")String password){
+                         @RequestParam("userPassword")String password, HttpSession session){
         UserServiceInterFace service = new UserService() ;
         resultVO = new ResultVO<>(200,"成功",service.login(name,password)) ;
+
+        //会话跟踪
+        session.setAttribute("userSuccess",resultVO);
         return new JsonView(resultVO) ;
     }
 
@@ -130,9 +135,12 @@ public class UserController {
      */
     @RequestMapping("/user/getLoginEmail.do")
     public View getLoginEmail(@RequestParam("userEmail")String email,
-                              @RequestParam("userEmailCode")String emailCode){
+                              @RequestParam("userEmailCode")String emailCode,HttpSession session){
         UserServiceInterFace service = new UserService() ;
         resultVO = new ResultVO<>(200,"成功",service.loginEmail(email,emailCode)) ;
+
+        //会话跟踪
+        session.setAttribute("emailCodeSuccess",resultVO);
         return new JsonView(resultVO) ;
     }
 
