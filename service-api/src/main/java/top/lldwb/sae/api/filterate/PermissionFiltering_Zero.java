@@ -1,14 +1,16 @@
 package top.lldwb.sae.api.filterate;
 
+import top.lldwb.sae.dao.user.UserFace;
+import top.lldwb.sae.dao.user.impl.UserDAO;
+import top.lldwb.sae.entity.purview.Purview;
+import top.lldwb.sae.entity.user.User;
+import top.lldwb.sae.service.exception.AllException;
 import top.lldwb.sae.service.purview.PurviewServiceInterFace;
 import top.lldwb.sae.service.purview.impl.PurviewService;
-import top.lldwb.sae.service.user.UserServiceInterFace;
-import top.lldwb.sae.service.user.service.UserService;
-
 import javax.servlet.*;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /***
@@ -46,12 +48,23 @@ public class PermissionFiltering_Zero implements Filter {
             return;
         }
 
-        //调用用户业务逻辑类
-        UserServiceInterFace serviceUser = new UserService() ;
+        //创建HttpSession会话
+        HttpSession session = req.getSession() ;
+        String user = (String) session.getAttribute("userSuccess")  ;
+
+
+        //调用用户数据访问类
+        UserFace userDao = new UserDAO() ;
+        //引用dao方法
+        User userEntity = userDao.login(url) ;
 
         //调用权限业务逻辑类
-        PurviewServiceInterFace servicePurview = new PurviewService() ;
-
+        PurviewServiceInterFace purviewDao = new PurviewService() ;
+        //引用dao方法
+        Purview purviewEntity = purviewDao.purviewUserIDQuery(userEntity.getUserId()) ;
+        if(purviewEntity.getPurview_limitation().equals("0")){
+            throw new AllException(500,"账号被封禁不可以登录") ;
+        }
 
 
     }
