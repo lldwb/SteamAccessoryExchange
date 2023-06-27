@@ -20,7 +20,7 @@ public interface PurviewServiceInterFace {
      */
     int purviewADD(String purviewLimitation ,String purviewDescribe,int userId) ;
     /***
-     * 根据id修改数据
+     * 根据id删除数据
      * @param id
      * @return
      */
