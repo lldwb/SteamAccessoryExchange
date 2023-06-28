@@ -4,24 +4,34 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
-  <!-- 请求总控器，用于请求分发 -->
-  <servlet>
-    <servlet-name>dispatcher</servlet-name>
-    <servlet-class>org.nf.web.servlet.DispatcherServlet</servlet-class>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>dispatcher</servlet-name>
-    <url-pattern>/</url-pattern>
-  </servlet-mapping>
+    <!--权限过滤器-->
+    <filter>
+        <filter-name>User_Filter_regular</filter-name>
+        <filter-class>top.lldwb.sae.api.filterate.PermissionFiltering_Zero</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>User_Filter_regular</filter-name>
+        <url-pattern>/user</url-pattern>
+    </filter-mapping>
 
-  <!-- CORS Filter 跨域 -->
-  <filter>
-    <filter-name>CORSFilter</filter-name>
-    <filter-class> top.lldwb.sae.utils.CORSFilter.CORSFilter</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>CORSFilter</filter-name>
-    <url-pattern>/*</url-pattern>
-  </filter-mapping>
+    <!-- 请求总控器，用于请求分发 -->
+    <servlet>
+        <servlet-name>dispatcher</servlet-name>
+        <servlet-class>org.nf.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>dispatcher</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <!-- CORS Filter 跨域 -->
+    <filter>
+        <filter-name>CORSFilter</filter-name>
+        <filter-class>top.lldwb.sae.utils.CORSFilter.CORSFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>CORSFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 </web-app>

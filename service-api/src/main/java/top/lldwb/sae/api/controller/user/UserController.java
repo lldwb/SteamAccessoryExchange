@@ -5,7 +5,6 @@ import org.nf.web.annotation.RequestParam;
 import org.nf.web.servlet.View;
 import org.nf.web.servlet.view.JsonView;
 import top.lldwb.sae.api.vo.ResultVO;
-import top.lldwb.sae.service.exception.AllException;
 import top.lldwb.sae.service.user.UserServiceInterFace;
 import top.lldwb.sae.service.user.service.UserService;
 
@@ -126,15 +125,10 @@ public class UserController {
         System.out.println(name);
         System.out.println(service.login(name, password));
         System.out.println(service.selectStatus(name) == 0);
-        if (service.selectStatus(name) == 0) {
-            System.out.println("账号被封禁不可以登录");
-            throw new AllException(500, "账号被封禁不可以登录");
-        } else {
-            resultVO = new ResultVO<>(200, "成功", service.login(name, password));
-            //会话跟踪
-            session.setAttribute("userSuccess", resultVO);
-            return new JsonView(resultVO);
-        }
+        resultVO = new ResultVO<>(200, "成功", service.login(name, password));
+        //会话跟踪
+        session.setAttribute("userSuccess", resultVO);
+        return new JsonView(resultVO);
     }
 
     /***
