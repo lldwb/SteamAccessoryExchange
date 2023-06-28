@@ -60,4 +60,11 @@ public interface UserFace {
      * @return
      */
     String getSteamIdById(int userId);
+
+    /**
+     * 查询用户状态
+     * @param name 用户名
+     * @return
+     */
+    int selectStatus(String name);
 }
