@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <!-- 引入组件库 -->
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
-    <script src="router/sell.js"></script>
     <!-- 引入样式(图标有问题) -->
     <!--<link rel="stylesheet" href="css/element-ui_index.css">-->
     <!-- 引入组件库 -->
@@ -79,12 +78,12 @@
     <el-row style="padding-top: 1px">
         <el-col :span="4"><div class="grid-content "></div></el-col>
         <el-col :span="16" class="bg-purple" style="padding: 10px 44px">
-            <el-button plain>朴素按钮</el-button>
-            <el-button type="primary" plain>主要按钮</el-button>
-            <el-button type="success" plain>成功按钮</el-button>
-            <el-button type="info" plain>信息按钮</el-button>
-            <el-button type="warning" plain>警告按钮</el-button>
-            <el-button type="danger" plain>危险按钮</el-button>
+            <el-button type="info" plain>崭新出厂</el-button>
+            <el-button type="info" plain>略有磨损</el-button>
+            <el-button type="info" plain>久经沙场</el-button>
+            <el-button type="info" plain>破损不堪</el-button>
+            <el-button type="info" plain>战痕累累</el-button>
+            <el-button type="info" plain icon="el-icon-sort">StatTrak™</el-button>
         </el-col>
         <el-col :span="4"><div class="grid-content "></div></el-col>
     </el-row>
@@ -93,16 +92,14 @@
         <el-col :span="4"><div class="grid-content "></div></el-col>
         <el-col :span="16">
             <el-menu
-                    router
-                    :default-active="this.$route.path"
+                    :default-active="activeIndex"
                     class="el-menu-demo"
                     mode="horizontal"
-                    @select="handleSelect"
                     background-color="#282727FF"
                     text-color="#90969C"
                     active-text-color="#FFFFFF">
-                <el-menu-item index="/aa" >出售</el-menu-item>
-                <el-menu-item index="2">求购</el-menu-item>
+                <el-menu-item index="1" @click="updSell">出售</el-menu-item>
+                <el-menu-item index="2" @click="updBuy">求购</el-menu-item>
             </el-menu>
 
         </el-col>
@@ -111,10 +108,12 @@
 
     <el-row >
         <el-col :span="4"><div class="grid-content "></div></el-col>
-        <el-col :span="16" >
+        <!--出售-->
+        <el-col :span="16"  v-if="determine" >
+            <!-- 出售模块表格-->
             <template>
                 <el-table
-                        :data="tableData"
+                        :data="tableSellData"
                         style="width: 100%">
                     <el-table-column
                             label="出售ID"
@@ -137,15 +136,12 @@
                             prop="userId">
                     </el-table-column>
                     <el-table-column
-                            align="right">
+                            label="操作">
                         <template slot-scope="scope">
                             <el-button
+                                    type="primary"
                                     size="mini"
-                                    @click="handleEdit(scope.$index, scope.row)">Edit</el-button>
-                            <el-button
-                                    size="mini"
-                                    type="danger"
-                                    @click="handleDelete(scope.$index, scope.row)">Delete</el-button>
+                                    @click="handleEdit(scope.$index, scope.row)">购买</el-button>
                         </template>
                     </el-table-column>
                 </el-table>
@@ -161,7 +157,67 @@
                     :page-sizes="[1, 3, 5, 10]"
                     :page-size="pagesize"
                     layout="total, sizes, prev, pager, next, jumper"
-                    :total="pageCount"
+                    :total="pageSellCount"
+                    background
+                    style=" margin-top: 20px"
+            >
+            </el-pagination>
+
+        </el-col>
+        <!--求购-->
+        <el-col :span="16"  v-else >
+            <!--求购模块表格-->
+            <template>
+                <el-table
+                        :data="tableBuyData"
+                        style="width: 100%">
+                    <el-table-column
+                            label="求购ID"
+                            prop="wtbId">
+                    </el-table-column>
+                    <el-table-column
+                            label="价格"
+                            prop="wtbPrice">
+                    </el-table-column>
+                    <el-table-column
+                            label="数量"
+                            prop="wtbNumber">
+                    </el-table-column>
+                    <el-table-column
+                            label="总价"
+                            prop="wtbTotal">
+                    </el-table-column>
+                    <el-table-column
+                            label="商品id"
+                            prop="coId">
+                    </el-table-column>
+                    <el-table-column
+                            label="用户id"
+                            prop="userId">
+                    </el-table-column>
+                    <el-table-column
+                            label="操作">
+                        <template slot-scope="scope">
+                            <el-button
+                                    type="primary"
+                                    size="mini"
+                                    @click="handleEdit(scope.$index, scope.row)">供应</el-button>
+                        </template>
+                    </el-table-column>
+                </el-table>
+            </template>
+            <!-- 表格分页 -->
+            <!-- pager-count pager-count属性可以设置最大页码按钮数,超出折叠,默认为7-->
+            <!-- 注意：若数据是后端接口返回的则此时:total="pageCount"-->
+            <el-pagination
+                    @size-change="handleSizeChange"
+                    @current-change="handleCurrentChange"
+                    :pager-count="7"
+                    :current-page="currentPage"
+                    :page-sizes="[1, 3, 5, 10]"
+                    :page-size="pagesize"
+                    layout="total, sizes, prev, pager, next, jumper"
+                    :total="pageBuyCount"
                     background
                     style=" margin-top: 20px"
             >
@@ -175,22 +231,37 @@
 </body>
 </html>
 <script>
-    const getSell = vueRouter =>{
+    const getSell = vueRouter => {
         $.ajax({
-            url:"http://localhost:8080/service_api_war/getSell",
-            dataType: 'JSON',  // 请求方式为jsonp
-            //jsonpCallback: "handleCallback",    // 自定义回调函数名
-            data:{
-                numberOf:vueRouter.currentPage,
+            url: "http://localhost:8080/service_api_war/getSell",
+            dataType: 'JSON',  // 请求方式为json
+            data: {
+                numberOf: vueRouter.currentPage,
                 limit: vueRouter.pagesize
             },
             success(result) {
-                vueRouter.tableData=result.data
-                vueRouter.pageCount=result.count
+                vueRouter.tableSellData = result.data
+                vueRouter.pageSellCount = result.count
+                $.ajax({
+                    url: "http://localhost:8080/service_api_war/getBuy",
+                    dataType: 'JSON',  // 请求方式为json
+                    data: {
+                        numberOf: vueRouter.currentPage,
+                        limit: vueRouter.pagesize
+                    },
+                    success(result) {
+                        vueRouter.tableBuyData = result.data
+                        vueRouter.pageBuyCount = result.count
+                        console.log(vueRouter.tableBuyData)
+                    },
+                    error() {
+                        console.log("求购失败")
+                    }
+                })
             },
             error() {
-                console.log("失败")
-            }
+                console.log("出售失败")
+            },
         })
     }
 
@@ -198,11 +269,15 @@
         el:"#app",
         data() {
             return {
-                tableData:[],
+                tableSellData:[],
+                tableBuyData:[],
                 src:"https://g.fp.ps.netease.com/market/file/5dd3ed5e143cfa13aa3b05c8CC7lCrGs02",
                 currentPage: 1,  //默认初始页
-                pagesize: 10,    //每页默认显示的数据
-                pageCount: 0,   //数据的总条数,如果数据是后端接口返回的，则此值需修改
+                pagesize: 10, //每页默认显示的数据
+                pageSellCount: 0, //出售数据的总条数,如果数据是后端接口返回的，则此值需修改
+                pageBuyCount:0,
+                activeIndex: '1',
+                determine:true
             }
         },
         methods : {
@@ -216,9 +291,23 @@
                 this.currentPage = currentPage;
                 getSell(this)
             },
-            mounted() {
+            updSell(){
+                this.currentPage=1;
+                this.pagesize=10;
                 getSell(this)
-            }
+                this.determine=true;
+                },
+            updBuy(){
+                this.currentPage=1;
+                this.pagesize=10;
+                getSell(this)
+                this.determine=false;},
+            handleEdit(index, row) {
+                console.log(index, row);
+            },
+        } ,
+        mounted() {
+            getSell(this)
         }
     })
 </script>
