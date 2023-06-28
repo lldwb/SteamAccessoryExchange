@@ -7,170 +7,316 @@
     <script src="//unpkg.com/element-ui@2.15.13/lib/index.js"></script>
     <style>
         @import url("//unpkg.com/element-ui@2.15.13/lib/theme-chalk/index.css");
-        .left-button-size{
-            height: 92px;
-            border-radius:0px;
-            width: 90px;
-            background: url("img/img_1.png");
-            background-position: center center;
-            border: 0px;
-        }
-        <!--top-->
-        last-child {
+        <!--页表头-->
+        .show-top{
+            height:650px;
+            width: 100%;
+            background:azure;
 
         }
+        .show-top-wz{
+
+        }
+
+
+        .grid-content {
+            border-radius: 4px;
+            min-height: 36px;
+            background: red;
+            display: flex;
+            justify-content:center;
+            align-items: center;//上下对齐
+        }
+        .grid{
+            min-height: 36px;
+        }
+
+        <!--top-->
+            last-child {
+
+            }
+
+        .dagger-border{
+            width: 70px;
+            height: 70px;
+        }
+
         .grid-content {
             border-radius: 0px;
-            min-height: 90px;
-        }
-        img{
-            width:101px
+            min-height: 50px;
         }
         .bg-purple{
-
         }
         .el-row-top{
-            background:black;
+            display: flex;
+            justify-content: center;
+        }
+        .el-row {
+            margin-bottom: 20px;
+        }
+
+
+        .el-margin-top{
+            width: 98%;
+            height: 200px;
+            background: #409EFF;
+            margin-left: 12px;
+
+        }
+        .el-row-y{
+            margin-top: 20px;
+
+        }
+
+        .el-dropdown-link {
+            cursor: pointer;
+            color:beige;
+            display:block;
+            borber:1px solid blue;
+            width:64px;
+            height:64px;
+            display: flex;
+            display:table-cell;
+            vertical-align:bottom;
+            text-align: center;
+            font-size: 5px;
+            background: url("img/匕首.png");
+        }
+        .el-select-size{
+            width: 100px;
+            border-radius: 0px;
+        }
+        .el-template{
+            margin-left:10px;
         }
     </style>
 </head>
 <body>
-<div id="app">
-    <el-row type="flex" justify="center" class="el-row-top">
-        <el-col :span="2">
-            <div class="grid-content bg-purple">
-                <el-dropdown >
-                    <el-button  class="left-button-size"></el-button>
+<div id="app"  class="show-top">
+    <div class="show-top-wz">
+        <el-row gutter="50">
+            <el-col :span="3"><div class="grid-content ">杰杰buff</div></el-col>
+            <el-col :span="2"><div class="grid-content ">首页</div></el-col>
+            <el-col :span="2"><div class="grid-content ">饰品市场</div></el-col>
+            <el-col :span="2"><div class="grid-content ">游戏资讯</div></el-col>
+            <el-col :span="11"><div class="grid"></div></el-col>
+            <el-col :span="2"><div class="grid-content">CS-GO</div></el-col>
+            <el-col :span="2"><div class="grid-content">登录/注册</div></el-col>
+        </el-row>
+        <hr style="border: 1px solid black"/>
+    </div>
+
+    <!--展示的-----------------------------头-->
+    <div class="el-margin-top">
+
+        <el-row class="el-row-top">
+
+            <el-col :span="2"><div class="el-row-y">
+                <el-dropdown>
+                    <span class="el-dropdown-link"><p>匕首</p></span>
                     <el-dropdown-menu slot="dropdown">
                         <el-dropdown-item>黄金糕</el-dropdown-item>
                         <el-dropdown-item>狮子头</el-dropdown-item>
                         <el-dropdown-item>螺蛳粉</el-dropdown-item>
-                        <el-dropdown-item>双皮奶</el-dropdown-item>
-                        <el-dropdown-item>蚵仔煎</el-dropdown-item>
+                        <el-dropdown-item disabled>双皮奶</el-dropdown-item>
+                        <el-dropdown-item divided>蚵仔煎</el-dropdown-item>
                     </el-dropdown-menu>
                 </el-dropdown>
             </div>
-        </el-col>
+            </el-col>
 
-        <el-col :span="2"><div class="grid-content bg-purple-light">
-            <el-dropdown >
-                <el-button  class="left-button-size"></el-button>
-                <el-dropdown-menu slot="dropdown">
-                    <el-dropdown-item>黄金糕</el-dropdown-item>
-                    <el-dropdown-item>狮子头</el-dropdown-item>
-                    <el-dropdown-item>螺蛳粉</el-dropdown-item>
-                    <el-dropdown-item>双皮奶</el-dropdown-item>
-                    <el-dropdown-item>蚵仔煎</el-dropdown-item>
-                </el-dropdown-menu>
-            </el-dropdown>
-        </div>
-        </el-col>
+            <el-col :span="2"><div class="el-row-y">
+                <el-dropdown>
+                    <span class="el-dropdown-link"><p>匕首</p></span>
+                    <el-dropdown-menu slot="dropdown">
+                        <el-dropdown-item>黄金糕</el-dropdown-item>
+                        <el-dropdown-item>狮子头</el-dropdown-item>
+                        <el-dropdown-item>螺蛳粉</el-dropdown-item>
+                        <el-dropdown-item disabled>双皮奶</el-dropdown-item>
+                        <el-dropdown-item divided>蚵仔煎</el-dropdown-item>
+                    </el-dropdown-menu>
+                </el-dropdown>
+            </div>
+            </el-col>
 
-        <el-col :span="2"><div class="grid-content bg-purple">
-            <el-dropdown >
-                <el-button  class="left-button-size"></el-button>
-                <el-dropdown-menu slot="dropdown">
-                    <el-dropdown-item>黄金糕</el-dropdown-item>
-                    <el-dropdown-item>狮子头</el-dropdown-item>
-                    <el-dropdown-item>螺蛳粉</el-dropdown-item>
-                    <el-dropdown-item>双皮奶</el-dropdown-item>
-                    <el-dropdown-item>蚵仔煎</el-dropdown-item>
-                </el-dropdown-menu>
-            </el-dropdown>
+            <el-col :span="2"><div class="el-row-y">
+                <el-dropdown>
+                    <span class="el-dropdown-link bg-span"><p>匕首</p></span>
+                    <el-dropdown-menu slot="dropdown">
+                        <el-dropdown-item>黄金糕</el-dropdown-item>
+                        <el-dropdown-item>狮子头</el-dropdown-item>
+                        <el-dropdown-item>螺蛳粉</el-dropdown-item>
+                        <el-dropdown-item disabled>双皮奶</el-dropdown-item>
+                        <el-dropdown-item divided>蚵仔煎</el-dropdown-item>
+                    </el-dropdown-menu>
+                </el-dropdown>
+            </div>
+            </el-col>
+
+            <el-col :span="2"><div class="el-row-y">
+                <el-dropdown>
+                    <span class="el-dropdown-link bg-span"><p>匕首</p></span>
+                    <el-dropdown-menu slot="dropdown">
+                        <el-dropdown-item>黄金糕</el-dropdown-item>
+                        <el-dropdown-item>狮子头</el-dropdown-item>
+                        <el-dropdown-item>螺蛳粉</el-dropdown-item>
+                        <el-dropdown-item disabled>双皮奶</el-dropdown-item>
+                        <el-dropdown-item divided>蚵仔煎</el-dropdown-item>
+                    </el-dropdown-menu>
+                </el-dropdown>
+            </div>
+            </el-col>
+
+            <el-col :span="2"><div class="el-row-y">
+                <el-dropdown>
+                    <span class="el-dropdown-link bg-span"><p>匕首</p></span>
+                    <el-dropdown-menu slot="dropdown">
+                        <el-dropdown-item>黄金糕</el-dropdown-item>
+                        <el-dropdown-item>狮子头</el-dropdown-item>
+                        <el-dropdown-item>螺蛳粉</el-dropdown-item>
+                        <el-dropdown-item disabled>双皮奶</el-dropdown-item>
+                        <el-dropdown-item divided>蚵仔煎</el-dropdown-item>
+                    </el-dropdown-menu>
+                </el-dropdown>
+            </div>
+            </el-col>
+
+
+            <el-col :span="2"><div class="el-row-y">
+                <el-dropdown>
+                    <span class="el-dropdown-link bg-span"><p>匕首</p></span>
+                    <el-dropdown-menu slot="dropdown">
+                        <el-dropdown-item>黄金糕</el-dropdown-item>
+                        <el-dropdown-item>狮子头</el-dropdown-item>
+                        <el-dropdown-item>螺蛳粉</el-dropdown-item>
+                        <el-dropdown-item disabled>双皮奶</el-dropdown-item>
+                        <el-dropdown-item divided>蚵仔煎</el-dropdown-item>
+                    </el-dropdown-menu>
+                </el-dropdown>
+            </div>
+            </el-col>
+
+
+            <el-col :span="2"><div class="el-row-y">
+                <el-dropdown>
+                    <span class="el-dropdown-link bg-span"><p>匕首</p></span>
+                    <el-dropdown-menu slot="dropdown">
+                        <el-dropdown-item>黄金糕</el-dropdown-item>
+                        <el-dropdown-item>狮子头</el-dropdown-item>
+                        <el-dropdown-item>螺蛳粉</el-dropdown-item>
+                        <el-dropdown-item disabled>双皮奶</el-dropdown-item>
+                        <el-dropdown-item divided>蚵仔煎</el-dropdown-item>
+                    </el-dropdown-menu>
+                </el-dropdown>
+            </div>
+            </el-col>
+
+            <el-col :span="2"><div class="el-row-y">
+                <el-dropdown>
+                    <span class="el-dropdown-link bg-span"><p>匕首</p></span>
+                    <el-dropdown-menu slot="dropdown">
+                        <el-dropdown-item>黄金糕</el-dropdown-item>
+                        <el-dropdown-item>狮子头</el-dropdown-item>
+                        <el-dropdown-item>螺蛳粉</el-dropdown-item>
+                        <el-dropdown-item disabled>双皮奶</el-dropdown-item>
+                        <el-dropdown-item divided>蚵仔煎</el-dropdown-item>
+                    </el-dropdown-menu>
+                </el-dropdown>
+            </div>
+            </el-col>
+
+            <el-col :span="2"><div class="el-row-y">
+                <el-dropdown>
+                    <span class="el-dropdown-link bg-span"><p>匕首</p></span>
+                    <el-dropdown-menu slot="dropdown">
+                        <el-dropdown-item>黄金糕</el-dropdown-item>
+                        <el-dropdown-item>狮子头</el-dropdown-item>
+                        <el-dropdown-item>螺蛳粉</el-dropdown-item>
+                        <el-dropdown-item disabled>双皮奶</el-dropdown-item>
+                        <el-dropdown-item divided>蚵仔煎</el-dropdown-item>
+                    </el-dropdown-menu>
+                </el-dropdown>
+            </div>
+            </el-col>
+
+            <el-col :span="2"><div class="el-row-y">
+                <el-dropdown>
+                    <span class="el-dropdown-link bg-span"><p>匕首</p></span>
+                    <el-dropdown-menu slot="dropdown">
+                        <el-dropdown-item>黄金糕</el-dropdown-item>
+                        <el-dropdown-item>狮子头</el-dropdown-item>
+                        <el-dropdown-item>螺蛳粉</el-dropdown-item>
+                        <el-dropdown-item disabled>双皮奶</el-dropdown-item>
+                        <el-dropdown-item divided>蚵仔煎</el-dropdown-item>
+                    </el-dropdown-menu>
+                </el-dropdown>
+            </div>
+            </el-col>
+        </el-row>
+        <hr style="border: 1px solid black"/>
+
+        <div class="el-template">
+        <template >
+            <el-select v-model="value" placeholder="品质" class="el-select-size" size="mini">
+                <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                </el-option>
+            </el-select>
+            <el-select v-model="value" placeholder="类型"class="el-select-size" size="mini">
+                <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                </el-option>
+            </el-select>
+            <el-select v-model="value" placeholder="品质" class="el-select-size" size="mini">
+                <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                </el-option>
+            </el-select>
+            <el-select v-model="value" placeholder="类型"class="el-select-size" size="mini">
+                <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                </el-option>
+            </el-select>
+            <el-select v-model="value" placeholder="品质" class="el-select-size" size="mini">
+                <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                </el-option>
+            </el-select>
+            <el-select v-model="value" placeholder="类型"class="el-select-size" size="mini">
+                <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                </el-option>
+            </el-select>
+            <el-select v-model="value" placeholder="已贴印花"class="el-select-size" size="mini">
+                <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                </el-option>
+            </el-select>
+        </template>
+
         </div>
-        </el-col>
-        <el-col :span="2"><div class="grid-content">
-            <el-dropdown >
-                <el-button  class="left-button-size"></el-button>
-                <el-dropdown-menu slot="dropdown">
-                    <el-dropdown-item>黄金糕</el-dropdown-item>
-                    <el-dropdown-item>狮子头</el-dropdown-item>
-                    <el-dropdown-item>螺蛳粉</el-dropdown-item>
-                    <el-dropdown-item>双皮奶</el-dropdown-item>
-                    <el-dropdown-item>蚵仔煎</el-dropdown-item>
-                </el-dropdown-menu>
-            </el-dropdown>
-        </div>
-        </el-col>
-        <el-col :span="2"><div class="grid-content bg-purple">
-            <el-dropdown >
-                <el-button  class="left-button-size"></el-button>
-                <el-dropdown-menu slot="dropdown">
-                    <el-dropdown-item>黄金糕</el-dropdown-item>
-                    <el-dropdown-item>狮子头</el-dropdown-item>
-                    <el-dropdown-item>螺蛳粉</el-dropdown-item>
-                    <el-dropdown-item>双皮奶</el-dropdown-item>
-                    <el-dropdown-item>蚵仔煎</el-dropdown-item>
-                </el-dropdown-menu>
-            </el-dropdown>
-        </div></el-col>
-        <el-col :span="2"><div class="grid-content ">
-            <el-dropdown >
-                <el-button  class="left-button-size"></el-button>
-                <el-dropdown-menu slot="dropdown">
-                    <el-dropdown-item>黄金糕</el-dropdown-item>
-                    <el-dropdown-item>狮子头</el-dropdown-item>
-                    <el-dropdown-item>螺蛳粉</el-dropdown-item>
-                    <el-dropdown-item>双皮奶</el-dropdown-item>
-                    <el-dropdown-item>蚵仔煎</el-dropdown-item>
-                </el-dropdown-menu>
-            </el-dropdown>
-        </div></el-col>
-        <el-col :span="2"><div class="grid-content bg-purple">
-            <el-dropdown >
-                <el-button  class="left-button-size"></el-button>
-                <el-dropdown-menu slot="dropdown">
-                    <el-dropdown-item>黄金糕</el-dropdown-item>
-                    <el-dropdown-item>狮子头</el-dropdown-item>
-                    <el-dropdown-item>螺蛳粉</el-dropdown-item>
-                    <el-dropdown-item>双皮奶</el-dropdown-item>
-                    <el-dropdown-item>蚵仔煎</el-dropdown-item>
-                </el-dropdown-menu>
-            </el-dropdown>
-        </div></el-col>
-        <el-col :span="2"><div class="grid-content ">
-            <el-dropdown >
-                <el-button  class="left-button-size"></el-button>
-                <el-dropdown-menu slot="dropdown">
-                    <el-dropdown-item>黄金糕</el-dropdown-item>
-                    <el-dropdown-item>狮子头</el-dropdown-item>
-                    <el-dropdown-item>螺蛳粉</el-dropdown-item>
-                    <el-dropdown-item>双皮奶</el-dropdown-item>
-                    <el-dropdown-item>蚵仔煎</el-dropdown-item>
-                </el-dropdown-menu>
-            </el-dropdown>
-        </div></el-col>
-        <el-col :span="2"><div class="grid-content bg-purple">
-            <el-dropdown >
-                <el-button  class="left-button-size"></el-button>
-                <el-dropdown-menu slot="dropdown">
-                    <el-dropdown-item>黄金糕</el-dropdown-item>
-                    <el-dropdown-item>狮子头</el-dropdown-item>
-                    <el-dropdown-item>螺蛳粉</el-dropdown-item>
-                    <el-dropdown-item>双皮奶</el-dropdown-item>
-                    <el-dropdown-item>蚵仔煎</el-dropdown-item>
-                </el-dropdown-menu>
-            </el-dropdown>
-        </div></el-col>
-        <el-col :span="2"><div class="grid-content ">
-            <el-dropdown >
-                <el-button  class="left-button-size"></el-button>
-                <el-dropdown-menu slot="dropdown">
-                    <el-dropdown-item>黄金糕</el-dropdown-item>
-                    <el-dropdown-item>狮子头</el-dropdown-item>
-                    <el-dropdown-item>螺蛳粉</el-dropdown-item>
-                    <el-dropdown-item>双皮奶</el-dropdown-item>
-                    <el-dropdown-item>蚵仔煎</el-dropdown-item>
-                </el-dropdown-menu>
-            </el-dropdown>
-        </div></el-col>
-    </el-row>
+
+    </div>
+
 </div>
 </body>
+</html>
 <script>
     new Vue({
-        el:"#app"
+        el:"#app",
+        data() {
+            return {
+                options: [{
+                    value: '选项1',
+                    label: '黄金糕'
+                }, {
+                    value: '选项2',
+                    label: '双皮奶'
+                }, {
+                    value: '选项3',
+                    label: '蚵仔煎'
+                }, {
+                    value: '选项4',
+                    label: '龙须面'
+                }, {
+                    value: '选项5',
+                    label: '北京烤鸭'
+                }],
+                value: ''
+            }
+        }
     })
 </script>
-
-</html>
