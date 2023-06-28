@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Steam游戏饰品商城系统主页</title>
+  <link rel="stylesheet" href="pageTable/layui/css/layui.css">
+  <link rel="stylesheet" href="pageTable/admin/css/global.css">
+  <link rel="stylesheet" href="pageTable/admin/css/admin.css">
+
+  <script src="pageTable/layui/layui.js"></script>
+  <script src="pageTable/admin/js/admin.js"></script>
+</head>
+
+<body class="layui-layout-body">
+  <div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+      <div class="layui-logo"><span class="fontSize-span" style="font-size: 32px;font-weight: bold;">管理系统</span></div>
+      <!-- 头部区域（可配合layui已有的水平导航） -->
+      <ul class="layui-nav layui-layout-left">
+        <li class="layui-nav-item"><a class="layui-icon layui-icon-console"  href=""  style="font-size: 20px;">控制台</a></li>
+        <li class="layui-nav-item"><a class="layui-icon layui-icon-email" href="" style="font-size: 20px;">邮件管理</a></li>
+        <li class="layui-nav-item"><a class="layui-icon layui-icon-auz" href="" style="font-size: 20px;">授权管理</a></li>
+      </ul>
+      <ul class="layui-nav layui-layout-right">
+        <li class="layui-nav-item">
+          <a href="javascript:;"  style="font-size: 20px;">
+            <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fsafe-img.xhscdn.com%2Fbw1%2Ffc2d272d-3899-4af7-a6b0-bcb640b9cdd2%3FimageView2%2F2%2Fw%2F1080%2Fformat%2Fjpg&refer=http%3A%2F%2Fsafe-img.xhscdn.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1690530606&t=f82028d602127084991a393bb6a3d1a0" class="layui-nav-img">
+            贤心
+          </a>
+          <dl class="layui-nav-child">
+            <dd><a href="">基本资料</a></dd>
+            <dd><a href="">安全设置</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item"><a class=" layui-icon layui-icon-logout" href=""  style="font-size: 20px;"> 退了</a></li>
+      </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+      <div class="layui-side-scroll">
+        <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+        <ul class="layui-nav layui-nav-tree" lay-filter="test">
+          <li class="layui-nav-item layui-nav-itemed">
+            <a class="" href="javascript:;"  style="font-size: 20px;">所有商品</a>
+            <dl class="layui-nav-child">
+              <dd id="m1" class="subMenu"><a href="javascript:;" data-url="one.html">查询全部数据</a></dd>
+              <dd id="m2" class="subMenu"><a href="javascript:;" data-url="two.html">条件分页查询</a></dd>
+              <dd id="m3" class="subMenu"><a href="javascript:;" data-url="three.html">列表三</a></dd>
+              <dd id="m4" class="subMenu"><a href="javascript:;" data-url="four.html">超链接</a></dd>
+            </dl>
+          </li>
+          <li class="layui-nav-item">
+            <a href="javascript:;"  style="font-size: 20px;">解决方案</a>
+            <dl class="layui-nav-child">
+              <dd><a href="javascript:;">列表一</a></dd>
+              <dd><a href="javascript:;">列表二</a></dd>
+              <dd><a href="">超链接</a></dd>
+            </dl>
+          </li>
+          <li class="layui-nav-item"><a href="" style="font-size: 20px;">云市场</a></li>
+          <li class="layui-nav-item"><a href="" style="font-size: 20px;">发布商品</a></li>
+        </ul>
+      </div>
+    </div>
+  
+    <div class="layui-tab layui-tab-brief" lay-filter="demo" lay-allowclose="true">
+      <ul class="layui-tab-title site-demo-title">
+        <li id="homeTab" class="layui-this" lay-id="1" style="font-size: 15px;font-weight: bold;">首页</li>
+      </ul>
+      <div class="layui-body layui-tab-content site-demo site-demo-body" style="overflow: hidden;">
+        <div class="layui-tab-item layui-show" style="overflow-y:auto;">
+          <iframe src="main.html" class="layadmin-iframe" frameborder="no" border="0" allowtransparency="yes"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <div class="layui-footer">
+      <!-- 底部固定区域 -->
+      © 半杯可可 - Steam游戏饰品商城系统
+    </div>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>首页</title>
+<link href="pageTable/css/pageTable-One.css" rel="stylesheet">
+<link rel="stylesheet" href="layui/css/layui.css">
+
+</head>
+<body>
+    <div class = "div_One">
+        <span class = "span_One">Steam游戏饰品商城系统</span>
+
+        <div class = "div_Two"> 
+            <span class="span_Two" >欢迎管理员</span>
+            <span class="span_Two"style="margin-left: 400px;">登录地址：</span><span style="color: white;font-size: 20px;font-weight: bold;">本地登录</span>
+            
+
+            <span style="color:white;font-size: 20px;font-weight: bold;margin-left: 310px;" id = "datatiem"></span>
+          
+            <span  id = "currentDateTime" class = "span_Three"></span>
+
+
+        </div>
+
+        <div class = "div_Three">
+            <div class = "div_Three_One">
+              <span class = "spanModule layui-icon layui-icon-templeate-1">常用模块</span>
+               
+               <div class = "div_Three_One_One">
+                    <button class="buttonModule"><span class="layui-icon layui-icon-user" style=" color: white;font-size: 20px;">用户管理</span></button><br><br><br><br>
+                    <button class="buttonModule"><span class="layui-icon layui-icon-auz" style="color: white;font-size: 20px;">权限管理</span></button><br><br><br><br>
+                    <button class="buttonModule"><span class="layui-icon layui-icon-friends" style="color: white;font-size: 20px;">角色管理</span></button>
+               </div>    
+               <div class = "div_Three_One_Two">
+                <button class="buttonModule "><span class="layui-icon  layui-icon-addition" style=" color: white;font-size: 20px;">添加用户</span></button><br><br><br><br>
+                <button class="buttonModule "><span class="layui-icon  layui-icon-addition" style="color: white;font-size: 20px;">授予权限</span></button><br><br><br><br>
+                <button class="buttonModule "><span class="layui-icon  layui-icon-addition" style="color: white;font-size: 20px;">添加角色</span></button>
+               </div> 
+            </div>
+            <div class="div_Three_Two" style="text-align: left; margin-right: -70px;">
+                <button class="buttonModule " style="width: 370px;height: 60px;margin-top: 70px;" ><span class="layui-icon  layui-icon-edit" style=" color: white;font-size: 30px;">我待办</span></button><span></span><br><br><br><br>
+                <button class="buttonModule "  style="width: 370px;height: 60px;"><span class="layui-icon  layui-icon-file" style="color: white;font-size: 30px;">我未办</span></button><br><br><br><br>
+                <button class="buttonModule "  style="width: 370px;height: 60px;"><span class="layui-icon  layui-icon-file-b" style="color: white;font-size: 30px;">我已办</span></button>
+
+            </div>
+            <span style="color: white;position: absolute;margin-left: -640px;margin-top: 20px;">有问题请联系总管理员：廖先生，15818988753，肖先生，18923067141</span>
+        </div>
+       
+
+
+    </div>
+</body>
+<script>
+       function getCurrentDateTime() {
+            var currentTime = new Date();
+            var currentDateTimeElement = document.getElementById("currentDateTime");
+            var datatiem = document.getElementById("datatiem");
+           
+
+            const year = currentTime.getFullYear();
+            const month = currentTime.getMonth() + 1;
+            const day = currentTime.getDate();
+            //输出年月日
+            datatiem.innerText = `${year}年${month}月${day}日`;
+           
+            const hours = currentTime.getHours();
+            const minutes = currentTime.getMinutes();
+            const seconds = currentTime.getSeconds();
+            //输出时分秒
+            currentDateTimeElement.innerText = `${hours}:${minutes}:${seconds}`;
+        }
+
+        // 每秒钟更新一次时间
+        setInterval(getCurrentDateTime, 1000);
+</script>
+</html>
