@@ -127,7 +127,6 @@
             width: 100px;
             border-radius: 0px;
         }
-
         .input-with-select{
             width: 200px;
             background-color: #fff;
@@ -135,11 +134,22 @@
             margin-right: 20px;
             border-radius: 5px;
         }
+        <!-- -->
         .top-so{
             width: 98%;
-            height: 80px;
+            height: 60px;
             background: rgb(18,22,29);
-            margin:10px 12px 0px 12px;
+            margin:5px 12px 0px 12px;
+        }
+        .el-input-s{
+            margin: 15px 0px 10px 0px;
+        }
+        .el-row-d{
+            color:#fff;
+            margin:20px 10px 0px 0px;
+        }
+        .el-row-di{
+            margin-left: 15px;
         }
 
 
@@ -161,6 +171,7 @@
     </div>
 
     <!--展示的-----------------------------头-->
+
     <div class="el-margin-top">
         <el-row class="el-row-top" gutter="40">
             <el-col :span="2"><div class="el-row-y">
@@ -337,8 +348,19 @@
             </template>
         </div>
     </div>
-    <div class="top-so">
 
+    <!-- 筛选的---------------------->
+
+    <div class="top-so">
+        <el-row class="el-row-di">
+            <el-col :span="2"><div class="el-row-d">筛选：</div></el-col>
+            <el-col :span="2"><div class="el-row-d">最低交易量</div></el-col>
+            <el-col :span="2"><div >
+                <el-input  v-model="input" clearable size="mini" class="el-input-s"></el-input>
+            </div>
+            </el-col>
+
+        </el-row>
     </div>
 </div>
 </body>
@@ -432,7 +454,8 @@
                 value6: '',
                 value7: '',
                 values:'',
-                input3:''
+                input3:'',
+                input:''
             }
         }
     })
