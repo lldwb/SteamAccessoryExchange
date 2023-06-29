@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface SellDao {
     /**
-     * 出售，分页查询
+     * 分页查询
      * @param numberOf 从第几行开始查
      * @param limit 查多少条
      * @return

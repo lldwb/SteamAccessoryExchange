@@ -1,6 +1,9 @@
 package top.lldwb.sae.service.user;
 
 import top.lldwb.sae.entity.user.User;
+import top.lldwb.sae.vo.PageVO;
+
+import java.util.List;
 
 /**
  * @author 安然的尾巴
@@ -23,7 +26,7 @@ public interface UserServiceInterFace {
      * @param idCard 身份证
      * @return
      */
-    int loginAdd(String name,String email,String password,String nickName,String phone,String idCard ,String emailCode);
+    public int loginAdd(String name,String email,String password,String nickName,String phone,String idCard ,String emailCode);
 
     /***
      * 根据id删除
@@ -31,15 +34,15 @@ public interface UserServiceInterFace {
      * @return
      */
 
-    int loginDelete(int id) ;
+    public int loginDelete(int id) ;
 
     /***
      * 修改
      * @return
      */
 
-    int loginUpdate(String password,String nickName,String phone,String idcard,int state,int userId) ;
-    int loginUpdateEmail(String email,int userid,String emailCode) ;
+    public int loginUpdate(String password,String nickName,String phone,String idcard,int state,int userId) ;
+    public int loginUpdateEmail(String email,int userid,String emailCode) ;
     /***
      * 用户登录
      * @param name 用户名
@@ -47,8 +50,19 @@ public interface UserServiceInterFace {
      * @return
      */
 
-    User login(String name, String password) ;
-    User loginEmail(String email,String emailCode) ;
+    public User login(String name, String password) ;
+    public User loginEmail(String email,String emailCode) ;
+
+    /***
+     * 分页查询
+     * 含条件查询
+     * @param page 当前页
+     * @param limit 分页
+     * @param userName 条件用户名
+     * @param userEmail 条件邮箱地址
+     * @return
+     */
+    public PageVO<List<User>> pageVoList(String userName, String userEmail, int page, int limit) ;
 
     /**
      * 查询用户状态
@@ -56,4 +70,5 @@ public interface UserServiceInterFace {
      * @return
      */
     int selectStatus(String name);
+
 }
