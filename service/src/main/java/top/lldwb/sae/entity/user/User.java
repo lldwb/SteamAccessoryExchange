@@ -23,7 +23,7 @@ import java.sql.Timestamp;
  */
 public class User {
     @Column("user_id")
-    private int userId;//用户ID
+    private Integer userId;//用户ID
     @Column("user_name")
     private String userName ;//用户名
     @Column("user_email")
@@ -37,11 +37,11 @@ public class User {
     @Column("user_id_card")
     private String userIdCard;//用户身份证
     @Column("user_state")
-    private int userState;//用户状态
+    private Integer userState;//用户状态
     @Column("user_time")
     private Timestamp userTime;//用户创建时间
     @Column("role_id")
-    private int roleId;//外键角色表id
+    private Integer roleId;//外键角色表id
     @Column("user_renew_time")
     private Timestamp userRenewTime;//用户修改时间
 }
