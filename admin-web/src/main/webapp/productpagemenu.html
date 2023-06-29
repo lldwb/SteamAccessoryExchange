@@ -44,7 +44,7 @@
         .el-margin-top{
             width: 98%;
             height: 180px;
-          background: rgb(18,22,29);
+            background: rgb(18,22,29);
             margin:10px 12px 0px 12px;
         }
         .el-row-y{
@@ -129,20 +129,22 @@
         }
         .input-with-select{
             width: 200px;
-            background-color: #fff;
             float: right;
             margin-right: 20px;
             border-radius: 5px;
+            background-color: rgb(45,47,62);
         }
+
         <!-- -->
         .top-so{
             width: 98%;
             height: 60px;
             background: rgb(18,22,29);
             margin:5px 12px 0px 12px;
+
         }
         .el-input-s{
-            margin: 15px 0px 10px 0px;
+            margin: 16px 0px 10px 0px;
         }
         .el-row-d{
             color:#fff;
@@ -151,7 +153,60 @@
         .el-row-di{
             margin-left: 15px;
         }
+        .el-button-s{
+            height: 30px;
+            margin-top: 16px;
+            display: flex;
+            align-items: center;
+        }
 
+        <!---->
+        .el-so{
+            width: 98%;
+            height: 55px;
+            background: rgb(28,32,43);
+            margin:5px 12px 0px 12px;
+        }
+        .el-row-zo{
+
+        }
+        .el-row-zoa .el-button-a{
+            height: 55px;
+            width: 150px;
+            font-size: 15px;
+            border-radius: 0px;
+            background: rgb(28,32,43);
+        }
+        .el-input-a{
+            height: 30px;
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .el-margin-w{
+            width: 98%;
+            height: 550px;
+            background: #8c939d;
+            margin: 0px 10px 10px 12px;
+        }
+        .el-bg-di{
+            background: cyan;
+
+        }
+        .el-select-di{
+            width: 100px;
+            border-radius: 0px;
+            margin: 15px 10px 0px 10px;
+        }
+        el-wz{
+
+        }
+        .el-input-min{
+            height: 30px;
+            width: 85px;
+            margin: 15px 10px 0px 10px;
+
+        }
 
     </style>
 </head>
@@ -159,13 +214,27 @@
 <div id="app"  class="show-top-a">
     <div class="show-top-wz">
         <el-row gutter="20">
-            <el-col :span="3"><div class="grid-content ">杰杰buff</div></el-col>
-            <el-col :span="2"><div class="grid-content ">首页</div></el-col>
-            <el-col :span="2"><div class="grid-content ">饰品市场</div></el-col>
-            <el-col :span="2"><div class="grid-content ">游戏资讯</div></el-col>
-            <el-col :span="11"><div class="grid"></div></el-col>
-            <el-col :span="2"><div class="grid-content">CS-GO</div></el-col>
-            <el-col :span="2"><div class="grid-content">登录/注册</div></el-col>
+            <el-col :span="3">
+                <div class="grid-content ">杰杰buff</div>
+            </el-col>
+            <el-col :span="2">
+                <div class="grid-content ">首页</div>
+            </el-col>
+            <el-col :span="2">
+                <div class="grid-content ">饰品市场</div>
+            </el-col>
+            <el-col :span="2">
+                <div class="grid-content ">游戏资讯</div>
+            </el-col>
+            <el-col :span="11">
+                <div class="grid"></div>
+            </el-col>
+            <el-col :span="2">
+                <div class="grid-content">CS-GO</div>
+            </el-col>
+            <el-col :span="2">
+                <div class="grid-content">登录/注册</div>
+            </el-col>
         </el-row>
         <hr style="border: 1px solid black"/>
     </div>
@@ -355,11 +424,57 @@
         <el-row class="el-row-di">
             <el-col :span="2"><div class="el-row-d">筛选：</div></el-col>
             <el-col :span="2"><div class="el-row-d">最低交易量</div></el-col>
-            <el-col :span="2"><div >
+            <el-col :span="2">
                 <el-input  v-model="input" clearable size="mini" class="el-input-s"></el-input>
-            </div>
             </el-col>
 
+            <el-col :span="1"><div class="el-row-d"></div></el-col>
+            <el-col :span="2"><div class="el-row-d">最低比例</div></el-col>
+            <el-col :span="2">
+                <el-input v-model="input" clearable size="mini" class="el-input-s"></el-input>
+            </el-col>
+            <el-col :span="1"><div class="el-row-d"></div></el-col>
+            <el-button type="primary" class="el-button-s">开始</el-button>
+        </el-row>
+    </div>
+
+    <div class="el-so">
+        <el-row class="el-row-zo">
+            <el-col :span="3" class="el-row-zoa">
+                <el-button  class="el-button-a">出售</el-button>
+            </el-col>
+            <el-col :span="3" class="el-row-zoa">
+                <el-button  class="el-button-a">求购</el-button>
+            </el-col>
+            <el-col :span="3" class="el-row-zoa">
+                <el-button  class="el-button-a">热门关注</el-button>
+            </el-col>
+            <el-col :span="6"><div class="el-row-d"></div></el-col>
+            <el-col :span="5">
+                <div class="el-row-aa">
+                    <el-input v-model="input" clearable size="mini" class="el-input-min"  placeholder="最低价"></el-input>
+                    <el-input v-model="input" clearable size="mini" class="el-input-min" placeholder="最高价"></el-input>
+                </div>
+            </el-col>
+            <el-col :span="1"><div></div></el-col>
+            <el-col :span="2">
+                <template class="el-r">
+                    <el-select v-model="value" placeholder="排序"  size="mini" class="el-select-di">
+                        <el-option v-for="item in paixun" :key="item.value" :label="item.label" :value="item.value">
+                        </el-option>
+                    </el-select>
+                </template>
+            </el-col>
+        </el-row>
+    </div>
+
+    <div class="el-margin-w">
+        <el-row :gutter="20"  type="flex" class="el-bg-di" justify="center">
+            <el-col :span="4"><div class=""></div></el-col>
+            <el-col :span="4"><div class=""></div></el-col>
+            <el-col :span="4"><div class=""></div></el-col>
+            <el-col :span="4"><div class=""></div></el-col>
+            <el-col :span="4"><div class=""></div></el-col>
         </el-row>
     </div>
 </div>
@@ -421,17 +536,17 @@
                 }, {
                     value: '选项4',
                     label: '传说'
-                }
-                ]},{
+                }]
+            },{
                 options1: [{
-                value: '选项1',
-                label: '崭新出厂'
+                    value: '选项1',
+                    label: '崭新出厂'
                 }, {
-                value: '选项2',
-                label: '纪念'
+                    value: '选项2',
+                    label: '纪念'
                 }, {
-                value: '选项3',
-                label: '略有磨损'
+                    value: '选项3',
+                    label: '略有磨损'
                 },, {
                     value: '选项4',
                     label: '久经沙场'
@@ -444,8 +559,12 @@
                 }, {
                     value: '选项7',
                     label: '无涂装'
-                }
-            ]},{
+                }]
+            },{
+
+            }
+                ,{
+                value:'',
                 value1: '',
                 value2: '',
                 value3: '',
