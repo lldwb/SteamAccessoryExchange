@@ -2,6 +2,8 @@ package top.lldwb.sae.dao.user;
 
 import top.lldwb.sae.entity.user.User;
 
+import java.util.List;
+
 /***
  * @Date(时间)2023-06-20
  * @Author 家辉
@@ -61,10 +63,18 @@ public interface UserFace {
      */
     String getSteamIdById(int userId);
 
-    /**
-     * 查询用户状态
-     * @param name 用户名
+
+    /***
+     * 分页查询
+     * @param page 当前业
+     * @param limit 页数
      * @return
      */
-    int selectStatus(String name);
+    List<User> listUserLimit(User entity,int page,int limit) ;
+
+    /***
+     * 统计用户数量
+     * @return
+     */
+    Long count() ;
 }

@@ -16,7 +16,7 @@ import java.util.List;
  * Author: tianyuan
  * Date: 2023/6/20
  */
-public class RechargeWithdrawalController {
+public class RechargeWithdrawalcontroller {
 
     @RequestMapping("/Recharge")
     public View recharge(@Model RechargeWithdrawal rw){
