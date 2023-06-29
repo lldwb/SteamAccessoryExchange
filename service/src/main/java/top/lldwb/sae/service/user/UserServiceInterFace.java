@@ -1,5 +1,6 @@
 package top.lldwb.sae.service.user;
 
+import top.lldwb.sae.entity.rode.Role;
 import top.lldwb.sae.entity.user.User;
 import top.lldwb.sae.vo.PageVO;
 
@@ -62,6 +63,6 @@ public interface UserServiceInterFace {
      * @param userEmail 条件邮箱地址
      * @return
      */
-    public PageVO<List<User>> pageVoList(String userName, String userEmail, int page, int limit) ;
+    public PageVO<List<User>> pageUserVoList(String userName, String userEmail, int page, int limit) ;
 
 }

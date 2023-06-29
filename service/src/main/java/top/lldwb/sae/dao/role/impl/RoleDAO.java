@@ -95,4 +95,25 @@ public class RoleDAO implements RoleInterFace {
         //返回
         return MySqlUtil.queryList(Role.class,sql,role_level);
     }
+
+    @Override
+    public List<Role> QueryLimitRole(Role entity, int number, int limit) {
+        //获取sql语句
+        String sql = "select role_id,role_level,role_describe from role" ;
+        //获取sql语句where多条件查询
+        String sqlWhere = "where role_id = ?" ;
+        //获取sql语句limit分页
+        String sqlLimit = "limit ?,?" ;
+
+        //调用分页查询公共类
+        return null;
+    }
+
+    @Override
+    public Long count() {
+        String sql = "select COUNT(*) from role" ;
+
+        return MySqlUtil.queryColumn(1,sql) ;
+    }
+
 }

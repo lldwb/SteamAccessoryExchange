@@ -43,5 +43,19 @@ public interface RoleInterFace {
     List<Role> listConditionQuery(String role_level) ;
 
 
+    /***
+     * 分页查询
+     * @param entity
+     * @param number
+     * @param limit
+     * @return
+     */
+    List<Role> QueryLimitRole(Role entity,int number,int limit) ;
+
+    /***
+     * 统计
+     * @return
+     */
+    Long count();
 
 }

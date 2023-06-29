@@ -161,7 +161,7 @@ public class UserController {
                                        @RequestParam("limit")int limit){
 
         UserServiceInterFace service = new UserService() ;
-        resultVO = new ResultVO<>(200,"查询成功",service.pageVoList(userName,userEmail,page,limit)) ;
+        resultVO = new ResultVO<>(200,"查询成功",service.pageUserVoList(userName,userEmail,page,limit)) ;
 
         return new JsonView(resultVO);
     }
