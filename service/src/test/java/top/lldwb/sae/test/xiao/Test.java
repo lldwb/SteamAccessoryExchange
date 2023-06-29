@@ -1,7 +1,9 @@
 package top.lldwb.sae.test.xiao;
 
 import top.lldwb.sae.dao.commodity.CommodityClassDAO;
+import top.lldwb.sae.dao.commodity.CommodityInstanceDAO;
 import top.lldwb.sae.dao.commodity.impl.CommodityClassDAOImpl;
+import top.lldwb.sae.dao.commodity.impl.CommodityInstanceDAOImpl;
 import top.lldwb.sae.entity.commodity.CommodityClass;
 import top.lldwb.sae.entity.commodity.CommodityInstance;
 
@@ -17,18 +19,15 @@ public class Test {
 
     @org.junit.Test
  public void testcount(){
-        //创建一个对象
-        CommodityInstance instance = new CommodityInstance();
-        String str = new String();
-        //判断对象的属性值是否为空
-         //当判断对象未进行赋值的String类型属性值时
-        if (str.equals("")){
-            System.out.println("error");
-        }
+        new Thread(()->{
+            System.out.println("1");
+            CommodityClassDAO dao = new CommodityClassDAOImpl();
+            Long count = dao.count();
+            System.out.println(count);
 
-        if (instance.getInstanceName() == null){
-            System.out.println("yes");
-        }
+        }).start( );
+
+
 
     }
     @org.junit.Test
