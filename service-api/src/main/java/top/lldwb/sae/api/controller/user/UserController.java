@@ -155,10 +155,10 @@ public class UserController {
      * @return
      */
     @RequestMapping("/user/getLimitConditionQuery.do")
-    public View getLimitConditionQuery(@RequestParam("userName") String userName,
-                                       @RequestParam("userEmail")String userEmail,
-                                       @RequestParam("page")int page,
-                                       @RequestParam("limit")int limit){
+    public View getLimitConditionQuery(@RequestParam("page")int page,
+                                       @RequestParam("limit")int limit,
+                                       @RequestParam("userName") String userName,
+                                       @RequestParam("userEmail")String userEmail){
 
         UserServiceInterFace service = new UserService() ;
         resultVO = new ResultVO<>(200,"查询成功",service.pageUserVoList(userName,userEmail,page,limit)) ;

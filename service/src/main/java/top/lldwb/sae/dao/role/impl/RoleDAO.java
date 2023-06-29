@@ -97,16 +97,26 @@ public class RoleDAO implements RoleInterFace {
     }
 
     @Override
-    public List<Role> QueryLimitRole(Role entity, int number, int limit) {
+    public List<Role> queryLimitRole(Role entity, int number, int limit) {
         //获取sql语句
-        String sql = "select role_id,role_level,role_describe from role" ;
-        //获取sql语句where多条件查询
-        String sqlWhere = "where role_id = ?" ;
-        //获取sql语句limit分页
-        String sqlLimit = "limit ?,?" ;
+        StringBuilder sql = new StringBuilder() ;
+        sql.append("select role_id,role_level,role_describe from role ") ;
 
-        //调用分页查询公共类
-        return null;
+        //判断一下是否输入了条件
+        if(entity!=null && entity.getRoleLevel() !=null && !"".equals(entity.getRoleLevel().trim())){
+            sql.append("where role_level like ?") ;
+            sql.append("limit ?,?") ;
+            return MySqlUtil.queryList(Role.class,sql.toString(),"%"+entity.getRoleLevel()+"%",number,limit);
+        }
+        return queryLimitRecursionRole(number,limit);
+    }
+
+
+    public List<Role> queryLimitRecursionRole( int number, int limit) {
+        //获取sql语句
+        StringBuilder sql = new StringBuilder() ;
+        sql.append("select role_id,role_level,role_describe from role limit ?,?") ;
+        return MySqlUtil.queryList(Role.class,sql.toString(),number,limit);
     }
 
     @Override

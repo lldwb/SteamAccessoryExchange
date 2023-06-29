@@ -61,8 +61,8 @@ public class PermissionFiltering_Zero implements Filter {
         //调用权限业务逻辑类
         PurviewServiceInterFace purviewDao = new PurviewService() ;
         //引用dao方法
-        Purview purviewEntity = purviewDao.purviewUserIDQuery(userEntity.getUserId()) ;
-        if(purviewEntity.getPurview_limitation().equals("0")){
+        Purview purviewEntity = purviewDao.purviewRoleIDQuery(userEntity.getUserId()) ;
+        if(purviewEntity.getPurviewLimitation().equals("0")){
             throw new AllException(500,"账号被封禁不可以登录") ;
         }
 

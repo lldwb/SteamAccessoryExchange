@@ -1,6 +1,7 @@
 package top.lldwb.sae.dao.purview;
 
 import top.lldwb.sae.entity.purview.Purview;
+import top.lldwb.sae.entity.rode.Role;
 
 import java.util.List;
 
@@ -55,4 +56,18 @@ public interface PurviewInterFace {
      */
     Purview purviewUserIDQuery(int id);
 
+
+    /***
+     * 分页查询
+     * @param entity 实体类
+     * @param number 当前页
+     * @param limit 页数
+     * @return
+     */
+    List<Purview> QueryLimitPurview(Purview entity, int number, int limit) ;
+    /***
+     * 统计
+     * @return
+     */
+    Long count();
 }

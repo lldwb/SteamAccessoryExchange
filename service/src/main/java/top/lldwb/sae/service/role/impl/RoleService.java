@@ -155,16 +155,16 @@ public class RoleService implements RoleServiceInterFace {
     /***
      * 分页查询
      * 含条件
-     * @param roleId
+     * @param roleLevel
      * @param page
      * @param limit
      * @return
      */
     @Override
-    public PageVO<List<Role>> pagseRoleVoList(int roleId, int page, int limit) {
+    public PageVO<List<Role>> pagseRoleVoList(String roleLevel, int page, int limit) {
         //调用实体类
         Role entity = new Role() ;
-        entity.setRoleId(1);
+        entity.setRoleLevel(roleLevel);
 
         //计算出page从几页开始
         int numberOf = PagingUtil.toNumbers(page,limit) ;
@@ -173,7 +173,7 @@ public class RoleService implements RoleServiceInterFace {
         RoleInterFace dao = new RoleDAO() ;
 
         //创建list集合存放查询到的数据
-        List<Role> list =  dao.QueryLimitRole(entity,numberOf,limit) ;
+        List<Role> list =  dao.queryLimitRole(entity,numberOf,limit) ;
 
 
         //获取role角色统计数据

@@ -77,7 +77,7 @@ public class RoleTest {
     public void limitQuery(){
 
         RoleServiceInterFace serviceInterFace = new RoleService() ;
-        PageVO<List<Role>> listPageVO = serviceInterFace.pagseRoleVoList(1,1,4) ;
+        PageVO<List<Role>> listPageVO = serviceInterFace.pagseRoleVoList("8",1,4) ;
        listPageVO.getData().forEach(System.out::println);
 
     }

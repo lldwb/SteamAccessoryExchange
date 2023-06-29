@@ -47,5 +47,5 @@ public interface RoleServiceInterFace {
      */
     List<Role> listConditionQuery(String role_level) ;
 
-     PageVO<List<Role>> pagseRoleVoList(int roleId, int page, int limit) ;
+     PageVO<List<Role>> pagseRoleVoList(String roleLevel, int page, int limit) ;
 }

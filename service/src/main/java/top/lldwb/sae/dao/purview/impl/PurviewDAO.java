@@ -2,6 +2,7 @@ package top.lldwb.sae.dao.purview.impl;
 
 import top.lldwb.sae.dao.purview.PurviewInterFace;
 import top.lldwb.sae.entity.purview.Purview;
+import top.lldwb.sae.entity.rode.Role;
 import top.lldwb.sae.utils.mySql.MySqlUtil;
 
 import java.util.List;
@@ -22,14 +23,14 @@ public class PurviewDAO implements PurviewInterFace {
     public int purviewADD(Purview purview) {
         //创建Object数组存放要添加的数据
         Object[] object = {
-                purview.getPurview_limitation(),//权限
-                purview.getPurview_describe(),//描述
-                purview.getUser_id() // FK用户id
+                purview.getPurviewLimitation(),//权限
+                purview.getPurviewDescribe(),//描述
+                purview.getRoleId(), // FK用户id
 
 
         };
         //获取sql数据
-        String sql = "insert into purview(purview_limitation,purview_describe,user_id) values(?,?,?)" ;
+        String sql = "insert into purview(purview_limitation,purview_describe,role_Id) values(?,?,?)" ;
         //返回结果集
         return MySqlUtil.update(sql,object);
     }
@@ -43,7 +44,7 @@ public class PurviewDAO implements PurviewInterFace {
     public int purviewDelete(int id) {
 
         //获取sql语句
-        String sql = "delete from purview where user_id = ?" ;
+        String sql = "delete from purview where role_Id = ?" ;
         //返回结果集
         return MySqlUtil.update(sql,id);
     }
@@ -58,7 +59,7 @@ public class PurviewDAO implements PurviewInterFace {
     public int purviewDelete(int purvoewId,int userId) {
 
         //获取sql语句
-        String sql = "delete from purview where purview_id = ? and user_id =  ?" ;
+        String sql = "delete from purview where purview_id = ? and role_Id =  ?" ;
         //返回结果集
         return MySqlUtil.update(sql,purvoewId,userId);
     }
@@ -74,14 +75,14 @@ public class PurviewDAO implements PurviewInterFace {
 
         //创建Object数组存放要修改的数据
         Object[] object = {
-                purview.getPurview_limitation(),//权限
-                purview.getPurview_describe(),//描述
-                purview.getUser_id(), // FK用户id
-                purview.getPurview_id() // id
+                purview.getPurviewLimitation(),//权限
+                purview.getPurviewDescribe(),//描述
+                purview.getRoleId(), // FK用户id
+                purview.getPurviewId() // id
         };
 
         //获取Sql语句
-        String sql = "update purview set purview_limitation = ?,purview_describe = ?,user_id = ? where purview_id = ?" ;
+        String sql = "update purview set purview_limitation = ?,purview_describe = ?,role_Id = ? where purview_id = ?" ;
 
         //返回结果集
         return MySqlUtil.update(sql,object);
@@ -94,7 +95,7 @@ public class PurviewDAO implements PurviewInterFace {
     @Override
     public List<Purview> purviewList() {
         //获取查询语句
-        String sql = "select purview_id,purview_limitation,purview_describe,user_id from purview" ;
+        String sql = "select purview_id,purview_limitation,purview_describe,role_Id from purview" ;
 
         //返回结果集
         return MySqlUtil.queryList(Purview.class,sql);
@@ -108,9 +109,36 @@ public class PurviewDAO implements PurviewInterFace {
     @Override
     public Purview purviewUserIDQuery(int id) {
         //获取sql查询语句
-        String sql = "select purview_id,purview_limitation,purview_describe,user_id from purview where user_id = ?" ;
+        String sql = "select purview_id,purview_limitation,purview_describe,user_id from purview where role_Id = ?" ;
 
         //返回结果集
         return MySqlUtil.queryT(Purview.class,sql,id);
+    }
+
+    @Override
+    public List<Purview> QueryLimitPurview(Purview entity, int number, int limit) {
+        //获取sql语句
+        StringBuilder sql = new StringBuilder() ;
+        sql.append("select purview_id,purview_limitation,purview_describe,role_Id from purview ") ;
+
+        if(entity != null && entity.getPurviewLimitation() !=null && !"".equals(entity.getPurviewLimitation().trim())){
+            sql.append("where purview_limitation like ?") ;
+            sql.append(" limit ?,?") ;
+            return MySqlUtil.queryList(Purview.class,sql.toString(),"%"+entity.getPurviewLimitation()+"%",number,limit) ;
+        }
+        if(entity != null && entity.getPurviewDescribe() !=null && !"".equals(entity.getPurviewDescribe().trim())){
+            sql.append("where purview_describe like ?") ;
+            sql.append(" limit ?,?") ;
+            return MySqlUtil.queryList(Purview.class,sql.toString(),"%"+entity.getPurviewDescribe()+"%",number,limit) ;
+        }
+        sql.append(" limit ?,?") ;
+        return MySqlUtil.queryList(Purview.class,sql.toString(),number,limit) ;
+    }
+
+    @Override
+    public Long count() {
+        String sql =("select COUNT(*) from purview ") ;
+
+        return MySqlUtil.queryColumn(1,sql) ;
     }
 }

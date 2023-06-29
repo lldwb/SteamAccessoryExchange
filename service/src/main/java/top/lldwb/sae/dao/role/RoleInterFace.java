@@ -50,7 +50,7 @@ public interface RoleInterFace {
      * @param limit
      * @return
      */
-    List<Role> QueryLimitRole(Role entity,int number,int limit) ;
+    List<Role> queryLimitRole(Role entity,int number,int limit) ;
 
     /***
      * 统计
