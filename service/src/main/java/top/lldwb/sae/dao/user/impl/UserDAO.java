@@ -177,5 +177,9 @@ public class UserDAO implements UserFace {
         return MySqlUtil.queryColumn(1,sql);
     }
 
+    @Override
+    public int selectStatus(String name) {
+        return MySqlUtil.queryColumn(1, "select user_state from user where user_name = ?", name);
+    }
 
 }

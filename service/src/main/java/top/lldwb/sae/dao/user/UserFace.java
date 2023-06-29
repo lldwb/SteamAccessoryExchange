@@ -77,4 +77,10 @@ public interface UserFace {
      * @return
      */
     Long count() ;
+    /**
+     * 查询用户状态
+     * @param name 用户名
+     * @return
+     */
+    int selectStatus(String name);
 }

@@ -64,4 +64,11 @@ public interface UserServiceInterFace {
      */
     public PageVO<List<User>> pageVoList(String userName, String userEmail, int page, int limit) ;
 
+    /**
+     * 查询用户状态
+     * @param name 用户名
+     * @return
+     */
+    int selectStatus(String name);
+
 }

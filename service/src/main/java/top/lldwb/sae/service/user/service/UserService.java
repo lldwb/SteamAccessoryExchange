@@ -249,5 +249,9 @@ public class UserService implements UserServiceInterFace {
         return PageUtils.toPageVO(list,count) ;
     }
 
+    @Override
+    public int selectStatus(String name) {
+        return new UserDAO().selectStatus(name);
+    }
 
 }
