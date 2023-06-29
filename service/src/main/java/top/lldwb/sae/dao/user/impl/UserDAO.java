@@ -4,6 +4,10 @@ import top.lldwb.sae.entity.user.User;
 import top.lldwb.sae.dao.user.UserFace;
 import top.lldwb.sae.utils.mySql.MySqlUtil;
 
+import java.time.Year;
+import java.util.ArrayList;
+import java.util.List;
+
 
 /***
  * @Date(时间)2023-06-18
@@ -90,6 +94,87 @@ public class UserDAO implements UserFace {
     @Override
     public String getSteamIdById(int userId) {
         return MySqlUtil.queryColumn(1,"select steam_id from user where user_id = ?",userId);
+    }
+
+    /***
+     * 查询所有数据
+     * 含模糊查询
+     * @param entity 实体类
+     * @param number 当前业
+     * @param limit 页数
+     * @return
+     */
+    @Override
+    public List<User> listUserLimit(User entity, int number, int limit) {
+        //获取SQL语句
+        StringBuilder sb = new StringBuilder() ;
+
+        sb.append("select");
+        sb.append(" user_id,");
+        sb.append(" user_name,");
+        sb.append(" user_email,");
+        sb.append(" user_password,");
+        sb.append(" user_nickname,");
+        sb.append(" user_phone,");
+        sb.append(" user_id_card,");
+        sb.append(" user_state,");
+        sb.append(" user_time,");
+        sb.append(" role_id,");
+        sb.append(" user_renew_time ");
+        sb.append(" from user ");
+
+        //判断多条件查询
+        if(entity!=null && entity.getUserName() !=null && !"".equals(entity.getUserName().trim())){
+            sb.append(" where user_name like ? ") ;
+            sb.append(" limit ?,?") ;
+            return MySqlUtil.queryList(User.class,sb.toString(),entity.getUserName(),number,limit);
+        }else if(entity.getUserEmail() !=null && !"".equals(entity.getUserEmail().trim())){
+            sb.append(" where user_email like ?") ;
+            sb.append(" limit ?,?") ;
+            return MySqlUtil.queryList(User.class,sb.toString(),entity.getUserEmail(),number,limit);
+        }
+       return  listUserLimitRecursion(number,limit) ;
+    }
+
+    /***
+     *
+     * @param number 当前页
+     * @param limit 页数
+     * @return
+     */
+    public static List<User> listUserLimitRecursion(int number, int limit) {
+        //获取SQL语句
+        StringBuilder sb = new StringBuilder() ;
+
+        sb.append("select");
+        sb.append(" user_id,");
+        sb.append(" user_name,");
+        sb.append(" user_email,");
+        sb.append(" user_password,");
+        sb.append(" user_nickname,");
+        sb.append(" user_phone,");
+        sb.append(" user_id_card,");
+        sb.append(" user_state,");
+        sb.append(" user_time,");
+        sb.append(" role_id,");
+        sb.append(" user_renew_time ");
+        sb.append("from user ");
+        sb.append("limit ?,?") ;
+        String sql = sb.toString();
+        return MySqlUtil.queryList(User.class,sql,number,limit);
+    }
+
+    /***
+     * 统计
+     * @return
+     */
+    @Override
+    public Long count() {
+
+        //获取sql语句
+        String sql = "select COUNT(*) from user" ;
+
+        return MySqlUtil.queryColumn(1,sql);
     }
 
 

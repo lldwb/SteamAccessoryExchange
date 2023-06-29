@@ -1,8 +1,13 @@
 package top.lldwb.sae.test.liao;
 
 import org.junit.jupiter.api.Test;
+import top.lldwb.sae.dao.user.impl.UserDAO;
+import top.lldwb.sae.entity.user.User;
 import top.lldwb.sae.service.user.UserServiceInterFace;
 import top.lldwb.sae.service.user.service.UserService;
+import top.lldwb.sae.vo.PageVO;
+
+import java.util.List;
 
 /**
  * @Date(时间)2023-06-18
@@ -45,5 +50,15 @@ public class UserTest {
         System.out.println(service.loginEmail("2026319182@qq.com","333333"));
 
     }
+    @Test
+    public void count(){
+        UserDAO dao = new UserDAO() ;
+        System.out.println(dao.count());
+    }
 
+    @Test
+    public void pageList(){
+        PageVO<List<User>> pageVO =service.pageVoList("","",1,3) ;
+        pageVO.getData().forEach(System.out::println);
+    }
 }

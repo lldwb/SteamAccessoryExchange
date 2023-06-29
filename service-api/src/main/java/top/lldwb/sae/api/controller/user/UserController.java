@@ -144,4 +144,26 @@ public class UserController {
         return new JsonView(resultVO) ;
     }
 
+
+    /***
+     * 查询所有数据
+     * 可以赋予条件查询
+     * @param userName 可以根据用户名查询
+     * @param userEmail 可以根据邮箱地址查询
+     * @param page 当前开始页数
+     * @param limit 到哪一页
+     * @return
+     */
+    @RequestMapping("/user/getLimitConditionQuery.do")
+    public View getLimitConditionQuery(@RequestParam("userName") String userName,
+                                       @RequestParam("userEmail")String userEmail,
+                                       @RequestParam("page")int page,
+                                       @RequestParam("limit")int limit){
+
+        UserServiceInterFace service = new UserService() ;
+        resultVO = new ResultVO<>(200,"查询成功",service.pageVoList(userName,userEmail,page,limit)) ;
+
+        return new JsonView(resultVO);
+    }
+
 }
