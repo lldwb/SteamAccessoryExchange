@@ -18,7 +18,6 @@ public interface CommodityClassDAO {
      */
     List<CommodityClass> listCommodityClassDAO(int numberOf, int limit);
 
-
     /**
      * 查询总记录数，用于计算总页数
      * @return
