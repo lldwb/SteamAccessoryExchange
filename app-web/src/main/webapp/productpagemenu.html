@@ -208,7 +208,7 @@
 
         }
         .el-row-tu{
-            height: 180px;
+            height: 160px;
             width: 170px;
             font-size: 15px;
             border-radius: 0px;
@@ -397,15 +397,15 @@
 
         <div class="el-template">
             <template>
-                <el-select v-model="value1" placeholder="品质" class="el-select-size" size="mini">
+                <el-select v-model="value" placeholder="品质" class="el-select-size" size="mini">
                     <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
                     </el-option>
                 </el-select>
-                <el-select v-model="value2" placeholder="类型"class="el-select-size" size="mini">
+                <el-select v-model="value1" placeholder="类型"class="el-select-size" size="mini">
                     <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
                     </el-option>
                 </el-select>
-                <el-select v-model="value3" placeholder="外观" class="el-select-size" size="mini">
+                <el-select v-model="value2" placeholder="外观" class="el-select-size" size="mini">
                     <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
                     </el-option>
                 </el-select>
@@ -532,81 +532,10 @@
                 }, {
                     value: '选项5',
                     label: '军规级'
-                }, {
-                    value: '选项6',
-                    label: '工业级'}, {
-                    value: '选项7',
-                    label: '消费级'
-                }, {
-                    value: '选项8',
-                    label: '非凡'
-                }, {
-                    value: '选项9',
-                    label: '卓越'
-                },{
-                    value: '选项10',
-                    label: '奇异'
-                }, {
-                    value: '选项11',
-                    label: '高级'
-                },{
-                    value: '选项12',
-                    label: '普通级'
-                }, {value: '选项13',
-                    label: '探员品质'
-                }],
-                options1: [{
-                    value: '选项1',
-                    label: '普通'
-                }, {
-                    value: '选项2',
-                    label: '纪念'
-                }, {
-                    value: '选项3',
-                    label: '珍贵'
-                }, {
-                    value: '选项4',
-                    label: '传说'
-                }]
-            },{
-                options1: [{
-                    value: '选项1',
-                    label: '崭新出厂'
-                }, {
-                    value: '选项2',
-                    label: '纪念'
-                }, {
-                    value: '选项3',
-                    label: '略有磨损'
-                },, {
-                    value: '选项4',
-                    label: '久经沙场'
-                }, {
-                    value: '选项5',
-                    label: '破损不堪'
-                }, {
-                    value: '选项6',
-                    label: '战痕累累'
-                }, {
-                    value: '选项7',
-                    label: '无涂装'
-                }]
-            },{
+                }],options1:[{
 
-            }
-                ,{
-                value:'',
-                value1: '',
-                value2: '',
-                value3: '',
-                value4: '',
-                value5: '',
-                value6: '',
-                value7: '',
-                values:'',
-                input3:'',
-                input:''
-            }
-        }
-    })
+                }],
+                value:''
+
+            }}})
 </script>
