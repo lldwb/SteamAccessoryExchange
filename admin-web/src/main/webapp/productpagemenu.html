@@ -8,10 +8,6 @@
     <style>
         @import url("//unpkg.com/element-ui@2.15.13/lib/theme-chalk/index.css");
 
-        body{
-
-        }
-
         .show-top-a{
             height:650px;
             width: 100%;
@@ -183,16 +179,8 @@
             display: flex;
             align-items: center;
         }
-        .el-margin-w{
-            width: 98%;
-            height: 550px;
-            background: #8c939d;
-            margin: 0px 10px 10px 12px;
-        }
-        .el-bg-di{
-            background: cyan;
 
-        }
+
         .el-select-di{
             width: 100px;
             border-radius: 0px;
@@ -207,7 +195,35 @@
             margin: 15px 10px 0px 10px;
 
         }
+        <!--             -->
 
+        .el-margin-w{
+            width: 98%;
+            height: 1100px;
+            background: #8c939d;
+            margin: 0px 10px 10px 12px;
+        }
+
+        .el-bg-di{
+
+        }
+        .el-row-tu{
+            height: 180px;
+            width: 170px;
+            font-size: 15px;
+            border-radius: 0px;
+            background: beige;
+            margin: 30px 25px 20px 35px;
+        }
+        .el-fen{
+            height: 100px;
+            width: 170px;
+            position: relative;
+        }
+        img{
+          width: 100%;
+            height: 110px;
+        }
     </style>
 </head>
 <body>
@@ -468,14 +484,30 @@
         </el-row>
     </div>
 
-    <div class="el-margin-w">
-        <el-row :gutter="20"  type="flex" class="el-bg-di" justify="center">
-            <el-col :span="4"><div class=""></div></el-col>
-            <el-col :span="4"><div class=""></div></el-col>
-            <el-col :span="4"><div class=""></div></el-col>
-            <el-col :span="4"><div class=""></div></el-col>
-            <el-col :span="4"><div class=""></div></el-col>
+    <div class="el-margin-w" v-for="">
+        <el-row type="flex" class="el-bg-di" justify="center">
+
+            <el-col :span="4" class="el-row-tu"><div class="el-fen">
+                <img src="img/img_2.png"/>武器箱</div>
+            </el-col>
+
+            <el-col :span="4" class="el-row-tu"><div class="el-fen">
+                <img src="img/img_2.png"/>武器箱</div>
+            </el-col>
+
+            <el-col :span="4" class="el-row-tu"><div class="el-fen">
+                <img src="img/img_2.png"/>武器箱</div>
+            </el-col>
+
+            <el-col :span="4" class="el-row-tu"><div class="el-fen">
+                <img src="img/img_2.png"/>武器箱</div>
+            </el-col>
+
+            <el-col :span="4" class="el-row-tu"><div class="el-fen">
+                <img src="img/img_2.png"/>武器箱</div>
+            </el-col>
         </el-row>
+
     </div>
 </div>
 </body>
@@ -485,7 +517,6 @@
         el:"#app",
         data() {
             return {
-
                 options: [{
                     value: '选项1',
                     label: ' 不限品质'
