@@ -14,6 +14,10 @@ import com.yupi.yucongming.dev.model.DevChatResponse;
 public class AiAssistant {
     private static final String accessKey = "6s79fihwbqimxso8865fevxsndood42g";
     private static final String secretKey = "owiqfxbwd43m1dnvqfjq2wku69zl198f";
+    private static DevChatRequest devChatRequest = new DevChatRequest();
+    static{
+        devChatRequest.setModelId(1674320317113249793L);
+    }
 
     /**
      * AI对话
@@ -22,8 +26,6 @@ public class AiAssistant {
      * @return
      */
     public static BaseResponse<DevChatResponse> dialogue(String questions) {
-        DevChatRequest devChatRequest = new DevChatRequest();
-        devChatRequest.setModelId(1674217456220057601L);
         devChatRequest.setMessage(questions);
         return doChat(devChatRequest);
     }

@@ -6,82 +6,103 @@
 		<script src="js/jquery.min.js"></script>
 		<script src="js/vue.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<!-- element-ui -->
 		<!-- 引入样式 -->
 		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
 		<!-- 引入组件库 -->
-		<script src="js/element-ui@2.15.13.js"></script>
+		<script src="js/element-ui_index.js"></script>
 	</head>
 
 	<body>
 		<div id="app">
-			<!--聊天头部名字展示-->
-			<van-sticky>
-				<div class="header">
-					<van-row>
-						<van-col span="5">
-						</van-col>
-						<van-col span="14">
-							<h3>客服</h3>
-						</van-col>
-						<van-col span="5">
-						</van-col>
-					</van-row>
-				</div>
-			</van-sticky>
+			<div>
+				<el-row :gutter="24">
+					<el-col :span="6" :offset="8">
+						<div class="grid-content bg-purple">
+							<h3>猫娘</h3>
+						</div>
+					</el-col>
+				</el-row>
+			</div>
+
 			<!--聊天内容-->
-			<!-- <div v-for="chat in list" :key="chat.id" :class="chat.id=='2'?'atalk':'btalk'"> -->
 			<div class="main" style="margin-bottom: 70px">
 				<div class="talkshow">
 					<div v-for="chat in list" :class="chat.message!=null?'atalk':'btalk'">
-						<!-- <div v-for="chat in list" :class="btalk"> -->
-						<span>{{chat.data.data}}</span>
-
+						<span>{{chat.data.data.content}}</span>
 					</div>
 				</div>
 			</div>
 			<!--发送消息-->
-			<div class="sendbox">
-				<input type="text" v-model.trim="wordone" class="inputword" @keyup.enter="sendmsg1" />
-				<input type="button" value="发送" @click="sendmsg1" class="btnsend" />
+			<div>
+				<el-row :gutter="24" class="sendbox">
+					<el-col :span="19">
+						<el-input type="textarea" v-model="wordone" :disabled="forbidden"
+							placeholder="请输入内容"></el-input>
+					</el-col>
+					<el-col :span="5">
+						<!-- <input type="button" value="发送" class="btnsend" /> -->
+						<el-button type="success" :disabled="forbidden" @click="sendmsg()" plain>发送</el-button>
+					</el-col>
+				</el-row>
 			</div>
 			<!-- </div> -->
 		</div>
 	</body>
 </html>
 <script>
-	var vm = new Vue({
+	var vue = new Vue({
 		el: '#app',
 		data: {
-			list: null,
+			list: [
+				// 	{
+				// 	data: {
+				// 		data: {
+				// 			content: ""
+				// 		}
+				// 	},
+				// 	message: "ok"
+				// }
+			],
 			//输入的值
 			wordone: '',
-			wordtwo: ''
+			wordtwo: '',
+			forbidden: false
 		},
 		methods: {
 			//定义点击发送按钮出发事件
-			sendmsg1() {
+			sendmsg() {
 				if (this.wordone != '') {
-					that.list += {
+					this.forbidden = true;
+					this.list.push({
 						data: {
-							data: this.wordone
+							data: {
+								content: this.wordone
+							}
 						}
-					};
+					});
 					$.ajax({
-						url: "http://localhost:8080/service_api_war/ai/dialogue?questions=%E4%BD%A0%E5%A5%BD%EF%BC%8C%E4%BD%A0%E6%98%AF%E8%B0%81",
+						url: "http://localhost:8080/service_api_war/ai/dialogue",
 						type: 'get',
 						//把输入框的内容发送到后台
 						data: {
 							//发送信息
 							questions: this.wordone
 						},
+						timeout: 10000,
 						success(result) {
-							console.log("成功");
-							that.list += result;
+							console.log(result);
+							vue.list.push(result);
+							vue.success = '';
+							vue.forbidden = false;
 						},
 						error() {
 							console.log("失败")
+							vue.forbidden = false;
 						}
 					})
+				} else {
+
 				}
 			}
 		},
