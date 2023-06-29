@@ -1,4 +1,4 @@
-package top.lldwb.sae.utils.CORSFilter;
+package top.lldwb.sae.utils.corsFilter;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletResponse;

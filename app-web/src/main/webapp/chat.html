@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>聊天界面</title>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/vue.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<!-- element-ui -->
+		<!-- 引入样式 -->
+		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+		<!-- 引入组件库 -->
+		<script src="js/element-ui_index.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<div style="width: 100%;">
+					<div>
+						<el-row :gutter="20">
+							<el-col :span="6" :offset="8">
+								<div class="grid-content bg-purple">
+									<h3>助手</h3>
+								</div>
+							</el-col>
+						</el-row>
+					</div>
+				
+					<!--聊天内容-->
+					<div class="main" style="margin-bottom: 70px">
+						<div class="talkshow">
+							<div v-for="chat in list" :class="chat.message!=null?'atalk':'btalk'">
+								<span>{{chat.data.data.content}}</span>
+							</div>
+						</div>
+					</div>
+					<!--发送消息-->
+					<div>
+						<el-row :gutter="24" class="sendbox">
+							<el-col :span="19">
+								<el-input type="textarea" v-model="wordone" :disabled="forbidden"
+									placeholder="请输入内容"></el-input>
+							</el-col>
+							<el-col :span="5">
+								<!-- <input type="button" value="发送" class="btnsend" /> -->
+								<el-button type="success" :disabled="forbidden" @click="sendmsg()" plain>发送</el-button>
+							</el-col>
+						</el-row>
+					</div>
+			</div>
+		</div>
+	</body>
+</html>
+<script>
+	var vue = new Vue({
+		el: '#app',
+		data: {
+			list: [
+				// 	{
+				// 	data: {
+				// 		data: {
+				// 			content: ""
+				// 		}
+				// 	},
+				// 	message: "ok"
+				// }
+			],
+			//输入的值
+			wordone: '',
+			wordtwo: '',
+			forbidden: false
+		},
+		methods: {
+			//定义点击发送按钮出发事件
+			sendmsg() {
+				if (this.wordone != '') {
+					this.forbidden = true;
+					this.list.push({
+						data: {
+							data: {
+								content: this.wordone
+							}
+						}
+					});
+					$.ajax({
+						url: "http://localhost:8080/service_api_war/ai/dialogue",
+						type: 'get',
+						//把输入框的内容发送到后台
+						data: {
+							//发送信息
+							questions: this.wordone
+						},
+						timeout: 10000,
+						success(result) {
+							console.log(result);
+							vue.list.push(result);
+							vue.success = '';
+							vue.forbidden = false;
+						},
+						error() {
+							console.log("失败")
+							vue.forbidden = false;
+						}
+					})
+				} else {
+
+				}
+			}
+		},
+
+	});
+</script>
+<style>
+	body {
+		background-color: #f1f2f6;
+	}
+
+	#box1,
+	#box2 {
+		width: 250px;
+		height: 400px;
+		background-color: pink;
+		margin: 50px 90px;
+		border-radius: 15px;
+	}
+
+	#box1 {
+		float: left;
+	}
+
+	#box2 {
+		float: right;
+	}
+
+	.header {
+		text-align: center;
+		border: 1px solid #dfe6e9;
+		border-top-left-radius: 15px;
+		border-top-right-radius: 15px;
+		background-color: #F5F5F5;
+	}
+
+	/*这里需要去除标题标签自带间距*/
+	h3 {
+
+		margin: 5px;
+		padding: 2px;
+		color: black;
+	}
+
+	.main {
+		hright: 85%;
+		overflow: scroll;
+		background-color: #f1f2f6;
+	}
+
+	div::-webkit-scrollbar {
+		display: none;
+	}
+
+	.atalk {
+		margin: 10px;
+	}
+
+	.atalk span {
+		display: inline-block;
+		padding: 3px 10px;
+		border: 1px solid white;
+		border-radius: 15px;
+		padding: 5px 10px;
+		background-color: white;
+	}
+
+	.btalk {
+		text-align: right;
+		margin: 10px;
+	}
+
+	.btalk span {
+		display: inline-block;
+		padding: 3px 10px;
+		border: 1px solid #6ddd0a;
+		border-radius: 15px;
+		background-color: #6ddd0a;
+	}
+
+	/*底部发送消息的设置*/
+	.sendbox {
+		height: 60px;
+		width: 100%;
+		position: fixed;
+		bottom: 0;
+		border-bottom-left-radius: 15px;
+		border-bottom-right-radius: 15px;
+		margin-right: 2%;
+		margin-left: 2%;
+		background-color: #F5F5F5;
+	}
+
+	.inputword {
+		outline: none;
+		width: 80%;
+		height: 25px;
+		border-radius: 15px;
+		text-indent: 12px;
+		margin-top: 4%;
+	}
+
+	.btnsend {
+		outline: none;
+		width: 13%;
+		height: 25px;
+		border-radius: 15px;
+		border: 1px solid grey;
+		margin-left: 2%;
+	}
+</style>
