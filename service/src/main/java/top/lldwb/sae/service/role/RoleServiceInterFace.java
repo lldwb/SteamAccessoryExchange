@@ -1,6 +1,8 @@
 package top.lldwb.sae.service.role;
 
 import top.lldwb.sae.entity.rode.Role;
+import top.lldwb.sae.entity.user.User;
+import top.lldwb.sae.vo.PageVO;
 
 import java.util.List;
 
@@ -44,4 +46,6 @@ public interface RoleServiceInterFace {
      * @return
      */
     List<Role> listConditionQuery(String role_level) ;
+
+     PageVO<List<Role>> pagseRoleVoList(String roleLevel, int page, int limit) ;
 }

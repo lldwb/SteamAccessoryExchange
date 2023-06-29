@@ -46,4 +46,9 @@ public class UserTest {
 
     }
 
+    @Test
+    public void pageList(){
+        PageVO<List<User>> pageVO =service.pageUserVoList("","2023@qq.com",1,3) ;
+        pageVO.getData().forEach(System.out::println);
+    }
 }

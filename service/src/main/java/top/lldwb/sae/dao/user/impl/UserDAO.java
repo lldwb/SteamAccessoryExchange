@@ -127,12 +127,13 @@ public class UserDAO implements UserFace {
         if(entity!=null && entity.getUserName() !=null && !"".equals(entity.getUserName().trim())){
             sb.append(" where user_name like ? ") ;
             sb.append(" limit ?,?") ;
-            return MySqlUtil.queryList(User.class,sb.toString(),entity.getUserName(),number,limit);
+            return MySqlUtil.queryList(User.class,sb.toString(),"%"+entity.getUserName()+"%",number,limit);
         }else if(entity.getUserEmail() !=null && !"".equals(entity.getUserEmail().trim())){
             sb.append(" where user_email like ?") ;
             sb.append(" limit ?,?") ;
-            return MySqlUtil.queryList(User.class,sb.toString(),entity.getUserEmail(),number,limit);
+            return MySqlUtil.queryList(User.class,sb.toString(),"%"+entity.getUserEmail()+"%",number,limit);
         }
+
        return  listUserLimitRecursion(number,limit) ;
     }
 

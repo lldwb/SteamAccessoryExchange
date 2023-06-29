@@ -227,7 +227,7 @@ public class UserService implements UserServiceInterFace {
     }
 
     @Override
-    public PageVO<List<User>> pageVoList(String userName, String userEmail, int page, int limit) {
+    public PageVO<List<User>> pageUserVoList(String userName, String userEmail, int page, int limit) {
         //先计算出page从几页开始
         int numberOf = PagingUtil.toNumbers(page,limit) ;
 
@@ -242,6 +242,8 @@ public class UserService implements UserServiceInterFace {
         List<User> list = dao.listUserLimit(entity,numberOf,limit) ;
 
         Long count = dao.count();
+
+
 
         return PageUtils.toPageVO(list,count) ;
     }

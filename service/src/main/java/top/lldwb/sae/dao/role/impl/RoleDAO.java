@@ -95,4 +95,35 @@ public class RoleDAO implements RoleInterFace {
         //返回
         return MySqlUtil.queryList(Role.class,sql,role_level);
     }
+
+    @Override
+    public List<Role> queryLimitRole(Role entity, int number, int limit) {
+        //获取sql语句
+        StringBuilder sql = new StringBuilder() ;
+        sql.append("select role_id,role_level,role_describe from role ") ;
+
+        //判断一下是否输入了条件
+        if(entity!=null && entity.getRoleLevel() !=null && !"".equals(entity.getRoleLevel().trim())){
+            sql.append("where role_level like ?") ;
+            sql.append("limit ?,?") ;
+            return MySqlUtil.queryList(Role.class,sql.toString(),"%"+entity.getRoleLevel()+"%",number,limit);
+        }
+        return queryLimitRecursionRole(number,limit);
+    }
+
+
+    public List<Role> queryLimitRecursionRole( int number, int limit) {
+        //获取sql语句
+        StringBuilder sql = new StringBuilder() ;
+        sql.append("select role_id,role_level,role_describe from role limit ?,?") ;
+        return MySqlUtil.queryList(Role.class,sql.toString(),number,limit);
+    }
+
+    @Override
+    public Long count() {
+        String sql = "select COUNT(*) from role" ;
+
+        return MySqlUtil.queryColumn(1,sql) ;
+    }
+
 }

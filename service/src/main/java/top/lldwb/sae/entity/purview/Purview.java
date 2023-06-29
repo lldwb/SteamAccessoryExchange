@@ -18,12 +18,12 @@ import org.nf.db.util.Column;
 @Builder
 public class Purview {
     @Column("purview_id")
-    private int purview_id	;//主键,自增1,非空	权限ID
+    private int purviewId	;//主键,自增1,非空	权限ID
     @Column("purview_limitation")
-    private String purview_limitation	;//	非空	限制
+    private String purviewLimitation	;//	非空	限制
     @Column("purview_describe")
-    private String purview_describe	;//	非空	描述
-    @Column("user_id")
-    private int user_id	;//外键	用户id
+    private String purviewDescribe	;//	非空	描述
+    @Column("role_id")
+    private int roleId	;//外键	用户id
 
 }

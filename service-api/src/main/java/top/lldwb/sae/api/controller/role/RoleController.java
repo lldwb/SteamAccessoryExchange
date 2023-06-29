@@ -107,6 +107,29 @@ public class RoleController {
     };
 
 
+    /***
+     * 分页查询所有
+     * @param roleLevel 级别
+     * @param page 当前页
+     * @param limit 页数
+     * @return
+     */
+    @RequestMapping("/role/getLimitQueryRole.do")
+    public View getLimitQueryRole(@RequestParam("roleLevel") String roleLevel,
+                                  @RequestParam("page")int page,
+                                  @RequestParam("limit") int limit){
+        //调用数据业务逻辑类
+        RoleServiceInterFace service = new RoleService() ;
+
+        //调用数据响应封装类
+        ResultVO<Object> resultVO = new ResultVO<>(200,"查询成功",service.pagseRoleVoList(roleLevel,page,limit)) ;
+
+        //返回
+        return new JsonView(resultVO);
+    }
+
+
+
 
 
 
