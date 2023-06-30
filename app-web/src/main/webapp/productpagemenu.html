@@ -230,33 +230,45 @@
             display: flex;
             justify-content: center;
         }
+        .grid-blank {
+            min-height: 36px;
+            margin: 0px;
+            padding: 0px;
+            background: white;
+            filter: opacity(0%);
+        }
     </style>
 </head>
 <body>
 <div id="app"  class="show-top-a">
-    <div class="show-top-wz">
-        <el-row gutter="20">
-            <el-col :span="3">
-                <div class="grid-content ">杰杰buff</div>
+    <div  style="background-image:url(img.png);">
+        <el-row>
+            <el-col :span="4"><div class="grid-blank" style="background-color:rgba(0,0,0,0);"></div></el-col>
+            <el-col :span="16">
+                <div style="float: left;padding-top: 20px">
+                    <img src="https://buff.163.com/static/images/site/logo.png">
+                </div>
+                <el-menu
+                        :default-active="activeIndex"
+                        class="el-menu-demo"
+                        mode="horizontal"
+                        @select="handleSelect"
+                        background-color="rgba(0,0,0,0)"
+                        text-color="#fff"
+                        active-text-color="#4886ff"
+                        hover-color="rgba(0,0,0,0.2)">
+                    <el-menu-item index="1">首页</el-menu-item>
+                    <el-menu-item index="2">饰品市场</el-menu-item>
+                    <el-menu-item index="3">游戏资讯</el-menu-item>
+
+                    <div class="login" style="padding: 20px ">登录/注册</div>
+                    <h3  class="login" >CS-GO</h3 >
+                    <el-menu-item :v-if="te" style="float: right" index="4">求购</el-menu-item>
+                    <el-menu-item :v-if="te" style="float: right" index="5">出售</el-menu-item>
+                    <el-menu-item :v-if="te" style="float: right" index="6">库存</el-menu-item>
+                </el-menu>
             </el-col>
-            <el-col :span="2">
-                <div class="grid-content ">首页</div>
-            </el-col>
-            <el-col :span="2">
-                <div class="grid-content ">饰品市场</div>
-            </el-col>
-            <el-col :span="2">
-                <div class="grid-content ">游戏资讯</div>
-            </el-col>
-            <el-col :span="11">
-                <div class="grid"></div>
-            </el-col>
-            <el-col :span="2">
-                <div class="grid-content">CS-GO</div>
-            </el-col>
-            <el-col :span="2">
-                <div class="grid-content">登录/注册</div>
-            </el-col>
+            <el-col :span="4"><div class="grid-blank" style="background-color:rgba(0,0,0,0);"></div></el-col>
         </el-row>
         <hr style="border: 1px solid black"/>
     </div>
@@ -678,6 +690,8 @@
                 value5:'',
                 value6:'',
                 value7:'',
+                activeIndex:1,
+                te:true ,
                 fits: ['fill', 'contain', 'cover', 'scale-down'],
                 url: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
             }}})
