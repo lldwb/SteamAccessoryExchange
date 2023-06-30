@@ -2,9 +2,11 @@ package top.lldwb.sae.dao.user.impl;
 
 import top.lldwb.sae.entity.user.User;
 import top.lldwb.sae.dao.user.UserFace;
-import top.lldwb.sae.utils.MySqlUtil;
+import top.lldwb.sae.utils.mySql.MySqlUtil;
 
-import java.sql.SQLException;
+import java.time.Year;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /***
@@ -14,19 +16,6 @@ import java.sql.SQLException;
  * 用户信息数据访问类
  */
 public class UserDAO implements UserFace {
-
-    /***
-     * 调用工具类
-     */
-    MySqlUtil mySqlUtil;
-
-    {
-        try {
-            mySqlUtil = new MySqlUtil();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     /***
      * 注册用户
@@ -51,14 +40,8 @@ public class UserDAO implements UserFace {
 
 
         //获取sql语句
-        String sql = "insert into user(user_name,user_email," +
-                "user_password,user_nickname,user_phone,user_id_card,user_state,user_time,role_id,user_renew_time)" +
-                "VALUES(?,?,?,?,?,?,?,?,?,?); " ;
-        try {
-            return mySqlUtil.update(sql,useObj);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        String sql = "insert into user(user_name,user_email,user_password,user_nickname,user_phone,user_id_card,user_state,user_time,role_id,user_renew_time)VALUES(?,?,?,?,?,?,?,?,?,?);" ;
+        return MySqlUtil.update(sql,useObj);
     }
 
     @Override
@@ -66,11 +49,7 @@ public class UserDAO implements UserFace {
         //获取sql查询语句
         String sql = "delete from user where user_id = ?" ;
         //执行
-        try {
-            return mySqlUtil.update(sql,id);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        return MySqlUtil.update(sql,id);
     }
 
     @Override
@@ -88,37 +67,120 @@ public class UserDAO implements UserFace {
         //获取sql语句
         String sql = "update user set user_password = ?,user_nickname = ?,user_phone = ?,user_id_card = ?,user_state = ?,user_renew_time = ? where user_id = ?" ;
 
-        try {
-            return mySqlUtil.update(sql,useObj);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        return MySqlUtil.update(sql,useObj);
     }
 
     @Override
     public int loginUpdateEmail(String email, int userid) {
         //获取sql语句
         String sql = "update user set user_email = ? where user_id = ?" ;
-        try {
-            return mySqlUtil.update(sql,email,userid);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        return MySqlUtil.update(sql,email,userid);
     }
 
     @Override
     public  User login(String name) {
         //获取查询语句
         String sql = "select user_id,user_name,user_email,user_password,user_nickname,user_phone,user_id_card,user_state,user_time,role_id,user_renew_time from user where user_name = ?";
-        return mySqlUtil.queryT(User.class, sql, name);
+        return MySqlUtil.queryT(User.class, sql, name);
     }
 
     @Override
     public User loginEmail(String email) {
         //获取查询语句
         String sql = "select user_id,user_name,user_email,user_password,user_nickname,user_phone,user_id_card,user_state,user_time,role_id,user_renew_time from user where user_email = ?";
-        return mySqlUtil.queryT(User.class, sql, email);
+        return MySqlUtil.queryT(User.class, sql, email);
     }
 
+    @Override
+    public String getSteamIdById(int userId) {
+        return MySqlUtil.queryColumn(1,"select steam_id from user where user_id = ?",userId);
+    }
+
+    /***
+     * 查询所有数据
+     * 含模糊查询
+     * @param entity 实体类
+     * @param number 当前业
+     * @param limit 页数
+     * @return
+     */
+    @Override
+    public List<User> listUserLimit(User entity, int number, int limit) {
+        //获取SQL语句
+        StringBuilder sb = new StringBuilder() ;
+
+        sb.append("select");
+        sb.append(" user_id,");
+        sb.append(" user_name,");
+        sb.append(" user_email,");
+        sb.append(" user_password,");
+        sb.append(" user_nickname,");
+        sb.append(" user_phone,");
+        sb.append(" user_id_card,");
+        sb.append(" user_state,");
+        sb.append(" user_time,");
+        sb.append(" role_id,");
+        sb.append(" user_renew_time ");
+        sb.append(" from user ");
+
+        //判断多条件查询
+        if(entity!=null && entity.getUserName() !=null && !"".equals(entity.getUserName().trim())){
+            sb.append(" where user_name like ? ") ;
+            sb.append(" limit ?,?") ;
+            return MySqlUtil.queryList(User.class,sb.toString(),"%"+entity.getUserName()+"%",number,limit);
+        }else if(entity.getUserEmail() !=null && !"".equals(entity.getUserEmail().trim())){
+            sb.append(" where user_email like ?") ;
+            sb.append(" limit ?,?") ;
+            return MySqlUtil.queryList(User.class,sb.toString(),"%"+entity.getUserEmail()+"%",number,limit);
+        }
+
+       return  listUserLimitRecursion(number,limit) ;
+    }
+
+    /***
+     *
+     * @param number 当前页
+     * @param limit 页数
+     * @return
+     */
+    public static List<User> listUserLimitRecursion(int number, int limit) {
+        //获取SQL语句
+        StringBuilder sb = new StringBuilder() ;
+
+        sb.append("select");
+        sb.append(" user_id,");
+        sb.append(" user_name,");
+        sb.append(" user_email,");
+        sb.append(" user_password,");
+        sb.append(" user_nickname,");
+        sb.append(" user_phone,");
+        sb.append(" user_id_card,");
+        sb.append(" user_state,");
+        sb.append(" user_time,");
+        sb.append(" role_id,");
+        sb.append(" user_renew_time ");
+        sb.append("from user ");
+        sb.append("limit ?,?") ;
+        String sql = sb.toString();
+        return MySqlUtil.queryList(User.class,sql,number,limit);
+    }
+
+    /***
+     * 统计
+     * @return
+     */
+    @Override
+    public Long count() {
+
+        //获取sql语句
+        String sql = "select COUNT(*) from user" ;
+
+        return MySqlUtil.queryColumn(1,sql);
+    }
+
+    @Override
+    public int selectStatus(String name) {
+        return MySqlUtil.queryColumn(1, "select user_state from user where user_name = ?", name);
+    }
 
 }

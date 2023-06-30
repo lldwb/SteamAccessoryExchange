@@ -1,6 +1,6 @@
 package top.lldwb.sae.dao.role;
 
-import top.lldwb.sae.entity.rode.RoleEntity;
+import top.lldwb.sae.entity.rode.Role;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public interface RoleInterFace {
      * 添加数据
      * @return
      */
-    int addRole(RoleEntity role) ;
+    int addRole(Role role) ;
 
     /***
      * 根据id删除
@@ -28,15 +28,34 @@ public interface RoleInterFace {
      * @param role
      * @return
      */
-    int updateRole(RoleEntity role) ;
+    int updateRole(Role role) ;
+    /***
+     * 查询所有数据
+     * @return
+     */
+    List<Role> listQuery() ;
 
     /***
-     * 根据级别查询
+     * 根据条件查询所有数据
      * @param role_level
      * @return
      */
-    List<RoleEntity> listQuery( String role_level) ;
+    List<Role> listConditionQuery(String role_level) ;
 
 
+    /***
+     * 分页查询
+     * @param entity
+     * @param number
+     * @param limit
+     * @return
+     */
+    List<Role> queryLimitRole(Role entity,int number,int limit) ;
+
+    /***
+     * 统计
+     * @return
+     */
+    Long count();
 
 }

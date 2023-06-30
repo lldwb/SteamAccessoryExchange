@@ -28,15 +28,34 @@
         </dependency>
 
         <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>com.sun.mail</groupId>
             <artifactId>javax.mail</artifactId>
             <version>1.6.2</version>
         </dependency>
+
         <!-- https://mvnrepository.com/artifact/javax.mail/javax.mail-api -->
         <dependency>
             <groupId>javax.mail</groupId>
             <artifactId>mail</artifactId>
             <version>1.4.7</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.yucongming</groupId>
+            <artifactId>yucongming-java-sdk</artifactId>
+            <version>0.0.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 </project>

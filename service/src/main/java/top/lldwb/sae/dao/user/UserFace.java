@@ -2,17 +2,20 @@ package top.lldwb.sae.dao.user;
 
 import top.lldwb.sae.entity.user.User;
 
+import java.util.List;
+
 /***
  * @Date(时间)2023-06-20
  * @Author 家辉
- */public interface UserFace {
+ */
+public interface UserFace {
 
     /***
      * 添加数据
      * @param user
      * @return
      */
-    public int loginAdd(User user);
+    int loginAdd(User user);
 
     /***
      * 根据id删除
@@ -20,7 +23,7 @@ import top.lldwb.sae.entity.user.User;
      * @return
      */
 
-    public int loginDelete(int id) ;
+    int loginDelete(int id);
 
     /***
      * 修改
@@ -28,7 +31,7 @@ import top.lldwb.sae.entity.user.User;
      * @return
      */
 
-    public int loginUpdate(User user) ;
+    int loginUpdate(User user);
 
     /***
      * 修改邮箱
@@ -36,14 +39,14 @@ import top.lldwb.sae.entity.user.User;
      * @param userid id
      * @return
      */
-    public int loginUpdateEmail(String email,int userid) ;
+    int loginUpdateEmail(String email, int userid);
 
     /***
      * 用户登录
      * @param name
      * @return
      */
-    public User login(String name) ;
+    User login(String name);
 
 
     /***
@@ -51,5 +54,33 @@ import top.lldwb.sae.entity.user.User;
      * @param email
      * @return
      */
-    public User loginEmail(String email) ;
+    User loginEmail(String email);
+
+    /**
+     * 根据用户id获取SteamID
+     * @param userId
+     * @return
+     */
+    String getSteamIdById(int userId);
+
+
+    /***
+     * 分页查询
+     * @param page 当前业
+     * @param limit 页数
+     * @return
+     */
+    List<User> listUserLimit(User entity,int page,int limit) ;
+
+    /***
+     * 统计用户数量
+     * @return
+     */
+    Long count() ;
+    /**
+     * 查询用户状态
+     * @param name 用户名
+     * @return
+     */
+    int selectStatus(String name);
 }

@@ -36,12 +36,11 @@ public class CodeTest {
 
     }
 
-    /***
-     * 测试已通过
-     */
+
+
     @Test
     public void Mail() {
-      MailEmail_Code.Mail_Code("2026319183@qq.com","qq邮箱授权码","Steam游戏商城","2026319183@qq.com") ;
+      MailEmail_Code.Mail_Code("2026319183@qq.com","授权码","游戏饰品商城","2026319183@qq.com") ;
     }
 
 

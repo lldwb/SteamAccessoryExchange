@@ -1,0 +1,33 @@
+.layui-tab-title li:first-child > i {
+    display: none;
+}
+
+.layadmin-iframe {
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0.5rem;
+}
+
+.fontSize-span {
+    background: linear-gradient(to right, rgba(0, 255, 208, 0.331), rgb(18, 18, 255));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 10% 50%;
+    background-position: 0 0;
+    font-size: 50px;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: shine 5s infinite;
+}
+@keyframes shine {
+    from {
+        background-position: 0% 0%;
+    }
+
+    to {
+        background-position: 100% 100%;
+    }
+}

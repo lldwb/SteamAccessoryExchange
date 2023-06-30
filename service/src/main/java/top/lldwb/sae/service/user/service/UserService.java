@@ -8,8 +8,11 @@ import top.lldwb.sae.entity.code.CodeTable;
 import top.lldwb.sae.entity.user.User;
 import top.lldwb.sae.service.exception.AllException;
 import top.lldwb.sae.service.user.UserServiceInterFace;
+import top.lldwb.sae.utils.vo.PageUtils;
+import top.lldwb.sae.utils.vo.PageVO;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 /***
  * @Date(时间)2023-06-20
@@ -164,9 +167,8 @@ public class UserService implements UserServiceInterFace {
      */
     @Override
     public User login(String name, String password) {
+        // 创建数据访问类
         UserFace face = new UserDAO() ;
-        //调用数据访问类
-        face = new UserDAO() ;
 
         //获取方法
         User user = face.login(name) ;
@@ -180,6 +182,7 @@ public class UserService implements UserServiceInterFace {
         if( !user.getUserName().equals(name) || !user.getUserPassword().equals(password) ){
             throw new AllException(500,"账号或密码不存在") ;
         }
+        user.setUserPassword("");
         return user;
     }
 
@@ -221,4 +224,32 @@ public class UserService implements UserServiceInterFace {
         }
         return user;
     }
+
+    @Override
+    public PageVO<List<User>> pageUserVoList(String userName, String userEmail, int page, int limit) {
+        //先计算出page从几页开始
+        int numberOf = PageUtils.toNumberOf(page,limit) ;
+
+        //调用实体类
+        User entity = new User() ;
+        entity.setUserName(userName);
+        entity.setUserEmail(userEmail);
+
+        //调用数访问类
+        UserFace dao = new UserDAO() ;
+        //引用dao方法
+        List<User> list = dao.listUserLimit(entity,numberOf,limit) ;
+
+        Long count = dao.count();
+
+
+
+        return PageUtils.toPageVO(list,count) ;
+    }
+
+    @Override
+    public int selectStatus(String name) {
+        return new UserDAO().selectStatus(name);
+    }
+
 }

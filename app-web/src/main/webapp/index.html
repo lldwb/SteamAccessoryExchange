@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>杰杰BUFF交易平台</title>
+    <!-- vue -->
+    <script src="js/vue.js"></script>
+    <script src="js/vue-router.js"></script>
+    <!-- jquery -->
+    <script src="js/jquery.min.js"></script>
+    <!-- element-ui -->
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<style>
+
+    .el-carousel__item:nth-child(2n) {
+        background-color:rgba(51,51,51,0.4);
+    }
+
+    .el-carousel__item:nth-child(2n+1) {
+       background-color:rgba(51,51,51,0.4);
+    }
+    .grid-content {
+        min-height: 380px;
+        margin: 0px;
+        padding: 0px;
+        background-color:rgba(51,51,51,0.4);
+    }
+
+    /*走马灯滑入样式开始*/
+    .slide-in-left {
+        animation: slide-in-left 1s linear;
+    }
+    .slide-in-right {
+        animation: slide-in-right 1s linear;
+    }
+    @keyframes slide-in-left {
+        0% {
+            transform: translateX(-100%);
+        }
+        100% {
+            transform: translateX(0);
+        }
+    }
+    @keyframes slide-in-right {
+        0% {
+            transform: translateX(100%);
+        }
+        100% {
+            transform: translateX(0);
+        }
+    }
+    .text {
+        width: 35%; /* 文字宽度占左半区 */
+        float: left;
+        color: white;
+        padding: 86px 0px 32px;
+
+    }
+    img {
+        width: 65%; /* 图片宽度占右半区 */
+        float: right;
+    }
+    /*走马灯滑入样式结束*/
+
+    .bottom {
+        margin-top: 13px;
+        line-height: 12px;
+    }
+
+    .button {
+        padding: 0;
+        float: right;
+    }
+
+    .clearfix:before,
+    .clearfix:after {
+        display: table;
+        content: "";
+    }
+
+    .clearfix:after {
+        clear: both
+    }
+
+</style>
+<body>
+<div id="app" >
+    <!--走马灯 background-repeat:repeat-x 图片横向重复-->
+    <el-row style="background-image:url(https://buff.163.com/static/images/site/index-header-bg.jpg);background-repeat: repeat-x" >
+        <el-col :span="4"><div class="grid-content "></div></el-col>
+        <el-col :span="20">
+            <div  style="padding-bottom: 50px">
+            <template>
+                <el-carousel :interval="3000" @change="handleSlideChange" height="380px">
+                    <el-carousel-item v-for="(item, index) in carouselItems" :key="index">
+                        <div class="slide-in-left">
+                            <div class="text">
+                                <H2>{{ item.description }}</H2>
+                                <p style="color: #d3d4d6">{{ item.miaoshu }}</p>
+                            </div>
+                        </div>
+                        <div class="slide-in-right">
+                            <img :src="item.imageUrl" :alt="'Image ' + (index + 1)">
+                        </div>
+                    </el-carousel-item>
+                </el-carousel>
+            </template>
+            </div>
+        </el-col>
+    </el-row>
+
+    <!--最新上架 background-repeat:repeat-x 图片横向重复-->
+    <el-row style="background-image:url(https://buff.163.com/static/images/site/index-section1-bg.jpg);background-repeat: repeat-x;">
+        <div style="padding: 30px 0px"></div>
+        <el-col :span="4"><div class="grid-content" style="background-color:rgba(0,0,0,0);"></div></el-col>
+        <el-col :span="16" style="min-width: 1000px;max-width: 1000px" >
+            <div style="border-bottom: 2px solid #BF9E4B">
+                <!--:underline="false 无下划线-->
+                <el-link href="#"
+                        style="float: right;text-align: center;padding-top: 10px" :underline="false">进入市场<i class="el-icon-arrow-right"></i>
+                </el-link>
+                <!--background: linear-gradient 渐变-->
+                <div style="width: 130px;height: 38px;background: linear-gradient(to right,#BF9E4B,#ccb314);color: white;
+                    text-align: center;">
+                    <h2>最新上架</h2>
+                </div>
+
+            </div>
+        <div class="demo-image" style="float: left" v-for="fit in ka" :key="fit">
+            <div style="margin: 22px 23px 28px 0px">
+                <el-image
+                        style="width: 170px; height: 100px;background-color: #333333"
+                        :src="fit.url"
+                        :fit="fill"></el-image>
+            <div style="background-color: white;width: 170px;height: 50px">
+                <span class="demonstration">{{ fit.fits }}</span>
+            </div>
+            </div>
+        </div>
+        </el-col>
+        <el-col :span="4"><div class="grid-content" style="background-color:rgba(0,0,0,0);"></div></el-col>
+    </el-row>
+</div>
+</body>
+</html>
+<script>
+    new Vue({
+        el:"#app",
+        data(){
+            return {
+                carouselItems: [
+                    {
+                        description: '这是文字1的描述',
+                        miaoshu:"描述",
+                        imageUrl: 'https://g.fp.ps.netease.com/market/file/61ced7b9672a523b935b62aeSKvY9jiM03'
+                    },
+                    {
+                        description: '这是文字2的描述',
+                        miaoshu:"描述",
+                        imageUrl: 'https://g.fp.ps.netease.com/market/file/61ced7b9672a523b935b62aeSKvY9jiM03'
+                    },
+                    {
+                        description: '这是文字3的描述',
+                        miaoshu:"描述",
+                        imageUrl: 'https://g.fp.ps.netease.com/market/file/61ced7b9672a523b935b62aeSKvY9jiM03'
+                    }
+                ],
+                ka:[
+                    {
+                        fits:'fill',
+                        url: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
+                    },
+                    {
+                        fits:'weds',
+                        url: 'https://g.fp.ps.netease.com/market/file/5d0352356f0494e8facd4e9fuEm52CrO02?fop=imageView/2/w/245/h/230'
+                    },
+                    {
+                        fits:'fill',
+                        url: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
+                    },
+                    {
+                        fits:'weds',
+                        url: 'https://g.fp.ps.netease.com/market/file/5d0352356f0494e8facd4e9fuEm52CrO02?fop=imageView/2/w/245/h/230'
+                    },
+                    {
+                        fits:'weds',
+                        url: 'https://g.fp.ps.netease.com/market/file/5d0352356f0494e8facd4e9fuEm52CrO02?fop=imageView/2/w/245/h/230'
+                    },
+                    {
+                        fits:'fill',
+                        url: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
+                    },
+                    {
+                        fits:'weds',
+                        url: 'https://g.fp.ps.netease.com/market/file/5d0352356f0494e8facd4e9fuEm52CrO02?fop=imageView/2/w/245/h/230'
+                    },
+                    {
+                        fits:'fill',
+                        url: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
+                    },
+                    {
+                        fits:'weds',
+                        url: 'https://g.fp.ps.netease.com/market/file/5d0352356f0494e8facd4e9fuEm52CrO02?fop=imageView/2/w/245/h/230'
+                    },
+                    {
+                        fits:'weds',
+                        url: 'https://g.fp.ps.netease.com/market/file/5d0352356f0494e8facd4e9fuEm52CrO02?fop=imageView/2/w/245/h/230'
+                    },
+                ]
+
+            }
+        },
+        methods : {
+            handleSlideChange() {
+                // 在每次走马灯切换时触发动画
+                // 重新应用动画类以实现滑入效果
+                const carouselItems = document.querySelectorAll('.el-carousel__item');
+                carouselItems.forEach(item => {
+                    const leftElement = item.querySelector('.slide-in-left');
+                    const rightElement = item.querySelector('.slide-in-right');
+                    leftElement.classList.remove('slide-in-left');
+                    rightElement.classList.remove('slide-in-right');
+                    void leftElement.offsetWidth; // 触发重绘
+                    void rightElement.offsetWidth; // 触发重绘
+                    leftElement.classList.add('slide-in-left');
+                    rightElement.classList.add('slide-in-right');
+                });
+            }},
+    })
+</script>

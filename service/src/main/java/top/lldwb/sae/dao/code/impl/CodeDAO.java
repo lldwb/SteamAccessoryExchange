@@ -2,9 +2,8 @@ package top.lldwb.sae.dao.code.impl;
 
 import top.lldwb.sae.dao.code.CodeInterFace;
 import top.lldwb.sae.entity.code.CodeTable;
-import top.lldwb.sae.utils.MySqlUtil;
+import top.lldwb.sae.utils.mySql.MySqlUtil;
 
-import java.sql.SQLException;
 import java.sql.Timestamp;
 
 /***
@@ -21,11 +20,7 @@ public class CodeDAO implements CodeInterFace {
     MySqlUtil mySqlUtil;
 
     {
-        try {
-            mySqlUtil = new MySqlUtil();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        mySqlUtil = new MySqlUtil();
     }
     /***
      *
@@ -66,11 +61,7 @@ public class CodeDAO implements CodeInterFace {
                 "values(?,?,?,?)" ;
 
         //返回
-        try {
-            return mySqlUtil.update(sql,obj);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        return mySqlUtil.update(sql,obj);
     }
 
     /***
@@ -82,11 +73,7 @@ public class CodeDAO implements CodeInterFace {
     public int deleteCodesID(int id) {
         //获取sql语句
         String sql = "delete from code_table where user_id = ?" ;
-        try {
-            return mySqlUtil.update(sql,id);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        return mySqlUtil.update(sql,id);
     }
 
     /***
