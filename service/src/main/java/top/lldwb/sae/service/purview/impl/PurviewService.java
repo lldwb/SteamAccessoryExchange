@@ -2,9 +2,15 @@ package top.lldwb.sae.service.purview.impl;
 
 import top.lldwb.sae.dao.purview.PurviewInterFace;
 import top.lldwb.sae.dao.purview.impl.PurviewDAO;
+import top.lldwb.sae.dao.user.UserFace;
+import top.lldwb.sae.dao.user.impl.UserDAO;
 import top.lldwb.sae.entity.purview.Purview;
+import top.lldwb.sae.entity.user.User;
+import top.lldwb.sae.pagingUtil.PagingUtil;
 import top.lldwb.sae.service.exception.AllException;
 import top.lldwb.sae.service.purview.PurviewServiceInterFace;
+import top.lldwb.sae.vo.PageUtils;
+import top.lldwb.sae.vo.PageVO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,9 +36,9 @@ public class PurviewService implements PurviewServiceInterFace {
 
         //调用实体类
         Purview entity = new Purview() ;
-        entity.setPurview_limitation(purviewLimitation);
-        entity.setPurview_describe(purviewDescribe);
-        entity.setUser_id(userId);
+        entity.setPurviewLimitation(purviewLimitation);
+        entity.setPurviewDescribe(purviewDescribe);
+        entity.setRoleId(userId);
 
         //引用dao方法
         int row = dao.purviewADD(entity) ;
@@ -71,16 +77,16 @@ public class PurviewService implements PurviewServiceInterFace {
     /***
      *
      * @param purvoewId id
-     * @param userId 用户id
+     * @param roleId 用户id
      * @return
      */
     @Override
-    public int purviewDelete(int purvoewId, int userId) {
+    public int purviewDelete(int purvoewId, int roleId) {
         //调用数据访问类
         PurviewInterFace dao = new PurviewDAO() ;
 
         //引用dao方法
-        int row = dao.purviewDelete(purvoewId,userId) ;
+        int row = dao.purviewDelete(purvoewId,roleId) ;
 
         //判断
         if(row<1){
@@ -95,21 +101,21 @@ public class PurviewService implements PurviewServiceInterFace {
      *
      * @param purviewLimitation 限制
      * @param purviewDescribe 描述
-     * @param userId FK用户UserId
+     * @param roleId FK用户roleId
      * @param purviewId id
      * @return
      */
     @Override
-    public int purviewUpdate(String purviewLimitation, String purviewDescribe, int userId, int purviewId) {
+    public int purviewUpdate(String purviewLimitation, String purviewDescribe, int roleId, int purviewId) {
         //调用数据访问类
         PurviewInterFace dao = new PurviewDAO() ;
 
         //调用实体类
         Purview entity = new Purview() ;
-        entity.setPurview_limitation(purviewLimitation);
-        entity.setPurview_describe(purviewDescribe);
-        entity.setUser_id(userId);
-        entity.setPurview_id(purviewId);
+        entity.setPurviewLimitation(purviewLimitation);
+        entity.setPurviewDescribe(purviewDescribe);
+        entity.setRoleId(roleId);
+        entity.setPurviewId(purviewId);
 
         //引用dao方法
         int row = dao.purviewUpdate(entity) ;
@@ -153,7 +159,7 @@ public class PurviewService implements PurviewServiceInterFace {
      * @return
      */
     @Override
-    public Purview purviewUserIDQuery(int id) {
+    public Purview purviewRoleIDQuery(int id) {
         //调用数据访问类
         PurviewInterFace dao = new PurviewDAO() ;
 
@@ -165,5 +171,25 @@ public class PurviewService implements PurviewServiceInterFace {
         }
         //返回结果集
         return entity;
+    }
+
+    @Override
+    public PageVO<List<Purview>> queryLimitPurview(String purviewLimitation, String purviewDescribe, int page, int limit) {
+        //先计算出page从几页开始
+        int numberOf = PagingUtil.toNumbers(page,limit) ;
+
+        //调用实体类
+        Purview entity = new Purview() ;
+        entity.setPurviewLimitation(purviewLimitation);
+        entity.setPurviewDescribe(purviewDescribe);
+
+        //调用数访问类
+        PurviewInterFace dao = new PurviewDAO() ;
+        //引用dao方法
+        List<Purview> list = dao.QueryLimitPurview(entity,numberOf,limit) ;
+
+        Long count = dao.count();
+
+        return PageUtils.toPageVO(list,count) ;
     }
 }

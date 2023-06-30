@@ -5,6 +5,7 @@ import org.nf.db.util.result.BeanHandler;
 import org.nf.db.util.result.BeanListHandler;
 import org.nf.db.util.result.ColumnHandler;
 
+import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;

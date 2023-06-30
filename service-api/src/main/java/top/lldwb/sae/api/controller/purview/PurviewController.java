@@ -3,16 +3,11 @@ package top.lldwb.sae.api.controller.purview;
 import org.nf.web.annotation.RequestMapping;
 import org.nf.web.annotation.RequestParam;
 import org.nf.web.servlet.view.JsonView;
-import top.lldwb.sae.api.vo.PageVO;
 import top.lldwb.sae.pagingUtil.ResultVO;
 import top.lldwb.sae.service.purview.PurviewServiceInterFace;
 import top.lldwb.sae.service.purview.impl.PurviewService;
 
 import org.nf.web.servlet.View;
-
-import javax.servlet.http.HttpSession;
-import java.util.List;
-
 /***
  * @Date(时间)2023-06-27
  * @Author 家辉
@@ -130,9 +125,32 @@ public class PurviewController {
         PurviewServiceInterFace service = new PurviewService() ;
 
         //调用响应封装类
-        ResultVO<Object> resultVO = new ResultVO<>(200,"查询成功",service.purviewUserIDQuery(userId)) ;
+        ResultVO<Object> resultVO = new ResultVO<>(200,"查询成功",service.purviewRoleIDQuery(userId)) ;
 
 
         return new JsonView(resultVO);
     };
+
+
+    /***
+     *
+     * @param purviewLimitation 根据限制查询
+     * @param purviewDescribe 根据描述查询
+     * @param page 当前业
+     * @param limit 页数
+     * @return
+     */
+    @RequestMapping("/purview/getLimitQueryPurview.do")
+    public View getLimitQueryPurview(@RequestParam("purviewLimitation") String purviewLimitation,
+                                     @RequestParam("purviewDescribe") String purviewDescribe,
+                                     @RequestParam("page")  int page,
+                                     @RequestParam("limit") int limit){
+
+        //调用业务类
+        PurviewServiceInterFace service = new PurviewService() ;
+
+        //调用响应封装类
+        ResultVO<Object> resultVO = new ResultVO<>(200,"查询成功",service.queryLimitPurview(purviewLimitation,purviewDescribe ,page,limit) );
+        return new JsonView(resultVO);
+    }
 }

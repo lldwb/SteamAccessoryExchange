@@ -28,7 +28,7 @@
     <!-- CORS Filter 跨域 -->
     <filter>
         <filter-name>CORSFilter</filter-name>
-        <filter-class>top.lldwb.sae.utils.CORSFilter.CORSFilter</filter-class>
+        <filter-class>top.lldwb.sae.utils.corsFilter.CORSFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>CORSFilter</filter-name>

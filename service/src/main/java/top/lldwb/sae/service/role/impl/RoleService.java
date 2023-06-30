@@ -2,9 +2,15 @@ package top.lldwb.sae.service.role.impl;
 
 import top.lldwb.sae.dao.role.RoleInterFace;
 import top.lldwb.sae.dao.role.impl.RoleDAO;
+import top.lldwb.sae.dao.user.UserFace;
+import top.lldwb.sae.dao.user.impl.UserDAO;
 import top.lldwb.sae.entity.rode.Role;
+import top.lldwb.sae.entity.user.User;
+import top.lldwb.sae.pagingUtil.PagingUtil;
 import top.lldwb.sae.service.exception.AllException;
 import top.lldwb.sae.service.role.RoleServiceInterFace;
+import top.lldwb.sae.vo.PageUtils;
+import top.lldwb.sae.vo.PageVO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -145,5 +151,34 @@ public class RoleService implements RoleServiceInterFace {
 
         //返回结果集
         return list;
+    }
+    /***
+     * 分页查询
+     * 含条件
+     * @param roleLevel
+     * @param page
+     * @param limit
+     * @return
+     */
+    @Override
+    public PageVO<List<Role>> pagseRoleVoList(String roleLevel, int page, int limit) {
+        //调用实体类
+        Role entity = new Role() ;
+        entity.setRoleLevel(roleLevel);
+
+        //计算出page从几页开始
+        int numberOf = PagingUtil.toNumbers(page,limit) ;
+
+        //调用数据访问类
+        RoleInterFace dao = new RoleDAO() ;
+
+        //创建list集合存放查询到的数据
+        List<Role> list =  dao.queryLimitRole(entity,numberOf,limit) ;
+
+
+        //获取role角色统计数据
+        Long count = dao.count() ;
+        //返回
+        return PageUtils.toPageVO(list,count) ;
     }
 }

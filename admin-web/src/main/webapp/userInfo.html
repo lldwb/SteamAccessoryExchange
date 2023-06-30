@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户信息管理页面</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+</head>
+<body>
+    <div class="layui-container">
+        <h3>城市列表</h3>
+        <table class="layui-table" lay-data="{height:470, url:'http://localhost:8080/service_api_war_exploded/user/getLimitConditionQuery.do', page:true}" id="userTable">
+            <thead>
+            <tr>
+                <th lay-data="{field:'userId'}">ID</th>
+                <th lay-data="{field:'userName'}">用户名</th>
+                <th lay-data="{field:'userPassword'}">密码</th>
+                <th lay-data="{field:'userNickname'}">昵称</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+</body>
+<script src="layui/layui.js"></script>
+</html>

@@ -11,14 +11,16 @@
 }
 
 .fontSize-span {
-    background: blue linear-gradient(to left, transparent, #fff, transparent) no-repeat 0 0;
-    background-size: 10% 100%;
+    background: linear-gradient(to right, rgba(0, 255, 208, 0.331), rgb(18, 18, 255));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 10% 50%;
     background-position: 0 0;
     font-size: 50px;
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
-    animation: shine 2s infinite;
+    animation: shine 5s infinite;
 }
 @keyframes shine {
     from {

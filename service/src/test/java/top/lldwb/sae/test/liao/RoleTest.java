@@ -4,6 +4,10 @@ import org.junit.jupiter.api.Test;
 import top.lldwb.sae.dao.role.RoleInterFace;
 import top.lldwb.sae.dao.role.impl.RoleDAO;
 import top.lldwb.sae.entity.rode.Role;
+import top.lldwb.sae.pagingUtil.PagingUtil;
+import top.lldwb.sae.service.role.RoleServiceInterFace;
+import top.lldwb.sae.service.role.impl.RoleService;
+import top.lldwb.sae.vo.PageVO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,5 +71,19 @@ public class RoleTest {
     public void listConditionQuery(){
         face.listConditionQuery("888") .forEach(System.out::println);
 
+    }
+
+    @Test
+    public void limitQuery(){
+
+        RoleServiceInterFace serviceInterFace = new RoleService() ;
+        PageVO<List<Role>> listPageVO = serviceInterFace.pagseRoleVoList("8",1,4) ;
+       listPageVO.getData().forEach(System.out::println);
+
+    }
+
+    @Test
+    public void count(){
+        System.out.println(face.count());
     }
 }

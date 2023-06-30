@@ -168,9 +168,8 @@ public class UserService implements UserServiceInterFace {
      */
     @Override
     public User login(String name, String password) {
+        // 创建数据访问类
         UserFace face = new UserDAO() ;
-        //调用数据访问类
-        face = new UserDAO() ;
 
         //获取方法
         User user = face.login(name) ;
@@ -184,9 +183,7 @@ public class UserService implements UserServiceInterFace {
         if( !user.getUserName().equals(name) || !user.getUserPassword().equals(password) ){
             throw new AllException(500,"账号或密码不存在") ;
         }
-
-
-
+        user.setUserPassword("");
         return user;
     }
 
@@ -230,7 +227,7 @@ public class UserService implements UserServiceInterFace {
     }
 
     @Override
-    public PageVO<List<User>> pageVoList(String userName, String userEmail, int page, int limit) {
+    public PageVO<List<User>> pageUserVoList(String userName, String userEmail, int page, int limit) {
         //先计算出page从几页开始
         int numberOf = PagingUtil.toNumbers(page,limit) ;
 
@@ -245,6 +242,8 @@ public class UserService implements UserServiceInterFace {
         List<User> list = dao.listUserLimit(entity,numberOf,limit) ;
 
         Long count = dao.count();
+
+
 
         return PageUtils.toPageVO(list,count) ;
     }
