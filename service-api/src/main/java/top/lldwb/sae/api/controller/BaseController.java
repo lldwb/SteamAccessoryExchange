@@ -14,7 +14,7 @@ import java.util.List;
 public class BaseController {
 
     /**
-     * 成功响应
+     * 成功响应(比如在查询、第三方api等，需要返回数据的时候使用)
      *
      * @param data 数据
      * @param <T>
@@ -28,7 +28,7 @@ public class BaseController {
     }
 
     /**
-     * 成功响应
+     * 成功响应(比如在添加、修改、删除等，不需要返回数据的时候使用)
      *
      * @return 空
      */
@@ -39,7 +39,7 @@ public class BaseController {
     }
 
     /**
-     * 分页响应
+     * 分页响应(比如在分页查询等，需要返回多条数据的时候使用)
      *
      * @param total
      * @param list
