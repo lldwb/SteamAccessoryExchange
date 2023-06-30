@@ -5,13 +5,11 @@ import top.lldwb.sae.utils.vo.ResultVO;
 
 import java.util.List;
 
-/**
- * 响应处理对象(强制使用)
- *
- * @author 安然的尾巴
- * @version 1.0
+/***
+ * @Date(时间)2023-06-30
+ * @Author 家辉
  */
-public class BaseControll
+public class BaseController {
     /**
      * 成功响应(比如在查询、第三方api等，需要返回数据的时候使用)
      *
@@ -67,5 +65,4 @@ public class BaseControll
         vo.setMessage(message);
         return vo;
     }
-
 }
