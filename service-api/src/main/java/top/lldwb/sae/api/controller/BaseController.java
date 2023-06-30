@@ -11,8 +11,7 @@ import java.util.List;
  * @author 安然的尾巴
  * @version 1.0
  */
-public class BaseController {
-
+public class BaseControll
     /**
      * 成功响应(比如在查询、第三方api等，需要返回数据的时候使用)
      *
@@ -37,6 +36,7 @@ public class BaseController {
         vo.setCode(200);
         return vo;
     }
+
 
     /**
      * 分页响应(比如在分页查询等，需要返回多条数据的时候使用)

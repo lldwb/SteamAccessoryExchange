@@ -239,11 +239,7 @@ public class UserService implements UserServiceInterFace {
         UserFace dao = new UserDAO() ;
         //引用dao方法
         List<User> list = dao.listUserLimit(entity,numberOf,limit) ;
-
         Long count = dao.count();
-
-
-
         return PageUtils.toPageVO(list,count) ;
     }
 
