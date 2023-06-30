@@ -20,7 +20,7 @@ public class BaseController {
         vo.setCode(200);
         return vo;
     }
-
+    
     public <T> ResultVO<List<T>> pageResult(long total, List<T> list) {
         PageVO vo = new PageVO();
         vo.setCode(0);
@@ -29,11 +29,17 @@ public class BaseController {
         return vo;
     }
 
-    public ResultVO fail(int code, String message) {
+    /**
+     * 错误响应
+     * @param code
+     * @param message
+     * @return
+     */
+    public ResultVO error(int code, String message) {
         ResultVO vo = new ResultVO();
         vo.setCode(code);
         vo.setMessage(message);
         return vo;
     }
-    
+
 }
