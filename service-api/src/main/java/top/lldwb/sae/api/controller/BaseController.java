@@ -11,6 +11,13 @@ import java.util.List;
  */
 public class BaseController {
 
+    /***
+     * 成功响应数据
+     * 用于查询
+     * @param data
+     * @return
+     * @param <T>
+     */
     public <T> ResultVO<T> success(T data) {
         ResultVO<T> vo = new ResultVO<>();
         vo.setCode(200);
@@ -18,12 +25,25 @@ public class BaseController {
         return vo;
     }
 
+    /***
+     * 响应数据
+     * 用于增删改
+     * @return
+     */
     public ResultVO success() {
         ResultVO vo = new ResultVO();
         vo.setCode(200);
         return vo;
     }
-    
+
+    /***
+     * 成功响应方法
+     * 用于分页
+     * @param total
+     * @param list
+     * @return
+     * @param <T>
+     */
     public <T> ResultVO<List<T>> pageResult(long total, List<T> list) {
         PageVO vo = new PageVO();
         vo.setCode(0);
