@@ -6,6 +6,8 @@ import top.lldwb.sae.utils.vo.ResultVO;
 import java.util.List;
 
 /**
+ * 响应处理对象(强制使用)
+ *
  * @author 安然的尾巴
  * @version 1.0
  */
