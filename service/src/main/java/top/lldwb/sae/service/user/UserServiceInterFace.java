@@ -1,6 +1,9 @@
 package top.lldwb.sae.service.user;
 
 import top.lldwb.sae.entity.user.User;
+import top.lldwb.sae.vo.PageVO;
+
+import java.util.List;
 
 /**
  * @author 安然的尾巴
@@ -49,5 +52,23 @@ public interface UserServiceInterFace {
 
     public User login(String name, String password) ;
     public User loginEmail(String email,String emailCode) ;
+
+    /***
+     * 分页查询
+     * 含条件查询
+     * @param page 当前页
+     * @param limit 分页
+     * @param userName 条件用户名
+     * @param userEmail 条件邮箱地址
+     * @return
+     */
+    public PageVO<List<User>> pageVoList(String userName, String userEmail, int page, int limit) ;
+
+    /**
+     * 查询用户状态
+     * @param name 用户名
+     * @return
+     */
+    int selectStatus(String name);
 
 }

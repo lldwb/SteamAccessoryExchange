@@ -32,8 +32,6 @@ public class MySqlUtil {
     private static final String USER_NAME = "sae";
     //密码
     private static final String PASSWORD = "PBERGLmSDfr2Mzxi";
-    //数据库连接对象并传入数据库参数
-    private static Connection conn;
 
     private static SqlExecutor getSqlExecutor() {
         try {
