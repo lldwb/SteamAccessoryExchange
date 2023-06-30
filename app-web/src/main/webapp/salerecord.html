@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>出售记录</title>
+    <!-- vue -->
+    <script src="js/vue.js"></script>
+    <script src="js/vue-router.js"></script>
+    <!-- jquery -->
+    <script src="js/jquery.min.js"></script>
+    <!-- element-ui -->
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<style>
+
+    .grid-blank {
+        min-height: 36px;
+        margin: 0px;
+        padding: 0px;
+        background: white;
+        filter: opacity(0%);
+    }
+    .grid{
+        min-height: 36px;
+    }
+    .login{
+        float: right;
+        color: white;
+    }
+</style>
+<body>
+<div id="app" style="background-image:url(img.png);background-size: cover; width: 100%;">
+    <el-row>
+        <el-col :span="4"><div class="grid-blank" style="background-color:rgba(0,0,0,0);"></div></el-col>
+        <el-col :span="16">
+            <div style="float: left;padding-top: 20px">
+                <img src="https://buff.163.com/static/images/site/logo.png">
+            </div>
+            <el-menu
+                    :default-active="activeIndex"
+                    class="el-menu-demo"
+                    mode="horizontal"
+                    @select="handleSelect"
+                    background-color="rgba(0,0,0,0)"
+                    text-color="#fff"
+                    active-text-color="#4886ff"
+                    hover-color="rgba(0,0,0,0.2)">
+                <el-menu-item index="1">首页</el-menu-item>
+                <el-menu-item index="2">饰品市场</el-menu-item>
+                <el-menu-item index="3">游戏资讯</el-menu-item>
+
+                    <div class="login" style="padding: 20px ">登录/注册</div>
+                    <h3  class="login" >CS-GO</h3 >
+                <el-menu-item :v-if="te" style="float: right" index="4">求购</el-menu-item>
+                <el-menu-item :v-if="te" style="float: right" index="5">出售</el-menu-item>
+                <el-menu-item :v-if="te" style="float: right" index="6">库存</el-menu-item>
+            </el-menu>
+        </el-col>
+        <el-col :span="4"><div class="grid-blank" style="background-color:rgba(0,0,0,0);"></div></el-col>
+    </el-row>
+
+
+    <el-row style="padding-top: 24px">
+        <el-col :span="4"><div class="grid-blank" style="background-color:rgba(0,0,0,0);"></div></el-col>
+    <el-col :span="16" style="background-color:#282727FF">
+        <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal"
+                 background-color="#282727FF" text-color="#90969C" active-text-color="#FFFFFF">
+            <el-menu-item index="1">自售管理</el-menu-item>
+            <el-menu-item index="2">正在寄售</el-menu-item>
+            <el-menu-item index="3">出售记录</el-menu-item>
+            <el-menu-item index="4">出售统计</el-menu-item>
+            <el-menu-item index="5">还价管理</el-menu-item>
+        </el-menu>
+        <el-select style="padding: 10px 10px" v-model="value" placeholder="请选择">
+            <el-option
+                    v-for="item in options"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value">
+            </el-option>
+        </el-select>
+    </el-col>
+        <el-col :span="4"><div class="grid-blank" style="background-color:rgba(0,0,0,0);"></div></el-col>
+    </el-row>
+</div>
+</body>
+</html>
+<script>
+    var vue=new Vue({
+        el:"#app",
+        data(){
+            return{
+                activeIndex: '1',
+                te:true,
+            }
+        }
+    })
+</script>
