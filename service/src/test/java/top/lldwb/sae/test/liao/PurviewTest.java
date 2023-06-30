@@ -6,7 +6,7 @@ import top.lldwb.sae.dao.purview.impl.PurviewDAO;
 import top.lldwb.sae.entity.purview.Purview;
 import top.lldwb.sae.service.purview.PurviewServiceInterFace;
 import top.lldwb.sae.service.purview.impl.PurviewService;
-import top.lldwb.sae.vo.PageVO;
+import top.lldwb.sae.utils.vo.PageVO;
 
 import java.util.List;
 

@@ -2,15 +2,11 @@ package top.lldwb.sae.service.purview.impl;
 
 import top.lldwb.sae.dao.purview.PurviewInterFace;
 import top.lldwb.sae.dao.purview.impl.PurviewDAO;
-import top.lldwb.sae.dao.user.UserFace;
-import top.lldwb.sae.dao.user.impl.UserDAO;
 import top.lldwb.sae.entity.purview.Purview;
-import top.lldwb.sae.entity.user.User;
-import top.lldwb.sae.pagingUtil.PagingUtil;
 import top.lldwb.sae.service.exception.AllException;
 import top.lldwb.sae.service.purview.PurviewServiceInterFace;
-import top.lldwb.sae.vo.PageUtils;
-import top.lldwb.sae.vo.PageVO;
+import top.lldwb.sae.utils.vo.PageUtils;
+import top.lldwb.sae.utils.vo.PageVO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -176,7 +172,7 @@ public class PurviewService implements PurviewServiceInterFace {
     @Override
     public PageVO<List<Purview>> queryLimitPurview(String purviewLimitation, String purviewDescribe, int page, int limit) {
         //先计算出page从几页开始
-        int numberOf = PagingUtil.toNumbers(page,limit) ;
+        int numberOf = PageUtils.toNumberOf(page,limit) ;
 
         //调用实体类
         Purview entity = new Purview() ;

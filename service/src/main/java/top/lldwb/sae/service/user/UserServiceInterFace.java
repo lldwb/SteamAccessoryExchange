@@ -2,7 +2,7 @@ package top.lldwb.sae.service.user;
 
 import top.lldwb.sae.entity.rode.Role;
 import top.lldwb.sae.entity.user.User;
-import top.lldwb.sae.vo.PageVO;
+import top.lldwb.sae.utils.vo.PageVO;
 
 import java.util.List;
 

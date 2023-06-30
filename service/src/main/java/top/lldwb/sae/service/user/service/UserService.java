@@ -6,11 +6,10 @@ import top.lldwb.sae.dao.user.UserFace;
 import top.lldwb.sae.dao.user.impl.UserDAO;
 import top.lldwb.sae.entity.code.CodeTable;
 import top.lldwb.sae.entity.user.User;
-import top.lldwb.sae.pagingUtil.PagingUtil;
 import top.lldwb.sae.service.exception.AllException;
 import top.lldwb.sae.service.user.UserServiceInterFace;
-import top.lldwb.sae.vo.PageUtils;
-import top.lldwb.sae.vo.PageVO;
+import top.lldwb.sae.utils.vo.PageUtils;
+import top.lldwb.sae.utils.vo.PageVO;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -229,7 +228,7 @@ public class UserService implements UserServiceInterFace {
     @Override
     public PageVO<List<User>> pageUserVoList(String userName, String userEmail, int page, int limit) {
         //先计算出page从几页开始
-        int numberOf = PagingUtil.toNumbers(page,limit) ;
+        int numberOf = PageUtils.toNumberOf(page,limit) ;
 
         //调用实体类
         User entity = new User() ;
