@@ -15,7 +15,7 @@
         }
 
         .show-top-wz{
-            background: url("img/导航栏.png");
+            background: url("/img/导航栏.png");
 
         }
         .el-row {
@@ -46,52 +46,52 @@
         .el-row-y{
             width: 64px;
             height: 64px;
-            background: url("img/匕首.png");
+            background: url("/img/匕首.png");
         }
         .el-row-s{
             width: 64px;
             height: 64px;
-            background: url("img/手套.png");
+            background: url("/img/手套.png");
         }
         .el-row-si{
             width: 64px;
             height: 64px;
-            background: url("img/步枪.png");
+            background: url("/img/步枪.png");
         }
         .el-row-w{
             width: 64px;
             height: 64px;
-            background: url("img/手枪.png");
+            background: url("/img/手枪.png");
         }
         .el-row-l{
             width: 64px;
             height: 64px;
-            background: url("img/冲锋枪.png");
+            background: url("/img/冲锋枪.png");
         }
         .el-row-q{
             width: 64px;
             height: 64px;
-            background: url("img/散弹枪.png");
+            background: url("/img/散弹枪.png");
         }
         .el-row-b{
             width: 64px;
             height: 64px;
-            background: url("img/鸡枪.png");
+            background: url("/img/鸡枪.png");
         }
         .el-row-p{
             width: 64px;
             height: 64px;
-            background: url("img/印花.png");
+            background: url("/img/印花.png");
         }
         .el-row-o{
             width: 64px;
             height: 64px;
-            background: url("img/人物.png");
+            background: url("/img/人物.png");
         }
         .el-row-m{
             width: 64px;
             height: 64px;
-            background: url("img/其他.png");
+            background: url("/img/其他.png");
         }
 
 
@@ -221,19 +221,14 @@
             position: relative;
         }
         img{
-          width: 100%;
+            width: 100%;
             height: 110px;
-        }
-
-        .el-pagination{
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
         }
     </style>
 </head>
 <body>
 <div id="app"  class="show-top-a">
+
     <div class="show-top-wz">
         <el-row gutter="20">
             <el-col :span="3">
@@ -260,9 +255,7 @@
         </el-row>
         <hr style="border: 1px solid black"/>
     </div>
-
     <!--展示的-----------------------------头-->
-
     <div class="el-margin-top">
         <el-row class="el-row-top" gutter="40">
             <el-col :span="2"><div class="el-row-y">
@@ -402,7 +395,7 @@
         <hr style="border: 1px solid black"/>
 
         <div class="el-template">
-           <template>
+            <template>
                 <el-select v-model="value1" placeholder="品质" class="el-select-size" size="mini">
                     <el-option v-for="item in options1" :key="item.value" :label="item.label" :value="item.value">
                     </el-option>
@@ -439,9 +432,7 @@
             </template>
         </div>
     </div>
-
     <!-- 筛选的---------------------->
-
     <div class="top-so">
         <el-row class="el-row-di">
             <el-col :span="2"><div class="el-row-d">筛选：</div></el-col>
@@ -459,9 +450,7 @@
             <el-button type="primary" class="el-button-s">开始</el-button>
         </el-row>
     </div>
-
     <!--出售，推荐-->
-
     <div class="el-so">
         <el-row class="el-row-zo">
             <el-col :span="3" class="el-row-zoa">
@@ -492,38 +481,43 @@
         </el-row>
     </div>
 
-    <!--商品展示-->
-<div class="el-margin-w">
-    <div v-for="fit in fits" :key="fit">
 
-        <el-row type="flex" class="el-bg-di" justify="center">
+    <div class="el-margin-w" v-for="fit in fits" :key="fit">
 
-            <el-col :span="4" class="el-row-tu"><div class="el-fen">
-                <img src="img/img_2.png"/>武器箱</div>
+        <el-row type="flex" class="el-bg-di"justify="center">
+            <el-col :span="4" class="el-row-tu">
+                <div class="el-fen">
+                    <el-image :src="url":fit="fit"></el-image>
+                </div>
             </el-col>
 
-            <el-col :span="4" class="el-row-tu"><div class="el-fen">
-                <img src="img/img_2.png"/>武器箱</div>
+            <el-col :span="4" class="el-row-tu">
+                <div class="el-fen">
+                    <el-image :src="url":fit="fit"></el-image>
+                </div>
             </el-col>
 
-            <el-col :span="4" class="el-row-tu"><div class="el-fen">
-                <img src="img/img_2.png"/>武器箱</div>
+            <el-col :span="4" class="el-row-tu">
+                <div class="el-fen">
+                    <el-image :src="url":fit="fit"></el-image>
+                </div>
             </el-col>
 
-            <el-col :span="4" class="el-row-tu"><div class="el-fen">
-                <img src="img/img_2.png"/>武器箱</div>
+            <el-col :span="4" class="el-row-tu">
+                <div class="el-fen">
+                    <el-image :src="url":fit="fit"></el-image>
+
+                </div>
             </el-col>
 
-            <el-col :span="4" class="el-row-tu"><div class="el-fen">
-                <img src="img/img_2.png"/>武器箱</div>
+            <el-col :span="4" class="el-row-tu">
+                <div class="el-fen">
+                    <el-image :src="url":fit="fit"></el-image>
+                </div>
             </el-col>
+
         </el-row>
     </div>
-
-    <el-pagination background layout="prev, pager, next" :total="1000" class="el-pagination">
-
-    </el-pagination>
-</div>
 
 </div>
 </body>
@@ -678,7 +672,8 @@
                 value5:'',
                 value6:'',
                 value7:'',
-                fits: ['fill', 'contain', 'cover', 'scale-down'],
+                fits: ['fill', 'contain', 'cover', 'none', 'scale-down'],
                 url: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
+
             }}})
 </script>
