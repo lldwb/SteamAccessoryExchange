@@ -3,11 +3,12 @@ package top.lldwb.sae.api.controller.purview;
 import org.nf.web.annotation.RequestMapping;
 import org.nf.web.annotation.RequestParam;
 import org.nf.web.servlet.view.JsonView;
-import top.lldwb.sae.pagingUtil.ResultVO;
 import top.lldwb.sae.service.purview.PurviewServiceInterFace;
 import top.lldwb.sae.service.purview.impl.PurviewService;
 
 import org.nf.web.servlet.View;
+import top.lldwb.sae.utils.vo.ResultVO;
+
 /***
  * @Date(时间)2023-06-27
  * @Author 家辉

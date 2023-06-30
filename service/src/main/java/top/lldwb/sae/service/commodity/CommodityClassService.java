@@ -3,7 +3,7 @@ package top.lldwb.sae.service.commodity;
 
 import top.lldwb.sae.entity.commodity.CommodityClass;
 import top.lldwb.sae.entity.commodity.CommodityInstance;
-import top.lldwb.sae.vo.PageVO;
+import top.lldwb.sae.utils.vo.PageVO;
 
 import java.util.List;
 

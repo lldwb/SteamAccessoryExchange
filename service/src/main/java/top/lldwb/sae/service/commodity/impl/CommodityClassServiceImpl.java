@@ -8,8 +8,8 @@ import top.lldwb.sae.dao.commodity.impl.CommodityClassDAOImpl;
 import top.lldwb.sae.entity.commodity.CommodityClass;
 import top.lldwb.sae.entity.commodity.CommodityInstance;
 import top.lldwb.sae.service.commodity.CommodityClassService;
-import top.lldwb.sae.vo.PageUtils;
-import top.lldwb.sae.vo.PageVO;
+import top.lldwb.sae.utils.vo.PageUtils;
+import top.lldwb.sae.utils.vo.PageVO;
 
 import java.util.List;
 

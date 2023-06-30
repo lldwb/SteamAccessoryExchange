@@ -1,4 +1,4 @@
-package top.lldwb.sae.dao.Aftersalescenter.DAO;
+package top.lldwb.sae.dao.Aftersalescenter;
 
 import top.lldwb.sae.entity.Aftersalescenter.Help.Help;
 

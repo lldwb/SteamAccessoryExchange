@@ -1,6 +1,6 @@
 package top.lldwb.sae.dao.Aftersalescenter.impl;
 
-import top.lldwb.sae.dao.Aftersalescenter.DAO.HelpDao;
+import top.lldwb.sae.dao.Aftersalescenter.HelpDao;
 import top.lldwb.sae.entity.Aftersalescenter.Help.Help;
 import top.lldwb.sae.utils.mySql.MySqlUtil;
 

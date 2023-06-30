@@ -2,15 +2,11 @@ package top.lldwb.sae.service.role.impl;
 
 import top.lldwb.sae.dao.role.RoleInterFace;
 import top.lldwb.sae.dao.role.impl.RoleDAO;
-import top.lldwb.sae.dao.user.UserFace;
-import top.lldwb.sae.dao.user.impl.UserDAO;
 import top.lldwb.sae.entity.rode.Role;
-import top.lldwb.sae.entity.user.User;
-import top.lldwb.sae.pagingUtil.PagingUtil;
 import top.lldwb.sae.service.exception.AllException;
 import top.lldwb.sae.service.role.RoleServiceInterFace;
-import top.lldwb.sae.vo.PageUtils;
-import top.lldwb.sae.vo.PageVO;
+import top.lldwb.sae.utils.vo.PageUtils;
+import top.lldwb.sae.utils.vo.PageVO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -167,7 +163,7 @@ public class RoleService implements RoleServiceInterFace {
         entity.setRoleLevel(roleLevel);
 
         //计算出page从几页开始
-        int numberOf = PagingUtil.toNumbers(page,limit) ;
+        int numberOf = PageUtils.toNumberOf(page,limit) ;
 
         //调用数据访问类
         RoleInterFace dao = new RoleDAO() ;

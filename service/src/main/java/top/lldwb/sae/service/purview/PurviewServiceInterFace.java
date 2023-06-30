@@ -1,7 +1,7 @@
 package top.lldwb.sae.service.purview;
 
 import top.lldwb.sae.entity.purview.Purview;
-import top.lldwb.sae.vo.PageVO;
+import top.lldwb.sae.utils.vo.PageVO;
 
 import java.util.List;
 
