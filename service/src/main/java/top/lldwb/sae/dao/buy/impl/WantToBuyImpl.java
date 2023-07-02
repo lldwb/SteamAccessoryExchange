@@ -22,7 +22,7 @@ public class WantToBuyImpl implements WantToBuyDao {
     }
 
     @Override
-    public Long count() {
+    public Long getCount() {
         try {
             String sql = "select count(*) from want_to_buy";
             return MySqlUtil.queryColumn(1,sql);

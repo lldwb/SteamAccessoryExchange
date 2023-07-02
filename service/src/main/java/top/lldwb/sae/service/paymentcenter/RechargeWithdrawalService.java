@@ -14,7 +14,7 @@ public interface RechargeWithdrawalService {
      * @param rw 对象
      * @return
      */
-    int recharge(RechargeWithdrawal rw);
+    int insertRecharge(RechargeWithdrawal rw);
 
     /**
      * 根据id查询余额

@@ -14,5 +14,11 @@ public interface SellService {
      * 查询全部商品数据
      * @return
      */
-    PageVO<List<Sell>> getSell(int numberOf , int limit);
+    List<Sell> getSell(int numberOf , int limit);
+
+    /**
+     * 查询数据总条数
+     * @return
+     */
+    Long getCount();
 }

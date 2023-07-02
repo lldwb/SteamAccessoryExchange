@@ -13,7 +13,7 @@ public interface RechargeWithdrawalDao {
      * 充值/提现
      * @param rw 对象
      */
-    int recharge(RechargeWithdrawal rw);
+    int insertRecharge(RechargeWithdrawal rw);
 
 
     /**

@@ -15,10 +15,16 @@ import java.util.List;
  */
 public class WantToBuyServiceImpl implements WantToBuyService {
     @Override
-    public PageVO<List<WantToBuy>> getBuy(int numberOf, int limit) {
+    public List<WantToBuy> getBuy(int numberOf, int limit) {
         WantToBuyDao dao = new WantToBuyImpl();
-        List<WantToBuy> buy = dao.getWantToBuy(PageUtils.toNumberOf(numberOf, limit), limit);
-        Long count = dao.count();
-        return PageUtils.toPageVO(buy,count);
+        List<WantToBuy> list = dao.getWantToBuy(PageUtils.toNumberOf(numberOf, limit), limit);
+        return list;
+    }
+
+    @Override
+    public Long getCount() {
+        WantToBuyDao dao = new WantToBuyImpl();
+        Long count = dao.getCount();
+        return count;
     }
 }

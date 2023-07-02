@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class RechargeWithdrawalImpl implements RechargeWithdrawalDao {
     @Override
-    public  int recharge(RechargeWithdrawal rw) {
+    public  int insertRecharge(RechargeWithdrawal rw) {
         MySqlUtil mySqlUtil = new MySqlUtil();
         String sql="INSERT INTO recharge_withdrawal(rw_way,rw_amount_of_money,rw_balance,rw_type,user_id,third_party_order_number) VALUES(?,?,?,?,?,?)";
         return mySqlUtil.update(sql,rw.getRwWay(),rw.getRwAmountOfMoney(),rw.getRwBalance(),rw.getRwType(),rw.getUserId(),rw.getThirdPartyOrderNumber());
@@ -33,9 +33,8 @@ public class RechargeWithdrawalImpl implements RechargeWithdrawalDao {
 
     @Override
     public List<RechargeWithdrawal> getRechargeWithdrawal() {
-        MySqlUtil mySqlUtil = null;
         try {
-            mySqlUtil = new MySqlUtil();
+            MySqlUtil mySqlUtil = new MySqlUtil();
             String sql = "SELECT rw_id,rw_way,rw_time,rw_amount_of_money,rw_balance,rw_type,user_id,third_party_order_number FROM recharge_withdrawal";
             return mySqlUtil.queryList(RechargeWithdrawal.class, sql);
         } catch (Exception e) {
