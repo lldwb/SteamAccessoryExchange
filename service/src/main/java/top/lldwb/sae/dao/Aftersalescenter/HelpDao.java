@@ -11,11 +11,11 @@ import java.util.List;
  */
 public interface HelpDao {
 
-    Integer insert(Help help);
+    int insert(Help help);
 
-    Integer delete(int helpId);
+    int delete(int helpId);
 
-    Integer update(Help help);
+    int update(Help help);
 
     Help select(int helpId);
 

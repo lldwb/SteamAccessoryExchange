@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class HelpDaoImpl implements HelpDao {
     @Override
-    public Integer insert(Help help) {
+    public int insert(Help help) {
         MySqlUtil mySqlUtil = null;
         Object[] obj = {
                 help.getHelpType(),
@@ -33,7 +33,7 @@ public class HelpDaoImpl implements HelpDao {
     }
 
     @Override
-    public Integer delete(int helpId) {
+    public int delete(int helpId) {
         MySqlUtil mySqlUtil = null;
 
         try {
@@ -48,7 +48,7 @@ public class HelpDaoImpl implements HelpDao {
     }
 
     @Override
-    public Integer update(Help help) {
+    public int update(Help help) {
         MySqlUtil mySqlUtil = null;
         Object[] obj = {
                 help.getHelpType(),
