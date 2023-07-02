@@ -16,6 +16,16 @@ public class CommodityDAOImpl implements CommodityDAO {
 
     @Override
     public void add(Commodity commodity) {
-        MySqlUtil.update("insert into commodity(asset_id,class_id,user_id) value(?,?,?);",commodity.getAssetId(),commodity.getClassId(),commodity.getUserId());
+        MySqlUtil.update("insert into commodity(asset_id,class_id,user_id) value(?,?,?);", commodity.getAssetId(), commodity.getClassId(), commodity.getUserId());
+    }
+
+    @Override
+    public void updateStateByUserId(int coState, int userId) {
+        MySqlUtil.update("update commodity set co_state=? where user_id=?", coState, userId);
+    }
+
+    @Override
+    public void updateStateByAssetId(int coState, String assetId) {
+        MySqlUtil.update("update commodity set co_state=? where asset_id=?", coState, assetId);
     }
 }

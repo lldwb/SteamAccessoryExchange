@@ -13,15 +13,6 @@ import java.sql.Timestamp;
  * 验证码数据访问类
  */
 public class CodeDAO implements CodeInterFace {
-
-    /***
-     * 调用工具类
-     */
-    MySqlUtil mySqlUtil;
-
-    {
-        mySqlUtil = new MySqlUtil();
-    }
     /***
      *
      * @param times
@@ -61,7 +52,7 @@ public class CodeDAO implements CodeInterFace {
                 "values(?,?,?,?)" ;
 
         //返回
-        return mySqlUtil.update(sql,obj);
+        return MySqlUtil.update(sql,obj);
     }
 
     /***
@@ -73,7 +64,7 @@ public class CodeDAO implements CodeInterFace {
     public int deleteCodesID(int id) {
         //获取sql语句
         String sql = "delete from code_table where user_id = ?" ;
-        return mySqlUtil.update(sql,id);
+        return MySqlUtil.update(sql,id);
     }
 
     /***
@@ -85,6 +76,6 @@ public class CodeDAO implements CodeInterFace {
     public CodeTable query(String name) {
         //获取sql语句
         String sql = "select ct_id,ct_code,ct_time,ct_effective_time,ct_Valid_or_not,ct_type,user_Id from code_table where ct_code = ?" ;
-        return mySqlUtil.queryT(CodeTable.class,sql,name);
+        return MySqlUtil.queryT(CodeTable.class,sql,name);
     }
 }

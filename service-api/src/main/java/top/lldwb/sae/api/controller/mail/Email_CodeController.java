@@ -3,6 +3,8 @@ package top.lldwb.sae.api.controller.mail;
 import org.nf.web.annotation.RequestMapping;
 import org.nf.web.annotation.RequestParam;
 import org.nf.web.servlet.View;
+import org.nf.web.servlet.view.JsonView;
+import top.lldwb.sae.api.controller.BaseController;
 import top.lldwb.sae.service.mailEmial.MailEmail_Code;
 
 /***
@@ -26,6 +28,6 @@ public class Email_CodeController {
         //调用发送邮箱封装类，调用静态方法
         MailEmail_Code.Mail_Code(EMAIL, "自己的QQ邮箱授权码", "Steam游戏商城", userEmail) ;
 
-        return null;
+        return new JsonView(new BaseController().success());
     }
 }
