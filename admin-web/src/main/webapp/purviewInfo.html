@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>用户信息管理页面</title>
+    <title>权限管理页面</title>
     <link rel="stylesheet" href="layui/css/layui.css">
 </head>
 <body>
@@ -80,7 +80,7 @@
             {field:'userPhone', width:80, title: '手机号'},
             {field:'userIdCard', width:80, title: '身份证'},
             {field:'userState', width:80, title: '状态'},
-            {field:'roleLevel', width:80, title: '角色'},
+            {field:'roleId', width:80, title: '角色'},
             {field:'userRenewTime', width:80, title: '更新时间'},
             {field:'steamId', width:80, title: 'steamID'},
             {field:'userNickname', width:80, title: 'steam秘钥'},
@@ -102,7 +102,7 @@
                 title: '编辑'
               },{
                 userId: 'delete',
-                title: '注销',
+                title: '删除',
               }],
             
               // 菜单被点击的事件
@@ -261,7 +261,7 @@
           var othis = lay(this);
           switch(obj.event){
             case 'LAYTABLE_TIPS':
-              layer.alert('注意：注销账号需谨慎！');
+              layer.alert('自定义工具栏图标按钮');
             break;
           };
         });
@@ -281,22 +281,22 @@
             // 更多 - 下拉菜单
             dropdown.render({
               elem: this, // 触发事件的 DOM 对象
-              show: false, // 外部事件触发即显示
+              show: true, // 外部事件触发即显示
               data: [{
                 title: '查看',
                 userId: 'detail'
               },{
-                title: '注销',
+                title: '删除',
                 userId: 'del'
               }],
               click: function(menudata){
                 if(menudata.userId === 'detail'){
                   layer.msg('查看操作，当前行 ID:'+ data.userId);
                 } else if(menudata.userId === 'del'){
-                  layer.confirm('真的注销此账号么 [账号 '+ data.userName +'] 么', function(index){
-                    obj.del(); // 注销对应行（tr）的DOM结构
+                  layer.confirm('真的删除行 [id: '+ data.userId +'] 么', function(index){
+                    obj.del(); // 删除对应行（tr）的DOM结构
                     layer.close(index);
-                    // 向服务端发送注销指令
+                    // 向服务端发送删除指令
                   });
                 } 
               },
@@ -343,5 +343,4 @@
         });
       });
       </script>
-  </body>
 </html>
