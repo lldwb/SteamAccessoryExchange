@@ -13,10 +13,10 @@ import top.lldwb.sae.utils.vo.ResultVO;
  * @author 安然的尾巴
  * @version 1.0
  */
-public class Dialogue {
+public class Dialogue  extends BaseController{
     @RequestMapping("/ai/dialogue")
     public View dialogue(@RequestParam("questions") String questions) {
-        ResultVO<DevChatResponse> resultVO = new BaseController().success(AiAssistant.dialogue(questions).getData());
+        ResultVO<DevChatResponse> resultVO = success(AiAssistant.dialogue(questions).getData());
         return new JsonView(resultVO);
     }
 }
