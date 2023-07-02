@@ -8,8 +8,7 @@
 </head>
 <body>
     <div class="layui-container">
-        <h3>城市列表</h3>
-        <table class="layui-table" lay-data="{height:470, url:'http://localhost:8080/service_api_war_exploded/user/getLimitConditionQuery.do', page:true}" id="userTable">
+        <table class="layui-table"  id="userTable">
             <thead>
             <tr>
                 <th lay-data="{field:'userId'}">ID</th>
@@ -22,4 +21,46 @@
     </div>
 </body>
 <script src="layui/layui.js"></script>
+
+<script>
+    layui.use('table',function(){
+        var table = layui.table ;
+        table.render({
+            elem:"#userTable"
+            ,url:"http://localhost:8080/service_api_war_exploded/user/getLimitConditionQuery.do"
+            ,method:"get"
+            ,contentype:"application/json"
+            ,parseData:function (res){
+                console.log(res);
+                return{
+                    "code":200,
+                    "msg":res.message,
+                    "count":res.count,
+                    "data":res.data
+                }
+            },
+            limit:10
+            ,page:true
+            ,response:{
+		      statusName:'code', //规定返回的状态码字段为code
+			  statusCode:200 //规定成功的状态码味200
+		  },
+          cols:[[
+               {field:'userId', title:'ID', width:140, fixed: 'left', unresize: true, sort: true}
+			  ,{field:'userName', title:'文章标题', width:140, edit: 'text'}
+			  ,{field:'userPassword', title:'作者', width:120, edit: 'text'}
+			  ,{field:'userNickname', title:'发表时间', width:180, edit: 'text', sort: true}
+			 
+            ]]
+        
+        }
+        
+        
+        )
+       
+
+
+    })
+
+</script>
 </html>

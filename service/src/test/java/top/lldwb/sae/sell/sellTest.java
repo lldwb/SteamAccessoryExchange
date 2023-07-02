@@ -3,7 +3,7 @@ package top.lldwb.sae.sell;
 import org.junit.jupiter.api.Test;
 import top.lldwb.sae.entity.sell.Sell;
 import top.lldwb.sae.service.sell.impl.SellServiceImpl;
-import top.lldwb.sae.vo.PageVO;
+import top.lldwb.sae.utils.vo.PageVO;
 
 import java.util.List;
 

@@ -4,7 +4,7 @@ import org.nf.web.annotation.RequestMapping;
 import org.nf.web.annotation.RequestParam;
 import org.nf.web.servlet.View;
 import org.nf.web.servlet.view.JsonView;
-import top.lldwb.sae.api.vo.ResultVO;
+import top.lldwb.sae.utils.vo.ResultVO;
 import top.lldwb.sae.service.user.UserServiceInterFace;
 import top.lldwb.sae.service.user.service.UserService;
 

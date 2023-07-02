@@ -16,37 +16,37 @@
 	<body>
 		<div id="app">
 			<div style="width: 100%;">
-					<div>
-						<el-row :gutter="20">
-							<el-col :span="6" :offset="8">
-								<div class="grid-content bg-purple">
-									<h3>助手</h3>
-								</div>
-							</el-col>
-						</el-row>
-					</div>
-				
-					<!--聊天内容-->
-					<div class="main" style="margin-bottom: 70px">
-						<div class="talkshow">
-							<div v-for="chat in list" :class="chat.message!=null?'atalk':'btalk'">
-								<span>{{chat.data.data.content}}</span>
+				<div>
+					<el-row :gutter="20">
+						<el-col :span="6" :offset="8">
+							<div class="grid-content bg-purple">
+								<h3>助手</h3>
 							</div>
+						</el-col>
+					</el-row>
+				</div>
+
+				<!--聊天内容-->
+				<div class="main" style="margin-bottom: 70px">
+					<div class="talkshow">
+						<div v-for="chat in list" :class="chat.message!=null?'atalk':'btalk'">
+							<span>{{chat.data.content}}</span>
 						</div>
 					</div>
-					<!--发送消息-->
-					<div>
-						<el-row :gutter="24" class="sendbox">
-							<el-col :span="19">
-								<el-input type="textarea" v-model="wordone" :disabled="forbidden"
-									placeholder="请输入内容"></el-input>
-							</el-col>
-							<el-col :span="5">
-								<!-- <input type="button" value="发送" class="btnsend" /> -->
-								<el-button type="success" :disabled="forbidden" @click="sendmsg()" plain>发送</el-button>
-							</el-col>
-						</el-row>
-					</div>
+				</div>
+				<!--发送消息-->
+				<div>
+					<el-row :gutter="24" class="sendbox">
+						<el-col :span="19">
+							<el-input type="textarea" v-model="wordone" :disabled="forbidden"
+								placeholder="请输入内容"></el-input>
+						</el-col>
+						<el-col :span="5">
+							<!-- <input type="button" value="发送" class="btnsend" /> -->
+							<el-button type="success" :disabled="forbidden" @click="sendmsg()" plain>发送</el-button>
+						</el-col>
+					</el-row>
+				</div>
 			</div>
 		</div>
 	</body>
@@ -77,9 +77,7 @@
 					this.forbidden = true;
 					this.list.push({
 						data: {
-							data: {
-								content: this.wordone
-							}
+							content: this.wordone
 						}
 					});
 					$.ajax({

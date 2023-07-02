@@ -1,4 +1,4 @@
-package top.lldwb.sae.vo;
+package top.lldwb.sae.utils.vo;
 
 import java.util.List;
 
