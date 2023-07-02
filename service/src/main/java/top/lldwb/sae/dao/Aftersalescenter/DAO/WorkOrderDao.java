@@ -10,11 +10,11 @@ import java.util.List;
  * @Author xiao
  */
 public interface WorkOrderDao {
-    Integer insert(WorkOrder workOrder);
+    int insert(WorkOrder workOrder);
 
-    Integer delete(int workId);
+    int delete(int workId);
 
-    Integer update(WorkOrder workOrder);
+    int update(WorkOrder workOrder);
 
     WorkOrder select(int workId);
 
