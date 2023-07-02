@@ -15,9 +15,7 @@ public class buyTest {
     @Test
     public void buy(){
         WantToBuyServiceImpl service = new WantToBuyServiceImpl();
-        PageVO<List<WantToBuy>> buy = service.getBuy(1, 10);
-        System.out.println(buy.getData());
-        System.out.println(buy.getCode());
-        System.out.println(buy.getCount());
+        List<WantToBuy> buy = service.getBuy(1, 10);
+        System.out.println(buy);
     }
 }

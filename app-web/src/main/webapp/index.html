@@ -60,7 +60,7 @@
         padding: 86px 0px 32px;
 
     }
-    img {
+    .imge {
         width: 65%; /* 图片宽度占右半区 */
         float: right;
     }
@@ -86,11 +86,56 @@
         clear: both
     }
 
+
+    .grid-blank {
+        min-height: 36px;
+        margin: 0px;
+        padding: 0px;
+        background: white;
+        filter: opacity(0%);
+    }
+    .login{
+        float: right;
+        color: white;
+    }
+
 </style>
 <body>
 <div id="app" >
-    <!--走马灯 background-repeat:repeat-x 图片横向重复-->
-    <el-row style="background-image:url(https://buff.163.com/static/images/site/index-header-bg.jpg);background-repeat: repeat-x" >
+
+    <div style="background-image:url(https://buff.163.com/static/images/site/index-header-bg.jpg);">
+        <!--顶部导航栏-->
+        <el-row>
+            <el-col :span="4"><div class="grid-blank" style="background-color:rgba(0,0,0,0);"></div></el-col>
+            <el-col :span="16">
+                <div style="float: left;padding-top: 20px">
+                    <img src="https://buff.163.com/static/images/site/logo.png">
+                </div>
+                <el-menu
+                        :default-active="activeIndex"
+                        class="el-menu-demo"
+                        mode="horizontal"
+                        @select="handleSelect"
+                        background-color="rgba(0,0,0,0)"
+                        text-color="#fff"
+                        active-text-color="#4886ff"
+                        hover-color="rgba(0,0,0,0.2)">
+                    <el-menu-item index="1">首页</el-menu-item>
+                    <el-menu-item index="2">饰品市场</el-menu-item>
+                    <el-menu-item index="3">游戏资讯</el-menu-item>
+
+                    <div class="login" style="padding: 20px ">登录/注册</div>
+                    <h3  class="login" >CS-GO</h3 >
+                    <el-menu-item :v-if="te" style="float: right" index="4">求购</el-menu-item>
+                    <el-menu-item :v-if="te" style="float: right" index="5">出售</el-menu-item>
+                    <el-menu-item :v-if="te" style="float: right" index="6">库存</el-menu-item>
+                </el-menu>
+            </el-col>
+            <el-col :span="4"><div class="grid-blank" style="background-color:rgba(0,0,0,0);"></div></el-col>
+        </el-row>
+
+        <!--走马灯 background-repeat:repeat-x 图片横向重复-->
+    <el-row style="background-repeat: repeat-x" >
         <el-col :span="4"><div class="grid-content "></div></el-col>
         <el-col :span="20">
             <div  style="padding-bottom: 50px">
@@ -103,7 +148,7 @@
                                 <p style="color: #d3d4d6">{{ item.miaoshu }}</p>
                             </div>
                         </div>
-                        <div class="slide-in-right">
+                        <div class="slide-in-right imge">
                             <img :src="item.imageUrl" :alt="'Image ' + (index + 1)">
                         </div>
                     </el-carousel-item>
@@ -112,7 +157,7 @@
             </div>
         </el-col>
     </el-row>
-
+</div>
     <!--最新上架 background-repeat:repeat-x 图片横向重复-->
     <el-row style="background-image:url(https://buff.163.com/static/images/site/index-section1-bg.jpg);background-repeat: repeat-x;">
         <div style="padding: 30px 0px"></div>
@@ -152,6 +197,7 @@
         el:"#app",
         data(){
             return {
+                activeIndex: '1',
                 carouselItems: [
                     {
                         description: '这是文字1的描述',

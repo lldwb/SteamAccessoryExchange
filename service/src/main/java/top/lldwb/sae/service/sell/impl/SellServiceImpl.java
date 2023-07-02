@@ -15,10 +15,16 @@ import java.util.List;
  */
 public class SellServiceImpl implements SellService {
     @Override
-    public PageVO<List<Sell>> getSell(int numberOf , int limit) {
+    public List<Sell> getSell(int numberOf , int limit) {
         SellDao dao = new SellImpl();
         List<Sell> list = dao.getSell(PageUtils.toNumberOf(numberOf,limit),limit);
-        Long count = dao.count();
-        return PageUtils.toPageVO(list,count);
+        return list;
+    }
+
+    @Override
+    public Long getCount() {
+        SellDao dao = new SellImpl();
+        Long count = dao.getCount();
+        return count;
     }
 }
