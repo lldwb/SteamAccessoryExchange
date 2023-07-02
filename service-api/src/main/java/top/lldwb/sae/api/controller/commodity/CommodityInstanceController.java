@@ -11,7 +11,7 @@ import top.lldwb.sae.service.commodity.impl.CommodityInstanceServiceImpl;
  * @author 安然的尾巴
  * @version 1.0
  */
-public class CommodityInstanceController {
+public class CommodityInstanceController extends BaseController{
     /**
      * 根据官方数据进行刷新数据源
      */
@@ -19,6 +19,6 @@ public class CommodityInstanceController {
     public View refresh() {
         CommodityInstanceService service = new CommodityInstanceServiceImpl();
         service.refresh();
-        return new JsonView(new BaseController().success());
+        return new JsonView(success());
     }
 }

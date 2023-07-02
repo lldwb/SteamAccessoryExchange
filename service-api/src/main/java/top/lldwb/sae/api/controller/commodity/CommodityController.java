@@ -12,7 +12,7 @@ import top.lldwb.sae.service.commodity.impl.CommodityServiceImpl;
  * @author 安然的尾巴
  * @version 1.0
  */
-public class CommodityController {
+public class CommodityController extends BaseController{
     /**
      * 根据官方数据进行刷新库存
      */
@@ -20,6 +20,6 @@ public class CommodityController {
     public View refresh(@RequestParam("userId") int userId) {
         CommodityService service = new CommodityServiceImpl();
         service.refresh(userId);
-        return new JsonView(new BaseController().success());
+        return new JsonView(success());
     }
 }
