@@ -48,4 +48,11 @@ public interface RoleServiceInterFace {
     List<Role> listConditionQuery(String role_level) ;
 
      PageVO<List<Role>> pagseRoleVoList(String roleLevel, int page, int limit) ;
+
+    /***
+     * 根据id查询
+     * @param id
+     * @return
+     */
+     Role queryRoleId(int id) ;
 }

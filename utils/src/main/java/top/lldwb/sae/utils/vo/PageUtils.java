@@ -29,6 +29,7 @@ public class PageUtils {
         pageVO.setCount(count);
         pageVO.setData(list);
         pageVO.setCode(200);
+        pageVO.setMessage("查询成功");
         return pageVO;
     }
 }

@@ -46,8 +46,11 @@ public class UserDAO implements UserFace {
 
     @Override
     public int loginDelete(int id) {
-        //获取sql查询语句
-        String sql = "delete from user where user_id = ?" ;
+        // 获取sql查询语句,强制删除 - 所有对该id进行引用的数据都将删除
+        String sql = "set foreign_key_checks = 0;\n" +
+                "\n" +
+                "delete from user where user_id = ?;\n" +
+                "set foreign_key_checks = 1;" ;
         //执行
         return MySqlUtil.update(sql,id);
     }
@@ -158,10 +161,11 @@ public class UserDAO implements UserFace {
         sb.append(" user_state,");
         sb.append(" user_time,");
         sb.append(" role_id,");
-        sb.append(" user_renew_time ");
+        sb.append(" user_renew_time,steam_Id ");
         sb.append("from user ");
         sb.append("limit ?,?") ;
         String sql = sb.toString();
+
         return MySqlUtil.queryList(User.class,sql,number,limit);
     }
 

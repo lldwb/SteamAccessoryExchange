@@ -177,4 +177,17 @@ public class RoleService implements RoleServiceInterFace {
         //返回
         return PageUtils.toPageVO(list,count) ;
     }
+
+    /***
+     * 根据id查询
+     * @param id
+     * @return
+     */
+    @Override
+    public Role queryRoleId(int id) {
+        //调用数据访问类
+        RoleInterFace dao = new RoleDAO() ;
+        Role entity = dao.queryRoleId(id) ;
+        return entity;
+    }
 }

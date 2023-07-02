@@ -44,4 +44,6 @@ public class User {
     private Integer roleId;//外键角色表id
     @Column("user_renew_time")
     private Timestamp userRenewTime;//用户修改时间
+    @Column("steam_Id")
+    private String steamId;//steamID
 }
