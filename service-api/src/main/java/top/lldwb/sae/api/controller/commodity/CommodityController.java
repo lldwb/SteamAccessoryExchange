@@ -2,6 +2,9 @@ package top.lldwb.sae.api.controller.commodity;
 
 import org.nf.web.annotation.RequestMapping;
 import org.nf.web.annotation.RequestParam;
+import org.nf.web.servlet.View;
+import org.nf.web.servlet.view.JsonView;
+import top.lldwb.sae.api.controller.BaseController;
 import top.lldwb.sae.service.commodity.CommodityService;
 import top.lldwb.sae.service.commodity.impl.CommodityServiceImpl;
 
@@ -14,11 +17,9 @@ public class CommodityController {
      * 根据官方数据进行刷新库存
      */
     @RequestMapping("/Commodity/Commodity/refresh")
-    public void refresh(@RequestParam("userId") int userId) {
+    public View refresh(@RequestParam("userId") int userId) {
         CommodityService service = new CommodityServiceImpl();
-        new Thread(() ->
-                service.refresh(userId)
-        ).start()
-        ;
+        service.refresh(userId);
+        return new JsonView(new BaseController().success());
     }
 }

@@ -1,4 +1,4 @@
-package top.lldwb.sae.dao.Aftersalescenter;
+package top.lldwb.sae.dao.aftersalescenter;
 
 import top.lldwb.sae.entity.Aftersalescenter.WorkOrder.WorkOrder;
 
