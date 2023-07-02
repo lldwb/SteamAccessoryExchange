@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="layui/css/layui.css">
     <link rel="stylesheet" href="pageTable/admin/css/global.css">
     <link rel="stylesheet" href="pageTable/admin/css/admin.css">
+    <script src="pageTable/js/pageTable-One.js"></script>
     <script src="layui/layui.js"></script>
     <style>
         #loading {
@@ -51,11 +52,10 @@
     <div class = "div_Three">
         <div class = "div_Three_One">
             <span class = "spanModule layui-icon layui-icon-templeate-1">常用模块</span>
-
             <div class = "div_Three_One_One">
-                <button class="buttonModule"><span class="layui-icon layui-icon-user" style=" color: white;font-size: 20px;">用户管理</span></button><br><br><br><br>
-                <button class="buttonModule"><span class="layui-icon layui-icon-auz" style="color: white;font-size: 20px;">权限管理</span></button><br><br><br><br>
-                <button class="buttonModule"><span class="layui-icon layui-icon-friends" style="color: white;font-size: 20px;">角色管理</span></button>
+                <button onclick="buttonUserInfoHtml()" class="buttonModule" onclick="buttonUserInfoHtml()"><span class="layui-icon layui-icon-user" style=" color: white;font-size: 20px;">用户管理</span></button><br><br><br><br>
+                <button onclick="buttonPurViewInfoHtml()" class="buttonModule"><span class="layui-icon layui-icon-auz" style="color: white;font-size: 20px;">权限管理</span></button><br><br><br><br>
+                <button onclick="buttonRoleInfoHtml()" class="buttonModule"><span class="layui-icon layui-icon-friends" style="color: white;font-size: 20px;">角色管理</span></button>
             </div>
             <div class = "div_Three_One_Two">
                 <button class="buttonModule "><span class="layui-icon  layui-icon-addition" style=" color: white;font-size: 20px;">添加用户</span></button><br><br><br><br>

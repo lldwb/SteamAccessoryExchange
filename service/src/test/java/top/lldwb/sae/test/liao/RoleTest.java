@@ -84,4 +84,15 @@ public class RoleTest {
     public void count(){
         System.out.println(face.count());
     }
+
+    @Test
+    public void queryId(){
+        RoleServiceInterFace serviceInterFace = new RoleService() ;
+
+        Role role = serviceInterFace.queryRoleId(1) ;
+        System.out.println(role);
+
+
+
+    }
 }
