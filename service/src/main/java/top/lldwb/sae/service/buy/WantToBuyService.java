@@ -16,5 +16,11 @@ public interface WantToBuyService {
      * @param limit
      * @return
      */
-    PageVO<List<WantToBuy>> getBuy(int numberOf,int limit);
+    List<WantToBuy> getBuy(int numberOf,int limit);
+
+    /**
+     * 查询总条数
+     * @return
+     */
+    Long getCount();
 }

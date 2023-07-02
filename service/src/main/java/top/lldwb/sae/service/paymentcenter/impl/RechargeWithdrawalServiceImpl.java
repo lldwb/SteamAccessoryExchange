@@ -13,9 +13,9 @@ import java.util.List;
  */
 public class RechargeWithdrawalServiceImpl implements RechargeWithdrawalService {
     @Override
-    public int recharge(RechargeWithdrawal rw) {
+    public int insertRecharge(RechargeWithdrawal rw) {
         RechargeWithdrawalDao dao = new RechargeWithdrawalImpl();
-        return dao.recharge(rw);
+        return dao.insertRecharge(rw);
     }
 
     @Override
