@@ -1,4 +1,4 @@
-package top.lldwb.sae.api.controller.sell;
+package top.lldwb.sae.api.controller.deal;
 
 import org.nf.web.annotation.RequestMapping;
 import org.nf.web.annotation.RequestParam;

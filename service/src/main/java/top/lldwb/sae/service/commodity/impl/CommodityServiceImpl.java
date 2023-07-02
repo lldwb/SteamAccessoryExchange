@@ -82,10 +82,11 @@ public class CommodityServiceImpl implements CommodityService {
                 });
             }).start();
 
-            // 添加商品
+            // 添加商品(库存)
             new Thread(() -> {
                 List<Map<String, Object>> assets = (List<Map<String, Object>>) map.get("assets");
                 CommodityDAO commodityDAO = new CommodityDAOImpl();
+                commodityDAO.updateStateByUserId(0,userId);
                 assets.forEach(tags -> {
                     if (commodityDAO.judgeExist((String) tags.get("assetid"))) {
                         Commodity commodity = new Commodity();
@@ -93,6 +94,8 @@ public class CommodityServiceImpl implements CommodityService {
                         commodity.setClassId((String) tags.get("classid"));
                         commodity.setUserId(userId);
                         commodityDAO.add(commodity);
+                    }else {
+                        commodityDAO.updateStateByAssetId(1,(String) tags.get("assetid"));
                     }
                 });
 //                System.out.println(assets);
