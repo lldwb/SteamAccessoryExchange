@@ -8,34 +8,6 @@
     <style>
         @import url("//unpkg.com/element-ui@2.15.13/lib/theme-chalk/index.css");
 
-        .show-top-a{
-            height:650px;
-            width: 100%;
-
-        }
-
-        .show-top-wz{
-            background: url("/img/导航栏.png");
-
-        }
-        .el-row {
-            margin-top: 10px;
-        }
-
-        .grid-content {
-            min-height: 36px;
-            min-height: 50px;
-            color:#fff;
-            margin:10px 10px 0px 0px;
-            display: flex;
-            justify-content:center;
-            align-items: center;//上下对齐
-        }
-        .grid{
-            min-height: 36px;
-        }
-
-
         <!--                   -->
         .el-margin-top{
             width: 98%;
@@ -164,7 +136,6 @@
             margin:5px 12px 0px 12px;
         }
         .el-row-zo{
-
         }
         .el-row-zoa .el-button-a{
             height: 55px;
@@ -173,13 +144,6 @@
             border-radius: 0px;
             background: rgb(28,32,43);
         }
-        .el-input-a{
-            height: 30px;
-            margin-top: 15px;
-            display: flex;
-            align-items: center;
-        }
-
 
         .el-select-di{
             width: 100px;
@@ -199,7 +163,7 @@
 
         .el-margin-w{
             width: 98%;
-            height: 1100px;
+            height: 1000px;
             background: #8c939d;
             margin: 0px 10px 10px 12px;
         }
@@ -220,42 +184,66 @@
             width: 170px;
             position: relative;
         }
-        img{
+        .el-img{
             width: 100%;
             height: 110px;
+        }
+        .el-pagination{
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .grid-blank {
+            min-height: 36px;
+            margin: 0px;
+            padding: 0px;
+            background: white;
+            filter: opacity(0%);
+        }
+        .login{
+            float: right;
+            color: white;
         }
     </style>
 </head>
 <body>
-<div id="app"  class="show-top-a">
+<div id="app">
 
-    <div class="show-top-wz">
-        <el-row gutter="20">
-            <el-col :span="3">
-                <div class="grid-content ">杰杰buff</div>
+    <div  style="background-image:url(/img.png);">
+        <el-row>
+            <el-col :span="4"><div class="grid-blank" style="background-color:rgba(0,0,0,0);"></div></el-col>
+            <el-col :span="16">
+                <div style="float: left;padding-top: 20px">
+                    <img src="https://buff.163.com/static/images/site/logo.png">
+                </div>
+                <el-menu
+                        :default-active="activeIndex"
+                        class="el-menu-demo"
+                        mode="horizontal"
+                        @select="handleSelect"
+                        background-color="rgba(0,0,0,0)"
+                        text-color="#fff"
+                        active-text-color="#4886ff"
+                        hover-color="rgba(0,0,0,0.2)">
+                    <el-menu-item index="1">首页</el-menu-item>
+                    <el-menu-item index="2">饰品市场</el-menu-item>
+                    <el-menu-item index="3">游戏资讯</el-menu-item>
+
+                    <div class="login" style="padding: 20px ">登录/注册</div>
+                    <h3  class="login" >CS-GO</h3 >
+                    <el-menu-item :v-if="te" style="float: right" index="4">求购</el-menu-item>
+                    <el-menu-item :v-if="te" style="float: right" index="5">出售</el-menu-item>
+                    <el-menu-item :v-if="te" style="float: right" index="6">库存</el-menu-item>
+                </el-menu>
             </el-col>
-            <el-col :span="2">
-                <div class="grid-content ">首页</div>
-            </el-col>
-            <el-col :span="2">
-                <div class="grid-content ">饰品市场</div>
-            </el-col>
-            <el-col :span="2">
-                <div class="grid-content ">游戏资讯</div>
-            </el-col>
-            <el-col :span="11">
-                <div class="grid"></div>
-            </el-col>
-            <el-col :span="2">
-                <div class="grid-content">CS-GO</div>
-            </el-col>
-            <el-col :span="2">
-                <div class="grid-content">登录/注册</div>
-            </el-col>
+            <el-col :span="4"><div class="grid-blank" style="background-color:rgba(0,0,0,0);"></div></el-col>
         </el-row>
         <hr style="border: 1px solid black"/>
     </div>
+
     <!--展示的-----------------------------头-->
+
     <div class="el-margin-top">
         <el-row class="el-row-top" gutter="40">
             <el-col :span="2"><div class="el-row-y">
@@ -426,31 +414,35 @@
                     </el-option>
                 </el-select>
 
-                <el-input placeholder="输入物品名称" v-model="input3" class="input-with-select" size="mini">
+                <el-input placeholder="输入物品名称" v-model="input1" class="input-with-select" size="mini">
                     <el-button slot="append" icon="el-icon-search">搜索</el-button>
                 </el-input>
             </template>
         </div>
     </div>
+
     <!-- 筛选的---------------------->
+
     <div class="top-so">
         <el-row class="el-row-di">
             <el-col :span="2"><div class="el-row-d">筛选：</div></el-col>
             <el-col :span="2"><div class="el-row-d">最低交易量</div></el-col>
             <el-col :span="2">
-                <el-input  v-model="input" clearable size="mini" class="el-input-s"></el-input>
+                <el-input  v-model="input2" clearable size="mini" class="el-input-s"></el-input>
             </el-col>
 
             <el-col :span="1"><div class="el-row-d"></div></el-col>
             <el-col :span="2"><div class="el-row-d">最低比例</div></el-col>
             <el-col :span="2">
-                <el-input v-model="input" clearable size="mini" class="el-input-s"></el-input>
+                <el-input v-model="input3" clearable size="mini" class="el-input-s"></el-input>
             </el-col>
             <el-col :span="1"><div class="el-row-d"></div></el-col>
             <el-button type="primary" class="el-button-s">开始</el-button>
         </el-row>
     </div>
+
     <!--出售，推荐-->
+
     <div class="el-so">
         <el-row class="el-row-zo">
             <el-col :span="3" class="el-row-zoa">
@@ -465,15 +457,15 @@
             <el-col :span="6"><div class="el-row-d"></div></el-col>
             <el-col :span="5">
                 <div class="el-row-aa">
-                    <el-input v-model="input" clearable size="mini" class="el-input-min"  placeholder="最低价"></el-input>
-                    <el-input v-model="input" clearable size="mini" class="el-input-min" placeholder="最高价"></el-input>
+                    <el-input v-model="input4" clearable size="mini" class="el-input-min"  placeholder="最低价"></el-input>
+                    <el-input v-model="input5" clearable size="mini" class="el-input-min" placeholder="最高价"></el-input>
                 </div>
             </el-col>
             <el-col :span="1"><div></div></el-col>
             <el-col :span="2">
                 <template class="el-r">
-                    <el-select v-model="value" placeholder="排序"  size="mini" class="el-select-di">
-                        <el-option v-for="item in paixun" :key="item.value" :label="item.label" :value="item.value">
+                    <el-select v-model="select" placeholder="排序"  size="mini" class="el-select-di">
+                        <el-option v-for="item in options " :key="item.value" :label="item.label" :value="item.value">
                         </el-option>
                     </el-select>
                 </template>
@@ -481,41 +473,55 @@
         </el-row>
     </div>
 
+    <!--商品展示-->
+    <div class="el-margin-w">
+        <div v-for="fit in fits" :key="fit">
 
-        <div class="el-margin-w" v-for="fit in fits" :key="fit">
-            <el-row type="flex" class="el-bg-di"justify="center">
-                <el-col :span="4" class="el-row-tu">
-                    <div class="el-fen">
-                    <el-image :src="url":fit="fit"></el-image>
-                    </div>
+            <el-row type="flex" class="el-bg-di" justify="center">
+
+                <el-col :span="4" class="el-row-tu" ><div class="el-fen">
+                    <img src="img/img_2.png" class="el-img"/>武器箱</div>
                 </el-col>
 
-                <el-col :span="4" class="el-row-tu">
-                    <div class="el-fen">
-                        <el-image :src="url":fit="fit"></el-image>
-                    </div>
+                <el-col :span="4" class="el-row-tu"><div class="el-fen">
+                    <img src="img/img_2.png" class="el-img"/>武器箱</div>
                 </el-col>
 
-                <el-col :span="4" class="el-row-tu">
-                    <div class="el-fen">
-                        <el-image :src="url":fit="fit"></el-image>
-                    </div>
+                <el-col :span="4" class="el-row-tu"><div class="el-fen">
+                    <img src="img/img_2.png" class="el-img"/>武器箱</div>
                 </el-col>
 
-                <el-col :span="4" class="el-row-tu">
-                    <div class="el-fen">
-                        <el-image :src="url":fit="fit"></el-image>
-                    </div>
+                <el-col :span="4" class="el-row-tu"><div class="el-fen">
+                    <img src="img/img_2.png" class="el-img"/>武器箱</div>
                 </el-col>
 
-                <el-col :span="4" class="el-row-tu">
-                    <div class="el-fen">
-                        <el-image :src="url":fit="fit"></el-image>
-                    </div>
+                <el-col :span="4" class="el-row-tu"><div class="el-fen">
+                    <img src="img/img_2.png" class="el-img"/>武器箱</div>
                 </el-col>
-
             </el-row>
         </div>
+
+        <el-pagination background layout="prev, pager, next" :total="1000" class="el-pagination">
+
+        </el-pagination>
+
+        <template>
+            <div>
+                <!-- 分页组件 -->
+                <el-pagination
+                        @current-change="handleCurrentChange"
+                        :current-page="currentPage"
+                        :page-size="pageSize"
+                        :total="totalItems">
+                </el-pagination>
+                <!-- 显示当前页数据 -->
+                <div v-for="item in currentData" :key="item.id">
+                    <!-- 显示数据的代码 -->
+                </div>
+            </div>
+        </template>
+
+    </div>
 
 </div>
 </body>
@@ -524,7 +530,14 @@
     new Vue({
         el:"#app",
         data() {
+
             return {
+                options:[{
+                    value:'1',
+                    label:'不限'
+                }
+                ],
+
                 //品质
                 options1: [{
                     value: '选项1',
@@ -663,6 +676,14 @@
                     label: '自定义'
                 }],
                 //条件查询
+                select:'',
+
+                input1:'',
+                input2:'',
+                input3:'',
+                input4:'',
+                input5:'',
+
                 value1:'',
                 value2:'',
                 value3:'',
@@ -670,8 +691,44 @@
                 value5:'',
                 value6:'',
                 value7:'',
-                fits: ['fill', 'contain', 'cover', 'none', 'scale-down'],
-                url: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
+                activeIndex:1,
+                te:true ,
+                fits: ['fill', 'contain', 'cover', 'scale-down'],
+                url: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
+                currentPage: 1, // 当前页码
+                pageSize: 10, // 每页显示的条数
+                totalItems: 0, // 总条数
+                allData: [], // 所有数据
 
-            }}})
+            }
+        },methods: {
+            fetchData() {
+                // 发起异步请求获取数据，将结果赋值给 allData 和 totalItems
+                // 例如使用 Axios 发送请求：
+                axios.get('/api/data')
+                    .then(response => {
+                        this.allData = response.data;
+                        this.totalItems = response.data.length;
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
+
+            },handleCurrentChange(newPage) {
+                this.currentPage = newPage;
+            },
+
+        },created() {
+            this.fetchData();
+
+        },computed: {
+            currentData() {
+                const startIndex = (this.currentPage - 1) * this.pageSize;
+                const endIndex = startIndex + this.pageSize;
+                return this.allData.slice(startIndex, endIndex);
+            },
+        }
+
+
+    })
 </script>

@@ -163,7 +163,7 @@
 
         .el-margin-w{
             width: 98%;
-            height: 1100px;
+            height: 1000px;
             background: #8c939d;
             margin: 0px 10px 10px 12px;
         }
@@ -479,9 +479,9 @@
 
         <el-row type="flex" class="el-bg-di" justify="center">
 
-            <el-col :span="4" class="el-row-tu"><div class="el-fen">
-                <img src="img/img_2.png" class="el-img"/>武器箱</div>
-            </el-col>
+                <el-col :span="4" class="el-row-tu" ><div class="el-fen">
+                    <img src="img/img_2.png" class="el-img"/>武器箱</div>
+                </el-col>
 
             <el-col :span="4" class="el-row-tu"><div class="el-fen">
                 <img src="img/img_2.png" class="el-img"/>武器箱</div>
@@ -504,6 +504,23 @@
     <el-pagination background layout="prev, pager, next" :total="1000" class="el-pagination">
 
     </el-pagination>
+
+    <template>
+        <div>
+            <!-- 分页组件 -->
+            <el-pagination
+                    @current-change="handleCurrentChange"
+                    :current-page="currentPage"
+                    :page-size="pageSize"
+                    :total="totalItems">
+            </el-pagination>
+            <!-- 显示当前页数据 -->
+            <div v-for="item in currentData" :key="item.id">
+                <!-- 显示数据的代码 -->
+            </div>
+        </div>
+    </template>
+
 </div>
 
 </div>
@@ -513,6 +530,7 @@
     new Vue({
         el:"#app",
         data() {
+
             return {
                 options:[{
                     value:'1',
@@ -676,6 +694,41 @@
                 activeIndex:1,
                 te:true ,
                 fits: ['fill', 'contain', 'cover', 'scale-down'],
-                url: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
-            }}})
+                url: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
+                currentPage: 1, // 当前页码
+                pageSize: 10, // 每页显示的条数
+                totalItems: 0, // 总条数
+                allData: [], // 所有数据
+
+            }
+        },methods: {
+            fetchData() {
+                // 发起异步请求获取数据，将结果赋值给 allData 和 totalItems
+                // 例如使用 Axios 发送请求：
+                axios.get('/api/data')
+                    .then(response => {
+                        this.allData = response.data;
+                        this.totalItems = response.data.length;
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
+
+            },handleCurrentChange(newPage) {
+                this.currentPage = newPage;
+            },
+
+        },created() {
+            this.fetchData();
+
+        },computed: {
+            currentData() {
+                const startIndex = (this.currentPage - 1) * this.pageSize;
+                const endIndex = startIndex + this.pageSize;
+                return this.allData.slice(startIndex, endIndex);
+            },
+        }
+
+
+    })
 </script>
