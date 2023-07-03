@@ -4,11 +4,15 @@ import org.nf.web.annotation.RequestMapping;
 import org.nf.web.annotation.RequestParam;
 import org.nf.web.servlet.View;
 import org.nf.web.servlet.view.JsonView;
+import top.lldwb.sae.api.controller.BaseController;
+import top.lldwb.sae.entity.user.User;
+import top.lldwb.sae.utils.vo.PageVO;
 import top.lldwb.sae.utils.vo.ResultVO;
 import top.lldwb.sae.service.user.UserServiceInterFace;
 import top.lldwb.sae.service.user.service.UserService;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * @author 安然的尾巴
@@ -17,13 +21,9 @@ import javax.servlet.http.HttpSession;
  *
  * 用户登录
  */
-public class UserController {
+public class UserController extends BaseController {
 
-    /***
-     * 调用响应类
-     * @return
-     */
-    private static  ResultVO<Object> resultVO = null ;
+
 
     @RequestMapping("/user/getUser")
     public View getUser(){
@@ -52,8 +52,8 @@ public class UserController {
                            @RequestParam("userEmailCode")String emailCode){
 
             UserServiceInterFace service = new UserService() ;
-            resultVO = new ResultVO<>(200,"成功",service.loginAdd(name, email, password, nickName, phone, idCard,emailCode)) ;
-            return new JsonView(resultVO);
+            ResultVO resultVO = success(service.loginAdd(name, email, password, nickName, phone, idCard,emailCode)) ;
+            return new JsonView(success(resultVO));
     };
 
 
@@ -67,7 +67,7 @@ public class UserController {
     @RequestMapping("/user/getDeleteUser.do")
     public View getDeleteUser(@RequestParam("userid")int id) {
          UserServiceInterFace service = new UserService() ;
-         resultVO = new ResultVO<>(200,"成功",service.loginDelete(id));
+         ResultVO resultVO = success(service.loginDelete(id)) ;
          return new JsonView(resultVO);
     };
 
@@ -89,7 +89,7 @@ public class UserController {
                               @RequestParam("userState")int state,
                               @RequestParam("userId")int userId){
         UserServiceInterFace service = new UserService() ;
-        resultVO = new ResultVO<>(200,"成功",service.loginUpdate(password,nickName,phone,idcard,state,userId)) ;
+        ResultVO resultVO = success(service.loginUpdate(password,nickName,phone,idcard,state,userId));
         return new JsonView(resultVO) ;
     }
 
@@ -105,7 +105,7 @@ public class UserController {
                                @RequestParam("userid")int userid,
                                @RequestParam("emailCode") String emailCode) {
         UserServiceInterFace service = new UserService() ;
-        resultVO = new ResultVO<>(200,"成功",service.loginUpdateEmail(email,userid,emailCode));
+        ResultVO resultVO = success(service.loginUpdateEmail(email,userid,emailCode));
         return new JsonView(resultVO);
     }
 
@@ -120,10 +120,10 @@ public class UserController {
     public View getLogin(@RequestParam("userName")String name,
                          @RequestParam("userPassword")String password, HttpSession session){
         UserServiceInterFace service = new UserService() ;
-        resultVO = new ResultVO<>(200,"成功",service.login(name,password)) ;
 
+        ResultVO<User> resultVO = success(service.login(name,password)) ;
         //会话跟踪
-        session.setAttribute("userSuccess",resultVO);
+        session.setAttribute("userSuccess", resultVO);
         return new JsonView(resultVO) ;
     }
 
@@ -137,8 +137,8 @@ public class UserController {
     public View getLoginEmail(@RequestParam("userEmail")String email,
                               @RequestParam("userEmailCode")String emailCode,HttpSession session){
         UserServiceInterFace service = new UserService() ;
-        resultVO = new ResultVO<>(200,"成功",service.loginEmail(email,emailCode)) ;
 
+        ResultVO<User> resultVO = success( service.loginEmail(email,emailCode)) ;
         //会话跟踪
         session.setAttribute("emailCodeSuccess",resultVO);
         return new JsonView(resultVO) ;
@@ -161,9 +161,8 @@ public class UserController {
                                        @RequestParam("userEmail")String userEmail){
 
         UserServiceInterFace service = new UserService() ;
-        resultVO = new ResultVO<>(200,"查询成功",service.pageUserVoList(userName,userEmail,page,limit)) ;
-
-        return new JsonView(resultVO);
+        PageVO<List<User>> pageVO = service.pageUserVoList(userName,userEmail,page,limit) ;
+        return new JsonView(pageVO);
     }
 
 }
