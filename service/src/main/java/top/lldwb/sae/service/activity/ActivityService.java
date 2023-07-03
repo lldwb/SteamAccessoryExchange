@@ -12,14 +12,14 @@ public interface ActivityService {
      * @param activity
      * @return
      */
-    void insert(Activity activity);
+    int insert(Activity activity);
 
     /**
      * 删除数据
      * @param ac_id
      * @return
      */
-    void delete(Activity ac_id);
+    int delete(Activity ac_id);
 
 
     /**
@@ -27,7 +27,7 @@ public interface ActivityService {
      * @param activity
      * @return
      */
-    void update(Activity activity);
+    int update(Activity activity);
 
     /**
      * 查询活动
