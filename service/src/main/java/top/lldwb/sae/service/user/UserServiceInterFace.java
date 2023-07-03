@@ -2,6 +2,7 @@ package top.lldwb.sae.service.user;
 
 import top.lldwb.sae.entity.rode.Role;
 import top.lldwb.sae.entity.user.User;
+import top.lldwb.sae.entity.user.UserTwo;
 import top.lldwb.sae.utils.vo.PageVO;
 
 import java.util.List;
@@ -63,7 +64,7 @@ public interface UserServiceInterFace {
      * @param userEmail 条件邮箱地址
      * @return
      */
-    public PageVO<List<User>> pageUserVoList(String userName, String userEmail, int page, int limit) ;
+    public PageVO<List<UserTwo>> pageUserVoList(String userName, String userEmail, int page, int limit) ;
 
     /**
      * 查询用户状态

@@ -1,6 +1,7 @@
 package top.lldwb.sae.dao.user;
 
 import top.lldwb.sae.entity.user.User;
+import top.lldwb.sae.entity.user.UserTwo;
 
 import java.util.List;
 
@@ -70,7 +71,7 @@ public interface UserFace {
      * @param limit 页数
      * @return
      */
-    List<User> listUserLimit(User entity,int page,int limit) ;
+    List<UserTwo> listUserLimit(UserTwo entity, int page, int limit) ;
 
     /***
      * 统计用户数量
