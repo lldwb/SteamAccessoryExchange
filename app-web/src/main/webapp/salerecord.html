@@ -30,6 +30,44 @@
         float: right;
         color: white;
     }
+
+
+    .el-input{
+        width:100px!important;
+        height:32px;
+        padding: 0px 10px 0px 9px;
+
+    }
+    .el-input__icon {
+        height: 116%;
+    }
+    .el-select-dropdown {
+        background-color: #3a455a  !important;
+
+    }
+    .el-input__inner {
+        background: #2c3a54 !important;
+        color: #fff;
+    }
+
+    .my-select .el-select-dropdown__item {
+        color: red;
+    }
+
+    .grid-content {
+        min-height: 36px;
+        margin: 0px;
+        padding: 0px;
+        background: white;
+        filter: opacity(0%);
+    }
+    .grid-blank {
+        min-height: 36px;
+        margin: 0px;
+        padding: 0px;
+        background: white;
+        filter: opacity(0%);
+    }
 </style>
 <body>
 <div id="app" style="background-image:url(img.png);background-size: cover; width: 100%;">
@@ -74,8 +112,9 @@
             <el-menu-item index="4">出售统计</el-menu-item>
             <el-menu-item index="5">还价管理</el-menu-item>
         </el-menu>
-        <el-select style="padding: 10px 10px" v-model="value" placeholder="请选择">
+        <el-select v-for="s in 4"  class="el-input" style="padding: 10px 10px;" v-model="value" :popper-append-to-body="false"  placeholder="请选择">
             <el-option
+                    class="my-select"
                     v-for="item in options"
                     :key="item.value"
                     :label="item.label"
@@ -84,6 +123,45 @@
         </el-select>
     </el-col>
         <el-col :span="4"><div class="grid-blank" style="background-color:rgba(0,0,0,0);"></div></el-col>
+    </el-row>
+
+    <el-row>
+        <el-col :span="4">
+            <div class="grid-content "></div>
+        </el-col>
+        <!--出售-->
+        <el-col :span="16">
+            <!-- 出售模块表格-->
+            <template>   ,
+                <el-table :data="tableSellData" style="width: 100%">
+                    <el-table-column label="出售ID" prop="sellId">
+                    </el-table-column>
+                    <el-table-column label="价格" prop="sellPrice">
+                    </el-table-column>
+                    <el-table-column label="描述" prop="sellDescribe">
+                    </el-table-column>
+                    <el-table-column label="商品id" prop="coId">
+                    </el-table-column>
+                    <el-table-column label="用户id" prop="userId">
+                    </el-table-column>
+                    <el-table-column label="操作">
+                        <template slot-scope="scope">
+                            <el-button type="primary" size="mini"
+                                       @click="handleEdit(scope.$index, scope.row)">购买</el-button>
+                        </template>
+                    </el-table-column>
+                </el-table>
+            </template>
+            <!-- 表格分页 -->
+            <!-- pager-count pager-count属性可以设置最大页码按钮数,超出折叠,默认为7-->
+            <!-- 注意：若数据是后端接口返回的则此时:total="pageCount"-->
+            <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
+                           :pager-count="7" :current-page="currentPage" :page-sizes="[1, 3, 5, 10]" :page-size="pagesize"
+                           layout="total, sizes, prev, pager, next, jumper" :total="pageSellCount" background
+                           style=" margin-top: 20px">
+            </el-pagination>
+
+        </el-col>
     </el-row>
 </div>
 </body>
@@ -95,6 +173,22 @@
             return{
                 activeIndex: '1',
                 te:true,
+                options: [{
+                    value: '选项1',
+                    label: '黄金糕'
+                }, {
+                    value: '选项2',
+                    label: '双皮奶'
+                }, {
+                    value: '选项3',
+                    label: '蚵仔煎'
+                }, {
+                    value: '选项4',
+                    label: '龙须面'
+                }, {
+                    value: '选项5',
+                    label: '北京烤鸭'
+                }],
             }
         }
     })
