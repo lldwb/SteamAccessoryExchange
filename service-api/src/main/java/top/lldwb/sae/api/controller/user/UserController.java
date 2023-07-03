@@ -7,6 +7,7 @@ import org.nf.web.servlet.view.JsonView;
 import top.lldwb.sae.api.controller.BaseController;
 import top.lldwb.sae.entity.rode.Role;
 import top.lldwb.sae.entity.user.User;
+import top.lldwb.sae.entity.user.UserTwo;
 import top.lldwb.sae.service.role.RoleServiceInterFace;
 import top.lldwb.sae.service.role.impl.RoleService;
 import top.lldwb.sae.utils.vo.PageVO;
@@ -164,7 +165,7 @@ public class UserController extends BaseController {
                                        @RequestParam("userEmail")String userEmail){
 
         UserServiceInterFace service = new UserService() ;
-        PageVO<List<User>> pageVO = service.pageUserVoList(userName,userEmail,page,limit) ;
+        PageVO<List<UserTwo>> pageVO = service.pageUserVoList(userName,userEmail,page,limit) ;
         return new JsonView(pageVO);
     }
 

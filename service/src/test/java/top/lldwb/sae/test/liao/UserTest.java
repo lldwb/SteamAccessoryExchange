@@ -2,6 +2,7 @@ package top.lldwb.sae.test.liao;
 
 import org.junit.jupiter.api.Test;
 import top.lldwb.sae.entity.user.User;
+import top.lldwb.sae.entity.user.UserTwo;
 import top.lldwb.sae.service.user.UserServiceInterFace;
 import top.lldwb.sae.service.user.service.UserService;
 import top.lldwb.sae.utils.vo.PageVO;
@@ -52,7 +53,7 @@ public class UserTest {
 
     @Test
     public void pageList(){
-        PageVO<List<User>> pageVO =service.pageUserVoList("","2023@qq.com",1,3) ;
+        PageVO<List<UserTwo>> pageVO =service.pageUserVoList("","2023@qq.com",1,3) ;
         pageVO.getData().forEach(System.out::println);
     }
 }
