@@ -12,7 +12,7 @@ import top.lldwb.sae.service.deal.impl.OrderFormServiceImpl;
  * @author 安然的尾巴
  * @version 1.0
  */
-public class OrderForm extends BaseController {
+public class OrderFormController extends BaseController {
     /**
      * 刷新订单信息(检测订单信息)
      * @param userId 用户id

@@ -15,10 +15,10 @@ public class OfId_AssetId {
      * 订单id
      */
     @Column("of_id")
-    Integer ofId;
+    private Integer ofId;
     /**
      * 商品id
      */
     @Column("asset_id")
-    String assetId;
+    private String assetId;
 }
