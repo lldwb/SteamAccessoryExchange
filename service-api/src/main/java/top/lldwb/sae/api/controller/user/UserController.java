@@ -5,7 +5,11 @@ import org.nf.web.annotation.RequestParam;
 import org.nf.web.servlet.View;
 import org.nf.web.servlet.view.JsonView;
 import top.lldwb.sae.api.controller.BaseController;
+import top.lldwb.sae.entity.rode.Role;
 import top.lldwb.sae.entity.user.User;
+import top.lldwb.sae.entity.user.UserTwo;
+import top.lldwb.sae.service.role.RoleServiceInterFace;
+import top.lldwb.sae.service.role.impl.RoleService;
 import top.lldwb.sae.utils.vo.PageVO;
 import top.lldwb.sae.utils.vo.ResultVO;
 import top.lldwb.sae.service.user.UserServiceInterFace;
@@ -138,7 +142,7 @@ public class UserController extends BaseController {
                               @RequestParam("userEmailCode")String emailCode,HttpSession session){
         UserServiceInterFace service = new UserService() ;
 
-        ResultVO<User> resultVO = success( service.loginEmail(email,emailCode)) ;
+        ResultVO<User> resultVO = success(service.loginEmail(email,emailCode)) ;
         //会话跟踪
         session.setAttribute("emailCodeSuccess",resultVO);
         return new JsonView(resultVO) ;
@@ -161,7 +165,7 @@ public class UserController extends BaseController {
                                        @RequestParam("userEmail")String userEmail){
 
         UserServiceInterFace service = new UserService() ;
-        PageVO<List<User>> pageVO = service.pageUserVoList(userName,userEmail,page,limit) ;
+        PageVO<List<UserTwo>> pageVO = service.pageUserVoList(userName,userEmail,page,limit) ;
         return new JsonView(pageVO);
     }
 

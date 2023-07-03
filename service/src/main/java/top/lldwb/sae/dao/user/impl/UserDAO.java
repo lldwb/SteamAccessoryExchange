@@ -2,6 +2,7 @@ package top.lldwb.sae.dao.user.impl;
 
 import top.lldwb.sae.entity.user.User;
 import top.lldwb.sae.dao.user.UserFace;
+import top.lldwb.sae.entity.user.UserTwo;
 import top.lldwb.sae.utils.mySql.MySqlUtil;
 
 import java.time.Year;
@@ -46,8 +47,11 @@ public class UserDAO implements UserFace {
 
     @Override
     public int loginDelete(int id) {
-        //获取sql查询语句
-        String sql = "delete from user where user_id = ?" ;
+        // 获取sql查询语句,强制删除 - 所有对该id进行引用的数据都将删除
+        String sql = "set foreign_key_checks = 0;\n" +
+                "\n" +
+                "delete from user where user_id = ?;\n" +
+                "set foreign_key_checks = 1;" ;
         //执行
         return MySqlUtil.update(sql,id);
     }
@@ -105,7 +109,7 @@ public class UserDAO implements UserFace {
      * @return
      */
     @Override
-    public List<User> listUserLimit(User entity, int number, int limit) {
+    public List<UserTwo> listUserLimit(UserTwo entity, int number, int limit) {
         //获取SQL语句
         StringBuilder sb = new StringBuilder() ;
 
@@ -120,18 +124,18 @@ public class UserDAO implements UserFace {
         sb.append(" user_state,");
         sb.append(" user_time,");
         sb.append(" role_id,");
-        sb.append(" user_renew_time ");
-        sb.append(" from user ");
+        sb.append(" user_renew_time,steam_Id,(select role_level from role where role_id = user.role_id) as role_level ");
+        sb.append("from user ");
 
         //判断多条件查询
         if(entity!=null && entity.getUserName() !=null && !"".equals(entity.getUserName().trim())){
             sb.append(" where user_name like ? ") ;
             sb.append(" limit ?,?") ;
-            return MySqlUtil.queryList(User.class,sb.toString(),"%"+entity.getUserName()+"%",number,limit);
+            return MySqlUtil.queryList(UserTwo.class,sb.toString(),"%"+entity.getUserName()+"%",number,limit);
         }else if(entity.getUserEmail() !=null && !"".equals(entity.getUserEmail().trim())){
             sb.append(" where user_email like ?") ;
             sb.append(" limit ?,?") ;
-            return MySqlUtil.queryList(User.class,sb.toString(),"%"+entity.getUserEmail()+"%",number,limit);
+            return MySqlUtil.queryList(UserTwo.class,sb.toString(),"%"+entity.getUserEmail()+"%",number,limit);
         }
 
        return  listUserLimitRecursion(number,limit) ;
@@ -143,7 +147,7 @@ public class UserDAO implements UserFace {
      * @param limit 页数
      * @return
      */
-    public static List<User> listUserLimitRecursion(int number, int limit) {
+    public static List<UserTwo> listUserLimitRecursion(int number, int limit) {
         //获取SQL语句
         StringBuilder sb = new StringBuilder() ;
 
@@ -158,11 +162,12 @@ public class UserDAO implements UserFace {
         sb.append(" user_state,");
         sb.append(" user_time,");
         sb.append(" role_id,");
-        sb.append(" user_renew_time ");
+        sb.append(" user_renew_time,steam_Id,(select role_level from role where role_id = user.role_id) as role_level ");
         sb.append("from user ");
         sb.append("limit ?,?") ;
         String sql = sb.toString();
-        return MySqlUtil.queryList(User.class,sql,number,limit);
+
+        return MySqlUtil.queryList(UserTwo.class,sql,number,limit);
     }
 
     /***

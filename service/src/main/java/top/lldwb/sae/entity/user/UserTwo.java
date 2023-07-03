@@ -21,7 +21,7 @@ import java.sql.Timestamp;
 /***
  * 家辉
  */
-public class User {
+public class UserTwo {
     @Column("user_id")
     private Integer userId;//用户ID
     @Column("user_name")
@@ -46,4 +46,8 @@ public class User {
     private Timestamp userRenewTime;//用户修改时间
     @Column("steam_Id")
     private String steamId;//steamID
+
+    @Column("role_level")
+    private String roleLevel;//角色级别
+
 }

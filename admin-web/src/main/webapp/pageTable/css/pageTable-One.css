@@ -12,9 +12,9 @@
     margin: auto;
 }
 .span_One{
-   
+    text-shadow: 0 0 10px blueviolet,0 0 10px grey,0 0 10px blue,0 0 10px yellow;	
     font-size: 50px; 
-    color: blue;
+    color: grey;
     font-family:'Times New Roman', Times, serif;font-weight: bold;
 }
 .span_Two{

@@ -126,4 +126,15 @@ public class RoleDAO implements RoleInterFace {
         return MySqlUtil.queryColumn(1,sql) ;
     }
 
+    /***
+     * 根据id查询
+     * @param id
+     * @return
+     */
+    @Override
+    public Role queryRoleId(int id) {
+        String sql = "select role_id,role_level,role_describe from role where role_id = ? " ;
+        return  MySqlUtil.queryT(Role.class,sql,id) ;
+    }
+
 }

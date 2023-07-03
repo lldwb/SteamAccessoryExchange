@@ -21,5 +21,5 @@ public interface SellDao {
      * 查询数据总条数
      * @return
      */
-    Long count();
+    Long getCount();
 }

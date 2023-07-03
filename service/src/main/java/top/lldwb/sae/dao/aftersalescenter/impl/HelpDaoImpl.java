@@ -1,6 +1,6 @@
-package top.lldwb.sae.dao.Aftersalescenter.impl;
+package top.lldwb.sae.dao.aftersalescenter.impl;
 
-import top.lldwb.sae.dao.Aftersalescenter.HelpDao;
+import top.lldwb.sae.dao.aftersalescenter.HelpDao;
 import top.lldwb.sae.entity.Aftersalescenter.Help.Help;
 import top.lldwb.sae.utils.mySql.MySqlUtil;
 
@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class HelpDaoImpl implements HelpDao {
     @Override
-    public Integer insert(Help help) {
+    public int insert(Help help) {
         MySqlUtil mySqlUtil = null;
         Object[] obj = {
                 help.getHelpType(),
@@ -33,7 +33,7 @@ public class HelpDaoImpl implements HelpDao {
     }
 
     @Override
-    public Integer delete(int helpId) {
+    public int delete(int helpId) {
         MySqlUtil mySqlUtil = null;
 
         try {
@@ -48,7 +48,7 @@ public class HelpDaoImpl implements HelpDao {
     }
 
     @Override
-    public Integer update(Help help) {
+    public int update(Help help) {
         MySqlUtil mySqlUtil = null;
         Object[] obj = {
                 help.getHelpType(),

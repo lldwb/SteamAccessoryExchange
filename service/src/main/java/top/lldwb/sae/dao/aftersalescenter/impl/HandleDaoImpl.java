@@ -1,6 +1,6 @@
-package top.lldwb.sae.dao.Aftersalescenter.impl;
+package top.lldwb.sae.dao.aftersalescenter.impl;
 
-import top.lldwb.sae.dao.Aftersalescenter.HandleDao;
+import top.lldwb.sae.dao.aftersalescenter.HandleDao;
 import top.lldwb.sae.entity.Aftersalescenter.Handle.Handle;
 import top.lldwb.sae.utils.mySql.MySqlUtil;
 
@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class HandleDaoImpl implements HandleDao {
     @Override
-    public Integer insert(Handle handle) {
+    public int insert(Handle handle) {
         MySqlUtil mySqlUtil = null;
         Object[] obj = {
                 handle.getWoId(),
@@ -33,7 +33,7 @@ public class HandleDaoImpl implements HandleDao {
     }
 
     @Override
-    public Integer delete(int handleId) {
+    public int delete(int handleId) {
         MySqlUtil mySqlUtil = null;
 
         try {
@@ -49,7 +49,7 @@ public class HandleDaoImpl implements HandleDao {
     }
 
     @Override
-    public Integer update(Handle handle) {
+    public int update(Handle handle) {
         MySqlUtil mySqlUtil = null;
         Object[] obj = {
                 handle.getWoId(),

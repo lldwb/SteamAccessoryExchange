@@ -22,5 +22,5 @@ public interface WantToBuyDao {
      * 查询总条数
      * @return
      */
-    Long count();
+    Long getCount();
 }

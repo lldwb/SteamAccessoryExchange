@@ -6,7 +6,10 @@ import top.lldwb.sae.dao.user.UserFace;
 import top.lldwb.sae.dao.user.impl.UserDAO;
 import top.lldwb.sae.entity.code.CodeTable;
 import top.lldwb.sae.entity.user.User;
+import top.lldwb.sae.entity.user.UserTwo;
 import top.lldwb.sae.service.exception.AllException;
+import top.lldwb.sae.service.role.RoleServiceInterFace;
+import top.lldwb.sae.service.role.impl.RoleService;
 import top.lldwb.sae.service.user.UserServiceInterFace;
 import top.lldwb.sae.utils.vo.PageUtils;
 import top.lldwb.sae.utils.vo.PageVO;
@@ -226,19 +229,19 @@ public class UserService implements UserServiceInterFace {
     }
 
     @Override
-    public PageVO<List<User>> pageUserVoList(String userName, String userEmail, int page, int limit) {
+    public PageVO<List<UserTwo>> pageUserVoList(String userName, String userEmail, int page, int limit) {
         //先计算出page从几页开始
         int numberOf = PageUtils.toNumberOf(page,limit) ;
 
         //调用实体类
-        User entity = new User() ;
+        UserTwo entity = new UserTwo() ;
         entity.setUserName(userName);
         entity.setUserEmail(userEmail);
 
         //调用数访问类
         UserFace dao = new UserDAO() ;
         //引用dao方法
-        List<User> list = dao.listUserLimit(entity,numberOf,limit) ;
+        List<UserTwo> list = dao.listUserLimit(entity,numberOf,limit) ;
         Long count = dao.count();
         return PageUtils.toPageVO(list,count) ;
     }

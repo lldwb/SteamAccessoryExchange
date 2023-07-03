@@ -1,4 +1,4 @@
-package top.lldwb.sae.dao.Aftersalescenter;
+package top.lldwb.sae.dao.aftersalescenter;
 
 import top.lldwb.sae.entity.Aftersalescenter.Handle.Handle;
 
@@ -11,11 +11,11 @@ import java.util.List;
  */
 public interface HandleDao {
 
-    Integer insert(Handle handle);
+    int insert(Handle handle);
 
-    Integer delete(int handleId);
+    int delete(int handleId);
 
-    Integer update(Handle handle);
+    int update(Handle handle);
 
     Handle select(int handleId);
 

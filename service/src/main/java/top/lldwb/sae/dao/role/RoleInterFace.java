@@ -58,4 +58,10 @@ public interface RoleInterFace {
      */
     Long count();
 
+    /***
+     * 根据id查询
+     * @param id
+     * @return
+     */
+    Role queryRoleId(int id) ;
 }

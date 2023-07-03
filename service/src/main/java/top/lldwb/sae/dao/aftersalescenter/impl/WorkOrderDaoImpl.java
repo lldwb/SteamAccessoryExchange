@@ -1,6 +1,6 @@
-package top.lldwb.sae.dao.Aftersalescenter.impl;
+package top.lldwb.sae.dao.aftersalescenter.impl;
 
-import top.lldwb.sae.dao.Aftersalescenter.WorkOrderDao;
+import top.lldwb.sae.dao.aftersalescenter.WorkOrderDao;
 import top.lldwb.sae.entity.Aftersalescenter.WorkOrder.WorkOrder;
 import top.lldwb.sae.utils.mySql.MySqlUtil;
 
@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class WorkOrderDaoImpl implements WorkOrderDao {
     @Override
-    public Integer insert(WorkOrder workOrder) {
+    public int insert(WorkOrder workOrder) {
         MySqlUtil mySqlUtil = null;
         Object[] obj = {
                 workOrder.getWoType(),
@@ -34,7 +34,7 @@ public class WorkOrderDaoImpl implements WorkOrderDao {
     }
 
     @Override
-    public Integer delete(int workId) {
+    public int delete(int workId) {
         MySqlUtil mySqlUtil = null;
 
         try {
@@ -49,7 +49,7 @@ public class WorkOrderDaoImpl implements WorkOrderDao {
     }
 
     @Override
-    public Integer update(WorkOrder workOrder) {
+    public int update(WorkOrder workOrder) {
         MySqlUtil mySqlUtil = null;
         Object[] obj = {
                 workOrder.getWoType(),

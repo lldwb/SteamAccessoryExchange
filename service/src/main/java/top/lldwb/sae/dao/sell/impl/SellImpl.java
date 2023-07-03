@@ -24,7 +24,7 @@ public class SellImpl implements SellDao {
     }
 
     @Override
-    public Long count() {
+    public Long getCount() {
         try {
             String sql ="select count(*) from sell";
             return MySqlUtil.queryColumn(1,sql);

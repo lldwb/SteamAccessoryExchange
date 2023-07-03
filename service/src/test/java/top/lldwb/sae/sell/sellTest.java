@@ -15,9 +15,8 @@ public class sellTest {
     @Test
     public void commodity(){
         SellServiceImpl service = new SellServiceImpl();
-        PageVO<List<Sell>> pageVO = service.getSell(1, 10);
-        System.out.println(pageVO.getData());
-        System.out.println(pageVO.getCount());
-        System.out.println(pageVO.getCode());
+        List<Sell> pageVO = service.getSell(1, 10);
+        System.out.println(pageVO);
+
     }
 }

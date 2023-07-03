@@ -23,7 +23,7 @@ public class RechargeWithdrawalTest {
         withdrawal.setRwType(2);
         withdrawal.setUserId(1);
         withdrawal.setThirdPartyOrderNumber(4564665);
-        service.recharge(withdrawal);
+        service.insertRecharge(withdrawal);
     }
 
     @Test
