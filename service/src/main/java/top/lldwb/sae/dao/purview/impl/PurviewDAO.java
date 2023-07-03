@@ -2,6 +2,7 @@ package top.lldwb.sae.dao.purview.impl;
 
 import top.lldwb.sae.dao.purview.PurviewInterFace;
 import top.lldwb.sae.entity.purview.Purview;
+import top.lldwb.sae.entity.purview.PurviewTwo;
 import top.lldwb.sae.entity.rode.Role;
 import top.lldwb.sae.utils.mySql.MySqlUtil;
 
@@ -116,23 +117,30 @@ public class PurviewDAO implements PurviewInterFace {
     }
 
     @Override
-    public List<Purview> QueryLimitPurview(Purview entity, int number, int limit) {
+    public List<PurviewTwo> queryLimitPurview(PurviewTwo entity, int number, int limit) {
         //获取sql语句
         StringBuilder sql = new StringBuilder() ;
-        sql.append("select purview_id,purview_limitation,purview_describe,role_Id from purview ") ;
+        sql.append("select purview_id,purview_limitation,purview_describe,role_Id, (select role_level from role where role_id = purview.role_id) as role_level from purview ") ;
 
         if(entity != null && entity.getPurviewLimitation() !=null && !"".equals(entity.getPurviewLimitation().trim())){
             sql.append("where purview_limitation like ?") ;
             sql.append(" limit ?,?") ;
-            return MySqlUtil.queryList(Purview.class,sql.toString(),"%"+entity.getPurviewLimitation()+"%",number,limit) ;
+            return MySqlUtil.queryList(PurviewTwo.class,sql.toString(),"%"+entity.getPurviewLimitation()+"%",number,limit) ;
         }
         if(entity != null && entity.getPurviewDescribe() !=null && !"".equals(entity.getPurviewDescribe().trim())){
             sql.append("where purview_describe like ?") ;
             sql.append(" limit ?,?") ;
-            return MySqlUtil.queryList(Purview.class,sql.toString(),"%"+entity.getPurviewDescribe()+"%",number,limit) ;
+            return MySqlUtil.queryList(PurviewTwo.class,sql.toString(),"%"+entity.getPurviewDescribe()+"%",number,limit) ;
         }
+        return queryLimitRecursionPurview(number,limit) ;
+    }
+
+    public List<PurviewTwo> queryLimitRecursionPurview(int number, int limit) {
+        //获取sql语句
+        StringBuilder sql = new StringBuilder() ;
+        sql.append("select purview_id,purview_limitation,purview_describe,role_Id, (select role_level from role where role_id = purview.role_id) as role_level from purview ") ;
         sql.append(" limit ?,?") ;
-        return MySqlUtil.queryList(Purview.class,sql.toString(),number,limit) ;
+        return MySqlUtil.queryList(PurviewTwo.class,sql.toString(),number,limit) ;
     }
 
     @Override

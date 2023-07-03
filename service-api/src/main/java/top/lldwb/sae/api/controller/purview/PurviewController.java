@@ -3,11 +3,17 @@ package top.lldwb.sae.api.controller.purview;
 import org.nf.web.annotation.RequestMapping;
 import org.nf.web.annotation.RequestParam;
 import org.nf.web.servlet.view.JsonView;
+import top.lldwb.sae.api.controller.BaseController;
+import top.lldwb.sae.entity.purview.Purview;
+import top.lldwb.sae.entity.purview.PurviewTwo;
 import top.lldwb.sae.service.purview.PurviewServiceInterFace;
 import top.lldwb.sae.service.purview.impl.PurviewService;
 
 import org.nf.web.servlet.View;
+import top.lldwb.sae.utils.vo.PageVO;
 import top.lldwb.sae.utils.vo.ResultVO;
+
+import java.util.List;
 
 /***
  * @Date(时间)2023-06-27
@@ -16,7 +22,7 @@ import top.lldwb.sae.utils.vo.ResultVO;
  *
  * 权限服务器接口
  */
-public class PurviewController {
+public class PurviewController extends BaseController {
 
     /***
      * 添加权限
@@ -33,11 +39,10 @@ public class PurviewController {
         //调用业务类
         PurviewServiceInterFace service = new PurviewService() ;
 
-        //调用响应封装类
-        ResultVO<Object> resultVO = new ResultVO<>(200,"成功",service.purviewADD(purviewLimitation,purviewDescribe,userId)) ;
+        service.purviewADD(purviewLimitation,purviewDescribe,userId) ;
 
 
-        return new JsonView(resultVO);
+        return new JsonView(success());
     };
     /***
      * 根据id删除数据
@@ -49,9 +54,8 @@ public class PurviewController {
         //调用业务类
         PurviewServiceInterFace service = new PurviewService() ;
 
-        //调用响应封装类
-        ResultVO<Object> resultVO = new ResultVO<>(200,"删除成功",service.purviewDelete(userId)) ;
-        return new JsonView(resultVO);
+        service.purviewDelete(userId);
+        return new JsonView(success());
     };
 
     /***
@@ -66,9 +70,8 @@ public class PurviewController {
         //调用业务类
         PurviewServiceInterFace service = new PurviewService() ;
 
-        //调用响应封装类
-        ResultVO<Object> resultVO = new ResultVO<>(200,"删除成功",service.purviewDelete(purvoewId,userId)) ;
-        return new JsonView(resultVO);
+        service.purviewDelete(purvoewId,userId) ;
+        return new JsonView(service);
     };
 
     /***
@@ -89,10 +92,9 @@ public class PurviewController {
         //调用业务类
         PurviewServiceInterFace service = new PurviewService() ;
 
-        //调用响应封装类
-        ResultVO<Object> resultVO = new ResultVO<>(200,"修改成功",service.purviewUpdate(purviewLimitation,purviewDescribe,userId,purviewId)) ;
+        service.purviewUpdate(purviewLimitation,purviewDescribe,userId,purviewId) ;
 
-        return new JsonView(resultVO);
+        return new JsonView(success());
     };
 
     /***
@@ -105,11 +107,7 @@ public class PurviewController {
         //调用业务类
         PurviewServiceInterFace service = new PurviewService() ;
 
-        //调用响应封装类
-        ResultVO<Object> resultVO = new ResultVO<>(200,"成功",service.purviewList()) ;
-
-
-        return new JsonView(resultVO);
+        return new JsonView(success(service.purviewList()));
     };
 
 
@@ -125,11 +123,7 @@ public class PurviewController {
         //调用业务类
         PurviewServiceInterFace service = new PurviewService() ;
 
-        //调用响应封装类
-        ResultVO<Object> resultVO = new ResultVO<>(200,"查询成功",service.purviewRoleIDQuery(userId)) ;
-
-
-        return new JsonView(resultVO);
+        return new JsonView(success(service.purviewRoleIDQuery(userId)));
     };
 
 
@@ -149,9 +143,8 @@ public class PurviewController {
 
         //调用业务类
         PurviewServiceInterFace service = new PurviewService() ;
-
         //调用响应封装类
-        ResultVO<Object> resultVO = new ResultVO<>(200,"查询成功",service.queryLimitPurview(purviewLimitation,purviewDescribe ,page,limit) );
-        return new JsonView(resultVO);
+        PageVO<List<PurviewTwo>> pageVO =  service.queryLimitPurview(purviewLimitation,purviewDescribe ,page,limit) ;
+        return new JsonView(pageVO);
     }
 }

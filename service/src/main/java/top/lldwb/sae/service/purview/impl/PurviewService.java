@@ -3,6 +3,7 @@ package top.lldwb.sae.service.purview.impl;
 import top.lldwb.sae.dao.purview.PurviewInterFace;
 import top.lldwb.sae.dao.purview.impl.PurviewDAO;
 import top.lldwb.sae.entity.purview.Purview;
+import top.lldwb.sae.entity.purview.PurviewTwo;
 import top.lldwb.sae.service.exception.AllException;
 import top.lldwb.sae.service.purview.PurviewServiceInterFace;
 import top.lldwb.sae.utils.vo.PageUtils;
@@ -170,19 +171,19 @@ public class PurviewService implements PurviewServiceInterFace {
     }
 
     @Override
-    public PageVO<List<Purview>> queryLimitPurview(String purviewLimitation, String purviewDescribe, int page, int limit) {
+    public PageVO<List<PurviewTwo>> queryLimitPurview(String purviewLimitation, String purviewDescribe, int page, int limit) {
         //先计算出page从几页开始
         int numberOf = PageUtils.toNumberOf(page,limit) ;
 
         //调用实体类
-        Purview entity = new Purview() ;
+        PurviewTwo entity = new PurviewTwo() ;
         entity.setPurviewLimitation(purviewLimitation);
         entity.setPurviewDescribe(purviewDescribe);
 
         //调用数访问类
         PurviewInterFace dao = new PurviewDAO() ;
         //引用dao方法
-        List<Purview> list = dao.QueryLimitPurview(entity,numberOf,limit) ;
+        List<PurviewTwo> list = dao.queryLimitPurview(entity,numberOf,limit) ;
 
         Long count = dao.count();
 

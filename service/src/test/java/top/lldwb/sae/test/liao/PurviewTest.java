@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import top.lldwb.sae.dao.purview.PurviewInterFace;
 import top.lldwb.sae.dao.purview.impl.PurviewDAO;
 import top.lldwb.sae.entity.purview.Purview;
+import top.lldwb.sae.entity.purview.PurviewTwo;
 import top.lldwb.sae.service.purview.PurviewServiceInterFace;
 import top.lldwb.sae.service.purview.impl.PurviewService;
 import top.lldwb.sae.utils.vo.PageVO;
@@ -95,7 +96,7 @@ public class PurviewTest {
    @Test
    public void limitQuery(){
        PurviewServiceInterFace serviceInterFace = new PurviewService() ;
-       PageVO<List<Purview>> listPageVO = serviceInterFace.queryLimitPurview("","h",1,2) ;
+       PageVO<List<PurviewTwo>> listPageVO = serviceInterFace.queryLimitPurview("","",1,2) ;
        listPageVO.getData().forEach(System.out::println);
    }
 }

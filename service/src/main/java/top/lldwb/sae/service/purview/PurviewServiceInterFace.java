@@ -1,6 +1,7 @@
 package top.lldwb.sae.service.purview;
 
 import top.lldwb.sae.entity.purview.Purview;
+import top.lldwb.sae.entity.purview.PurviewTwo;
 import top.lldwb.sae.utils.vo.PageVO;
 
 import java.util.List;
@@ -68,5 +69,5 @@ public interface PurviewServiceInterFace {
      * @param limit
      * @return
      */
-    PageVO<List<Purview>> queryLimitPurview(String  purviewLimitation, String purviewDescribe, int page, int limit) ;
+    PageVO<List<PurviewTwo>> queryLimitPurview(String  purviewLimitation, String purviewDescribe, int page, int limit) ;
 }

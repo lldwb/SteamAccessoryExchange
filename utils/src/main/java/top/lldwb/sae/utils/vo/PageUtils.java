@@ -28,7 +28,7 @@ public class PageUtils {
         PageVO<List<T>> pageVO = new PageVO<>();
         pageVO.setCount(count);
         pageVO.setData(list);
-        pageVO.setCode(200);
+        pageVO.setCode(0);
         pageVO.setMessage("查询成功");
         return pageVO;
     }
