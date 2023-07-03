@@ -1,12 +1,6 @@
 package top.lldwb.sae.api.filterate;
 
-import top.lldwb.sae.service.exception.AllException;
-import top.lldwb.sae.service.user.UserServiceInterFace;
-import top.lldwb.sae.service.user.service.UserService;
-
 import javax.servlet.*;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /***
@@ -25,11 +19,11 @@ public class PermissionFiltering_Zero implements Filter {
         System.out.println("过滤中...");
     }
 
-//    @Override
-//    public void doFilter(ServletRequest servletRequest,
-//                         ServletResponse servletResponse,
-//                         FilterChain filterChain) throws IOException, ServletException {
-//
+    @Override
+    public void doFilter(ServletRequest servletRequest,
+                         ServletResponse servletResponse,
+                         FilterChain filterChain) throws IOException, ServletException {
+
 //        System.out.println(servletRequest.getParameter(servletRequest.getParameter("userName")));
 //
 //        /***
@@ -38,13 +32,13 @@ public class PermissionFiltering_Zero implements Filter {
 //         */
 //        UserServiceInterFace service = new UserService();
 //        if (service.selectStatus(servletRequest.getParameter("userName")) == 1) {
-//            filterChain.doFilter(servletRequest, servletResponse);
+        filterChain.doFilter(servletRequest, servletResponse);
 //        } else {
 //            throw new AllException(500, "账号被封禁不可以登录");
 //        }
-//
-//
-//    }
+
+
+    }
 
     @Override
     public void destroy() {

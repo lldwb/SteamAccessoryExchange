@@ -63,6 +63,13 @@ public interface UserFace {
      */
     String getSteamIdById(int userId);
 
+    /**
+     * 根据用户id获取steamKey
+     * @param userId
+     * @return
+     */
+    String getSteamKeyById(int userId);
+
 
     /***
      * 分页查询
