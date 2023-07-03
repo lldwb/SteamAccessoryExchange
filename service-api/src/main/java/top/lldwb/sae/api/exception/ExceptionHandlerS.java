@@ -10,9 +10,10 @@ import top.lldwb.sae.api.controller.BaseController;
  * @author 安然的尾巴
  * @version 1.0
  */
-public class ExceptionHandlerS {
+public class ExceptionHandlerS extends BaseController{
     @ExceptionHandler(Exception.class)
     public JsonView exception(Exception e) {
-        return new JsonView(new BaseController().error(500, e.toString()));
+        System.out.println(e);
+        return new JsonView(error(500, e.toString()));
     }
 }

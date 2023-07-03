@@ -36,4 +36,12 @@ public interface OrderFormDAO {
      * @param tradeofferId 交易报价id
      */
     void updateOfStateAndTradeofferIdByOfId(int ofState, int ofId, String tradeofferId);
+
+    /**
+     * 添加订单
+     *
+     * @param userId 用户id
+     * @param sellId 出售id
+     */
+    void add(int userId, int sellId);
 }

@@ -19,11 +19,6 @@ public class OrderForm {
     @Column("of_id")
     private Integer ofId;
     /**
-     * 价格
-     */
-    @Column("of_price")
-    private BigDecimal ofPrice;
-    /**
      * 状态(0失败，1成功，2未支付，3未发货，4已发货未收货)
      */
     @Column("of_state")

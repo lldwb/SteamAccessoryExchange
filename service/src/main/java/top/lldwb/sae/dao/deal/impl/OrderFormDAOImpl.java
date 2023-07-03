@@ -23,7 +23,13 @@ public class OrderFormDAOImpl implements OrderFormDAO {
     }
 
     @Override
-    public void updateOfStateAndTradeofferIdByOfId(int ofState,int ofId, String tradeofferId) {
-        MySqlUtil.update("update order_form set of_state = ?,tradeoffer_id = ? where of_id = ?",ofState, tradeofferId, ofId);
+    public void updateOfStateAndTradeofferIdByOfId(int ofState, int ofId, String tradeofferId) {
+        MySqlUtil.update("update order_form set of_state = ?,tradeoffer_id = ? where of_id = ?", ofState, tradeofferId, ofId);
     }
+
+    @Override
+    public void add(int userId, int sellId) {
+        MySqlUtil.update("insert into order_form(user_id,sell_id) value(?,?)", userId, sellId);
+    }
+
 }

@@ -10,4 +10,11 @@ public interface OrderFormService {
      * @param userId 用户id
      */
     void refresh(int userId);
+
+    /**
+     * 创建购买订单
+     * @param userId 用户id
+     * @param sellId 出售id
+     */
+    void purchase(int userId,int sellId);
 }

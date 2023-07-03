@@ -135,4 +135,10 @@ public class OrderFormServiceImpl implements OrderFormService {
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public void purchase(int userId, int sellId) {
+        OrderFormDAO dao = new OrderFormDAOImpl();
+        dao.add(userId, sellId);
+    }
 }
