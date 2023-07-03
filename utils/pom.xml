@@ -46,6 +46,11 @@
         </dependency>
 
         <dependency>
+            <groupId>org.nf</groupId>
+            <artifactId>mvc-framework</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>com.yucongming</groupId>
             <artifactId>yucongming-java-sdk</artifactId>
             <version>0.0.2</version>
