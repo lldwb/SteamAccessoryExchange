@@ -414,7 +414,7 @@
                     </el-option>
                 </el-select>
 
-                <el-input placeholder="输入物品名称" v-model="input3" class="input-with-select" size="mini">
+                <el-input placeholder="输入物品名称" v-model="input1" class="input-with-select" size="mini">
                     <el-button slot="append" icon="el-icon-search">搜索</el-button>
                 </el-input>
             </template>
@@ -428,13 +428,13 @@
             <el-col :span="2"><div class="el-row-d">筛选：</div></el-col>
             <el-col :span="2"><div class="el-row-d">最低交易量</div></el-col>
             <el-col :span="2">
-                <el-input  v-model="input" clearable size="mini" class="el-input-s"></el-input>
+                <el-input  v-model="input2" clearable size="mini" class="el-input-s"></el-input>
             </el-col>
 
             <el-col :span="1"><div class="el-row-d"></div></el-col>
             <el-col :span="2"><div class="el-row-d">最低比例</div></el-col>
             <el-col :span="2">
-                <el-input v-model="input" clearable size="mini" class="el-input-s"></el-input>
+                <el-input v-model="input3" clearable size="mini" class="el-input-s"></el-input>
             </el-col>
             <el-col :span="1"><div class="el-row-d"></div></el-col>
             <el-button type="primary" class="el-button-s">开始</el-button>
@@ -457,15 +457,15 @@
             <el-col :span="6"><div class="el-row-d"></div></el-col>
             <el-col :span="5">
                 <div class="el-row-aa">
-                    <el-input v-model="input" clearable size="mini" class="el-input-min"  placeholder="最低价"></el-input>
-                    <el-input v-model="input" clearable size="mini" class="el-input-min" placeholder="最高价"></el-input>
+                    <el-input v-model="input4" clearable size="mini" class="el-input-min"  placeholder="最低价"></el-input>
+                    <el-input v-model="input5" clearable size="mini" class="el-input-min" placeholder="最高价"></el-input>
                 </div>
             </el-col>
             <el-col :span="1"><div></div></el-col>
             <el-col :span="2">
                 <template class="el-r">
-                    <el-select v-model="value" placeholder="排序"  size="mini" class="el-select-di">
-                        <el-option v-for="item in paixun" :key="item.value" :label="item.label" :value="item.value">
+                    <el-select v-model="select" placeholder="排序"  size="mini" class="el-select-di">
+                        <el-option v-for="item in options " :key="item.value" :label="item.label" :value="item.value">
                         </el-option>
                     </el-select>
                 </template>
@@ -514,6 +514,12 @@
         el:"#app",
         data() {
             return {
+                options:[{
+                    value:'1',
+                    label:'不限'
+                }
+                ],
+
                 //品质
                 options1: [{
                     value: '选项1',
@@ -652,6 +658,14 @@
                     label: '自定义'
                 }],
                 //条件查询
+                select:'',
+
+                input1:'',
+                input2:'',
+                input3:'',
+                input4:'',
+                input5:'',
+
                 value1:'',
                 value2:'',
                 value3:'',
