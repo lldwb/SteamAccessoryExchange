@@ -16,7 +16,7 @@ public class CommodityInstanceServiceImpl implements CommodityInstanceService {
     @Override
     public void refresh() {
         try {
-            // 设置饰品分类地址
+            /** 设置饰品分类地址 **/
             ConnectionUtil connectionUtil = new ConnectionUtil("https://steamcommunity.com/market/appfilters/730");
             Map<String, String> data = new HashMap<>();
             data.put("l", "schinese");

@@ -100,6 +100,11 @@ public class UserDAO implements UserFace {
         return MySqlUtil.queryColumn(1,"select steam_id from user where user_id = ?",userId);
     }
 
+    @Override
+    public String getSteamKeyById(int userId) {
+        return MySqlUtil.queryColumn(1,"select steam_key from user where user_id = ?",userId);
+    }
+
     /***
      * 查询所有数据
      * 含模糊查询
