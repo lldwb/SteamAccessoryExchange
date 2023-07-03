@@ -4,12 +4,11 @@ import org.nf.web.annotation.RequestMapping;
 import org.nf.web.annotation.RequestParam;
 import org.nf.web.servlet.View;
 import org.nf.web.servlet.view.JsonView;
-import top.lldwb.sae.api.vo.ResultVO;
 import top.lldwb.sae.entity.commodity.CommodityClass;
 import top.lldwb.sae.entity.commodity.CommodityInstance;
 import top.lldwb.sae.service.commodity.CommodityClassService;
 import top.lldwb.sae.service.commodity.impl.CommodityClassServiceImpl;
-import top.lldwb.sae.vo.PageVO;
+import top.lldwb.sae.utils.vo.PageVO;
 
 import java.util.List;
 

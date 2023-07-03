@@ -4,9 +4,15 @@ import org.nf.web.annotation.RequestMapping;
 import org.nf.web.annotation.RequestParam;
 import org.nf.web.servlet.View;
 import org.nf.web.servlet.view.JsonView;
+import top.lldwb.sae.api.controller.BaseController;
+import top.lldwb.sae.entity.rode.Role;
+import top.lldwb.sae.entity.user.UserTwo;
+import top.lldwb.sae.utils.vo.PageVO;
 import top.lldwb.sae.utils.vo.ResultVO;
 import top.lldwb.sae.service.role.RoleServiceInterFace;
 import top.lldwb.sae.service.role.impl.RoleService;
+
+import java.util.List;
 
 /***
  * @Date(时间)2023-06-27
@@ -15,7 +21,7 @@ import top.lldwb.sae.service.role.impl.RoleService;
  *
  * 角色服务器接口
  */
-public class RoleController {
+public class RoleController extends BaseController {
     /***
      * 添加数据
      * @return
@@ -26,12 +32,9 @@ public class RoleController {
 
         //调用数据业务逻辑类
         RoleServiceInterFace service = new RoleService() ;
-
-        //调用数据响应封装类
-        ResultVO<Object> resultVO = new ResultVO<>(200,"添加成功",service.addRole(roleVel,roleDescribe)) ;
-
+        service.addRole(roleVel,roleDescribe);
         //返回
-        return new JsonView(resultVO);
+        return new JsonView(success()) ;
     };
 
     /***
@@ -43,11 +46,10 @@ public class RoleController {
         //调用数据业务逻辑类
         RoleServiceInterFace service = new RoleService() ;
 
-        //调用数据响应封装类
-        ResultVO<Object> resultVO = new ResultVO<>(200,"删除成功",service.deleteRole(id)) ;
+        service.deleteRole(id) ;
 
         //返回
-        return new JsonView(resultVO);
+        return new JsonView(success());
     };
 
     /***
@@ -64,11 +66,10 @@ public class RoleController {
         //调用数据业务逻辑类
         RoleServiceInterFace service = new RoleService() ;
 
-        //调用数据响应封装类
-        ResultVO<Object> resultVO = new ResultVO<>(200,"修改成功",service.updateRole(roleVel,roleDescribe,roleId)) ;
+        service.updateRole(roleVel,roleDescribe,roleId) ;
 
         //返回
-        return new JsonView(resultVO);
+        return new JsonView(success());
     };
     /***
      * 查询所有数据
@@ -79,11 +80,8 @@ public class RoleController {
         //调用数据业务逻辑类
         RoleServiceInterFace service = new RoleService() ;
 
-        //调用数据响应封装类
-        ResultVO<Object> resultVO = new ResultVO<>(200,"查询成功",service.listQuery()) ;
-
         //返回
-        return new JsonView(resultVO);
+        return new JsonView(success(service.listQuery()));
     };
 
     /***
@@ -96,11 +94,8 @@ public class RoleController {
         //调用数据业务逻辑类
         RoleServiceInterFace service = new RoleService() ;
 
-        //调用数据响应封装类
-        ResultVO<Object> resultVO = new ResultVO<>(200,"查询成功",service.listConditionQuery(role_level)) ;
-
         //返回
-        return new JsonView(resultVO);
+        return new JsonView(success(service.listConditionQuery(role_level)));
     };
 
 
@@ -119,10 +114,9 @@ public class RoleController {
         RoleServiceInterFace service = new RoleService() ;
 
         //调用数据响应封装类
-        ResultVO<Object> resultVO = new ResultVO<>(200,"查询成功",service.pagseRoleVoList(roleLevel,page,limit)) ;
-
+        PageVO<List<Role>> pageVO = service.pagseRoleVoList(roleLevel,page,limit) ;
         //返回
-        return new JsonView(resultVO);
+        return new JsonView(pageVO);
     }
 
 

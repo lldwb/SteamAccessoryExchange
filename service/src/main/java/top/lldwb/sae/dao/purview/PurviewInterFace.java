@@ -1,6 +1,7 @@
 package top.lldwb.sae.dao.purview;
 
 import top.lldwb.sae.entity.purview.Purview;
+import top.lldwb.sae.entity.purview.PurviewTwo;
 import top.lldwb.sae.entity.rode.Role;
 
 import java.util.List;
@@ -64,7 +65,7 @@ public interface PurviewInterFace {
      * @param limit 页数
      * @return
      */
-    List<Purview> QueryLimitPurview(Purview entity, int number, int limit) ;
+    List<PurviewTwo> queryLimitPurview(PurviewTwo entity, int number, int limit) ;
     /***
      * 统计
      * @return
