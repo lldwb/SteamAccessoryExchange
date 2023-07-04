@@ -17,7 +17,7 @@ public interface RechargeWithdrawalDao {
 
 
     /**
-     * 根据用户id查询余额
+     * 根据用户id查询
      * @param id 用户id
      * @return
      */

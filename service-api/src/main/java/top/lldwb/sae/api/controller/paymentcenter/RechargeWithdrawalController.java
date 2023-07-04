@@ -19,22 +19,35 @@ import java.util.List;
  * Date: 2023/6/20
  */
 public class RechargeWithdrawalController extends BaseController {
-
-    @RequestMapping("/Recharge")
-    public View recharge(@Model RechargeWithdrawal rw){
+    /**
+     * 充值、提现
+     * @param rw RechargeWithdrawal对象
+     * @return
+     */
+    @RequestMapping("/pay/rechargeWithdrawal/insertRecharge")
+    public View insertRecharge(@Model RechargeWithdrawal rw){
         RechargeWithdrawalService service = new RechargeWithdrawalServiceImpl();
         ResultVO<Integer> vo = success(service.insertRecharge(rw));
         return new JsonView(vo);
     }
 
-    @RequestMapping("/getBalance")
+    /**
+     * 根据id查询
+     * @param rwId
+     * @return
+     */
+    @RequestMapping("/pay/rechargeWithdrawal/getBalance")
     public View getBalance(@RequestParam("rwId") int rwId){
         RechargeWithdrawalService service = new RechargeWithdrawalServiceImpl();
         ResultVO<RechargeWithdrawal> vo = success(service.getBalance(rwId));
         return new JsonView(vo);
     }
 
-    @RequestMapping("/getRechargeWithdrawal")
+    /**
+     * 查询全部
+     * @return
+     */
+    @RequestMapping("/pay/rechargeWithdrawal/getRechargeWithdrawal")
     public View getRechargeWithdrawal(){
         RechargeWithdrawalService service = new RechargeWithdrawalServiceImpl();
         ResultVO<List<RechargeWithdrawal>> vo = success(service.getRechargeWithdrawal());
