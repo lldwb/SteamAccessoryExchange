@@ -14,5 +14,5 @@ import java.util.List;
  */
 public interface CommodityClassService {
 
-    PageVO<List<CommodityClass>> listCommodityClass(CommodityInstance instance, int page, int limit);
+    PageVO<List<CommodityClass>> listCommodityClass(String instanceName, int page, int limit);
 }

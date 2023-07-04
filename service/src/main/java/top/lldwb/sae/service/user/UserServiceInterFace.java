@@ -17,7 +17,6 @@ import java.util.List;
  */
 public interface UserServiceInterFace {
 
-
     /***
      *  添加数据
      * @param name 用户名
