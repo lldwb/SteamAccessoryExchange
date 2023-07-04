@@ -6,32 +6,27 @@
         <artifactId>sae-parrent</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>service</artifactId>
-    <packaging>jar</packaging>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-
-    <distributionManagement>
-        <site>
-            <id>website</id>
-            <url>scp://webhost.company.com/www/website</url>
-        </site>
-    </distributionManagement>
-
+    <artifactId>api</artifactId>
+    <packaging>war</packaging>
     <dependencies>
-        <!-- 依赖 junit，jar包 便于test测试 -->
+        <!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-servlet-api -->
+        <!-- tomcat依赖包10版本10.0.22 9版本9.0.65 -->
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.2</version>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-servlet-api</artifactId>
         </dependency>
 
         <dependency>
             <groupId>org.example</groupId>
-            <artifactId>dao</artifactId>
+            <artifactId>service</artifactId>
             <version>1.0-SNAPSHOT</version>
+        </dependency>
+      
+        <!--java servlet依赖-->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
         </dependency>
     </dependencies>
 </project>
