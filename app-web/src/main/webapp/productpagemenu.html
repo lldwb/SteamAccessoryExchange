@@ -358,7 +358,7 @@
 
             <el-col :span="2"><div class="el-row-o">
                 <el-dropdown>
-                    <span class="el-dropdown-link bg-span"><p>探员</p></span>
+                    <span class="el-dropdown-link bg-span"></span>
                     <el-dropdown-menu slot="dropdown">
                         <el-dropdown-item>恐怖分子</el-dropdown-item>
                         <el-dropdown-item>反恐精英</el-dropdown-item>
@@ -368,7 +368,7 @@
             </el-col>
             <el-col :span="2"><div class="el-row-m">
                 <el-dropdown>
-                    <span class="el-dropdown-link bg-m"><p>其他</p></span>
+                    <span class="el-dropdown-link bg-m">其他</span>
                     <el-dropdown-menu slot="dropdown">
                         <el-dropdown-item>武器箱</el-dropdown-item>
                         <el-dropdown-item>音乐盒</el-dropdown-item>
@@ -388,7 +388,7 @@
                     <el-option v-for="item in options1" :key="item.value" :label="item.label" :value="item.value">
                     </el-option>
                 </el-select>
-                <el-select v-model="value2" placeholder="类型"class="el-select-size" size="mini">
+                <el-select v-model="value2" placeholder="类型" class="el-select-size" size="mini">
                     <el-option v-for="item in options2" :key="item.value" :label="item.label" :value="item.value">
                     </el-option>
                 </el-select>
@@ -396,7 +396,7 @@
                     <el-option v-for="item in options3" :key="item.value" :label="item.label" :value="item.value">
                     </el-option>
                 </el-select>
-                <el-select v-model="value4" placeholder="热门皮肤"class="el-select-size" size="mini">
+                <el-select v-model="value4" placeholder="热门皮肤" class="el-select-size" size="mini">
                     <el-option v-for="item in options4" :key="item.value" :label="item.label" :value="item.value">
                     </el-option>
                 </el-select>
@@ -404,12 +404,12 @@
                     <el-option v-for="item in options5" :key="item.value" :label="item.label" :value="item.value">
                     </el-option>
                 </el-select>
-                <el-select v-model="value6" placeholder="收藏品"class="el-select-size" size="mini">
+                <el-select v-model="value6" placeholder="收藏品" class="el-select-size" size="mini">
                     <el-option v-for="item in options6" :key="item.value" :label="item.label" :value="item.value">
                     </el-option>
                 </el-select>
 
-                <el-select v-model="value7" placeholder="已贴印花"class="el-select-size" size="mini">
+                <el-select v-model="value7" placeholder="已贴印花" class="el-select-size" size="mini">
                     <el-option v-for="item in options7" :key="item.value" :label="item.label" :value="item.value">
                     </el-option>
                 </el-select>
