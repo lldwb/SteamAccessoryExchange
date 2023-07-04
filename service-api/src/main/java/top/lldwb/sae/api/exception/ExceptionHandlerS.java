@@ -1,4 +1,4 @@
-package top.lldwb.sae.api.controller.exception;
+package top.lldwb.sae.api.exception;
 
 import org.nf.web.annotation.ExceptionHandler;
 import org.nf.web.servlet.view.JsonView;
