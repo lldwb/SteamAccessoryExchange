@@ -31,8 +31,8 @@ public interface CommodityClassDAO {
     void addAll(CommodityClass[] commodityClass);
 
     /**
-     * 查询商品父类列表
-     * @param instanceName 查询条件对象 可根据 parent_id 或者 instance_name 进行分页查询
+     * 分页 + 条件 查询商品父类列表
+     * @param instanceName 查询条件 为空时执行无条件分页查询
      * @param numberOf 从第几条开始查
      * @param limit 查多少条
      * @return

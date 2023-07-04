@@ -21,12 +21,12 @@ import java.util.List;
  */
 public class CommodityClassServiceImpl implements CommodityClassService {
     @Override
-    public PageVO<List<CommodityClass>> listCommodityClass(CommodityInstance instance,int page, int limit) {
+    public PageVO<List<CommodityClass>> listCommodityClass(String instanceName,int page, int limit) {
         //先根据page计算出从表的第几条开始查询
         int numberOf = PageUtils.toNumberOf(page,limit);
         //创建DAO实例
         CommodityClassDAO dao = new CommodityClassDAOImpl();
-        List<CommodityClass> list = dao.ListCommodityClass(instance,numberOf, limit);
+        List<CommodityClass> list = dao.ListCommodityClass(instanceName,numberOf, limit);
         Long count = dao.count();
         //将数据封装成PageVo对象
         return PageUtils.toPageVO(list,count);
