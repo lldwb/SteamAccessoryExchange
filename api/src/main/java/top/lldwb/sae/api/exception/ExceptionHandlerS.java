@@ -3,7 +3,6 @@ package top.lldwb.sae.api.exception;
 import org.nf.web.annotation.ExceptionHandler;
 import org.nf.web.servlet.view.JsonView;
 import top.lldwb.sae.api.controller.BaseController;
-import top.lldwb.sae.service.exception.AllException;
 
 /**
  * 异常处理

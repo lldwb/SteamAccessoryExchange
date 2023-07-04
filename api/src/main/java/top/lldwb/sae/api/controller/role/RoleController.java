@@ -6,7 +6,6 @@ import org.nf.web.servlet.View;
 import org.nf.web.servlet.view.JsonView;
 import top.lldwb.sae.api.controller.BaseController;
 import top.lldwb.sae.entity.rode.Role;
-import top.lldwb.sae.entity.user.UserTwo;
 import top.lldwb.sae.utils.vo.PageVO;
 import top.lldwb.sae.service.role.RoleServiceInterFace;
 import top.lldwb.sae.service.role.impl.RoleService;
@@ -34,7 +33,7 @@ public class RoleController extends BaseController {
         service.addRole(roleVel,roleDescribe);
         //返回
         return new JsonView(success()) ;
-    };
+    }
 
     /***
      * 根据id删除
@@ -49,7 +48,7 @@ public class RoleController extends BaseController {
 
         //返回
         return new JsonView(success());
-    };
+    }
 
     /***
      * 修改信息
@@ -69,7 +68,8 @@ public class RoleController extends BaseController {
 
         //返回
         return new JsonView(success());
-    };
+    }
+
     /***
      * 查询所有数据
      * @return
@@ -81,7 +81,7 @@ public class RoleController extends BaseController {
 
         //返回
         return new JsonView(success(service.listQuery()));
-    };
+    }
 
     /***
      * 根据条件查询所有数据
@@ -95,7 +95,7 @@ public class RoleController extends BaseController {
 
         //返回
         return new JsonView(success(service.listConditionQuery(role_level)));
-    };
+    }
 
 
     /***

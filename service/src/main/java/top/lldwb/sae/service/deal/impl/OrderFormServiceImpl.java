@@ -63,13 +63,11 @@ public class OrderFormServiceImpl implements OrderFormService {
                             // 获取饰品列表
                             List<Map<String, Object>> itemsToGive = (List<Map<String, Object>>) map.get("items_to_give");
                             // 遍历饰品列表
-                            itemsToGive.forEach(itemsToGiveMap -> {
-                                ofId_AssetId.forEach(ofIdAssetId -> {
-                                    if (ofIdAssetId.getAssetId().equals(itemsToGiveMap.get("assetid"))) {
-                                        orderFormDAO.updateOfStateAndTradeofferIdByOfId(4, ofIdAssetId.getOfId(), (String) map.get("tradeofferid"));
-                                    }
-                                });
-                            });
+                            itemsToGive.forEach(itemsToGiveMap -> ofId_AssetId.forEach(ofIdAssetId -> {
+                                if (ofIdAssetId.getAssetId().equals(itemsToGiveMap.get("assetid"))) {
+                                    orderFormDAO.updateOfStateAndTradeofferIdByOfId(4, ofIdAssetId.getOfId(), (String) map.get("tradeofferid"));
+                                }
+                            }));
                         }
                     }
                 }
@@ -128,8 +126,6 @@ public class OrderFormServiceImpl implements OrderFormService {
                 });
             }
         } catch (JsonMappingException e) {
-            throw new RuntimeException(e);
-        } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);

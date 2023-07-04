@@ -3,7 +3,6 @@ package top.lldwb.sae.dao.purview.impl;
 import top.lldwb.sae.dao.purview.PurviewInterFace;
 import top.lldwb.sae.entity.purview.Purview;
 import top.lldwb.sae.entity.purview.PurviewTwo;
-import top.lldwb.sae.entity.rode.Role;
 import top.lldwb.sae.utils.mySql.MySqlUtil;
 
 import java.util.List;
@@ -137,10 +136,9 @@ public class PurviewDAO implements PurviewInterFace {
 
     public List<PurviewTwo> queryLimitRecursionPurview(int number, int limit) {
         //获取sql语句
-        StringBuilder sql = new StringBuilder() ;
-        sql.append("select purview_id,purview_limitation,purview_describe,role_Id, (select role_level from role where role_id = purview.role_id) as role_level from purview ") ;
-        sql.append(" limit ?,?") ;
-        return MySqlUtil.queryList(PurviewTwo.class,sql.toString(),number,limit) ;
+        String sql = "select purview_id,purview_limitation,purview_describe,role_Id, (select role_level from role where role_id = purview.role_id) as role_level from purview " +
+                " limit ?,?";
+        return MySqlUtil.queryList(PurviewTwo.class, sql,number,limit) ;
     }
 
     @Override

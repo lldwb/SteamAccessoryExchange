@@ -98,8 +98,6 @@ public class Mail {
             transport.sendMessage(message, message.getAllRecipients());
             // 关闭连接
             transport.close();
-        } catch (NoSuchProviderException e) {
-            throw new RuntimeException(e);
         } catch (MessagingException e) {
             throw new RuntimeException(e);
         }

@@ -39,8 +39,7 @@ public class WorkOrderDaoImpl implements WorkOrderDao {
 
         try {
             mySqlUtil = new MySqlUtil();
-            String sql =" delete FROM work_order\n" +
-                    "where wo_id = ?\n" ;
+            String sql =" delete FROM work_order where wo_id = ?" ;
             int update = mySqlUtil.update(sql, workId);
             return update;
         } catch (Exception e) {

@@ -2,7 +2,6 @@ package top.lldwb.sae.data.deal;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
-import top.lldwb.sae.entity.deal.OrderForm;
 import top.lldwb.sae.utils.http.ConnectionMethod;
 import top.lldwb.sae.utils.http.ConnectionUtil;
 

@@ -1,7 +1,6 @@
 package top.lldwb.sae.test.liao;
 
 import org.junit.jupiter.api.Test;
-import top.lldwb.sae.entity.user.User;
 import top.lldwb.sae.entity.user.UserTwo;
 import top.lldwb.sae.service.user.UserServiceInterFace;
 import top.lldwb.sae.service.user.service.UserService;

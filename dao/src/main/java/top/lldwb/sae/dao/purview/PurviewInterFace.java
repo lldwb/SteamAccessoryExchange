@@ -2,7 +2,6 @@ package top.lldwb.sae.dao.purview;
 
 import top.lldwb.sae.entity.purview.Purview;
 import top.lldwb.sae.entity.purview.PurviewTwo;
-import top.lldwb.sae.entity.rode.Role;
 
 import java.util.List;
 

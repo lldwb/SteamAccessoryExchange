@@ -1,6 +1,5 @@
 package top.lldwb.sae.service.user;
 
-import top.lldwb.sae.entity.rode.Role;
 import top.lldwb.sae.entity.user.User;
 import top.lldwb.sae.entity.user.UserTwo;
 import top.lldwb.sae.utils.vo.PageVO;
@@ -28,7 +27,7 @@ public interface UserServiceInterFace {
      * @param idCard 身份证
      * @return
      */
-    public int loginAdd(String name,String email,String password,String nickName,String phone,String idCard ,String emailCode);
+    int loginAdd(String name,String email,String password,String nickName,String phone,String idCard ,String emailCode);
 
     /***
      * 根据id删除
@@ -36,15 +35,15 @@ public interface UserServiceInterFace {
      * @return
      */
 
-    public int loginDelete(int id) ;
+    int loginDelete(int id) ;
 
     /***
      * 修改
      * @return
      */
 
-    public int loginUpdate(String password,String nickName,String phone,String idcard,int state,int userId) ;
-    public int loginUpdateEmail(String email,int userid,String emailCode) ;
+    int loginUpdate(String password,String nickName,String phone,String idcard,int state,int userId) ;
+    int loginUpdateEmail(String email,int userid,String emailCode) ;
     /***
      * 用户登录
      * @param name 用户名
@@ -52,8 +51,8 @@ public interface UserServiceInterFace {
      * @return
      */
 
-    public User login(String name, String password) ;
-    public User loginEmail(String email,String emailCode) ;
+    User login(String name, String password) ;
+    User loginEmail(String email,String emailCode) ;
 
     /***
      * 分页查询
@@ -64,7 +63,7 @@ public interface UserServiceInterFace {
      * @param userEmail 条件邮箱地址
      * @return
      */
-    public PageVO<List<UserTwo>> pageUserVoList(String userName, String userEmail, int page, int limit) ;
+    PageVO<List<UserTwo>> pageUserVoList(String userName, String userEmail, int page, int limit) ;
 
     /**
      * 查询用户状态

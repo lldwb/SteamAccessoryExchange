@@ -9,5 +9,5 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public enum ConnectionMethod {
     GET("GET"),POST("POST");
-    String value;
+    final String value;
 }

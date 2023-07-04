@@ -48,7 +48,7 @@ public class ConnectionUtil {
                 // 判断是否是第一个条件
                 boolean verify = true;
                 for (String key : map.keySet()) {
-                    url += (verify ? "?" : "&") + key + "=" + map.get(key);
+                    url.concat((verify ? "?" : "&") + key + "=" + map.get(key));
                     verify = false;
                 }
             }

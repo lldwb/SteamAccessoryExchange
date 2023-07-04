@@ -15,21 +15,21 @@ public interface CodeInterFace {
      * @return
      * 根据时间来删除
      */
-    public int deleteCOde(Timestamp times ) ;
+    int deleteCOde(Timestamp times ) ;
 
     /***
      * 修改
      * @param id
      * @return
      */
-    public int  updateCode(int id) ;
+    int  updateCode(int id) ;
 
     /**
      * 添加
      * @param entity
      * @return
      */
-    public int addCode(CodeTable entity) ;
+    int addCode(CodeTable entity) ;
 
 
     /***
@@ -37,13 +37,13 @@ public interface CodeInterFace {
      * @param id
      * @return
      */
-    public int deleteCodesID(int id) ;
+    int deleteCodesID(int id) ;
 
     /***
      * 根据邮箱号
      * @param name
      * @return
      */
-    public CodeTable query (String name);
+    CodeTable query (String name);
 
 }

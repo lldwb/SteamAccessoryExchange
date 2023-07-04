@@ -3,8 +3,6 @@ package top.lldwb.sae.entity.deal;
 import lombok.Data;
 import org.nf.db.util.Column;
 
-import java.math.BigDecimal;
-
 /**
  * 订单id
  *

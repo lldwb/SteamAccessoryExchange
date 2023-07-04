@@ -5,7 +5,6 @@ import org.nf.web.annotation.RequestParam;
 import org.nf.web.servlet.View;
 import org.nf.web.servlet.view.JsonView;
 import top.lldwb.sae.api.controller.BaseController;
-import top.lldwb.sae.entity.rode.Role;
 import top.lldwb.sae.entity.user.User;
 import top.lldwb.sae.entity.user.UserTwo;
 import top.lldwb.sae.utils.vo.PageVO;
@@ -56,9 +55,7 @@ public class UserController extends BaseController {
             UserServiceInterFace service = new UserService() ;
             ResultVO resultVO = success(service.loginAdd(name, email, password, nickName, phone, idCard,emailCode)) ;
             return new JsonView(success(resultVO));
-    };
-
-
+    }
 
 
     /***
@@ -71,7 +68,7 @@ public class UserController extends BaseController {
          UserServiceInterFace service = new UserService() ;
          ResultVO resultVO = success(service.loginDelete(id)) ;
          return new JsonView(resultVO);
-    };
+    }
 
     /***
      * 修改基本信息

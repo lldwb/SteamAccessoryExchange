@@ -4,7 +4,6 @@ import org.nf.web.annotation.RequestMapping;
 import org.nf.web.annotation.RequestParam;
 import org.nf.web.servlet.view.JsonView;
 import top.lldwb.sae.api.controller.BaseController;
-import top.lldwb.sae.entity.purview.Purview;
 import top.lldwb.sae.entity.purview.PurviewTwo;
 import top.lldwb.sae.service.purview.PurviewServiceInterFace;
 import top.lldwb.sae.service.purview.impl.PurviewService;
@@ -42,7 +41,8 @@ public class PurviewController extends BaseController {
 
 
         return new JsonView(success());
-    };
+    }
+
     /***
      * 根据id删除数据
      * @param userId
@@ -55,7 +55,7 @@ public class PurviewController extends BaseController {
 
         service.purviewDelete(userId);
         return new JsonView(success());
-    };
+    }
 
     /***
      * 根据id和根据用户id删除
@@ -71,7 +71,7 @@ public class PurviewController extends BaseController {
 
         service.purviewDelete(purvoewId,userId) ;
         return new JsonView(service);
-    };
+    }
 
     /***
      * 修改数据
@@ -94,7 +94,7 @@ public class PurviewController extends BaseController {
         service.purviewUpdate(purviewLimitation,purviewDescribe,userId,purviewId) ;
 
         return new JsonView(success());
-    };
+    }
 
     /***
      * 查询所有
@@ -107,7 +107,7 @@ public class PurviewController extends BaseController {
         PurviewServiceInterFace service = new PurviewService() ;
 
         return new JsonView(success(service.purviewList()));
-    };
+    }
 
 
     /***
@@ -123,7 +123,7 @@ public class PurviewController extends BaseController {
         PurviewServiceInterFace service = new PurviewService() ;
 
         return new JsonView(success(service.purviewRoleIDQuery(userId)));
-    };
+    }
 
 
     /***

@@ -114,9 +114,7 @@ public class RoleDAO implements RoleInterFace {
 
     public List<Role> queryLimitRecursionRole( int number, int limit) {
         //获取sql语句
-        StringBuilder sql = new StringBuilder() ;
-        sql.append("select role_id,role_level,role_describe from role limit ?,?") ;
-        return MySqlUtil.queryList(Role.class,sql.toString(),number,limit);
+        return MySqlUtil.queryList(Role.class, "select role_id,role_level,role_describe from role limit ?,?",number,limit);
     }
 
     @Override

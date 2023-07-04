@@ -152,23 +152,21 @@ public class UserDAO implements UserFace {
      */
     public static List<UserTwo> listUserLimitRecursion(int number, int limit) {
         //获取SQL语句
-        StringBuilder sb = new StringBuilder() ;
 
-        sb.append("select");
-        sb.append(" user_id,");
-        sb.append(" user_name,");
-        sb.append(" user_email,");
-        sb.append(" user_password,");
-        sb.append(" user_nickname,");
-        sb.append(" user_phone,");
-        sb.append(" user_id_card,");
-        sb.append(" user_state,");
-        sb.append(" user_time,");
-        sb.append(" role_id,");
-        sb.append(" user_renew_time,steam_Id,(select role_level from role where role_id = user.role_id) as role_level ");
-        sb.append("from user ");
-        sb.append("limit ?,?") ;
-        String sql = sb.toString();
+        String sql = "select" +
+                " user_id," +
+                " user_name," +
+                " user_email," +
+                " user_password," +
+                " user_nickname," +
+                " user_phone," +
+                " user_id_card," +
+                " user_state," +
+                " user_time," +
+                " role_id," +
+                " user_renew_time,steam_Id,(select role_level from role where role_id = user.role_id) as role_level " +
+                "from user " +
+                "limit ?,?";
 
         return MySqlUtil.queryList(UserTwo.class,sql,number,limit);
     }
