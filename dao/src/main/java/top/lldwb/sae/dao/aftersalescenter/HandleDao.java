@@ -1,6 +1,6 @@
 package top.lldwb.sae.dao.aftersalescenter;
 
-import top.lldwb.sae.entity.aftersalescenter.Handle.Handle;
+import top.lldwb.sae.entity.aftersalescenter.Handle;
 
 import java.util.List;
 

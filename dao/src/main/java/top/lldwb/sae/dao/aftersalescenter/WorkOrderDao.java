@@ -1,6 +1,6 @@
 package top.lldwb.sae.dao.aftersalescenter;
 
-import top.lldwb.sae.entity.aftersalescenter.WorkOrder.WorkOrder;
+import top.lldwb.sae.entity.aftersalescenter.WorkOrder;
 
 import java.util.List;
 

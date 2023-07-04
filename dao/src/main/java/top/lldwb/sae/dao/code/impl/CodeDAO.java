@@ -40,7 +40,7 @@ public class CodeDAO implements CodeInterFace {
     public int addCode(CodeTable entity) {
 
         //创建Obj数组存放要添加的数据
-        Object obj[] = {
+        Object[] obj = {
                 entity.getCtCode(),
                 entity.getCtValidOrNot(),
                 entity.getCtType(),

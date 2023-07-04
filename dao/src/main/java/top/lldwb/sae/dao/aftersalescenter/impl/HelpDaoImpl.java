@@ -1,7 +1,7 @@
 package top.lldwb.sae.dao.aftersalescenter.impl;
 
 import top.lldwb.sae.dao.aftersalescenter.HelpDao;
-import top.lldwb.sae.entity.aftersalescenter.Help.Help;
+import top.lldwb.sae.entity.aftersalescenter.Help;
 import top.lldwb.sae.utils.mySql.MySqlUtil;
 
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
 public class HelpDaoImpl implements HelpDao {
     @Override
     public int insert(Help help) {
-        MySqlUtil mySqlUtil = null;
+        MySqlUtil mySqlUtil;
         Object[] obj = {
                 help.getHelpType(),
                 help.getHelpContent(),
@@ -34,7 +34,7 @@ public class HelpDaoImpl implements HelpDao {
 
     @Override
     public int delete(int helpId) {
-        MySqlUtil mySqlUtil = null;
+        MySqlUtil mySqlUtil;
 
         try {
             mySqlUtil = new MySqlUtil();
@@ -49,7 +49,7 @@ public class HelpDaoImpl implements HelpDao {
 
     @Override
     public int update(Help help) {
-        MySqlUtil mySqlUtil = null;
+        MySqlUtil mySqlUtil;
         Object[] obj = {
                 help.getHelpType(),
                 help.getHelpContent(),
@@ -74,7 +74,7 @@ public class HelpDaoImpl implements HelpDao {
 
     @Override
     public Help select(int helpId) {
-        MySqlUtil mySqlUtil = null;
+        MySqlUtil mySqlUtil;
         try {
             mySqlUtil = new MySqlUtil();
             String sql ="select help_id,help_type,help_content,help_state,help_time from help\n" +
@@ -87,7 +87,7 @@ public class HelpDaoImpl implements HelpDao {
 
     @Override
     public List<Help> select() {
-        MySqlUtil mySqlUtil = null;
+        MySqlUtil mySqlUtil;
         try {
             mySqlUtil = new MySqlUtil();
             String sql ="select help_id,help_type,help_content,help_state,help_time from help;" ;

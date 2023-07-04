@@ -31,14 +31,14 @@ public class CommodityServiceImpl implements CommodityService {
     @Override
     public void refresh(int userId) {
         try {
-            /** 获取库存信息 **/
+            /* 获取库存信息 **/
             String steamId = new UserDAO().getSteamIdById(userId);
             ConnectionUtil connectionUtil = new ConnectionUtil("https://steamcommunity.com/inventory/" + steamId + "/730/2");
             Map<String, String> data = new HashMap<>();
             data.put("l", "schinese");
 //            data.put("count", "10");
 
-            /** 获取结果 **/
+            /* 获取结果 **/
             BufferedReader reader = connectionUtil.getBufferedWriter(ConnectionMethod.GET, data);
             // 对结果进行解析
             Map<String, Object> map = new ObjectMapper().readValue(reader.readLine(), Map.class);
@@ -49,7 +49,7 @@ public class CommodityServiceImpl implements CommodityService {
             CommodityClassDAO commodityClassDAO = new CommodityClassDAOImpl();
             new Thread(() -> descriptions.forEach(descriptionsMap -> {
                 System.out.println(descriptionsMap);
-                /** 添加饰品模板 **/
+                /* 添加饰品模板 **/
                 if (commodityClassDAO.judgeExist((String) descriptionsMap.get("classid"))) {
                     try {
                         System.out.println("添加");
@@ -67,7 +67,7 @@ public class CommodityServiceImpl implements CommodityService {
                         throw new RuntimeException(e);
                     }
                 }
-                /** 设置饰品模板和分类的关联 **/
+                /* 设置饰品模板和分类的关联 **/
                 new Thread(() -> ((List<Map<String, Object>>) descriptionsMap.get("tags")).forEach((tags -> {
                         CommodityInstanceDAO commodityInstanceDAO = new CommodityInstanceDAOImpl();
                         int instanceId = commodityInstanceDAO.getIdByName((String) tags.get("localized_tag_name"));
@@ -78,7 +78,7 @@ public class CommodityServiceImpl implements CommodityService {
                     }))).start();
             })).start();
 
-            /** 添加商品(库存) **/
+            /* 添加商品(库存) **/
             new Thread(() -> {
                 List<Map<String, Object>> assets = (List<Map<String, Object>>) map.get("assets");
                 CommodityDAO commodityDAO = new CommodityDAOImpl();

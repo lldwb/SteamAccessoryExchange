@@ -1,4 +1,4 @@
-package top.lldwb.sae.entity.aftersalescenter.WorkOrder;
+package top.lldwb.sae.entity.aftersalescenter;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -136,7 +136,7 @@ public class PurviewService implements PurviewServiceInterFace {
         PurviewInterFace dao = new PurviewDAO() ;
 
         //创建List集合，存放查询到的数据
-        List<Purview> list = new ArrayList<>() ;
+        List<Purview> list;
 
         //引用dao方法
         list = dao.purviewList() ;

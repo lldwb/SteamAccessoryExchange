@@ -73,7 +73,7 @@ public class ConnectionUtil {
                 conn.setDoInput(true);
             }
 
-            BufferedReader reader = null;
+            BufferedReader reader;
             reader = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
             return reader;
         } catch (IOException e) {

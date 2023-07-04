@@ -1,4 +1,4 @@
-package top.lldwb.sae.dao.activity.Impl;
+package top.lldwb.sae.dao.activity.impl;
 
 import top.lldwb.sae.dao.activity.ActivityDao;
 import top.lldwb.sae.entity.activity.Activity;
@@ -11,7 +11,7 @@ public class ActivityDaoImpl implements ActivityDao {
 
     @Override
     public int insert(Activity activity) {
-        MySqlUtil mySqlUtil = null;
+        MySqlUtil mySqlUtil;
         try {
             mySqlUtil = new MySqlUtil();
             String sql ="insert into activity(ac_id,ac_theme,user_id,ac_time,ac_content) values (?,?,?,?);" ;

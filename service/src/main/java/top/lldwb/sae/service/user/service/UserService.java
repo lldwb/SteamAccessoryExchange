@@ -51,9 +51,6 @@ public class UserService implements UserServiceInterFace {
         //获取当前时间
         Timestamp timestamp = new Timestamp(System.currentTimeMillis()) ;
 
-        //调用数据访问类
-        face = new UserDAO() ;
-
         //调用实体类
         User user = new User() ;
         user.setUserName(name);
@@ -196,9 +193,8 @@ public class UserService implements UserServiceInterFace {
      */
     @Override
     public User loginEmail(String email,String emailCode) {
-        UserFace face = new UserDAO() ;
         //调用数据访问类
-        face = new UserDAO() ;
+        UserFace face = new UserDAO() ;
 
         //获取方法
         User user = face.loginEmail(email) ;

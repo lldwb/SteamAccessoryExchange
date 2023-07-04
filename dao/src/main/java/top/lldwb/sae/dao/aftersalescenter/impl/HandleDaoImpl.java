@@ -1,7 +1,7 @@
 package top.lldwb.sae.dao.aftersalescenter.impl;
 
 import top.lldwb.sae.dao.aftersalescenter.HandleDao;
-import top.lldwb.sae.entity.aftersalescenter.Handle.Handle;
+import top.lldwb.sae.entity.aftersalescenter.Handle;
 import top.lldwb.sae.utils.mySql.MySqlUtil;
 
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
 public class HandleDaoImpl implements HandleDao {
     @Override
     public int insert(Handle handle) {
-        MySqlUtil mySqlUtil = null;
+        MySqlUtil mySqlUtil;
         Object[] obj = {
                 handle.getWoId(),
                 handle.getRefundId(),
@@ -34,7 +34,7 @@ public class HandleDaoImpl implements HandleDao {
 
     @Override
     public int delete(int handleId) {
-        MySqlUtil mySqlUtil = null;
+        MySqlUtil mySqlUtil;
 
         try {
             mySqlUtil = new MySqlUtil();
@@ -50,7 +50,7 @@ public class HandleDaoImpl implements HandleDao {
 
     @Override
     public int update(Handle handle) {
-        MySqlUtil mySqlUtil = null;
+        MySqlUtil mySqlUtil;
         Object[] obj = {
                 handle.getWoId(),
                 handle.getRefundId(),
@@ -77,7 +77,7 @@ public class HandleDaoImpl implements HandleDao {
 
     @Override
     public Handle select(int handleId) {
-        MySqlUtil mySqlUtil = null;
+        MySqlUtil mySqlUtil;
         try {
             mySqlUtil = new MySqlUtil();
             String sql ="select " +
@@ -97,7 +97,7 @@ public class HandleDaoImpl implements HandleDao {
 
     @Override
     public List<Handle> select() {
-        MySqlUtil mySqlUtil = null;
+        MySqlUtil mySqlUtil;
         try {
             mySqlUtil = new MySqlUtil();
             String sql ="select " +

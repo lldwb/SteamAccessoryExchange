@@ -18,8 +18,8 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-/***
- * 家辉
+/**
+ 家辉
  */
 public class User {
     @Column("user_id")

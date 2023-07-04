@@ -109,7 +109,7 @@ public class RoleService implements RoleServiceInterFace {
         RoleInterFace dao = new RoleDAO() ;
 
         //创建List集合，存放要查询的数据
-        List<Role> list = new ArrayList<>() ;
+        List<Role> list;
 
         //引用dao方法
         list = dao.listQuery() ;
@@ -134,7 +134,7 @@ public class RoleService implements RoleServiceInterFace {
         RoleInterFace dao = new RoleDAO() ;
 
         //创建List集合存放要查询的数据
-        List<Role> list = new ArrayList<>() ;
+        List<Role> list;
 
         //引用dao方法
         list = dao.listConditionQuery(role_level) ;

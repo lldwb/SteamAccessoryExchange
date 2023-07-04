@@ -1,7 +1,7 @@
 package top.lldwb.sae.dao.aftersalescenter.impl;
 
 import top.lldwb.sae.dao.aftersalescenter.WorkOrderDao;
-import top.lldwb.sae.entity.aftersalescenter.WorkOrder.WorkOrder;
+import top.lldwb.sae.entity.aftersalescenter.WorkOrder;
 import top.lldwb.sae.utils.mySql.MySqlUtil;
 
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
 public class WorkOrderDaoImpl implements WorkOrderDao {
     @Override
     public int insert(WorkOrder workOrder) {
-        MySqlUtil mySqlUtil = null;
+        MySqlUtil mySqlUtil;
         Object[] obj = {
                 workOrder.getWoType(),
                 workOrder.getWoContent(),
@@ -35,7 +35,7 @@ public class WorkOrderDaoImpl implements WorkOrderDao {
 
     @Override
     public int delete(int workId) {
-        MySqlUtil mySqlUtil = null;
+        MySqlUtil mySqlUtil;
 
         try {
             mySqlUtil = new MySqlUtil();
@@ -49,7 +49,7 @@ public class WorkOrderDaoImpl implements WorkOrderDao {
 
     @Override
     public int update(WorkOrder workOrder) {
-        MySqlUtil mySqlUtil = null;
+        MySqlUtil mySqlUtil;
         Object[] obj = {
                 workOrder.getWoType(),
                 workOrder.getWoContent(),
@@ -77,7 +77,7 @@ public class WorkOrderDaoImpl implements WorkOrderDao {
 
     @Override
     public WorkOrder select(int workId) {
-        MySqlUtil mySqlUtil = null;
+        MySqlUtil mySqlUtil;
         try {
             mySqlUtil = new MySqlUtil();
             String sql ="select wo_id,wo_type,wo_content,wo_result,wo_time,wo_renew_time from work_order\n" +
@@ -90,7 +90,7 @@ public class WorkOrderDaoImpl implements WorkOrderDao {
 
     @Override
     public List<WorkOrder> select() {
-        MySqlUtil mySqlUtil = null;
+        MySqlUtil mySqlUtil;
         try {
             mySqlUtil = new MySqlUtil();
             String sql ="select wo_id,wo_type,wo_content,wo_result,wo_time,wo_renew_time from work_order;" ;
