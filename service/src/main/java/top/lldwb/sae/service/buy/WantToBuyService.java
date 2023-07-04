@@ -12,7 +12,7 @@ import java.util.List;
  */
 public interface WantToBuyService {
     /**
-     * 出售，分页查询
+     * 求购，分页查询
      * @param numberOf 从第几行开始查
      * @param limit 查多少条数据
      * @return

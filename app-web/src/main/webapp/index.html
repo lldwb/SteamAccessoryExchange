@@ -106,8 +106,8 @@
     <div style="background-image:url(https://buff.163.com/static/images/site/index-header-bg.jpg);">
         <!--顶部导航栏-->
         <el-row>
-            <el-col :span="4"><div class="grid-blank" style="background-color:rgba(0,0,0,0);"></div></el-col>
-            <el-col :span="16">
+            <el-col :span="3"><div class="grid-blank" style="background-color:rgba(0,0,0,0);"></div></el-col>
+            <el-col :span="18" style="min-width: 1100px;max-width: 1100px">
                 <div style="float: left;padding-top: 20px">
                     <img src="https://buff.163.com/static/images/site/logo.png">
                 </div>
@@ -131,13 +131,13 @@
                     <el-menu-item :v-if="te" style="float: right" index="6">库存</el-menu-item>
                 </el-menu>
             </el-col>
-            <el-col :span="4"><div class="grid-blank" style="background-color:rgba(0,0,0,0);"></div></el-col>
+            <el-col :span="3"><div class="grid-blank" style="background-color:rgba(0,0,0,0);"></div></el-col>
         </el-row>
 
         <!--走马灯 background-repeat:repeat-x 图片横向重复-->
     <el-row style="background-repeat: repeat-x" >
-        <el-col :span="4"><div class="grid-content "></div></el-col>
-        <el-col :span="20">
+        <el-col :span="3"><div class="grid-content "></div></el-col>
+        <el-col :span="21">
             <div  style="padding-bottom: 50px">
             <template>
                 <el-carousel :interval="3000" @change="handleSlideChange" height="380px">
@@ -161,8 +161,8 @@
     <!--最新上架 background-repeat:repeat-x 图片横向重复-->
     <el-row style="background-image:url(https://buff.163.com/static/images/site/index-section1-bg.jpg);background-repeat: repeat-x;">
         <div style="padding: 30px 0px"></div>
-        <el-col :span="4"><div class="grid-content" style="background-color:rgba(0,0,0,0);"></div></el-col>
-        <el-col :span="16" style="min-width: 1000px;max-width: 1000px" >
+        <el-col :span="3"><div class="grid-content" style="background-color:rgba(0,0,0,0);"></div></el-col>
+        <el-col :span="18" style="min-width: 1100px;max-width: 1100px" >
             <div style="border-bottom: 2px solid #BF9E4B">
                 <!--:underline="false 无下划线-->
                 <el-link href="#"
@@ -175,19 +175,20 @@
                 </div>
 
             </div>
-        <div class="demo-image" style="float: left" v-for="fit in ka" :key="fit">
-            <div style="margin: 22px 23px 28px 0px">
+        <div class="demo-image" style="float: left;" v-for="fit in ka" :key="fit">
+            <div style="margin: 22px 23px 0px 0px;background-image: url(https://spect.fp.ps.netease.com/file/613abf6309463c49b9c8aa93Mt9e2tVQ03)">
                 <el-image
-                        style="width: 170px; height: 100px;background-color: #333333"
+                        style="width: 170px; height: 160px;padding: 10px "
                         :src="fit.url"
-                        :fit="fill"></el-image>
-            <div style="background-color: white;width: 170px;height: 50px">
-                <span class="demonstration">{{ fit.fits }}</span>
+                        :fit="fill">
+                </el-image>
             </div>
+            <div style="background-color: white;width: 190px;height: 60px">
+                <span class="demonstration">{{ fit.fits }}</span>
             </div>
         </div>
         </el-col>
-        <el-col :span="4"><div class="grid-content" style="background-color:rgba(0,0,0,0);"></div></el-col>
+        <el-col :span="3"><div class="grid-content" style="background-color:rgba(0,0,0,0);"></div></el-col>
     </el-row>
 </div>
 </body>

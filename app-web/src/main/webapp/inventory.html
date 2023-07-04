@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>杰杰BUFF-我的库存</title>
+    <!-- vue -->
+    <script src="js/vue.js"></script>
+    <script src="js/vue-router.js"></script>
+    <!-- jquery -->
+    <script src="js/jquery.min.js"></script>
+    <!-- element-ui -->
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<style>
+
+    .grid-blank {
+        min-height: 36px;
+        margin: 0px;
+        padding: 0px;
+        background: white;
+        filter: opacity(0%);
+    }
+    .grid{
+        min-height: 36px;
+    }
+    .login{
+        float: right;
+        color: white;
+    }
+
+
+    .el-input{
+        height:32px;
+        padding: 0px 10px 0px 9px;
+
+    }
+
+    .grid-content {
+        min-height: 36px;
+        margin: 0px;
+        padding: 0px;
+        background: white;
+        filter: opacity(0%);
+    }
+    .grid-blank {
+        min-height: 36px;
+        margin: 0px;
+        padding: 0px;
+        background: white;
+        filter: opacity(0%);
+    }
+
+    .input-with-select{
+        background-color: #fff;
+    }
+</style>
+<body>
+<div id="app" style="background-image:url(img.png);background-size: cover; width: 100%;">
+    <!--顶部导航栏-->
+    <el-row>
+        <el-col :span="3"><div class="grid-blank" style="background-color:rgba(0,0,0,0);"></div></el-col>
+        <el-col :span="18">
+            <div  style="min-width: 1100px;max-width: 1100px">
+            <div style="float: left;padding-top: 20px">
+                <img src="https://buff.163.com/static/images/site/logo.png">
+            </div>
+            <el-menu
+                    :default-active="activeIndex"
+                    class="el-menu-demo"
+                    mode="horizontal"
+                    @select="handleSelect"
+                    background-color="rgba(0,0,0,0)"
+                    text-color="#fff"
+                    active-text-color="#4886ff"
+                    hover-color="rgba(0,0,0,0.2)">
+                <el-menu-item index="1">首页</el-menu-item>
+                <el-menu-item index="2">饰品市场</el-menu-item>
+                <el-menu-item index="3">游戏资讯</el-menu-item>
+
+                <div class="login" style="padding: 20px ">登录/注册</div>
+                <h3  class="login" >CS-GO</h3 >
+                <el-menu-item :v-if="te" style="float: right" index="4">求购</el-menu-item>
+                <el-menu-item :v-if="te" style="float: right" index="5">出售</el-menu-item>
+                <el-menu-item :v-if="te" style="float: right" index="6">库存</el-menu-item>
+            </el-menu>
+            </div>
+        </el-col>
+        <el-col :span="3"><div class="grid-blank" style="background-color:rgba(0,0,0,0);"></div></el-col>
+    </el-row>
+    <!--导航栏 及多选框-->
+    <el-row style="padding-top: 24px">
+        <el-col :span="3"><div class="grid-blank" style="background-color:rgba(0,0,0,0);"></div></el-col>
+        <el-col :span="18" style="background-color:#282727FF;">
+            <div  style="min-width: 1100px;max-width: 1100px;">
+            <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal"
+                     background-color="#282727FF" text-color="#90969C" active-text-color="#FFFFFF">
+                <el-menu-item index="1">Steam库存</el-menu-item>
+                <el-menu-item index="2">BUFF背包</el-menu-item>
+                <el-menu-item index="3">购买记录</el-menu-item>
+                <el-menu-item index="4">等待收货</el-menu-item>
+                <el-menu-item index="5">背包历史</el-menu-item>
+            </el-menu>
+            <el-select v-for="s in 4"   style="padding: 10px 10px 10px;width: 100px" v-model="value" placeholder="请选择">
+                <el-option
+
+                        v-for="item in options"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value">
+                </el-option>
+            </el-select>
+            <div style="float: right;padding: 10px 20px 10px;">
+                <el-input placeholder="请输入内容" v-model="input3" >
+                    <el-button slot="append" icon="el-icon-search" plain></el-button>
+                </el-input>
+            </div>
+            </div>
+        </el-col>
+        <el-col :span="3"><div class="grid-blank" style="background-color:rgba(0,0,0,0);"></div></el-col>
+    </el-row>
+    <!--库存展示区-->
+    <el-row style="padding-top: 34px">
+        <el-col :span="3">
+            <div class="grid-content "></div>
+        </el-col>
+        <el-col :span="18">
+            <div  style="min-width: 1100px;max-width: 1100px">
+            <div style="background-color: #282727FF;padding: 12px ">
+                <el-button style="padding: 12px;margin: 0px" plain>默认按钮</el-button>
+                <el-button style="padding: 12px;margin: 0px" plain>默认按钮</el-button>
+                <el-button style="padding: 12px;margin: 0px" plain>默认按钮</el-button>
+                <div style="float: right;">
+                    <el-button type="info" style="width: 120px">刷新</el-button>
+                    <el-button type="primary" style="width: 120px;">上架</el-button>
+                </div>
+            </div>
+            <div style="float: left;background-color: white;" v-for="fit in ka" :key="fit">
+                <div style="margin: 22px 13px 0px 17px;background-image: url(https://spect.fp.ps.netease.com/file/613abf6309463c49b9c8aa93Mt9e2tVQ03)">
+                    <el-image
+                            style="width: 170px; height: 160px;padding: 10px "
+                            :src="fit.url"
+                            :fit="fill">
+                    </el-image>
+                </div>
+                <div style="background-color: white;width: 190px;height: 60px;margin: 0px 13px 0px 17px">
+                    <span class="demonstration">{{ fit.fits }}</span>
+                </div>
+            </div>
+            </div>
+        </el-col>
+        <el-col :span="3">
+            <div class="grid-content "></div>
+        </el-col>
+    </el-row>
+    <!--分页控制区-->
+    <el-row>
+        <el-col :span="3">
+            <div class="grid-content "></div>
+        </el-col>
+        <el-col :span="18" style="min-width: 1100px;max-width: 1100px">
+            <!-- 表格分页 -->
+            <!-- pager-count pager-count属性可以设置最大页码按钮数,超出折叠,默认为7-->
+            <!-- 注意：若数据是后端接口返回的则此时:total="pageCount"-->
+            <div  style="min-width: 1100px;max-width: 1100px">
+            <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
+                           :pager-count="7" :current-page="currentPage" :page-sizes="[1, 3, 5, 10]" :page-size="pagesize"
+                           layout="total, sizes, prev, pager, next, jumper" :total="pageCount" background
+                           style="padding-top: 10px; background-color: white">
+            </el-pagination>
+            </div>
+        </el-col>
+        <el-col :span="3">
+            <div class="grid-content "></div>
+        </el-col>
+    </el-row>
+</div>
+</body>
+</html>
+<script>
+    var vue=new Vue({
+        el:"#app",
+        data(){
+            return{
+                activeIndex: '1',
+                te:true,
+                input3: '',
+                currentPage: 1, //默认初始页
+                pagesize: 10, //每页默认显示的数据
+                pageCount: 0, //出售数据的总条数,如果数据是后端接口返回的，则此值需修改
+                options: [{
+                    value: '选项1',
+                    label: '黄金糕'
+                }, {
+                    value: '选项2',
+                    label: '双皮奶'
+                }, {
+                    value: '选项3',
+                    label: '蚵仔煎'
+                }, {
+                    value: '选项4',
+                    label: '龙须面'
+                }, {
+                    value: '选项5',
+                    label: '北京烤鸭'
+                }],
+                tableSellData:[{of_id :1,of_price:22.3,of_time:"2023-7-4",of_state:1,tradeoffer_id:666,user_id:5,sell_id:4}],
+                ka:[
+                    {
+                        fits:'fill',
+                        url: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
+                    },
+                    {
+                        fits:'weds',
+                        url: 'https://g.fp.ps.netease.com/market/file/5d0352356f0494e8facd4e9fuEm52CrO02?fop=imageView/2/w/245/h/230'
+                    },
+                    {
+                        fits:'fill',
+                        url: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
+                    },
+                    {
+                        fits:'weds',
+                        url: 'https://g.fp.ps.netease.com/market/file/5d0352356f0494e8facd4e9fuEm52CrO02?fop=imageView/2/w/245/h/230'
+                    },
+                    {
+                        fits:'weds',
+                        url: 'https://g.fp.ps.netease.com/market/file/5d0352356f0494e8facd4e9fuEm52CrO02?fop=imageView/2/w/245/h/230'
+                    },
+                    {
+                        fits:'fill',
+                        url: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
+                    },
+                    {
+                        fits:'weds',
+                        url: 'https://g.fp.ps.netease.com/market/file/5d0352356f0494e8facd4e9fuEm52CrO02?fop=imageView/2/w/245/h/230'
+                    },
+                    {
+                        fits:'fill',
+                        url: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
+                    },
+                    {
+                        fits:'weds',
+                        url: 'https://g.fp.ps.netease.com/market/file/5d0352356f0494e8facd4e9fuEm52CrO02?fop=imageView/2/w/245/h/230'
+                    },
+                    {
+                        fits:'weds',
+                        url: 'https://g.fp.ps.netease.com/market/file/5d0352356f0494e8facd4e9fuEm52CrO02?fop=imageView/2/w/245/h/230'
+                    },
+                ]
+            }
+        },
+        methods:{
+            //改变每页容纳的数据量
+            handleSizeChange: function(size) {
+                this.pagesize = size;
+                getSell(this)
+            },
+            //切换页码
+            handleCurrentChange: function(currentPage) {
+                this.currentPage = currentPage;
+                getSell(this)
+            },
+            handleEdit(index, row) {
+                console.log(index, row);
+            },
+        }
+    })
+</script>

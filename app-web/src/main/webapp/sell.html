@@ -53,8 +53,8 @@
 	<body>
 		<div id="app" style="background-image: url(img.png);background-size: cover; width: 100%;height: 500px;">
 			<el-row>
-				<el-col :span="4"><div class="grid-blank" style="background-color:rgba(0,0,0,0);"></div></el-col>
-				<el-col :span="16">
+				<el-col :span="3"><div class="grid-blank" style="background-color:rgba(0,0,0,0);"></div></el-col>
+				<el-col :span="18">
 					<div style="float: left;padding-top: 20px">
 						<img src="https://buff.163.com/static/images/site/logo.png">
 					</div>
@@ -78,11 +78,11 @@
 						<el-menu-item :v-if="te" style="float: right" index="6">库存</el-menu-item>
 					</el-menu>
 				</el-col>
-				<el-col :span="4"><div class="grid-blank" style="background-color:rgba(0,0,0,0);"></div></el-col>
+				<el-col :span="3"><div class="grid-blank" style="background-color:rgba(0,0,0,0);"></div></el-col>
 			</el-row>
 
 			<el-row>
-				<el-col :span="4">
+				<el-col :span="3">
 					<div class="grid-content "></div>
 				</el-col>
 				<el-col :span="3">
@@ -91,7 +91,7 @@
 					</div>
 				</el-col>
 
-				<el-col :span="13">
+				<el-col :span="15">
 					<!--rgba ：设置透明-->
 					<div class=" bg-purple styles" style="background-color:rgba(30,35,41,0.7); ">
 						<div style="padding-top: 15px; color: white;opacity: 1.0">
@@ -115,16 +115,16 @@
 					</div>
 				</el-col>
 
-				<el-col :span="4">
+				<el-col :span="3">
 					<div class=" grid-content "></div>
 				</el-col>
 			</el-row>
 
 			<el-row style="padding-top: 1px">
-				<el-col :span="4">
+				<el-col :span="3">
 					<div class="grid-content "></div>
 				</el-col>
-				<el-col :span="16" class="bg-purple" style="padding: 10px 44px;min-width: 780px;max-height: 60px">
+				<el-col :span="18" class="bg-purple" style="padding: 10px 44px;min-width: 780px;max-height: 60px">
 					<el-button type="info" style="background:#1e2329;border-color: #899ab9;" plain>崭新出厂</el-button>
 					<el-button type="info" style="background:#1e2329;border-color: #899ab9;" plain>略有磨损</el-button>
 					<el-button type="info" style="background:#1e2329;border-color: #899ab9;" plain>久经沙场</el-button>
@@ -133,16 +133,16 @@
 					<el-button type="info" style="background:#1e2329;border-color: #899ab9;" plain
 						icon="el-icon-sort">StatTrak™</el-button>
 				</el-col>
-				<el-col :span="4">
+				<el-col :span="3">
 					<div class="grid-content "></div>
 				</el-col>
 			</el-row>
 
 			<el-row style="padding-top: 20px">
-				<el-col :span="4">
+				<el-col :span="3">
 					<div class="grid-content "></div>
 				</el-col>
-				<el-col :span="16">
+				<el-col :span="18">
 					<el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal"
 						background-color="#282727FF" text-color="#90969C" active-text-color="#FFFFFF">
 						<el-menu-item index="1" @click="updSell">出售</el-menu-item>
@@ -150,17 +150,17 @@
 					</el-menu>
 
 				</el-col>
-				<el-col :span="4">
+				<el-col :span="3">
 					<div class="grid-content "></div>
 				</el-col>
 			</el-row>
 
 			<el-row>
-				<el-col :span="4">
+				<el-col :span="3">
 					<div class="grid-content "></div>
 				</el-col>
 				<!--出售-->
-				<el-col :span="16" v-if="determine">
+				<el-col :span="18" v-if="determine">
 					<!-- 出售模块表格-->
 					<template>
 						<el-table :data="tableSellData" style="width: 100%">
@@ -193,7 +193,7 @@
 
 				</el-col>
 				<!--求购-->
-				<el-col :span="16" v-else>
+				<el-col :span="18" v-else>
 					<!--求购模块表格-->
 					<template>
 						<el-table :data="tableBuyData" style="width: 100%">
@@ -226,7 +226,7 @@
 						style=" margin-top: 20px">
 					</el-pagination>
 				</el-col>
-				<el-col :span="4">
+				<el-col :span="3">
 					<div class="grid-content "></div>
 				</el-col>
 			</el-row>

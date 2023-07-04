@@ -18,8 +18,13 @@ import java.util.List;
  * Date: 2023/6/28
  */
 public class WantToBuyController extends BaseController {
-
-    @RequestMapping("/getBuy")
+    /**
+     * 求购、分页查询
+     * @param numberOf 从第几行开始查
+     * @param limit 查多少条数据
+     * @return
+     */
+    @RequestMapping("/deal/wantToBuy/getBuy")
     public View getBuy(@RequestParam("numberOf") int numberOf,@RequestParam("limit") int limit){
         WantToBuyService service = new WantToBuyServiceImpl();
         List<WantToBuy> list = service.getBuy(numberOf, limit);

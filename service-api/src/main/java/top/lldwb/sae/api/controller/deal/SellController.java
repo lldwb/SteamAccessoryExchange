@@ -18,7 +18,13 @@ import java.util.List;
  * Date: 2023/6/24
  */
 public class SellController extends BaseController {
-    @RequestMapping("/getSell")
+    /**
+     * 出售，分页查询
+     * @param numberOf 从第几行开始查
+     * @param limit 查多少条数据
+     * @return
+     */
+    @RequestMapping("/deal/sell/getSell")
     public View getSell(@RequestParam("numberOf") int numberOf ,@RequestParam("limit") int limit){
         SellService service = new SellServiceImpl();
         List<Sell> list= service.getSell(numberOf, limit);
