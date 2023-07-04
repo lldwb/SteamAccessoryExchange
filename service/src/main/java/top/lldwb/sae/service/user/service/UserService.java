@@ -68,13 +68,20 @@ public class UserService implements UserServiceInterFace {
         user.setUserTime(timestamp);
         user.setRoleId(1);
         user.setUserRenewTime(timestamp);
+
+
+        User entity = face.login(name) ;
+        if(entity!=null){
+            throw new AllException(500,"账号已经存在！请重新点击随机按钮") ;
+        }
+
         int row = face.loginAdd(user) ;
-
-
 
         if(user==null){
             throw new AllException(500,"数据异常，请重新操作") ;
         }
+
+
         if(row<1){
             throw new AllException(500,"数据异常，请重新操作") ;
         }
