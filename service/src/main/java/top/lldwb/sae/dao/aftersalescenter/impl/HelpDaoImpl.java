@@ -1,7 +1,7 @@
 package top.lldwb.sae.dao.aftersalescenter.impl;
 
 import top.lldwb.sae.dao.aftersalescenter.HelpDao;
-import top.lldwb.sae.entity.Aftersalescenter.Help.Help;
+import top.lldwb.sae.entity.aftersalescenter.Help.Help;
 import top.lldwb.sae.utils.mySql.MySqlUtil;
 
 import java.util.List;

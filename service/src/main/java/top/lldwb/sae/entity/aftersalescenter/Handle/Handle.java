@@ -1,4 +1,4 @@
-package top.lldwb.sae.entity.Aftersalescenter.Handle;
+package top.lldwb.sae.entity.aftersalescenter.Handle;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
