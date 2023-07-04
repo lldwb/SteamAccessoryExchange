@@ -32,12 +32,12 @@ public interface CommodityClassDAO {
 
     /**
      * 查询商品父类列表
-     * @param instance 查询条件对象 可根据 parent_id 或者 instance_name 进行分页查询
+     * @param instanceName 查询条件对象 可根据 parent_id 或者 instance_name 进行分页查询
      * @param numberOf 从第几条开始查
      * @param limit 查多少条
      * @return
      */
-    List<CommodityClass> ListCommodityClass(CommodityInstance instance, int numberOf, int limit);
+    List<CommodityClass> ListCommodityClass(String instanceName, int numberOf, int limit);
 
     /**
      * 查询总记录数，用于计算总页数

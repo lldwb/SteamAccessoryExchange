@@ -30,11 +30,11 @@ public class CommodityClassDAOImpl implements CommodityClassDAO {
     }
 
     @Override
-    public List<CommodityClass> ListCommodityClass(CommodityInstance instance, int numberOf, int limit) {
+    public List<CommodityClass> ListCommodityClass(String instanceName, int numberOf, int limit) {
         StringBuilder sql = new StringBuilder("SELECT class_id,class_name,class_url,class_url_large,class_descriptions,class_actions FROM commodity_class limit ?,?;");
 
 
-        if ( instance.getInstanceName() == null ){
+        if ( instanceName == null ){
             return MySqlUtil.queryList(CommodityClass.class,sql.toString(),numberOf,limit);
         }
 
@@ -42,7 +42,7 @@ public class CommodityClassDAOImpl implements CommodityClassDAO {
         StringBuilder sqlwhere =  sql.insert(index," WHERE\n" +
                 "\tclass_id IN ( SELECT class_id FROM commdoity_class_instance" +
                 "  WHERE instance_id IN ( SELECT instance_id FROM commodity_instance WHERE instance_name = ? ) ) ");
-        return MySqlUtil.queryList(CommodityClass.class,sqlwhere.toString(),instance.getInstanceName(),numberOf,limit);
+        return MySqlUtil.queryList(CommodityClass.class,sqlwhere.toString(),instanceName,numberOf,limit);
 
     }
 
