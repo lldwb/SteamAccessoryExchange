@@ -20,7 +20,7 @@ public class UserTest {
 
     @Test
     public void  AddUser () {
-        System.out.println(service.loginAdd("231", "202", "123", "小美", "1", "33333","333333"));
+        System.out.println(service.loginAdd("323423", "202", "123", "小美", "1", "33333","333333"));
     }
 
 
@@ -36,7 +36,7 @@ public class UserTest {
 
     @Test
     public void queryName () {
-        System.out.println(service.login("2026319183@qq.com", "1233"));
+        System.out.println(service.login("333", "123"));
 
     }
     @Test
@@ -53,7 +53,7 @@ public class UserTest {
 
     @Test
     public void pageList(){
-        PageVO<List<UserTwo>> pageVO =service.pageUserVoList("","2023@qq.com",1,3) ;
+        PageVO<List<UserTwo>> pageVO =service.pageUserVoList("","",1,3) ;
         pageVO.getData().forEach(System.out::println);
     }
 }
