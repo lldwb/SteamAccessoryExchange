@@ -8,7 +8,6 @@ import top.lldwb.sae.api.controller.BaseController;
 import top.lldwb.sae.entity.buy.WantToBuy;
 import top.lldwb.sae.service.buy.WantToBuyService;
 import top.lldwb.sae.service.buy.impl.WantToBuyServiceImpl;
-import top.lldwb.sae.utils.vo.PageVO;
 import top.lldwb.sae.utils.vo.ResultVO;
 
 import java.util.List;

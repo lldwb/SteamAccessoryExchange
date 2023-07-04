@@ -1,7 +1,7 @@
 package top.lldwb.sae.dao.sell.impl;
 
 import top.lldwb.sae.dao.sell.SellDao;
-import top.lldwb.sae.entity.sell.Sell;
+import top.lldwb.sae.entity.deal.Sell;
 import top.lldwb.sae.utils.mySql.MySqlUtil;
 
 import java.util.List;

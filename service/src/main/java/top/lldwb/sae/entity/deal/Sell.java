@@ -1,4 +1,4 @@
-package top.lldwb.sae.entity.sell;
+package top.lldwb.sae.entity.deal;
 
 import lombok.Data;
 import org.nf.db.util.Column;

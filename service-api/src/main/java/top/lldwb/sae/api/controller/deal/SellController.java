@@ -5,10 +5,9 @@ import org.nf.web.annotation.RequestParam;
 import org.nf.web.servlet.View;
 import org.nf.web.servlet.view.JsonView;
 import top.lldwb.sae.api.controller.BaseController;
-import top.lldwb.sae.entity.sell.Sell;
+import top.lldwb.sae.entity.deal.Sell;
 import top.lldwb.sae.service.sell.SellService;
 import top.lldwb.sae.service.sell.impl.SellServiceImpl;
-import top.lldwb.sae.utils.vo.PageVO;
 import top.lldwb.sae.utils.vo.ResultVO;
 
 import java.util.List;
@@ -26,5 +25,15 @@ public class SellController extends BaseController {
         Long total = service.getCount();
         ResultVO<List<Sell>> vo = pageResult(total, list);
         return new JsonView(vo);
+    }
+
+    @RequestMapping("/deal/sell/add")
+    public View add(@RequestParam("sell") Sell sell){
+        try {
+            throw new RuntimeException("666");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+//        return new JsonView(success());
     }
 }

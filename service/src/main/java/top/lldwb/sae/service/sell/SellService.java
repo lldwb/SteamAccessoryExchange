@@ -1,7 +1,6 @@
 package top.lldwb.sae.service.sell;
 
-import top.lldwb.sae.entity.sell.Sell;
-import top.lldwb.sae.utils.vo.PageVO;
+import top.lldwb.sae.entity.deal.Sell;
 
 import java.util.List;
 

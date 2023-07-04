@@ -2,10 +2,9 @@ package top.lldwb.sae.service.sell.impl;
 
 import top.lldwb.sae.dao.sell.SellDao;
 import top.lldwb.sae.dao.sell.impl.SellImpl;
-import top.lldwb.sae.entity.sell.Sell;
+import top.lldwb.sae.entity.deal.Sell;
 import top.lldwb.sae.service.sell.SellService;
 import top.lldwb.sae.utils.vo.PageUtils;
-import top.lldwb.sae.utils.vo.PageVO;
 
 import java.util.List;
 
