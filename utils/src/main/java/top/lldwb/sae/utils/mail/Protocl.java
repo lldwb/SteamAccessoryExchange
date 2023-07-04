@@ -8,7 +8,7 @@ package top.lldwb.sae.utils.mail;
 public enum Protocl {
     SMTP("smtp"),
     POP3("POP3");
-    String value;
+    final String value;
     Protocl(String value){
         this.value = value;
     }

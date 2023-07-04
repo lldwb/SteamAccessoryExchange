@@ -9,12 +9,14 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>app-web</module>
-        <module>service-api</module>
-        <module>admin-web</module>
+        <module>app</module>
+        <module>api</module>
+        <module>admin</module>
         <module>service</module>
         <module>utils</module>
         <module>alipay</module>
+        <module>dao</module>
+        <module>entity</module>
     </modules>
 
     <properties>

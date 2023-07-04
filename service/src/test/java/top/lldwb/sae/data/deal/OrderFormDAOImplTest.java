@@ -2,14 +2,12 @@ package top.lldwb.sae.data.deal;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
-import top.lldwb.sae.entity.deal.OrderForm;
 import top.lldwb.sae.utils.http.ConnectionMethod;
 import top.lldwb.sae.utils.http.ConnectionUtil;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -20,7 +18,7 @@ public class OrderFormDAOImplTest {
     @Test
     public void test() throws IOException {
         // 设置交易报价
-        ConnectionUtil connectionUtil = new ConnectionUtil("http://api.steampowered.com/IEconService/GetTradeOffer/v1");
+        ConnectionUtil connectionUtil = new ConnectionUtil("https://api.steampowered.com/IEconService/GetTradeOffer/v1");
         // 查询条件
         Map<String, String> where = new HashMap<>();
         // 用户秘钥

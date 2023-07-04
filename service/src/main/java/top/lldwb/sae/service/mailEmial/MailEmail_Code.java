@@ -54,21 +54,21 @@ public class MailEmail_Code {
     public static void Mail_Code (String EMAIL,String AUTHORIZECODE,String Verify_NAME,String userEmail){
         //发送邮箱验证
 
-        /**
-         * 发件⼈邮箱地址
+        /*
+          发件⼈邮箱地址
          */
         String SEND_ACCOUNT =EMAIL ;
-        /**
-         * 发件⼈邮箱密码 - 登录邮件开启 SMTP 服务后，邮件服务商⽣成的“授权码”
+        /*
+          发件⼈邮箱密码 - 登录邮件开启 SMTP 服务后，邮件服务商⽣成的“授权码”
          */
         String SEND_PASSWORD = AUTHORIZECODE;//授权码
-        /**
-         * 发件⼈SMTP服务器地址，⼀般的格式为：smtp.xxx.com，其中xxx为邮件服务商名称
+        /*
+          发件⼈SMTP服务器地址，⼀般的格式为：smtp.xxx.com，其中xxx为邮件服务商名称
          */
         String SMTP_HOST = "smtp.qq.com";
-        /**
-         * 收件⼈邮箱地址
-         * xxx@qq.com
+        /*
+          收件⼈邮箱地址
+          xxx@qq.com
          */
         String RECEIVE_ACCOUNT = EMAIL;
 

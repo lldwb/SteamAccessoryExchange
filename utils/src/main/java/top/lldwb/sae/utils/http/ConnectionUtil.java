@@ -48,7 +48,7 @@ public class ConnectionUtil {
                 // 判断是否是第一个条件
                 boolean verify = true;
                 for (String key : map.keySet()) {
-                    url += (verify ? "?" : "&") + key + "=" + map.get(key);
+                    url.concat((verify ? "?" : "&") + key + "=" + map.get(key));
                     verify = false;
                 }
             }
@@ -73,7 +73,7 @@ public class ConnectionUtil {
                 conn.setDoInput(true);
             }
 
-            BufferedReader reader = null;
+            BufferedReader reader;
             reader = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
             return reader;
         } catch (IOException e) {

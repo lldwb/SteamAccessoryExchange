@@ -26,14 +26,14 @@ public class OrderFormServiceImpl implements OrderFormService {
     @Override
     public void refresh(int userId) {
         try {
-            /** 检测未发货的订单 **/
+            /* 检测未发货的订单 **/
             System.out.println("检测未发货的订单");
             OrderFormDAO orderFormDAO = new OrderFormDAOImpl();
             List<OfId_AssetId> ofId_AssetId = orderFormDAO.getAssetIdByUserId(3, userId);
             String steamKey = new UserDAO().getSteamKeyById(userId);
             if (ofId_AssetId != null) {
                 // 设置交易报价
-                ConnectionUtil connectionUtil = new ConnectionUtil("http://api.steampowered.com/IEconService/GetTradeOffers/v1");
+                ConnectionUtil connectionUtil = new ConnectionUtil("https://api.steampowered.com/IEconService/GetTradeOffers/v1");
                 // 查询条件
                 Map<String, String> where = new HashMap<>();
                 // 用户秘钥
@@ -63,13 +63,11 @@ public class OrderFormServiceImpl implements OrderFormService {
                             // 获取饰品列表
                             List<Map<String, Object>> itemsToGive = (List<Map<String, Object>>) map.get("items_to_give");
                             // 遍历饰品列表
-                            itemsToGive.forEach(itemsToGiveMap -> {
-                                ofId_AssetId.forEach(ofIdAssetId -> {
-                                    if (ofIdAssetId.getAssetId().equals(itemsToGiveMap.get("assetid"))) {
-                                        orderFormDAO.updateOfStateAndTradeofferIdByOfId(4, ofIdAssetId.getOfId(), (String) map.get("tradeofferid"));
-                                    }
-                                });
-                            });
+                            itemsToGive.forEach(itemsToGiveMap -> ofId_AssetId.forEach(ofIdAssetId -> {
+                                if (ofIdAssetId.getAssetId().equals(itemsToGiveMap.get("assetid"))) {
+                                    orderFormDAO.updateOfStateAndTradeofferIdByOfId(4, ofIdAssetId.getOfId(), (String) map.get("tradeofferid"));
+                                }
+                            }));
                         }
                     }
                 }
@@ -84,7 +82,7 @@ public class OrderFormServiceImpl implements OrderFormService {
             }
 
 
-            /** 检测已发货的订单 **/
+            /* 检测已发货的订单 **/
             System.out.println("检测已发货的订单");
             // 获取已发货订单
             List<OrderForm> orderFormList = orderFormDAO.getOrderFormByOfStateUserId(4, userId);
@@ -94,7 +92,7 @@ public class OrderFormServiceImpl implements OrderFormService {
                 orderFormList.forEach(orderForm -> {
                     try {
                         // 设置交易报价
-                        ConnectionUtil connectionUtil = new ConnectionUtil("http://api.steampowered.com/IEconService/GetTradeOffer/v1");
+                        ConnectionUtil connectionUtil = new ConnectionUtil("https://api.steampowered.com/IEconService/GetTradeOffer/v1");
                         // 查询条件
                         Map<String, String> where = new HashMap<>();
                         // 用户秘钥
@@ -127,10 +125,6 @@ public class OrderFormServiceImpl implements OrderFormService {
                     }
                 });
             }
-        } catch (JsonMappingException e) {
-            throw new RuntimeException(e);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

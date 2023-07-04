@@ -1,9 +1,7 @@
 package top.lldwb.sae.test.xiao;
 
 import top.lldwb.sae.dao.commodity.CommodityClassDAO;
-import top.lldwb.sae.dao.commodity.CommodityInstanceDAO;
 import top.lldwb.sae.dao.commodity.impl.CommodityClassDAOImpl;
-import top.lldwb.sae.dao.commodity.impl.CommodityInstanceDAOImpl;
 import top.lldwb.sae.entity.commodity.CommodityClass;
 import top.lldwb.sae.entity.commodity.CommodityInstance;
 

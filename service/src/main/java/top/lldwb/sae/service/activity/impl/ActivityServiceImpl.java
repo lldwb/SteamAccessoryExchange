@@ -1,7 +1,7 @@
 package top.lldwb.sae.service.activity.impl;
 
 import top.lldwb.sae.dao.activity.ActivityDao;
-import top.lldwb.sae.dao.activity.Impl.ActivityDaoImpl;
+import top.lldwb.sae.dao.activity.impl.ActivityDaoImpl;
 import top.lldwb.sae.entity.activity.Activity;
 import top.lldwb.sae.service.activity.ActivityService;
 

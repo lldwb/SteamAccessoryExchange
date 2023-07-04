@@ -5,8 +5,6 @@ import org.nf.db.util.result.BeanHandler;
 import org.nf.db.util.result.BeanListHandler;
 import org.nf.db.util.result.ColumnHandler;
 
-import java.lang.reflect.InvocationTargetException;
-import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
@@ -70,7 +68,7 @@ public class MySqlUtil {
      * @return 返回符合条件的记录封装为的T对象
      */
     public static <T> T queryT(Class<T> clazz, String sql, Object... obj) {
-        BeanHandler<T> handler = new BeanHandler<T>(clazz);
+        BeanHandler<T> handler = new BeanHandler<>(clazz);
         return getSqlExecutor().executeQuery(sql, handler, obj);
     }
 

@@ -8,8 +8,6 @@ import top.lldwb.sae.entity.code.CodeTable;
 import top.lldwb.sae.entity.user.User;
 import top.lldwb.sae.entity.user.UserTwo;
 import top.lldwb.sae.service.exception.AllException;
-import top.lldwb.sae.service.role.RoleServiceInterFace;
-import top.lldwb.sae.service.role.impl.RoleService;
 import top.lldwb.sae.service.user.UserServiceInterFace;
 import top.lldwb.sae.utils.vo.PageUtils;
 import top.lldwb.sae.utils.vo.PageVO;
@@ -52,9 +50,6 @@ public class UserService implements UserServiceInterFace {
 
         //获取当前时间
         Timestamp timestamp = new Timestamp(System.currentTimeMillis()) ;
-
-        //调用数据访问类
-        face = new UserDAO() ;
 
         //调用实体类
         User user = new User() ;
@@ -205,9 +200,8 @@ public class UserService implements UserServiceInterFace {
      */
     @Override
     public User loginEmail(String email,String emailCode) {
-        UserFace face = new UserDAO() ;
         //调用数据访问类
-        face = new UserDAO() ;
+        UserFace face = new UserDAO() ;
 
         //获取方法
         User user = face.loginEmail(email) ;
