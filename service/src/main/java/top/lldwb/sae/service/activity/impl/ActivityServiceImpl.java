@@ -10,18 +10,18 @@ import java.util.List;
 public class ActivityServiceImpl implements ActivityService {
      ActivityDao  dao = new ActivityDaoImpl();
     @Override
-    public int insert(Activity activity) {
-        return dao.insert(activity);
+    public void insert(Activity activity) {
+         dao.insert(activity);
     }
 
     @Override
-    public int delete(Activity ac_id) {
-      return dao.delete(ac_id);
+    public void delete(Activity ac_id) {
+       dao.delete(ac_id);
     }
 
     @Override
-    public int  update(Activity activity) {
-        return dao.update(activity);
+    public void update(Activity activity) {
+         dao.update(activity);
     }
 
     @Override
