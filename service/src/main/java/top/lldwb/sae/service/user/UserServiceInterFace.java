@@ -1,5 +1,6 @@
 package top.lldwb.sae.service.user;
 
+import org.nf.web.annotation.RequestMapping;
 import top.lldwb.sae.entity.user.User;
 import top.lldwb.sae.entity.user.UserTwo;
 import top.lldwb.sae.utils.vo.PageVO;
@@ -71,4 +72,11 @@ public interface UserServiceInterFace {
      */
     int selectStatus(String name);
 
+
+    /***
+     * 返回交易报价
+     * @param userId 根据用户id
+     * @return
+     */
+    String getTradeofferUrlById(int userId);
 }

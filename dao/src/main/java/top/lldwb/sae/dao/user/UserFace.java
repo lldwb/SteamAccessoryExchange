@@ -91,4 +91,13 @@ public interface UserFace {
      * @return
      */
     int selectStatus(String name);
+
+
+
+    /***
+     * 返回交易报价
+     * @param userId 根据用户id
+     * @return
+     */
+    String getTradeofferUrlById(int userId);
 }

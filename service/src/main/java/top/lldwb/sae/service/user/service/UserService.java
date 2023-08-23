@@ -252,4 +252,10 @@ public class UserService implements UserServiceInterFace {
         return new UserDAO().selectStatus(name);
     }
 
+    @Override
+    public String getTradeofferUrlById(int userId) {
+        UserFace dao = new UserDAO();
+        return dao.getTradeofferUrlById(userId);
+    }
+
 }

@@ -189,4 +189,9 @@ public class UserDAO implements UserFace {
         return MySqlUtil.queryColumn(1, "select user_state from user where user_name = ?", name);
     }
 
+    @Override
+    public String getTradeofferUrlById(int userId) {
+        return MySqlUtil.queryColumn(1, "select tradeoffer_url from user where user_id = ?", userId);
+    }
+
 }

@@ -18,16 +18,15 @@ import java.util.List;
 /**
  * @author 安然的尾巴
  * @version 1.0
- *
- *
+ * <p>
+ * <p>
  * 用户登录
  */
 public class UserController extends BaseController {
 
 
-
     @RequestMapping("/user/getUser")
-    public View getUser(){
+    public View getUser() {
         return null;
     }
 
@@ -45,16 +44,16 @@ public class UserController extends BaseController {
      */
     @RequestMapping("/user/getAddUser.do")
     public View getAddUser(@RequestParam("userName") String name,
-                           @RequestParam("userEmail")String email,
-                           @RequestParam("userPassword")String password,
-                           @RequestParam("userNickName")String nickName,
-                           @RequestParam("userPhone")String phone,
-                           @RequestParam("userIdCard")String idCard,
-                           @RequestParam("userEmailCode")String emailCode){
+                           @RequestParam("userEmail") String email,
+                           @RequestParam("userPassword") String password,
+                           @RequestParam("userNickName") String nickName,
+                           @RequestParam("userPhone") String phone,
+                           @RequestParam("userIdCard") String idCard,
+                           @RequestParam("userEmailCode") String emailCode) {
 
-            UserServiceInterFace service = new UserService() ;
-            ResultVO resultVO = success(service.loginAdd(name, email, password, nickName, phone, idCard,emailCode)) ;
-            return new JsonView(success(resultVO));
+        UserServiceInterFace service = new UserService();
+        ResultVO resultVO = success(service.loginAdd(name, email, password, nickName, phone, idCard, emailCode));
+        return new JsonView(success(resultVO));
     }
 
 
@@ -64,10 +63,10 @@ public class UserController extends BaseController {
      * @return
      */
     @RequestMapping("/user/getDeleteUser.do")
-    public View getDeleteUser(@RequestParam("userid")int id) {
-         UserServiceInterFace service = new UserService() ;
-         ResultVO resultVO = success(service.loginDelete(id)) ;
-         return new JsonView(resultVO);
+    public View getDeleteUser(@RequestParam("userid") int id) {
+        UserServiceInterFace service = new UserService();
+        ResultVO resultVO = success(service.loginDelete(id));
+        return new JsonView(resultVO);
     }
 
     /***
@@ -81,30 +80,30 @@ public class UserController extends BaseController {
      * @return
      */
     @RequestMapping("/user/getUpdateUser.do")
-    public View getUpdateUser(@RequestParam("userPassword")String password,
-                              @RequestParam("userNickName")String nickName,
-                              @RequestParam("userPhone")String phone,
-                              @RequestParam("userIdcard")String idcard,
-                              @RequestParam("userState")int state,
-                              @RequestParam("userId")int userId){
-        UserServiceInterFace service = new UserService() ;
-        ResultVO resultVO = success(service.loginUpdate(password,nickName,phone,idcard,state,userId));
-        return new JsonView(resultVO) ;
+    public View getUpdateUser(@RequestParam("userPassword") String password,
+                              @RequestParam("userNickName") String nickName,
+                              @RequestParam("userPhone") String phone,
+                              @RequestParam("userIdcard") String idcard,
+                              @RequestParam("userState") int state,
+                              @RequestParam("userId") int userId) {
+        UserServiceInterFace service = new UserService();
+        ResultVO resultVO = success(service.loginUpdate(password, nickName, phone, idcard, state, userId));
+        return new JsonView(resultVO);
     }
 
     /***
      * 修改邮箱地址
-      * @param email 邮箱地址
+     * @param email 邮箱地址
      * @param userid 根据用户id修改
      * @param emailCode 输入的邮箱码验证
      * @return
      */
     @RequestMapping("/user/getUpdateEmail.do")
-    public View getUpdateEmail(@RequestParam("email")String email,
-                               @RequestParam("userid")int userid,
+    public View getUpdateEmail(@RequestParam("email") String email,
+                               @RequestParam("userid") int userid,
                                @RequestParam("emailCode") String emailCode) {
-        UserServiceInterFace service = new UserService() ;
-        ResultVO resultVO = success(service.loginUpdateEmail(email,userid,emailCode));
+        UserServiceInterFace service = new UserService();
+        ResultVO resultVO = success(service.loginUpdateEmail(email, userid, emailCode));
         return new JsonView(resultVO);
     }
 
@@ -116,14 +115,14 @@ public class UserController extends BaseController {
      * @return
      */
     @RequestMapping("/user/getLogin.do")
-    public View getLogin(@RequestParam("userName")String name,
-                         @RequestParam("userPassword")String password, HttpSession session){
-        UserServiceInterFace service = new UserService() ;
+    public View getLogin(@RequestParam("userName") String name,
+                         @RequestParam("userPassword") String password, HttpSession session) {
+        UserServiceInterFace service = new UserService();
 
-        ResultVO<User> resultVO = success(service.login(name,password)) ;
+        ResultVO<User> resultVO = success(service.login(name, password));
         //会话跟踪
         session.setAttribute("userSuccess", resultVO);
-        return new JsonView(resultVO) ;
+        return new JsonView(resultVO);
     }
 
     /***
@@ -133,14 +132,14 @@ public class UserController extends BaseController {
      * @return
      */
     @RequestMapping("/user/getLoginEmail.do")
-    public View getLoginEmail(@RequestParam("userEmail")String email,
-                              @RequestParam("userEmailCode")String emailCode,HttpSession session){
-        UserServiceInterFace service = new UserService() ;
+    public View getLoginEmail(@RequestParam("userEmail") String email,
+                              @RequestParam("userEmailCode") String emailCode, HttpSession session) {
+        UserServiceInterFace service = new UserService();
 
-        ResultVO<User> resultVO = success(service.loginEmail(email,emailCode)) ;
+        ResultVO<User> resultVO = success(service.loginEmail(email, emailCode));
         //会话跟踪
-        session.setAttribute("emailCodeSuccess",resultVO);
-        return new JsonView(resultVO) ;
+        session.setAttribute("emailCodeSuccess", resultVO);
+        return new JsonView(resultVO);
     }
 
 
@@ -154,14 +153,27 @@ public class UserController extends BaseController {
      * @return
      */
     @RequestMapping("/user/getLimitConditionQuery.do")
-    public View getLimitConditionQuery(@RequestParam("page")int page,
-                                       @RequestParam("limit")int limit,
+    public View getLimitConditionQuery(@RequestParam("page") int page,
+                                       @RequestParam("limit") int limit,
                                        @RequestParam("userName") String userName,
-                                       @RequestParam("userEmail")String userEmail){
+                                       @RequestParam("userEmail") String userEmail) {
 
-        UserServiceInterFace service = new UserService() ;
-        PageVO<List<UserTwo>> pageVO = service.pageUserVoList(userName,userEmail,page,limit) ;
+        UserServiceInterFace service = new UserService();
+        PageVO<List<UserTwo>> pageVO = service.pageUserVoList(userName, userEmail, page, limit);
         return new JsonView(pageVO);
+    }
+
+    /***
+     * 返回交易报价
+     * @param userId 根据用户id
+     * @return
+     */
+    @RequestMapping("/user/getTradeofferUrlById.do")
+    public View getTradeofferUrlById(
+            @RequestParam("userid") int userId) {
+        UserServiceInterFace service = new UserService();
+        ResultVO resultVO = success(service.getTradeofferUrlById(userId));
+        return new JsonView(resultVO);
     }
 
 }
