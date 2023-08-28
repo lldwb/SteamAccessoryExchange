@@ -6,6 +6,8 @@ import org.nf.web.servlet.View;
 import org.nf.web.servlet.view.JsonView;
 import top.lldwb.sae.api.controller.BaseController;
 import top.lldwb.sae.entity.deal.Sell;
+import top.lldwb.sae.service.deal.SellsService;
+import top.lldwb.sae.service.deal.impl.SellsServiceImpl;
 import top.lldwb.sae.service.exception.AllException;
 import top.lldwb.sae.service.sell.SellService;
 import top.lldwb.sae.service.sell.impl.SellServiceImpl;

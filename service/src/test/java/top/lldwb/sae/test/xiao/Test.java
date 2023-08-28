@@ -33,7 +33,7 @@ public class Test {
         CommodityClassDAO dao = new CommodityClassDAOImpl();
         CommodityInstance instance = new CommodityInstance();
         instance.setInstanceName("消费级");
-        List<CommodityClass> list = dao.ListCommodityClass(instance,1, 5);
+        List<CommodityClass> list = dao.ListCommodityClass(String.valueOf(instance),1, 5);
         list.forEach(obj -> System.out.println(obj.getClassName()));
     }
     @org.junit.Test
