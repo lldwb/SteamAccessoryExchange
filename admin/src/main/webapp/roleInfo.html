@@ -7,36 +7,36 @@
     <link rel="stylesheet" href="layui/css/layui.css">
 </head>
 <body>
-    <div style="padding: 16px;"> 
-        <table class="layui-hide" id="test" lay-filter="test"></table>
-      </div>
-      <script type="text/html" id="toolbarDemo">
-        <div class="layui-btn-container">
-          <button class="layui-btn layui-btn-sm" id="dropdownButton">
-            下拉按钮 
+<div style="padding: 16px;">
+    <table class="layui-hide" id="test" lay-filter="test"></table>
+</div>
+<script type="text/html" id="toolbarDemo">
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-sm" id="dropdownButton">
+            下拉按钮
             <i class="layui-icon layui-icon-down layui-font-12"></i>
-          </button>
-          <button class="layui-btn layui-btn-sm layui-bg-blue" id="reloadTest">
-            重载测试 
+        </button>
+        <button class="layui-btn layui-btn-sm layui-bg-blue" id="reloadTest">
+            重载测试
             <i class="layui-icon layui-icon-down layui-font-12"></i>
-          </button>
-          <button class="layui-btn layui-btn-sm layui-btn-primary" id="rowMode">
+        </button>
+        <button class="layui-btn layui-btn-sm layui-btn-primary" id="rowMode">
             <span>{{= d.lineStyle ? '多行' : '单行' }}模式</span>
             <i class="layui-icon layui-icon-down layui-font-12"></i>
-          </button>
-        </div>
-      </script>
-      <script type="text/html" id="barDemo">
-        <div class="layui-clear-space">
-          <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-          <a class="layui-btn layui-btn-xs" lay-event="more">
-            更多 
+        </button>
+    </div>
+</script>
+<script type="text/html" id="barDemo">
+    <div class="layui-clear-space">
+        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+        <a class="layui-btn layui-btn-xs" lay-event="more">
+            更多
             <i class="layui-icon layui-icon-down"></i>
-          </a>
-        </div>
-      </script>  
-      <script src="layui/layui.js"></script>
-      <script>
+        </a>
+    </div>
+</script>
+<script src="layui/layui.js"></script>
+<script>
       layui.use(['table', 'dropdown'], function(){
         var table = layui.table;
         var dropdown = layui.dropdown;
@@ -332,5 +332,7 @@
           obj.update(update);
         });
       });
-      </script>
+
+</script>
+</body>
 </html>
